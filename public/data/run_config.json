@@ -1,0 +1,93 @@
+{
+  "schema_version": "full-system-run-config-v1",
+  "mode": "FULL",
+  "seed": 20270130,
+  "prepared_data_root": "D:/竞赛文件/作品赛/datasets/prepared/d1_d2_v2/run_20260825_204506",
+  "asset_registry": {
+    "schema_version": "dataset-v2-asset-registry-v1",
+    "dataset_v2_run_id": "run_20260825_204506",
+    "dataset_v2_manifest_sha256": "A7B1A5F8D02D9C4B1C8BF0DE94E16BEE0A9E545F69F6592EB776E15C0354DF2D",
+    "counts": {
+      "D1": 1000,
+      "D2": 1000,
+      "D3_EMR": 11461,
+      "D3_IMAGE": 4999
+    },
+    "total": 18460,
+    "d3_inventory_version": "d3-inventory-sha256:f90294e07135636b23c8914bd16b192e6ea92271793086d53730480b9425edc0",
+    "asset_linkage_mode": "DATASET_BACKED"
+  },
+  "asset_linkage_mode": "DATASET_BACKED",
+  "synthea_root": "D:/竞赛文件/作品赛/datasets/synthea_emr",
+  "image_root": "D:/竞赛文件/作品赛/datasets/medical_images/images.tar",
+  "model_root": "models_candidate/dev_boundary_v4_weighted/candidate_seed20261226",
+  "device": "cpu",
+  "image_watermark_runtime": true,
+  "image_watermark_runtime_scope": "PNG_ARRAY_DERIVED_COPY_FINAL_V1",
+  "image_watermark_key_scope": "EPHEMERAL_RUN_KEY",
+  "source_medical_image_mutation": false,
+  "derived_copy_remediation": {
+    "enabled": true,
+    "source_recovery_is_not_used_for_copy_only_failure": true
+  },
+  "normal_events": 35000,
+  "attack_events": 15000,
+  "seen_events": 12000,
+  "unseen_events": 3000,
+  "asset_limits": {
+    "D1": 1000,
+    "D2": 1000,
+    "EMR": 11461,
+    "IMAGE": 4999,
+    "TRAP_EMR": 150,
+    "TRAP_IMAGE": 150
+  },
+  "normal_sampling_rate": 0.0,
+  "offline_feedback": false,
+  "runtime_model_training": false,
+  "model_root_mode": "EXPLICIT_READ_ONLY",
+  "incumbent_models_only": false,
+  "candidate_training": "DISABLED",
+  "auto_promotion": false,
+  "asset_storage_mode": "DISK_BACKED_VERIFIED_LOCAL",
+  "working_root": "outputs/formal_competition_work",
+  "event_pool_root": "data/event_pool_formal_20270130",
+  "threat_memory_root": "data/threat_memory_formal_20270130",
+  "release": {
+    "name": "MedShield-AI Backend v1.1 Corrective Rebuild",
+    "version": "1.1.0"
+  },
+  "environment": {
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "preflight": {
+    "status": "PASS",
+    "prepared_data_root": "D:/竞赛文件/作品赛/datasets/prepared/d1_d2_v2/run_20260825_204506",
+    "prepared_generator_version": null,
+    "model_root": "models_candidate/dev_boundary_v4_weighted/candidate_seed20261226",
+    "device": "cpu",
+    "available_assets": {
+      "D1": 3000,
+      "D2": 5000,
+      "EMR": 11461,
+      "IMAGE": 4999,
+      "TRAP_EMR": 150,
+      "TRAP_IMAGE": 150
+    },
+    "selected_source_bytes": 3041931,
+    "resources": {
+      "working_root": "outputs/formal_competition_work",
+      "disk_free_bytes": 96797827072,
+      "estimated_scratch_bytes": 2156609441,
+      "memory_total_bytes": 16421982208,
+      "memory_available_bytes": 2016124928
+    },
+    "offline_feedback": false,
+    "candidate_approval_sha256": null,
+    "candidate_training": "DISABLED",
+    "auto_promotion": false,
+    "trap_image_asset_contract": "PASS",
+    "missing_or_invalid": []
+  }
+}

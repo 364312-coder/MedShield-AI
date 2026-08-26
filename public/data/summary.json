@@ -1,0 +1,80 @@
+{
+  "schema_version": "dashboard-v1",
+  "assets": {
+    "total": 18760,
+    "D1": 1000,
+    "D2": 1000,
+    "D3": 16760,
+    "trap": 300
+  },
+  "behavior": {
+    "total_events": 50000,
+    "normal_events": 35000,
+    "attack_events": 15000,
+    "seen_events": 12000,
+    "unseen_events": 3000
+  },
+  "backup": {
+    "local_expected": 18760,
+    "local_created": 18760,
+    "local_verified": 18760,
+    "local_coverage_rate": 1.0,
+    "local_verify_rate": 1.0,
+    "cold_expected": 18760,
+    "cold_created": 18760,
+    "cold_verified": 18760,
+    "cold_coverage_rate": 1.0,
+    "cold_verify_rate": 1.0
+  },
+  "detection": {
+    "precision": 0.9865854493190063,
+    "recall": 0.961,
+    "f1": 0.9736246665090676,
+    "false_positive_rate": 0.0056
+  },
+  "seen_unseen": {
+    "seen_recall": 0.95125,
+    "unseen_detection_rate": 1.0
+  },
+  "policy": {
+    "P0": 33854,
+    "P1": 698,
+    "P2": 407,
+    "P3": 15041
+  },
+  "defense": {
+    "attack_containment_rate": 0.961,
+    "false_blocking_rate": 0.0128
+  },
+  "integrity": {
+    "NORMAL": 49998,
+    "SUSPICIOUS": 0,
+    "HIGH_CONFIDENCE_ANOMALY": 2,
+    "UNKNOWN": 0,
+    "anomaly_detection_rate": 1.0
+  },
+  "recovery": {
+    "requested": 2,
+    "success_rate": 1.0,
+    "mean_recovery_ms": 9.052299996255897,
+    "cold_restore_count": 2,
+    "local_fallback_count": 0
+  },
+  "feedback": {
+    "confirmed_events": 50000,
+    "event_pool_appended": 15496,
+    "event_pool_skipped": 34504,
+    "event_pool_pending": 0,
+    "false_positives": 196,
+    "false_negatives": 585,
+    "unseen_shifted_events": 3000,
+    "weakness_reports": 4,
+    "candidate_status": "DISABLED",
+    "promotion_recommended": false
+  },
+  "performance": {
+    "mean_pipeline_ms": 5.843661667952547,
+    "p95_pipeline_ms": 16.155899997102097,
+    "peak_memory_mb": 1622.15625
+  }
+}

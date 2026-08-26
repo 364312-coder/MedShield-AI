@@ -1,0 +1,12 @@
+{
+  "schema_version": "behavior-manifest-v1",
+  "total_events": 50000,
+  "asset_linkage_mode": "DATASET_BACKED",
+  "asset_registry_schema": "dataset-v2-asset-registry-v1",
+  "unique_asset_ids_referenced": 17484,
+  "reused_asset_ids": 13808,
+  "normal_events": 35000,
+  "attack_events": 15000,
+  "seen_events": 12000,
+  "unseen_events": 3000
+}

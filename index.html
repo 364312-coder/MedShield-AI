@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedShield-AI 医疗数据安全展示台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--
+    THESIS: A one-page evidence console proves MedShield-AI through its completed backend run instead of marketing claims.
+    OWN-WORLD: Clinical white, ink navy, alert coral, verification green, and fine instrument-line UI make the page feel like a hospital security command desk.
+    STORY: Judges see the system scale, follow Step01-Step14, inspect AI/defense/recovery evidence, and understand the honest limitations.
+    FIRST VIEWPORT: A dense command header sits beside live formal metrics, with the protected asset and event counts visible immediately.
+    FORM: Read-mode dashboard, grounded in medical monitoring and audit-console conventions, seed 68242405.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="MedShield-AI 首页">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span>
+          <span class="brand-name">MedShield-AI</span>
+          <span class="brand-subtitle">基层医院数据安全展示台</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#flow">后端链路</a>
+        <a href="#ai">AI检测</a>
+        <a href="#defense">策略防御</a>
+        <a href="#events">事件样本</a>
+        <a href="#limits">能力边界</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="hero-copy">
+          <p class="status-line"><span></span> FORMAL RUN 已接入</p>
+          <h1>从医疗资产保护到风险处置的完整证据链</h1>
+          <p class="hero-text">
+            本页只读取最终正式实验输出，不训练模型、不重算策略，专注把后端 Step01-Step14 的证据讲清楚。
+          </p>
+          <div class="hero-actions" aria-label="核心操作">
+            <a class="primary-action" href="#events">查看事件样本</a>
+            <a class="secondary-action" href="#limits">查看能力边界</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="正式实验关键指标">
+          <div class="panel-head">
+            <span>Run</span>
+            <strong id="run-id">run_20260826_153334</strong>
+          </div>
+          <div class="metric-grid">
+            <article><span>Protected Assets</span><strong id="asset-total">--</strong></article>
+            <article><span>Behavior Events</span><strong id="event-total">--</strong></article>
+            <article><span>F1 Score</span><strong id="f1-score">--</strong></article>
+            <article><span>P95 Latency</span><strong id="p95-latency">--</strong></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact-band" aria-label="系统状态">
+        <div class="band-item">
+          <span>Backend Step01-Step14</span>
+          <strong>PASS</strong>
+        </div>
+        <div class="band-item">
+          <span>Dashboard Schema</span>
+          <strong>dashboard-v1</strong>
+        </div>
+        <div class="band-item">
+          <span>Formal Seed</span>
+          <strong id="seed">20270130</strong>
+        </div>
+        <div class="band-item">
+          <span>Model</span>
+          <strong>UFN-SAR + LightGBM</strong>
+        </div>
+      </section>
+
+      <section class="section" id="flow">
+        <div class="section-head">
+          <h2>后端主链路</h2>
+          <p>资产先被持续保护，AI 只提供风险证据，最终由 Policy 和 Defense 形成处置闭环。</p>
+        </div>
+        <div class="flow" id="flow-list"></div>
+      </section>
+
+      <section class="section split" id="ai">
+        <div>
+          <div class="section-head align-left">
+            <h2>AI 检测表现</h2>
+            <p>风险模型使用 50 维 U/F/N/C 行为特征，经 UFN-SAR 扩展为 56 维输入 LightGBM。</p>
+          </div>
+          <div class="score-stack" id="score-stack"></div>
+        </div>
+        <div class="chart-panel">
+          <h3>场景检测率</h3>
+          <div id="scenario-bars" class="bar-list"></div>
+        </div>
+      </section>
+
+      <section class="section split" id="defense">
+        <div class="chart-panel">
+          <h2>策略等级分布</h2>
+          <div class="policy-grid" id="policy-grid"></div>
+        </div>
+        <div class="chart-panel">
+          <h2>防御与恢复</h2>
+          <div class="recovery-list" id="defense-list"></div>
+        </div>
+      </section>
+
+      <section class="section" id="integrity">
+        <div class="section-head">
+          <h2>完整性与备份</h2>
+          <p>AES-GCM、影像水印/EMR 身份、Local + Cold 双备份共同形成可恢复的可信证据。</p>
+        </div>
+        <div class="integrity-grid" id="integrity-grid"></div>
+      </section>
+
+      <section class="section" id="events">
+        <div class="section-head">
+          <h2>事件样本</h2>
+          <p>从正式 `results.csv` 抽取前 120 条轻量事件，完整 `events.jsonl` 过大，后续适合做分页接口。</p>
+        </div>
+        <div class="table-tools">
+          <label>
+            <span>场景筛选</span>
+            <select id="scenario-filter">
+              <option value="ALL">全部场景</option>
+            </select>
+          </label>
+          <label>
+            <span>策略筛选</span>
+            <select id="policy-filter">
+              <option value="ALL">全部策略</option>
+            </select>
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Scenario</th>
+                <th>D</th>
+                <th>R</th>
+                <th>A</th>
+                <th>P</th>
+                <th>Integrity</th>
+                <th>Pool</th>
+              </tr>
+            </thead>
+            <tbody id="event-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section limits" id="limits">
+        <div class="section-head">
+          <h2>能力边界</h2>
+          <p>比赛展示必须保留真实边界：哪些是当前实验能力，哪些不是生产医院能力。</p>
+        </div>
+        <div class="limit-grid">
+          <article><span>Permission / Network</span><strong>SIMULATED</strong></article>
+          <article><span>Key Enforcement</span><strong>PARTIAL</strong></article>
+          <article><span>DICOM Runtime</span><strong>UNAVAILABLE</strong></article>
+          <article><span>EMR Embedded Watermark</span><strong>UNAVAILABLE</strong></article>
+          <article><span>TTD / TTC</span><strong>PIPELINE_LATENCY</strong></article>
+          <article><span>Dataset</span><strong>Synthetic/Public Experimental Data</strong></article>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
