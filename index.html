@@ -3,30 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MedShield-AI 医疗数据安全展示台</title>
+    <meta
+      name="description"
+      content="MedShield-AI 基层医疗数据智能安全防护平台——基于正式实验结果的只读比赛展示台。"
+    />
+    <title>MedShield-AI 基层医疗数据智能安全防护平台</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <!--
-    THESIS: A one-page evidence console proves MedShield-AI through its completed backend run instead of marketing claims.
-    OWN-WORLD: Clinical white, ink navy, alert coral, verification green, and fine instrument-line UI make the page feel like a hospital security command desk.
-    STORY: Judges see the system scale, follow Step01-Step14, inspect AI/defense/recovery evidence, and understand the honest limitations.
-    FIRST VIEWPORT: A dense command header sits beside live formal metrics, with the protected asset and event counts visible immediately.
-    FORM: Read-mode dashboard, grounded in medical monitoring and audit-console conventions, seed 68242405.
-    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
-    -->
     <header class="topbar">
-      <a class="brand" href="#overview" aria-label="MedShield-AI 首页">
-        <span class="brand-mark" aria-hidden="true">M</span>
-        <span>
-          <span class="brand-name">MedShield-AI</span>
-          <span class="brand-subtitle">基层医院数据安全展示台</span>
+      <a class="brand" href="#overview" aria-label="返回系统总览">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" focusable="false">
+            <path d="M12 2.4 20 5.6v5.8c0 5.1-3.2 8.6-8 10.2-4.8-1.6-8-5.1-8-10.2V5.6L12 2.4Z" />
+            <path d="M8.2 12h7.6M12 8.2v7.6" />
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <strong>MedShield-AI</strong>
+          <small>基层医疗数据智能安全防护平台</small>
         </span>
       </a>
+
       <nav class="nav" aria-label="页面导航">
-        <a href="#flow">后端链路</a>
-        <a href="#ai">AI检测</a>
-        <a href="#defense">策略防御</a>
+        <a href="#overview">系统总览</a>
+        <a href="#assets">数据资产</a>
+        <a href="#flow">防护流程</a>
+        <a href="#demo">演示场景</a>
+        <a href="#ai">AI 检测</a>
+        <a href="#defense">策略恢复</a>
         <a href="#events">事件样本</a>
         <a href="#limits">能力边界</a>
       </nav>
@@ -34,97 +39,316 @@
 
     <main>
       <section class="hero" id="overview">
-        <div class="hero-copy">
-          <p class="status-line"><span></span> FORMAL RUN 已接入</p>
-          <h1>从医疗资产保护到风险处置的完整证据链</h1>
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="live-dot" aria-hidden="true"></span>
+            正式实验结果已接入 · 只读展示
+          </div>
+          <h1>
+            让医疗数据在<strong>被攻击之前有保护</strong>，在异常发生之后<strong>能检测、能处置、能恢复</strong>
+          </h1>
           <p class="hero-text">
-            本页只读取最终正式实验输出，不训练模型、不重算策略，专注把后端 Step01-Step14 的证据讲清楚。
+            MedShield-AI 面向基层医疗场景，将数据分级、AES-256-GCM、Local + Cold 双备份、
+            轻量 AI 风险检测、P0–P3 策略响应、完整性验证与安全事件反馈串成一条可审计的防护闭环。
           </p>
-          <div class="hero-actions" aria-label="核心操作">
-            <a class="primary-action" href="#events">查看事件样本</a>
-            <a class="secondary-action" href="#limits">查看能力边界</a>
+
+          <div class="hero-tags" aria-label="系统特征">
+            <span>CPU 优先</span>
+            <span>电子病历 + 医学影像</span>
+            <span>正式实验数据</span>
+            <span>不展示真实患者隐私</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="primary-action" href="#demo">进入演示场景</a>
+            <a class="secondary-action" href="#flow">查看完整链路</a>
           </div>
         </div>
-        <div class="hero-panel" aria-label="正式实验关键指标">
+
+        <aside class="hero-panel reveal" aria-label="正式实验关键指标">
           <div class="panel-head">
-            <span>Run</span>
-            <strong id="run-id">run_20260826_153334</strong>
+            <div>
+              <span class="panel-kicker">正式实验总览</span>
+              <strong id="run-id">run_20260826_153334</strong>
+            </div>
+            <span class="verified-badge">数据已载入</span>
           </div>
-          <div class="metric-grid">
-            <article><span>Protected Assets</span><strong id="asset-total">--</strong></article>
-            <article><span>Behavior Events</span><strong id="event-total">--</strong></article>
-            <article><span>F1 Score</span><strong id="f1-score">--</strong></article>
-            <article><span>P95 Latency</span><strong id="p95-latency">--</strong></article>
+
+          <div class="metric-grid hero-metrics">
+            <article>
+              <span>受保护资产</span>
+              <strong id="asset-total">--</strong>
+              <small>D1 / D2 / D3 / Trap</small>
+            </article>
+            <article>
+              <span>行为事件</span>
+              <strong id="event-total">--</strong>
+              <small>正常 + 攻击事件</small>
+            </article>
+            <article>
+              <span>检测 F1</span>
+              <strong id="f1-score">--</strong>
+              <small>轻量风险检测</small>
+            </article>
+            <article>
+              <span>攻击遏制率</span>
+              <strong id="containment-rate">--</strong>
+              <small>正式攻击事件</small>
+            </article>
+            <article>
+              <span>冷备份验证率</span>
+              <strong id="cold-verify-rate">--</strong>
+              <small>可信恢复基础</small>
+            </article>
+            <article>
+              <span>P95 流水线延迟</span>
+              <strong id="p95-latency">--</strong>
+              <small>实验端到端流水线</small>
+            </article>
           </div>
-        </div>
+        </aside>
       </section>
 
-      <section class="section compact-band" aria-label="系统状态">
+      <section class="status-band" aria-label="正式运行状态">
         <div class="band-item">
-          <span>Backend Step01-Step14</span>
-          <strong>PASS</strong>
+          <span>后端主链路</span>
+          <strong>Step01–Step14 已完成</strong>
         </div>
         <div class="band-item">
-          <span>Dashboard Schema</span>
-          <strong>dashboard-v1</strong>
+          <span>数据协议</span>
+          <strong id="schema-version">dashboard-v1</strong>
         </div>
         <div class="band-item">
-          <span>Formal Seed</span>
-          <strong id="seed">20270130</strong>
+          <span>正式随机种子</span>
+          <strong id="seed">--</strong>
         </div>
         <div class="band-item">
-          <span>Model</span>
+          <span>检测模型</span>
           <strong>UFN-SAR + LightGBM</strong>
         </div>
       </section>
 
-      <section class="section" id="flow">
-        <div class="section-head">
-          <h2>后端主链路</h2>
-          <p>资产先被持续保护，AI 只提供风险证据，最终由 Policy 和 Defense 形成处置闭环。</p>
+      <section class="section thesis-section">
+        <div class="section-head reveal">
+          <span class="section-index">00 · 展示主线</span>
+          <h2>这个网页要讲清楚的不是“一个检测模型”，而是“医疗数据安全闭环”</h2>
+          <p>
+            比赛答辩时建议围绕三句话展开：常驻基础防护先保护数据；AI 风险检测负责发现异常；
+            Policy、Defense、Integrity、Recovery 和 Event Pool 负责把异常转化为可执行、可审计、可反馈的处置结果。
+          </p>
         </div>
+
+        <div class="thesis-grid reveal">
+          <article>
+            <span>第一层</span>
+            <strong>常驻基础保护</strong>
+            <p>数据进入系统后即完成身份、分级、加密和双备份，不依赖攻击已经发生。</p>
+          </article>
+          <article>
+            <span>第二层</span>
+            <strong>AI 风险感知</strong>
+            <p>基于用户、文件、网络与上下文行为提取风险证据，输出风险分数和异常类型。</p>
+          </article>
+          <article>
+            <span>第三层</span>
+            <strong>主动防御处置</strong>
+            <p>根据风险与数据等级生成 P0–P3 策略，对权限、密钥、网络和水印动作进行收紧。</p>
+          </article>
+          <article>
+            <span>第四层</span>
+            <strong>可信验证恢复</strong>
+            <p>通过完整性证据与双备份恢复能力，保障异常后可以核验、可恢复、可追溯。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section assets-section" id="assets">
+        <div class="section-head reveal">
+          <span class="section-index">01 · 数据基础</span>
+          <h2>先把医疗数据保护起来，再谈智能检测</h2>
+          <p>
+            资产身份、数据分级、AES-GCM 加密与 Local + Cold 双备份属于常驻基础防护；
+            AI 异常检测负责在风险升高时进一步收紧策略，不是“事后才开始保护”。
+          </p>
+        </div>
+
+        <div class="asset-grid reveal" id="asset-grid"></div>
+
+        <div class="asset-note reveal">
+          <strong>数据说明：</strong>
+          当前展示对象包括 D1、D2、D3 与 Trap 诱捕资产。Trap 只作为策略上下文，不作为 AI 特征输入，
+          避免模型靠“诱捕标签”投机判断。
+        </div>
+      </section>
+
+      <section class="section flow-section" id="flow">
+        <div class="section-head reveal">
+          <span class="section-index">02 · 系统主链路</span>
+          <h2>从资产进入系统，到事件反馈闭环</h2>
+          <p>
+            正式后端共 14 个核心步骤。AI 只输出风险证据，最终策略由 Policy Engine 结合数据等级、风险、
+            异常类型与上下文形成，再进入防御、完整性、恢复和反馈链路。
+          </p>
+        </div>
+
+        <div class="flow-legend reveal">
+          <span><i class="legend-dot base"></i>常驻基础保护</span>
+          <span><i class="legend-dot ai"></i>AI 风险感知</span>
+          <span><i class="legend-dot policy"></i>策略与主动防御</span>
+          <span><i class="legend-dot verify"></i>验证、恢复与反馈</span>
+        </div>
+
         <div class="flow" id="flow-list"></div>
-      </section>
 
-      <section class="section split" id="ai">
-        <div>
-          <div class="section-head align-left">
-            <h2>AI 检测表现</h2>
-            <p>风险模型使用 50 维 U/F/N/C 行为特征，经 UFN-SAR 扩展为 56 维输入 LightGBM。</p>
+        <div class="dashboard-tail reveal">
+          <span>Step15</span>
+          <div>
+            <strong>Dashboard 比赛展示层</strong>
+            <p>只读取正式实验输出，不训练模型、不重算风险、不改变后端策略。</p>
           </div>
-          <div class="score-stack" id="score-stack"></div>
-        </div>
-        <div class="chart-panel">
-          <h3>场景检测率</h3>
-          <div id="scenario-bars" class="bar-list"></div>
         </div>
       </section>
 
-      <section class="section split" id="defense">
-        <div class="chart-panel">
-          <h2>策略等级分布</h2>
-          <div class="policy-grid" id="policy-grid"></div>
+      <section class="section demo-section" id="demo">
+        <div class="section-head reveal">
+          <span class="section-index">03 · 答辩演示</span>
+          <h2>三类重点场景，一条证据链讲清楚</h2>
+          <p>
+            演示区把“攻击发生 → AI 感知 → 策略处置 → 完整性验证/恢复 → 事件反馈”串起来。
+            篡改类演示使用正式完整性与恢复证据；当前正式 run 未把两条完整性异常按影像/EMR 单独拆分统计。
+          </p>
         </div>
-        <div class="chart-panel">
-          <h2>防御与恢复</h2>
-          <div class="recovery-list" id="defense-list"></div>
+
+        <div class="demo-grid" id="demo-grid"></div>
+      </section>
+
+      <section class="section ai-section" id="ai">
+        <div class="section-head reveal">
+          <span class="section-index">04 · AI 风险检测</span>
+          <h2>轻量模型负责发现风险，不替代安全策略</h2>
+          <p>
+            行为侧以 U/F/N/C 特征为基础，经 UFN-SAR 扩展后输入 LightGBM，输出风险分数 R 与异常类型 A。
+            页面展示的是最终正式 run 的真实检测结果。
+          </p>
+        </div>
+
+        <div class="split">
+          <div class="chart-panel reveal">
+            <div class="panel-title-row">
+              <div>
+                <span class="panel-kicker">整体检测指标</span>
+                <h3>核心性能</h3>
+              </div>
+              <span class="mini-note">50,000 条事件</span>
+            </div>
+            <div class="score-stack" id="score-stack"></div>
+          </div>
+
+          <div class="chart-panel reveal">
+            <div class="panel-title-row">
+              <div>
+                <span class="panel-kicker">不同攻击类型</span>
+                <h3>异常检出率</h3>
+              </div>
+              <span class="mini-note">按正式场景统计</span>
+            </div>
+            <div id="scenario-bars" class="bar-list"></div>
+            <p class="chart-footnote">
+              注：“异常检出率”表示是否识别为异常，不等同于异常类型分类的 Recall。
+              例如慢速外泄可被识别为异常，但可能被归入其他外泄类别。
+            </p>
+          </div>
+        </div>
+
+        <div class="explain-grid reveal">
+          <article>
+            <span>Precision 精确率</span>
+            <strong>报警里有多少是真的攻击</strong>
+          </article>
+          <article>
+            <span>Recall 召回率</span>
+            <strong>攻击里有多少被系统抓住</strong>
+          </article>
+          <article>
+            <span>F1 分数</span>
+            <strong>综合衡量精确率与召回率</strong>
+          </article>
+          <article>
+            <span>未见攻击检出率</span>
+            <strong>展示对新型场景的泛化能力</strong>
+          </article>
         </div>
       </section>
 
-      <section class="section" id="integrity">
-        <div class="section-head">
-          <h2>完整性与备份</h2>
-          <p>AES-GCM、影像水印/EMR 身份、Local + Cold 双备份共同形成可恢复的可信证据。</p>
+      <section class="section defense-section" id="defense">
+        <div class="section-head reveal">
+          <span class="section-index">05 · 策略防御与恢复</span>
+          <h2>检测只是开始，最终目标是把风险真正压下去</h2>
+          <p>
+            Policy Engine 输出 P0–P3 策略等级，Defense 执行对应防御动作；
+            随后完整性模块检查可信状态，必要时从已验证备份恢复。
+          </p>
         </div>
-        <div class="integrity-grid" id="integrity-grid"></div>
+
+        <div class="split defense-split">
+          <div class="chart-panel reveal">
+            <span class="panel-kicker">策略等级</span>
+            <h3>50,000 条事件的策略分布</h3>
+            <div class="policy-grid" id="policy-grid"></div>
+          </div>
+
+          <div class="chart-panel reveal">
+            <span class="panel-kicker">防御结果</span>
+            <h3>遏制、误阻断与反馈</h3>
+            <div class="recovery-list" id="defense-list"></div>
+          </div>
+        </div>
+
+        <div class="policy-explain reveal">
+          <article>
+            <span>P0</span>
+            <strong>正常放行</strong>
+            <p>低风险或常规业务，不额外阻断。</p>
+          </article>
+          <article>
+            <span>P1</span>
+            <strong>轻量收紧</strong>
+            <p>风险上升时进行较温和的权限或行为限制。</p>
+          </article>
+          <article>
+            <span>P2</span>
+            <strong>中强度防御</strong>
+            <p>对可疑访问、敏感资产操作进行更严格控制。</p>
+          </article>
+          <article>
+            <span>P3</span>
+            <strong>高风险处置</strong>
+            <p>用于高置信攻击、泄露或完整性异常场景。</p>
+          </article>
+        </div>
+
+        <div class="integrity-panel reveal" id="integrity">
+          <div class="integrity-intro">
+            <span class="section-index">可信状态与恢复</span>
+            <h3>完整性异常可以被发现，也有可信恢复路径</h3>
+            <p>
+              AES-GCM、医学影像派生副本水印/身份信息与 Local + Cold 双备份共同提供完整性和恢复证据。
+            </p>
+          </div>
+          <div class="integrity-grid" id="integrity-grid"></div>
+        </div>
       </section>
 
-      <section class="section" id="events">
-        <div class="section-head">
-          <h2>事件样本</h2>
-          <p>从正式 `results.csv` 抽取前 120 条轻量事件，完整 `events.jsonl` 过大，后续适合做分页接口。</p>
+      <section class="section events-section" id="events">
+        <div class="section-head reveal">
+          <span class="section-index">06 · 事件证据</span>
+          <h2>从汇总指标下钻到具体安全事件</h2>
+          <p>
+            页面从正式 results.csv 读取轻量事件样本。完整 events.jsonl 体量较大，因此当前静态网页不直接全量加载。
+          </p>
         </div>
-        <div class="table-tools">
+
+        <div class="table-tools reveal">
           <label>
             <span>场景筛选</span>
             <select id="scenario-filter">
@@ -137,19 +361,23 @@
               <option value="ALL">全部策略</option>
             </select>
           </label>
+          <div class="sample-count">
+            当前展示 <strong id="visible-event-count">0</strong> 条样本
+          </div>
         </div>
-        <div class="table-wrap">
+
+        <div class="table-wrap reveal">
           <table>
             <thead>
               <tr>
-                <th>Event</th>
-                <th>Scenario</th>
-                <th>D</th>
-                <th>R</th>
-                <th>A</th>
-                <th>P</th>
-                <th>Integrity</th>
-                <th>Pool</th>
+                <th>事件 ID</th>
+                <th>场景</th>
+                <th>数据等级</th>
+                <th>风险 R</th>
+                <th>异常类型</th>
+                <th>策略</th>
+                <th>完整性状态</th>
+                <th>事件池</th>
               </tr>
             </thead>
             <tbody id="event-table"></tbody>
@@ -157,21 +385,98 @@
         </div>
       </section>
 
-      <section class="section limits" id="limits">
-        <div class="section-head">
-          <h2>能力边界</h2>
-          <p>比赛展示必须保留真实边界：哪些是当前实验能力，哪些不是生产医院能力。</p>
+      <section class="section speaker-section" id="speaker">
+        <div class="section-head reveal">
+          <span class="section-index">07 · 答辩讲解</span>
+          <h2>建议用这条讲解线索介绍系统</h2>
+          <p>
+            这部分是给展示者看的现场话术提示，帮助把网页内容讲成“系统方案”，而不是只念指标。
+          </p>
         </div>
-        <div class="limit-grid">
-          <article><span>Permission / Network</span><strong>SIMULATED</strong></article>
-          <article><span>Key Enforcement</span><strong>PARTIAL</strong></article>
-          <article><span>DICOM Runtime</span><strong>UNAVAILABLE</strong></article>
-          <article><span>EMR Embedded Watermark</span><strong>UNAVAILABLE</strong></article>
-          <article><span>TTD / TTC</span><strong>PIPELINE_LATENCY</strong></article>
-          <article><span>Dataset</span><strong>Synthetic/Public Experimental Data</strong></article>
+
+        <div class="speaker-grid reveal">
+          <article>
+            <span>开场</span>
+            <p>我们做的是基层医疗数据安全防护系统，重点不是单点检测，而是把医疗资产保护、异常检测、策略处置、完整性验证和恢复闭环打通。</p>
+          </article>
+          <article>
+            <span>核心逻辑</span>
+            <p>正常情况下系统已经有数据分级、加密和双备份；AI 检测到风险后，策略层只是在原有保护基础上进一步收紧。</p>
+          </article>
+          <article>
+            <span>实验支撑</span>
+            <p>本页读取最终正式 run 的 JSON 与 CSV，展示资产规模、事件规模、检测性能、攻击遏制、误阻断、备份验证和恢复情况。</p>
+          </article>
+          <article>
+            <span>诚实边界</span>
+            <p>页面明确标注权限/网络为模拟执行，DICOM 原生运行时和 EMR 内嵌水印运行时尚未提供，避免夸大系统成熟度。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section limits" id="limits">
+        <div class="section-head reveal">
+          <span class="section-index inverse">08 · 能力边界</span>
+          <h2>比赛展示只说已经做到的能力</h2>
+          <p>
+            这里明确区分实验能力与真实医院生产部署能力，避免把模拟执行、部分实现或尚未接入的功能包装成已生产落地。
+          </p>
+        </div>
+
+        <div class="limit-grid reveal">
+          <article class="limit-ok">
+            <span>PNG 派生副本影像水印</span>
+            <strong>正式运行时已启用</strong>
+            <small>不修改源医学影像</small>
+          </article>
+          <article>
+            <span>权限 / 网络动作</span>
+            <strong>模拟执行</strong>
+            <small>用于正式实验的防御行为仿真</small>
+          </article>
+          <article>
+            <span>密钥强制执行</span>
+            <strong>部分实现</strong>
+            <small>不得表述为完整生产密钥管理系统</small>
+          </article>
+          <article>
+            <span>DICOM 原生运行时</span>
+            <strong>当前未提供</strong>
+            <small>现有影像水印范围为 PNG/数组派生副本</small>
+          </article>
+          <article>
+            <span>EMR 内嵌水印运行时</span>
+            <strong>当前未提供</strong>
+            <small>EMR 完整性仍有 AES-GCM 等证据</small>
+          </article>
+          <article>
+            <span>TTD / TTC</span>
+            <strong>以流水线延迟展示</strong>
+            <small>不等同于真实 SOC 生产时延</small>
+          </article>
+          <article>
+            <span>实验数据</span>
+            <strong>合成 / 公开数据</strong>
+            <small>不使用真实患者隐私数据作为网页展示源</small>
+          </article>
+          <article class="limit-ok">
+            <span>运行时在线训练</span>
+            <strong>已关闭</strong>
+            <small>正式模型只读，避免比赛运行中漂移</small>
+          </article>
         </div>
       </section>
     </main>
+
+    <footer class="footer">
+      <div>
+        <strong>MedShield-AI</strong>
+        <span>基层医疗数据智能安全防护平台</span>
+      </div>
+      <p>
+        数据来源：最终正式实验 run_20260826_153334 · 页面仅做结果展示，不重算后端安全决策。
+      </p>
+    </footer>
 
     <script src="./app.js"></script>
   </body>
