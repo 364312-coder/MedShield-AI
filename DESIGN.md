@@ -1,27 +1,38 @@
 # Design
 
-## Surface
+## V5 Design Direction
 
-MedShield-AI is a Chinese one-page read-mode dashboard for competition presentation. It should feel like a hospital security command desk: dense enough to be credible, clean enough to explain live.
+V5 is no longer a dashboard landing page. It is a medical security incident response system interface.
 
-## Visual System
+## First Screen
 
-The page uses a clinical white surface, ink navy text, verification green, instrument blue, cyan, amber, and coral for risk or boundary states.
+No metric wall. First screen contains:
 
-## Layout
+- system state
+- pending incident queue
+- incident workbench
+- evidence chain
+- audit log terminal
 
-The first viewport combines a large explanation headline with formal run metrics. Later sections move from presentation thesis, data assets, system chain, demo scenarios, AI evidence, policy defense, integrity recovery, event samples, speaker notes, and capability boundaries.
+## Visual Language
 
-## Interaction
+- deep navy security interface
+- cyan instrumentation accents
+- restrained red for high risk
+- green for completed actions
+- amber for pending caution
+- medical image and EMR object cards
+- evidence-chain panels
+- terminal audit logs
 
-Navigation uses anchor jumps inside the single page. Event samples can be filtered by scenario and policy level. The page reads local static data only.
+## Interaction Design
 
-## Data Rules
+Buttons are sequentially unlocked:
 
-The interface must read `dashboard-v1` outputs without recomputing security logic. It should not load the full `events.jsonl` in the browser until a pagination or sampling layer exists.
+1. Analyze event
+2. Execute defense policy
+3. Verify integrity
+4. Execute Cold recovery
+5. Generate audit record
 
-## Copy Rules
-
-Use Chinese as the primary UI language. English may be retained only for necessary acronyms or model names such as UFN-SAR, LightGBM, Precision, Recall, F1, AUC, AES-GCM, Local, Cold, Policy.
-
-Claims must stay tied to backend evidence. Permission and Network are simulated, Key is partial, DICOM native runtime and EMR embedded watermark runtime are unavailable, TTD/TTC is pipeline latency, and data is synthetic/public experimental data.
+The user should feel they are operating a security incident workflow, not watching a static showcase.
