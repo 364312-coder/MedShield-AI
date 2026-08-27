@@ -1,13 +1,15 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="MedShield-AI V5 医疗安全事件处置控制台：面向电子病历与医学影像的安全事件识别、处置、验证与恢复闭环。" />
     <title>MedShield-AI V5 医疗安全事件处置控制台</title>
+    <link rel="stylesheet" href="./styles.css?v=competition-v12" />
+    <link rel="stylesheet" href="./competition.css?v=competition-v12" />
+      <link rel="stylesheet" href="./impeccable-v14.css?v=v14" />
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-      <link rel="stylesheet" href="./medshield-final.css?v=final1" />
   </head>
   <body>
 <div class="background-grid" aria-hidden="true"></div>
@@ -307,8 +309,8 @@
         <div class="hero-title reveal">
           <div class="label">INCIDENT RESPONSE CONSOLE</div>
           <h1>MedShield-AI</h1>
-          <p>医疗安全事件处置中心</p>
-          <small>实时分析、处置、验证、恢复与审计。当前网页通过后端 API 持久化工单状态；安全动作仍为演示环境中的策略执行。</small>
+          <p>基层医疗数据安全事件处置系统</p>
+          <small>面向电子病历与医学影像的识别、处置、验证与恢复闭环。当前网页操作通过后端 API 持久化事件处置状态；仍不直接控制真实医院生产系统。</small>
         </div>
 
         <div class="system-strip reveal" aria-label="系统状态">
@@ -382,8 +384,8 @@
       <section class="section assets-section" id="assets">
         <div class="section-head reveal">
           <span>MEDICAL DATA OBJECTS</span>
-          <h2>医疗数据资产视图</h2>
-          <p>从影像派生副本、电子病历，到 Trap 诱捕资产与 Local / Cold 备份，展示系统实际保护与验证的对象。</p>
+          <h2>先看到被保护的医疗数据对象</h2>
+          <p>不是先看指标，而是先看系统正在保护什么：医学影像、电子病历、Trap 诱捕资产与可信备份。</p>
         </div>
 
         <div class="object-grid reveal">
@@ -495,8 +497,8 @@
       <section class="section metrics-section" id="metrics">
         <div class="section-head reveal">
           <span>FORMAL RUN EVIDENCE</span>
-          <h2>正式运行证据</h2>
-          <p>以下结果来自正式 FULL run，用于证明检测、处置、恢复与性能能力；前端只读展示 JSON/CSV，不重新训练或重算策略。</p>
+          <h2>最后再看实验结果与系统能力证明</h2>
+          <p>指标只作为系统有效性的证据，不作为首页主视觉。页面只读展示正式 run 的 JSON/CSV 结果。</p>
         </div>
 
         <div class="metrics-layout reveal">
@@ -588,27 +590,6 @@
   </div>
   <div class="footer-bottom"><span>© 2026 MedShield-AI. All rights reserved.</span><span>Built for security. Designed for trust.</span></div>
 </footer>
-      <script defer src="./medshield-final.js?v=final1"></script>
+    <script defer src="./impeccable-v14.js?v=v14"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

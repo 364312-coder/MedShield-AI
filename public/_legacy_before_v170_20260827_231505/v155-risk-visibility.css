@@ -1,0 +1,351 @@
+﻿/* ==========================================================
+   MedShield-AI v1.5.5
+   Risk Story Visibility Hard Fix
+   ========================================================== */
+
+
+/* ==========================================================
+   CRITICAL:
+   force the entire Risk Story back to visible
+   ========================================================== */
+
+.v14-risk-story,
+.v14-risk-story > *,
+.v14-risk-story .showcase-copy,
+.v14-risk-story .showcase-copy *,
+.v14-risk-story .showcase-visual,
+.v14-risk-story .showcase-visual *,
+.v14-story-rail,
+.v14-story-rail *,
+.v14-recovery-story,
+.v14-recovery-story * {
+
+  visibility: visible !important;
+
+}
+
+
+/* main containers */
+
+.v14-risk-story,
+.v14-risk-story > .showcase-copy,
+.v14-risk-story > .showcase-visual {
+
+  opacity: 1 !important;
+  filter: none !important;
+
+}
+
+
+/* ==========================================================
+   LEFT SIDE
+   ========================================================== */
+
+.v14-risk-story .showcase-copy {
+
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy .eyebrow,
+.v14-risk-story .showcase-copy [class*="kicker"] {
+
+  color: #61cbe2 !important;
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy h1,
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3 {
+
+  color: #eef5f7 !important;
+  opacity: 1 !important;
+
+  text-shadow:
+    0 6px 28px rgba(0,0,0,.46);
+
+}
+
+
+.v14-risk-story .showcase-copy em {
+
+  color: #68d7ee !important;
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy p {
+
+  color: #96a5ab !important;
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy li {
+
+  color: #a2afb4 !important;
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy li::marker {
+
+  color: #67d9f1 !important;
+
+}
+
+
+/* button */
+
+.v14-risk-story .showcase-button,
+.v14-risk-story a,
+.v14-risk-story button {
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+}
+
+
+.v14-risk-story .showcase-button {
+
+  color: #eaf4f6 !important;
+
+  background:
+    #07131b !important;
+
+  border:
+    1px solid rgba(89,202,230,.23) !important;
+
+}
+
+
+/* ==========================================================
+   RIGHT CONSOLE
+   ========================================================== */
+
+.v14-risk-story .showcase-visual {
+
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .glass-window {
+
+  opacity: 1 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e 0%,
+      #02090e 100%
+    ) !important;
+
+  border:
+    1px solid rgba(87,196,225,.20) !important;
+
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.46),
+    inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+}
+
+
+/* console labels */
+
+.v14-risk-story .glass-window span,
+.v14-risk-story .glass-window small {
+
+  opacity: 1 !important;
+
+}
+
+
+.v14-risk-story .glass-window h3,
+.v14-risk-story .glass-window h4,
+.v14-risk-story .glass-window strong {
+
+  opacity: 1 !important;
+
+}
+
+
+/* general text */
+
+.v14-risk-story .glass-window {
+
+  color: #dce8eb !important;
+
+}
+
+
+/* ==========================================================
+   RISK CIRCLE
+   ========================================================== */
+
+.risk-inner {
+
+  opacity: 1 !important;
+
+}
+
+
+.risk-inner strong {
+
+  color: #ff6a64 !important;
+
+  opacity: 1 !important;
+
+  text-shadow:
+    0 0 18px rgba(255,106,100,.15);
+
+}
+
+
+.risk-inner span {
+
+  color: #a7b2b7 !important;
+  opacity: 1 !important;
+
+}
+
+
+/* ==========================================================
+   01 - 05 RAIL
+   ========================================================== */
+
+.v14-story-rail {
+
+  opacity: 1 !important;
+
+  background:
+    #041017 !important;
+
+  border:
+    1px solid rgba(78,185,214,.18) !important;
+
+}
+
+
+.v14-story-rail span {
+
+  opacity: 1 !important;
+  color: #64757d !important;
+
+}
+
+
+.v14-story-rail span.active {
+
+  opacity: 1 !important;
+
+  color: #a2efff !important;
+
+  background:
+    rgba(73,191,220,.11) !important;
+
+}
+
+
+/* ==========================================================
+   SIGNAL BARS / DETAILS
+   ========================================================== */
+
+.v14-risk-story [class*="signal"],
+.v14-risk-story [class*="bar"],
+.v14-risk-story [class*="line"] {
+
+  opacity: 1 !important;
+
+}
+
+
+/* ==========================================================
+   RECOVERY
+   ========================================================== */
+
+.v14-recovery-story {
+
+  opacity: 1 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    ) !important;
+
+  border:
+    1px solid rgba(82,187,215,.16) !important;
+
+}
+
+
+.v14-recovery-rail {
+
+  opacity: 1 !important;
+
+}
+
+
+.v14-recovery-rail span {
+
+  opacity: 1 !important;
+
+  color: #8a989e !important;
+
+  background:
+    #041018 !important;
+
+}
+
+
+.v14-recovery-rail span.active {
+
+  color: #9df0bb !important;
+
+  background:
+    rgba(83,207,145,.075) !important;
+
+  border-color:
+    rgba(103,229,163,.22) !important;
+
+}
+
+
+/* ==========================================================
+   Prevent parent opacity contamination
+   ========================================================== */
+
+.showcase-shell:has(.v14-risk-story),
+.showcase-shell:has(.v14-risk-story) > *,
+.showcase-shell:has(.v14-risk-story) .v14-risk-story {
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+}
+
+
+/* ==========================================================
+   Keep deep-dark look
+   ========================================================== */
+
+.v14-risk-story {
+
+  background:
+    radial-gradient(
+      circle at 55% 44%,
+      rgba(22,82,102,.075),
+      transparent 43%
+    ),
+    #010507 !important;
+
+}

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MedShield-AI V5 医疗安全事件处置控制台：面向电子病历与医学影像的安全事件识别、处置、验证与恢复闭环。" />
+    <title>MedShield-AI V5 医疗安全事件处置控制台</title>
+    <link rel="stylesheet" href="./styles.css?v=webv1" />
+  </head>
+  <body>
+    <canvas id="neural-background" class="neural-background" aria-hidden="true"></canvas>
+    <div class="neural-vignette" aria-hidden="true"></div>
+    <div class="background-grid" aria-hidden="true"></div>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+
+    <header class="shell-header">
+      <a class="brand" href="#console" aria-label="返回 MedShield-AI 控制台">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" focusable="false">
+            <path d="M12 2.5 20 5.7v5.8c0 5.2-3.3 8.5-8 10-4.7-1.5-8-4.8-8-10V5.7L12 2.5Z" />
+            <path d="M8 12h8M12 8v8" />
+          </svg>
+        </span>
+        <span>
+          <strong>MedShield-AI</strong>
+          <small>医疗安全事件处置控制台</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="页面导航">
+        <a href="#console">处置台</a>
+        <a href="#assets">医疗对象</a>
+        <a href="#event-samples">事件样本</a>
+        <a href="#metrics">实验结果</a>
+        <a href="#limits">能力边界</a>
+      </nav>
+
+      <div class="mode-pill">
+        <i></i>
+        <span>保护中 / 全栈运行</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="console-hero" id="console">
+        <div class="hero-title reveal">
+          <div class="label">INCIDENT RESPONSE CONSOLE</div>
+          <h1>MedShield-AI</h1>
+          <p>基层医疗数据安全事件处置系统</p>
+          <small>面向电子病历与医学影像的识别、处置、验证与恢复闭环。当前网页操作通过后端 API 持久化事件处置状态；仍不直接控制真实医院生产系统。</small>
+        </div>
+
+        <div class="system-strip reveal" aria-label="系统状态">
+          <article>
+            <span>当前系统状态</span>
+            <strong>保护中</strong>
+          </article>
+          <article>
+            <span>待处置事件</span>
+            <strong id="pending-count">3</strong>
+          </article>
+          <article>
+            <span>高风险事件</span>
+            <strong id="high-risk-count">1</strong>
+          </article>
+          <article>
+            <span>运行模式</span>
+            <strong>演示控制台</strong>
+          </article>
+          <article>
+            <span>数据范围</span>
+            <strong>EMR / 影像</strong>
+          </article>
+        </div>
+
+        <div class="incident-console reveal">
+          <aside class="incident-queue panel">
+            <div class="panel-head">
+              <span>QUEUE</span>
+              <h2>待处置事件</h2>
+            </div>
+            <div class="queue-list" id="incident-queue"></div>
+          </aside>
+
+          <section class="workbench panel" aria-label="事件处置工作台">
+            <div class="workbench-head">
+              <div>
+                <span id="case-label">CASE</span>
+                <h2 id="case-title">请选择一个安全事件开始处置</h2>
+              </div>
+              <b id="case-state">待选择</b>
+            </div>
+
+            <div class="case-summary" id="case-summary"></div>
+
+            <div class="case-asset" id="case-asset"></div>
+
+            <div class="action-bar" id="action-bar"></div>
+
+            <div class="stage-progress" id="stage-progress"></div>
+          </section>
+
+          <aside class="evidence-chain panel">
+            <div class="panel-head">
+              <span>EVIDENCE CHAIN</span>
+              <h2>证据链</h2>
+            </div>
+            <div id="evidence-content" class="evidence-content"></div>
+          </aside>
+
+          <section class="audit-terminal">
+            <div class="terminal-head">
+              <span>AUDIT LOG</span>
+              <button id="clear-log" type="button">清空日志</button>
+            </div>
+            <div class="terminal-body" id="audit-log"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section assets-section" id="assets">
+        <div class="section-head reveal">
+          <span>MEDICAL DATA OBJECTS</span>
+          <h2>先看到被保护的医疗数据对象</h2>
+          <p>不是先看指标，而是先看系统正在保护什么：医学影像、电子病历、Trap 诱捕资产与可信备份。</p>
+        </div>
+
+        <div class="object-grid reveal">
+          <article class="object-card image-object">
+            <div class="object-visual scan-card">
+              <div class="scan-line"></div>
+              <span>CT / X-Ray Derived Copy</span>
+              <strong>WATERMARK VERIFIED</strong>
+            </div>
+            <div class="object-copy">
+              <h3>医学影像派生副本</h3>
+              <p>源医学影像不被修改；派生副本记录 AssetID、CopyID 与水印验证状态。</p>
+              <ul>
+                <li>AssetID：AST-****</li>
+                <li>CopyID：CPY-****</li>
+                <li>水印状态：可验证</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="object-card emr-object">
+            <div class="emr-sheet">
+              <span>EMR RECORD</span>
+              <div></div><div></div><div></div><div></div>
+              <strong>AES-GCM / BACKUP OK</strong>
+            </div>
+            <div class="object-copy">
+              <h3>电子病历 EMR</h3>
+              <p>电子病历以加密、备份和完整性认证作为常驻基础保护。</p>
+              <ul>
+                <li>加密状态：AES-GCM</li>
+                <li>备份状态：Local + Cold</li>
+                <li>完整性：按事件触发验证</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="object-card trap-object">
+            <div class="trap-visual">
+              <span>DECOY</span>
+              <strong>TRAP</strong>
+            </div>
+            <div class="object-copy">
+              <h3>Trap 诱捕资产</h3>
+              <p>Trap 作为 Policy Engine 的独立上下文，帮助系统判断高风险访问。</p>
+              <ul>
+                <li>Trap EMR：150</li>
+                <li>Trap Image：150</li>
+                <li>不进入 AI 特征</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="object-card backup-object">
+            <div class="backup-visual">
+              <i></i><i></i><i></i>
+            </div>
+            <div class="object-copy">
+              <h3>可信备份</h3>
+              <p>Local 与 Cold 双备份用于完整性异常后的可信恢复。</p>
+              <ul>
+                <li>Local：常规恢复支撑</li>
+                <li>Cold：高可信恢复支撑</li>
+                <li>恢复后再次验证</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section samples-section" id="event-samples">
+        <div class="section-head reveal">
+          <span>EVENT SAMPLES</span>
+          <h2>从正式事件样本进入处置流程</h2>
+          <p>表格读取 results.csv。点击任意事件，可把它作为工单载入处置台。</p>
+        </div>
+
+        <div class="table-controls reveal">
+          <label>
+            <span>场景筛选</span>
+            <select id="scenario-filter"><option value="ALL">全部场景</option></select>
+          </label>
+          <label>
+            <span>策略筛选</span>
+            <select id="policy-filter"><option value="ALL">全部策略</option></select>
+          </label>
+          <p>当前展示 <strong id="visible-event-count">0</strong> 条样本</p>
+        </div>
+
+        <div class="event-table-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>事件 ID</th>
+                <th>场景</th>
+                <th>数据等级</th>
+                <th>风险 R</th>
+                <th>AI 判定 A</th>
+                <th>策略 P</th>
+                <th>完整性</th>
+                <th>事件池</th>
+              </tr>
+            </thead>
+            <tbody id="event-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section metrics-section" id="metrics">
+        <div class="section-head reveal">
+          <span>FORMAL RUN EVIDENCE</span>
+          <h2>最后再看实验结果与系统能力证明</h2>
+          <p>指标只作为系统有效性的证据，不作为首页主视觉。页面只读展示正式 run 的 JSON/CSV 结果。</p>
+        </div>
+
+        <div class="metrics-layout reveal">
+          <div class="metric-panel">
+            <h3>AI 检测表现</h3>
+            <div id="model-metrics" class="metric-list"></div>
+          </div>
+
+          <div class="metric-panel">
+            <h3>攻击场景检出率</h3>
+            <div id="scenario-metrics" class="bar-list"></div>
+            <p class="note">异常检出率表示是否识别为异常，不等同于异常类型分类 Recall。</p>
+          </div>
+
+          <div class="metric-panel">
+            <h3>策略等级分布</h3>
+            <div id="policy-metrics" class="policy-list"></div>
+          </div>
+
+          <div class="metric-panel">
+            <h3>恢复与性能</h3>
+            <div id="recovery-metrics" class="metric-cards"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section limits-section" id="limits">
+        <div class="section-head reveal">
+          <span>CAPABILITY BOUNDARY</span>
+          <h2>可演示，但不夸大</h2>
+          <p>系统 Demo 需要可操作，但能力边界必须讲清楚。</p>
+        </div>
+
+        <div class="capability-grid reveal">
+          <article class="capability-card ok">
+            <h3>已完成能力</h3>
+            <ul>
+              <li>正式实验结果接入</li>
+              <li>AES-GCM 基础保护</li>
+              <li>Local + Cold 双备份</li>
+              <li>UFN-SAR + LightGBM 检测</li>
+              <li>P0–P3 策略处置</li>
+              <li>PNG 派生副本影像水印</li>
+              <li>完整性验证与 Cold 恢复</li>
+              <li>Event Pool 反馈闭环</li>
+            </ul>
+          </article>
+
+          <article class="capability-card warn">
+            <h3>当前边界</h3>
+            <ul>
+              <li>当前网页操作为前端演示，不是真实生产控制台</li>
+              <li>权限 / 网络动作为模拟执行</li>
+              <li>密钥强制执行是部分实现</li>
+              <li>DICOM 原生运行时当前未提供</li>
+              <li>EMR 内嵌水印运行时当前未提供</li>
+              <li>TTD / TTC 以流水线延迟展示</li>
+              <li>数据为合成 / 公开实验数据</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>MedShield-AI V5</strong>
+      <span>医疗安全事件处置控制台 · 前端演示模拟 · 正式结果来自 run_20260826_153334</span>
+    </footer>
+    <script defer src="./app.js?v=webv1"></script>
+  </body>
+</html>

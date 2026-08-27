@@ -1,0 +1,456 @@
+﻿/* ==========================================================
+   MedShield-AI v1.6.8
+   Risk Story -> Standard Section
+   与后续 Core Capabilities 使用相同页面逻辑
+   ========================================================== */
+
+
+/* ==========================================================
+   1. 取消所有特殊滚动舞台
+   ========================================================== */
+
+.v14-risk-story{
+
+  position:relative !important;
+
+  top:auto !important;
+  left:auto !important;
+
+  width:min(
+    1440px,
+    calc(100% - 56px)
+  ) !important;
+
+  min-height:0 !important;
+  height:auto !important;
+
+  margin:
+    0 auto !important;
+
+  padding:
+    76px 0 62px !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(360px,.9fr)
+    minmax(560px,1.1fr)
+    !important;
+
+  grid-template-rows:
+    auto auto !important;
+
+  column-gap:
+    64px !important;
+
+  row-gap:
+    24px !important;
+
+  align-items:center !important;
+
+  overflow:visible !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+  transform:none !important;
+
+  background:
+    #010507 !important;
+
+}
+
+
+/* ==========================================================
+   2. 删除转场遮罩
+   ========================================================== */
+
+.v14-risk-story::before,
+.v14-risk-story::after{
+
+  display:none !important;
+
+  content:none !important;
+
+}
+
+
+/* ==========================================================
+   3. 取消父级的长滚动高度
+   ========================================================== */
+
+.showcase-shell:has(.v14-risk-story){
+
+  min-height:0 !important;
+  height:auto !important;
+
+  padding:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  opacity:1 !important;
+
+  filter:none !important;
+
+  transform:none !important;
+
+  background:
+    #010507 !important;
+
+}
+
+
+/* ==========================================================
+   4. 01–05 Rail 作为普通内容
+   ========================================================== */
+
+.v14-story-rail{
+
+  position:relative !important;
+
+  top:auto !important;
+  left:auto !important;
+
+  transform:none !important;
+
+  grid-column:
+    1 / -1 !important;
+
+  grid-row:
+    1 !important;
+
+  width:min(
+    820px,
+    75%
+  ) !important;
+
+  margin:
+    0 auto 8px !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+}
+
+
+/* ==========================================================
+   5. 左右内容取消 sticky
+   ========================================================== */
+
+.v14-risk-story
+> .showcase-copy,
+
+.v14-risk-story
+> .showcase-visual{
+
+  position:relative !important;
+
+  top:auto !important;
+  left:auto !important;
+
+  margin:0 !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+  transform:none !important;
+
+}
+
+
+/* 左侧 */
+
+.v14-risk-story
+> .showcase-copy{
+
+  grid-column:
+    1 !important;
+
+  grid-row:
+    2 !important;
+
+}
+
+
+/* 右侧 */
+
+.v14-risk-story
+> .showcase-visual{
+
+  grid-column:
+    2 !important;
+
+  grid-row:
+    2 !important;
+
+  width:
+    100% !important;
+
+}
+
+
+/* ==========================================================
+   6. 视觉亮度与 Core Capabilities 接近
+   ========================================================== */
+
+.v14-risk-story
+.showcase-copy h1,
+
+.v14-risk-story
+.showcase-copy h2,
+
+.v14-risk-story
+.showcase-copy h3{
+
+  color:
+    #edf4f6 !important;
+
+  opacity:
+    1 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy em{
+
+  color:
+    #67daf2 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy p{
+
+  color:
+    #96a6ad !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy li{
+
+  color:
+    #95a5ac !important;
+
+}
+
+
+/* ==========================================================
+   7. Console
+   ========================================================== */
+
+.v14-risk-story
+.glass-window{
+
+  width:
+    100% !important;
+
+  min-height:
+    420px !important;
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    ) !important;
+
+  border:
+    1px solid
+    rgba(87,192,221,.18)
+    !important;
+
+}
+
+
+/* ==========================================================
+   8. Recovery 也变普通 section
+   ========================================================== */
+
+.v14-recovery-story{
+
+  position:relative !important;
+
+  top:auto !important;
+
+  width:min(
+    1360px,
+    calc(100% - 80px)
+  ) !important;
+
+  margin:
+    0 auto 64px !important;
+
+  padding:
+    16px 20px !important;
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+}
+
+
+/* ==========================================================
+   9. Risk 与 Core Capabilities 正常衔接
+   ========================================================== */
+
+.v14-recovery-story
++ .capability-architecture{
+
+  margin-top:
+    0 !important;
+
+}
+
+
+.capability-architecture{
+
+  padding-top:
+    72px !important;
+
+}
+
+
+/* ==========================================================
+   10. 去掉可能残留的 pin spacer 高度
+   ========================================================== */
+
+.pin-spacer:has(.v14-risk-story){
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  transform:
+    none !important;
+
+}
+
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+
+@media(max-width:1100px){
+
+  .v14-risk-story{
+
+    grid-template-columns:
+      1fr !important;
+
+    row-gap:
+      22px !important;
+
+    padding:
+      62px 0 52px !important;
+
+  }
+
+
+  .v14-risk-story
+  > .showcase-copy,
+
+  .v14-risk-story
+  > .showcase-visual{
+
+    grid-column:
+      1 !important;
+
+  }
+
+
+  .v14-risk-story
+  > .showcase-copy{
+
+    grid-row:
+      2 !important;
+
+  }
+
+
+  .v14-risk-story
+  > .showcase-visual{
+
+    grid-row:
+      3 !important;
+
+  }
+
+
+  .v14-story-rail{
+
+    width:
+      92% !important;
+
+  }
+
+}
+
+
+@media(max-width:720px){
+
+  .v14-risk-story{
+
+    width:
+      calc(100% - 28px)
+      !important;
+
+    padding:
+      44px 0
+      !important;
+
+  }
+
+
+  .v14-recovery-story{
+
+    width:
+      calc(100% - 28px)
+      !important;
+
+  }
+
+}

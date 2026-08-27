@@ -1,0 +1,426 @@
+
+/* ==========================================================
+   MedShield-AI v1.6.2 — Forensic Case + Evidence Chain
+   Principles:
+   - Impeccable: Operate mode, hierarchy, clarity
+   - Taste: concrete forensic visual language
+   - GSAP Performance: transform-only motion
+   ========================================================== */
+
+:root{
+  --v162-cyan:#69def6;
+  --v162-cyan-2:#8feaff;
+  --v162-green:#6fe3a6;
+  --v162-red:#ff6b65;
+  --v162-amber:#f0bd68;
+  --v162-text:#eef5f7;
+  --v162-sub:#96a7ae;
+  --v162-muted:#65767e;
+  --v162-panel:#07151f;
+  --v162-panel-2:#091b26;
+  --v162-line:rgba(91,195,224,.13);
+  --v162-line-strong:rgba(96,215,243,.23);
+}
+
+
+/* ==========================================================
+   CASE PANEL — forensic workstation
+   ========================================================== */
+
+.case-panel{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(50,146,169,.06),transparent 28%),
+    linear-gradient(180deg,#091a24 0%,#06131d 100%) !important;
+}
+
+.case-panel::before{
+  content:"FORENSIC WORKSPACE";
+  display:block;
+  margin-bottom:10px;
+  color:#5dbcd1;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+.case-panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(105,222,246,.025) 1px,transparent 1px),
+    linear-gradient(rgba(105,222,246,.018) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 62%);
+}
+
+
+/* Case heading */
+.case-panel h2{
+  position:relative;
+  z-index:2;
+  font-size:clamp(24px,2vw,31px)!important;
+  color:var(--v162-text)!important;
+  letter-spacing:-.035em!important;
+  margin-bottom:14px!important;
+}
+
+
+/* Metric tiles */
+.case-panel > .case-meta,
+.case-panel [class*="meta-grid"],
+.case-panel [class*="case-stats"]{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:8px!important;
+  position:relative;
+  z-index:2;
+}
+
+.case-panel > .case-meta > *,
+.case-panel [class*="meta-grid"] > *,
+.case-panel [class*="case-stats"] > *{
+  min-height:82px!important;
+  padding:13px!important;
+  border:1px solid rgba(89,187,215,.11)!important;
+  background:
+    linear-gradient(180deg,#0a1b26,#06131c)!important;
+  border-radius:9px!important;
+}
+
+.case-panel > .case-meta > * span,
+.case-panel [class*="meta-grid"] > * span,
+.case-panel [class*="case-stats"] > * span{
+  color:#697b83!important;
+  font-size:7px!important;
+  letter-spacing:.07em!important;
+}
+
+.case-panel > .case-meta > * strong,
+.case-panel [class*="meta-grid"] > * strong,
+.case-panel [class*="case-stats"] > * strong{
+  display:block;
+  margin-top:6px;
+  color:#eef5f7!important;
+  font-size:15px!important;
+}
+
+
+/* ==========================================================
+   ASSET / OBJECT FORENSIC VIEW
+   ========================================================== */
+
+.case-panel [class*="asset"],
+.case-panel [class*="object"],
+.case-panel [class*="overview"]{
+  position:relative;
+  z-index:2;
+}
+
+.case-panel [class*="asset-card"],
+.case-panel [class*="object-card"],
+.case-panel [class*="asset-view"],
+.case-panel [class*="object-view"]{
+  overflow:hidden;
+  border-radius:11px!important;
+  border:1px solid rgba(90,191,219,.13)!important;
+  background:
+    linear-gradient(180deg,#081924,#05121a)!important;
+}
+
+
+/* Left object visual */
+.case-panel [class*="asset-visual"],
+.case-panel [class*="object-visual"]{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,#1d2832,#101820)!important;
+  border:1px solid rgba(132,159,174,.12)!important;
+}
+
+.case-panel [class*="asset-visual"]::before,
+.case-panel [class*="object-visual"]::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.028) 0,
+      rgba(255,255,255,.028) 1px,
+      transparent 1px,
+      transparent 15px
+    );
+}
+
+.case-panel [class*="asset-visual"]::after,
+.case-panel [class*="object-visual"]::after{
+  content:"SOURCE / DERIVED / VERIFIED";
+  position:absolute;
+  left:12px;
+  bottom:10px;
+  color:rgba(199,222,231,.48);
+  font-size:6px;
+  font-weight:650;
+  letter-spacing:.13em;
+}
+
+
+/* Object detail area */
+.case-panel [class*="asset-info"],
+.case-panel [class*="object-info"]{
+  padding:4px 2px!important;
+}
+
+.case-panel [class*="asset-info"] h3,
+.case-panel [class*="object-info"] h3{
+  color:#edf5f7!important;
+  font-size:18px!important;
+  margin-bottom:9px!important;
+}
+
+.case-panel [class*="asset-info"] p,
+.case-panel [class*="object-info"] p{
+  color:#8f9fa6!important;
+  line-height:1.7!important;
+}
+
+
+/* ==========================================================
+   CASE ACTION STEPS — process rail
+   ========================================================== */
+
+.case-panel [class*="steps"],
+.case-panel [class*="workflow"]{
+  position:relative;
+  z-index:2;
+}
+
+.case-panel [class*="step"]{
+  position:relative;
+  min-height:64px!important;
+  border-radius:9px!important;
+  background:#07151f!important;
+  border:1px solid rgba(85,180,207,.11)!important;
+}
+
+.case-panel [class*="step"]::after{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:8px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(93,197,225,.13),transparent);
+}
+
+.case-panel [class*="step"].done,
+.case-panel [class*="step"][data-status="done"]{
+  background:
+    linear-gradient(180deg,rgba(64,181,124,.065),rgba(29,85,60,.04))!important;
+  border-color:rgba(104,224,160,.16)!important;
+}
+
+.case-panel [class*="step"].done::after,
+.case-panel [class*="step"][data-status="done"]::after{
+  background:linear-gradient(90deg,rgba(111,227,166,.25),transparent);
+}
+
+
+/* ==========================================================
+   EVIDENCE CHAIN — actual vertical evidence rail
+   ========================================================== */
+
+.evidence-panel{
+  position:relative;
+  overflow:hidden;
+  padding-left:20px!important;
+  background:
+    linear-gradient(180deg,#081822,#05121a)!important;
+}
+
+.evidence-panel::before{
+  content:"EVIDENCE GRAPH";
+  display:block;
+  margin-bottom:11px;
+  color:#5dbcd1;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+.evidence-panel::after{
+  content:"";
+  position:absolute;
+  top:84px;
+  bottom:28px;
+  left:26px;
+  width:1px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(105,222,246,.28),
+      rgba(105,222,246,.09) 78%,
+      transparent
+    );
+  pointer-events:none;
+}
+
+
+/* Every evidence group becomes a chain node */
+.evidence-panel > div{
+  position:relative;
+  margin-left:17px!important;
+  padding:13px 13px 13px 16px!important;
+  border-radius:9px!important;
+  background:
+    linear-gradient(180deg,#0a1b26,#07141e)!important;
+  border:1px solid rgba(86,183,211,.11)!important;
+  box-shadow:none!important;
+}
+
+.evidence-panel > div::before{
+  content:"";
+  position:absolute;
+  left:-24px!important;
+  top:18px!important;
+  width:7px!important;
+  height:7px!important;
+  border-radius:50%;
+  background:#5ddcf5!important;
+  box-shadow:
+    0 0 0 4px #06131c,
+    0 0 12px rgba(93,220,245,.22)!important;
+}
+
+.evidence-panel > div::after{
+  content:"";
+  position:absolute;
+  left:-17px;
+  top:21px;
+  width:16px;
+  height:1px;
+  background:rgba(100,210,237,.18);
+}
+
+
+/* Evidence headings */
+.evidence-panel h3,
+.evidence-panel h4{
+  margin-bottom:8px!important;
+  color:#dfeaec!important;
+  font-size:10px!important;
+  letter-spacing:.01em!important;
+}
+
+.evidence-panel ul{
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+
+.evidence-panel li{
+  position:relative;
+  margin-bottom:6px!important;
+  padding-left:10px!important;
+  color:#94a3aa!important;
+  font-size:8px!important;
+  line-height:1.55!important;
+}
+
+.evidence-panel li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.65em;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#5c94a2!important;
+}
+
+
+/* Give first and last nodes semantic strength */
+.evidence-panel > div:first-of-type::before{
+  background:var(--v162-cyan)!important;
+}
+
+.evidence-panel > div:last-of-type::before{
+  background:var(--v162-green)!important;
+  box-shadow:
+    0 0 0 4px #06131c,
+    0 0 12px rgba(111,227,166,.24)!important;
+}
+
+
+/* ==========================================================
+   AUDIT AS TERMINAL EVIDENCE
+   ========================================================== */
+
+.audit-panel{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,#06131c,#031018)!important;
+}
+
+.audit-panel::after{
+  content:"HASH-CHAINED · APPEND-ONLY";
+  position:absolute;
+  top:13px;
+  right:16px;
+  color:#4e7e8b;
+  font-size:6px;
+  letter-spacing:.14em;
+}
+
+.audit-log{
+  font-variant-numeric:tabular-nums;
+}
+
+
+/* ==========================================================
+   MICRO HOVER — transform only
+   ========================================================== */
+
+.case-panel [class*="step"],
+.evidence-panel > div{
+  will-change:transform;
+}
+
+.case-panel [class*="step"]:hover,
+.evidence-panel > div:hover{
+  transform:translateX(2px);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media(max-width:1180px){
+  .case-panel > .case-meta,
+  .case-panel [class*="meta-grid"],
+  .case-panel [class*="case-stats"]{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+@media(max-width:720px){
+  .evidence-panel{
+    padding-left:15px!important;
+  }
+
+  .evidence-panel::after{
+    left:20px;
+  }
+
+  .evidence-panel > div{
+    margin-left:15px!important;
+  }
+}

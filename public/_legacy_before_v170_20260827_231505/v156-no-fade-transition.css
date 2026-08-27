@@ -1,0 +1,147 @@
+﻿/* ==========================================================
+   MedShield-AI v1.5.6
+   Remove dark fade transition from Risk / Recovery
+   ========================================================== */
+
+/* Risk Story must always be fully visible */
+.v14-risk-story,
+.v14-risk-story > .showcase-copy,
+.v14-risk-story > .showcase-visual,
+.v14-risk-story .glass-window,
+.v14-story-rail,
+.v14-recovery-story,
+.v14-recovery-rail {
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+
+}
+
+/* Kill any inherited dimming */
+.v14-risk-story *,
+.v14-recovery-story * {
+
+  visibility: visible !important;
+
+}
+
+/* Do not use a black transition mask */
+.v14-risk-story::before {
+
+  display: none !important;
+
+}
+
+/* Section itself stays dark, but content is not dimmed */
+.v14-risk-story {
+
+  background:
+    radial-gradient(
+      circle at 55% 44%,
+      rgba(20,80,100,.06),
+      transparent 42%
+    ),
+    #010507 !important;
+
+}
+
+/* Left copy */
+.v14-risk-story .showcase-copy h1,
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3 {
+
+  color: #eef5f7 !important;
+  opacity: 1 !important;
+
+}
+
+.v14-risk-story .showcase-copy em {
+
+  color: #66d8ef !important;
+  opacity: 1 !important;
+
+}
+
+.v14-risk-story .showcase-copy p,
+.v14-risk-story .showcase-copy li {
+
+  color: #95a5ac !important;
+  opacity: 1 !important;
+
+}
+
+/* Right console */
+.v14-risk-story .glass-window {
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    ) !important;
+
+  border:
+    1px solid rgba(86,195,224,.20) !important;
+
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+}
+
+/* Story state rail */
+.v14-story-rail {
+
+  opacity: 1 !important;
+
+  background:
+    #041017 !important;
+
+  border:
+    1px solid rgba(78,185,214,.17) !important;
+
+}
+
+.v14-story-rail span {
+
+  opacity: 1 !important;
+  color: #667980 !important;
+
+}
+
+.v14-story-rail span.active {
+
+  color: #a0efff !important;
+
+  background:
+    rgba(72,190,220,.11) !important;
+
+}
+
+/* Recovery */
+.v14-recovery-story {
+
+  opacity: 1 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    ) !important;
+
+}
+
+.v14-recovery-rail span {
+
+  opacity: 1 !important;
+  color: #89989e !important;
+
+}
+
+.v14-recovery-rail span.active {
+
+  color: #9cf0ba !important;
+
+}

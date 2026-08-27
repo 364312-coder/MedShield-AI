@@ -1,0 +1,681 @@
+﻿/* ==========================================================
+   MedShield-AI v1.5.3 — Deeper Dark
+   Color refinement only.
+   ========================================================== */
+
+:root{
+  --deep-00:#000203;
+  --deep-01:#010507;
+  --deep-02:#02090d;
+
+  --panel-01:#031018;
+  --panel-02:#05141e;
+  --panel-03:#071923;
+
+  --cyan:#5bdcf5;
+  --cyan-soft:#91ecfb;
+
+  --green:#6be5a4;
+  --red:#ff625d;
+
+  --text-main:#edf4f6;
+  --text-sub:#96a4aa;
+  --text-muted:#67767e;
+
+  --line:rgba(82,192,222,.14);
+  --line-strong:rgba(86,213,243,.24);
+}
+
+
+/* ==========================================================
+   GLOBAL
+   ========================================================== */
+
+html,
+body{
+  background:#000203 !important;
+}
+
+body{
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(22,85,106,.08),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 92% 65%,
+      rgba(15,69,51,.055),
+      transparent 27%
+    ),
+    #000203 !important;
+}
+
+
+/* background grid darker */
+
+body::before{
+  opacity:.20 !important;
+}
+
+.hero-grid{
+  opacity:.12 !important;
+}
+
+
+/* ==========================================================
+   NAV
+   ========================================================== */
+
+.competition-nav,
+.site-nav{
+  background:rgba(0,3,5,.90) !important;
+
+  border-bottom:
+    1px solid rgba(76,173,201,.065) !important;
+
+  backdrop-filter:
+    blur(20px) saturate(115%) !important;
+}
+
+
+/* ==========================================================
+   RISK STORY SECTION
+   ========================================================== */
+
+.v14-risk-story{
+
+  background:
+    radial-gradient(
+      circle at 52% 45%,
+      rgba(22,90,111,.055),
+      transparent 42%
+    ) !important;
+
+}
+
+
+/* left text */
+
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3{
+
+  color:#eaf2f4 !important;
+
+  text-shadow:
+    0 8px 40px rgba(0,0,0,.35);
+
+}
+
+.v14-risk-story .showcase-copy p{
+
+  color:#798990 !important;
+
+}
+
+.v14-risk-story .showcase-copy li{
+
+  color:#88969c !important;
+
+}
+
+
+/* ==========================================================
+   01-05 STATE RAIL
+   ========================================================== */
+
+.v14-story-rail{
+
+  background:
+    linear-gradient(
+      180deg,
+      #041017 0%,
+      #02090d 100%
+    ) !important;
+
+  border:
+    1px solid rgba(78,181,210,.16) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 16px 55px rgba(0,0,0,.48) !important;
+
+}
+
+.v14-story-rail span{
+
+  color:#51626a !important;
+
+  background:
+    rgba(0,0,0,.05) !important;
+
+}
+
+.v14-story-rail span.active{
+
+  color:#9cecff !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(55,173,205,.13),
+      rgba(19,69,85,.09)
+    ) !important;
+
+  box-shadow:
+    inset 0 0 30px rgba(61,199,230,.04);
+
+}
+
+
+/* ==========================================================
+   RISK CONSOLE / GLASS WINDOW
+   ========================================================== */
+
+.v14-risk-story .glass-window{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04121a 0%,
+      #02090e 100%
+    ) !important;
+
+  border:
+    1px solid rgba(85,195,224,.17) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 28px 80px rgba(0,0,0,.48),
+    0 0 60px rgba(45,165,195,.025) !important;
+
+}
+
+
+/* inner risk panels */
+
+.risk-inner,
+.risk-panel,
+.risk-console-panel{
+
+  background:
+    linear-gradient(
+      180deg,
+      #031018,
+      #01070b
+    ) !important;
+
+  border-color:
+    rgba(72,166,193,.12) !important;
+
+}
+
+
+/* Risk circle */
+
+.risk-inner strong{
+
+  color:var(--red) !important;
+
+  text-shadow:
+    0 0 18px rgba(255,98,93,.12);
+
+}
+
+.risk-inner span{
+
+  color:#9ba8ad !important;
+
+}
+
+
+/* ==========================================================
+   CAPABILITY SECTION
+   ========================================================== */
+
+.capability-architecture{
+
+  background:
+    radial-gradient(
+      circle at 50% 14%,
+      rgba(25,99,123,.055),
+      transparent 35%
+    ) !important;
+
+}
+
+.capability-architecture-list{
+
+  background:
+    linear-gradient(
+      180deg,
+      #041119,
+      #02080d
+    ) !important;
+
+  border:
+    1px solid rgba(74,174,203,.14) !important;
+
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(255,255,255,.015) !important;
+
+}
+
+
+/* Six rows */
+
+.capability-row{
+
+  background:
+    linear-gradient(
+      90deg,
+      #041119,
+      #020a0e
+    ) !important;
+
+  border-bottom:
+    1px solid rgba(68,160,187,.085) !important;
+
+}
+
+.capability-row:hover{
+
+  background:
+    linear-gradient(
+      90deg,
+      #061923,
+      #031018
+    ) !important;
+
+}
+
+
+/* Numbers */
+
+.cap-index{
+
+  color:#61ddf5 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(61,189,219,.10),
+      rgba(11,42,54,.42)
+    ) !important;
+
+  border:
+    1px solid rgba(70,188,218,.18) !important;
+
+  box-shadow:
+    inset 0 0 28px rgba(52,178,207,.035),
+    0 14px 32px rgba(0,0,0,.30) !important;
+
+}
+
+
+/* headings */
+
+.cap-kicker{
+
+  color:#58a8ba !important;
+
+}
+
+.cap-copy h3{
+
+  color:#eaf2f4 !important;
+
+}
+
+.cap-copy p{
+
+  color:#73828a !important;
+
+}
+
+
+/* tags */
+
+.cap-tags span{
+
+  color:#65767e !important;
+
+  background:
+    rgba(45,133,155,.025) !important;
+
+  border:
+    1px solid rgba(76,174,202,.09) !important;
+
+}
+
+
+/* ==========================================================
+   CAPABILITY RIGHT VISUAL
+   ========================================================== */
+
+.cap-visual{
+
+  background:
+    linear-gradient(
+      180deg,
+      #05151f 0%,
+      #020a0f 100%
+    ) !important;
+
+  border:
+    1px solid rgba(80,188,217,.15) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.016),
+    0 18px 44px rgba(0,0,0,.32) !important;
+
+}
+
+.mini-head{
+
+  color:#526770 !important;
+
+}
+
+.mini-head b{
+
+  color:#61dcf4 !important;
+
+}
+
+
+/* ==========================================================
+   RISK GRAPH
+   ========================================================== */
+
+.risk-line{
+
+  stroke:#5ee0f8 !important;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(94,224,248,.25)
+    ) !important;
+
+}
+
+.risk-area{
+
+  opacity:.52 !important;
+
+}
+
+
+/* ==========================================================
+   POLICY
+   ========================================================== */
+
+.policy-levels span{
+
+  background:
+    #020a0f !important;
+
+  border:
+    1px solid rgba(71,163,190,.095) !important;
+
+  color:#5b6a71 !important;
+
+}
+
+.policy-levels span.active{
+
+  color:#d5f8ff !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(60,191,222,.18),
+      rgba(16,70,87,.13)
+    ) !important;
+
+  border-color:
+    rgba(80,210,240,.32) !important;
+
+  box-shadow:
+    inset 0 0 28px rgba(70,203,234,.065),
+    0 0 22px rgba(53,181,211,.045) !important;
+
+}
+
+
+/* ==========================================================
+   ACTIVE DEFENSE
+   ========================================================== */
+
+.defense-flow{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04141d,
+      #02090e
+    ) !important;
+
+}
+
+.defense-nodes span{
+
+  color:#68777e !important;
+
+}
+
+.defense-nodes span i{
+
+  background:#63dfa0 !important;
+
+  box-shadow:
+    0 0 12px rgba(99,223,160,.28) !important;
+
+}
+
+.contain-bar{
+
+  background:
+    rgba(255,255,255,.035) !important;
+
+}
+
+.contain-bar i{
+
+  background:
+    linear-gradient(
+      90deg,
+      #62df9f,
+      #58d8f2
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   INTEGRITY
+   ========================================================== */
+
+.integrity-proof{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04131c,
+      #02090d
+    ) !important;
+
+}
+
+.proof-image{
+
+  border-color:
+    rgba(85,207,236,.18) !important;
+
+}
+
+.proof-token{
+
+  color:#78e8ab !important;
+
+  background:
+    rgba(74,219,148,.025) !important;
+
+  border-color:
+    rgba(75,218,149,.17) !important;
+
+}
+
+
+/* ==========================================================
+   BACKUP
+   ========================================================== */
+
+.backup-pipeline{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04131c,
+      #02090d
+    ) !important;
+
+}
+
+.backup-nodes span{
+
+  color:#64747b !important;
+
+}
+
+.backup-nodes .cold{
+
+  color:#6be5a4 !important;
+
+}
+
+
+/* ==========================================================
+   EVENT POOL
+   ========================================================== */
+
+.feedback-loop{
+
+  background:
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(49,185,216,.07),
+      transparent 48%
+    ) !important;
+
+}
+
+.event-core{
+
+  color:#7be9ff !important;
+
+  border-color:
+    rgba(85,207,236,.25) !important;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(54,184,216,.13),
+      rgba(14,53,65,.045)
+    ) !important;
+
+  box-shadow:
+    0 0 30px rgba(54,183,214,.085) !important;
+
+}
+
+
+/* ==========================================================
+   RECOVERY FLOW
+   ========================================================== */
+
+.v14-recovery-story{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04131b,
+      #02090d
+    ) !important;
+
+  border-color:
+    rgba(76,177,205,.14) !important;
+
+  box-shadow:
+    0 24px 65px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.014) !important;
+
+}
+
+.v14-recovery-rail span{
+
+  background:
+    #020a0f !important;
+
+  border-color:
+    rgba(75,170,198,.10) !important;
+
+  color:#627179 !important;
+
+}
+
+.v14-recovery-rail span.active{
+
+  color:#9bf0b9 !important;
+
+  border-color:
+    rgba(102,226,161,.21) !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(75,207,141,.075),
+      rgba(17,68,47,.06)
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   KEEP TEXT READABLE
+   ========================================================== */
+
+h1,
+h2,
+h3,
+h4{
+
+  text-rendering:
+    geometricPrecision;
+
+}
+
+p{
+
+  text-rendering:
+    optimizeLegibility;
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:720px){
+
+  .capability-row,
+  .cap-visual,
+  .v14-risk-story .glass-window{
+
+    background:#031018 !important;
+
+  }
+
+}

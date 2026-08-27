@@ -1,0 +1,7762 @@
+﻿/* ==========================================================
+   MedShield-AI FINAL STYLESHEET
+   Generated: 20260827_231715
+   Source order preserved from index.html
+   ========================================================== */
+
+
+/* ==========================================================
+   SOURCE: styles.css
+   ========================================================== */
+/* MedShield-AI V5 Incident Response Console */
+:root {
+  color-scheme: dark;
+  --bg: #07111c;
+  --bg-2: #0a1a2a;
+  --panel: rgba(10, 24, 38, 0.86);
+  --panel-2: rgba(13, 31, 50, 0.82);
+  --solid: #0b1b2d;
+  --text: #edf8ff;
+  --muted: #91a8ba;
+  --muted-2: #647d8e;
+  --line: rgba(171, 225, 244, 0.15);
+  --line-strong: rgba(171, 225, 244, 0.28);
+  --cyan: #47dcf7;
+  --blue: #5a8dff;
+  --green: #4ed99e;
+  --amber: #f2b95d;
+  --red: #ff6961;
+  --shadow: 0 26px 80px rgba(0, 0, 0, 0.34);
+  --cut: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(71, 220, 247, 0.13), transparent 34rem),
+    radial-gradient(circle at 90% 18%, rgba(90, 141, 255, 0.12), transparent 36rem),
+    linear-gradient(180deg, #06101b 0%, #071725 42%, #050b13 100%);
+  color: var(--text);
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+  line-height: 1.62;
+}
+
+.background-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  background-image:
+    linear-gradient(rgba(171, 225, 244, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(171, 225, 244, 0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.96), rgba(0,0,0,0.18));
+}
+
+.ambient {
+  position: fixed;
+  z-index: -4;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 999px;
+  filter: blur(24px);
+  opacity: 0.36;
+  pointer-events: none;
+}
+
+.ambient-a { left: -18rem; top: -9rem; background: radial-gradient(circle, rgba(71, 220, 247, 0.34), transparent 66%); }
+.ambient-b { right: -19rem; top: 32rem; background: radial-gradient(circle, rgba(78, 217, 158, 0.2), transparent 68%); }
+
+a { color: inherit; }
+button, select { font: inherit; }
+
+.shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  min-height: 4.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.75rem clamp(1rem, 4vw, 4.5rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(6, 16, 27, 0.78);
+  backdrop-filter: blur(20px);
+}
+
+.brand {
+  display: inline-flex;
+  gap: 0.78rem;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  width: 2.65rem;
+  height: 2.65rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(71, 220, 247, 0.34);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(71,220,247,0.14), rgba(90,141,255,0.08));
+  box-shadow: 0 0 36px rgba(71, 220, 247, 0.15);
+}
+
+.brand-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand span:last-child { display: grid; line-height: 1.1; }
+.brand strong { font-size: 1rem; }
+.brand small { margin-top: 0.28rem; color: var(--muted); font-size: 0.72rem; }
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  justify-content: flex-end;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.84rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.5rem 0.7rem;
+  transition: 160ms ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--text);
+  border-color: rgba(71, 220, 247, 0.25);
+  background: rgba(71, 220, 247, 0.08);
+}
+
+.mode-pill {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  border: 1px solid rgba(78, 217, 158, 0.28);
+  border-radius: 999px;
+  padding: 0.42rem 0.62rem;
+  color: var(--green);
+  background: rgba(78, 217, 158, 0.08);
+  font-size: 0.72rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.mode-pill i {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 6px rgba(78, 217, 158, 0.12);
+}
+
+.console-hero {
+  min-height: calc(100vh - 4.6rem);
+  padding: clamp(2.5rem, 5vw, 4.8rem) clamp(1rem, 4vw, 4.5rem) clamp(4rem, 6vw, 5.5rem);
+}
+
+.hero-title {
+  max-width: 74rem;
+  margin: 0 auto 1.1rem;
+  text-align: center;
+}
+
+.label,
+.section-head > span,
+.panel-head > span,
+.terminal-head > span,
+.workbench-head span {
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  margin: 0.2rem 0 0.2rem;
+  font-size: clamp(4.2rem, 10vw, 8.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+  text-shadow: 0 0 48px rgba(71, 220, 247, 0.16);
+}
+
+.hero-title p {
+  margin-bottom: 0.45rem;
+  color: #d7e9f4;
+  font-size: clamp(1.15rem, 2.2vw, 1.72rem);
+  font-weight: 900;
+}
+
+.hero-title small {
+  display: block;
+  max-width: 54rem;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.system-strip {
+  width: min(108rem, 100%);
+  margin: 0 auto 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.62rem;
+}
+
+.system-strip article {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.035);
+  padding: 0.85rem;
+  clip-path: var(--cut);
+}
+
+.system-strip span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.system-strip strong {
+  display: block;
+  margin-top: 0.42rem;
+  font-size: 1.08rem;
+}
+
+.incident-console {
+  width: min(108rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(245px, 0.75fr) minmax(430px, 1.45fr) minmax(285px, 0.9fr);
+  grid-template-rows: auto minmax(9.5rem, auto);
+  gap: 0.82rem;
+}
+
+.panel,
+.audit-terminal,
+.object-card,
+.metric-panel,
+.event-table-wrap,
+.capability-card {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  clip-path: var(--cut);
+}
+
+.panel::before,
+.audit-terminal::before,
+.object-card::before,
+.metric-panel::before,
+.event-table-wrap::before,
+.capability-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(71, 220, 247, 0.07);
+  clip-path: var(--cut);
+}
+
+.incident-queue,
+.workbench,
+.evidence-chain {
+  min-height: 39.5rem;
+  padding: 1rem;
+}
+
+.panel-head {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.panel-head h2,
+.workbench-head h2 {
+  margin: 0.22rem 0 0;
+  font-size: 1.32rem;
+}
+
+.queue-list {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.queue-card {
+  width: 100%;
+  border: 1px solid rgba(171, 225, 244, 0.13);
+  background: rgba(255,255,255,0.036);
+  color: var(--text);
+  text-align: left;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: 160ms ease;
+}
+
+.queue-card:hover,
+.queue-card.active {
+  border-color: rgba(71, 220, 247, 0.44);
+  background: rgba(71, 220, 247, 0.075);
+  transform: translateY(-2px);
+}
+
+.queue-card .risk {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.12rem 0.42rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.66rem;
+  font-weight: 900;
+  background: rgba(255, 105, 97, 0.12);
+  color: var(--red);
+  border: 1px solid rgba(255, 105, 97, 0.24);
+}
+
+.queue-card .risk.mid {
+  background: rgba(242, 185, 93, 0.1);
+  color: var(--amber);
+  border-color: rgba(242, 185, 93, 0.26);
+}
+
+.queue-card strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.queue-card small {
+  display: block;
+  margin-top: 0.38rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.workbench-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.workbench-head b {
+  border: 1px solid rgba(242, 185, 93, 0.28);
+  border-radius: 999px;
+  padding: 0.25rem 0.54rem;
+  color: var(--amber);
+  background: rgba(242, 185, 93, 0.08);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.case-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.58rem;
+  margin-bottom: 0.85rem;
+}
+
+.summary-item,
+.action-btn,
+.evidence-block,
+.stage-item,
+.metric-row,
+.policy-row,
+.metric-card,
+.audit-card {
+  border: 1px solid rgba(171, 225, 244, 0.12);
+  background: rgba(255,255,255,0.036);
+}
+
+.summary-item {
+  min-height: 5.2rem;
+  padding: 0.7rem;
+}
+
+.summary-item span,
+.evidence-block span,
+.metric-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.summary-item strong,
+.evidence-block strong {
+  display: block;
+  margin-top: 0.38rem;
+  font-size: 0.95rem;
+}
+
+.case-asset {
+  min-height: 9rem;
+  margin-bottom: 0.85rem;
+}
+
+.asset-preview {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 0.78rem;
+  border: 1px solid rgba(171, 225, 244, 0.12);
+  background: rgba(255,255,255,0.028);
+  padding: 0.8rem;
+}
+
+.asset-visual {
+  min-height: 7.6rem;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(171, 225, 244, 0.14);
+  background: radial-gradient(circle, rgba(240,240,240,0.18), rgba(255,255,255,0.04) 46%, rgba(0,0,0,0.2) 68%);
+}
+
+.asset-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 12px, rgba(255,255,255,0.04) 12px 13px);
+}
+
+.asset-visual.emr {
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+}
+
+.asset-visual.emr::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 1px;
+  background: rgba(255,255,255,0.26);
+  box-shadow: 0 18px 0 rgba(255,255,255,0.22), 0 36px 0 rgba(255,255,255,0.18), 0 54px 0 rgba(255,255,255,0.16);
+}
+
+.asset-visual strong {
+  z-index: 2;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.76);
+}
+
+.asset-meta h3 {
+  margin-bottom: 0.42rem;
+}
+
+.asset-meta p {
+  margin: 0 0 0.58rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.asset-meta ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #d6e6f1;
+  font-size: 0.78rem;
+}
+
+.action-bar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.action-btn {
+  min-height: 4.6rem;
+  padding: 0.64rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: 160ms ease;
+}
+
+.action-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.action-btn:not(:disabled):hover {
+  border-color: rgba(71, 220, 247, 0.42);
+  background: rgba(71, 220, 247, 0.075);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.action-btn.done {
+  border-color: rgba(78,217,158,0.34);
+  color: var(--green);
+  background: rgba(78,217,158,0.07);
+}
+
+.action-btn span {
+  display: block;
+  color: inherit;
+  font-size: 0.68rem;
+  font-family: "Consolas", "Courier New", monospace;
+}
+
+.action-btn strong {
+  display: block;
+  margin-top: 0.32rem;
+  font-size: 0.8rem;
+}
+
+.stage-progress {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stage-item {
+  display: grid;
+  grid-template-columns: 6rem 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.58rem 0.7rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stage-item.done {
+  color: #dff8ef;
+  border-color: rgba(78,217,158,0.26);
+  background: rgba(78,217,158,0.06);
+}
+
+.stage-item.active {
+  color: #e9fbff;
+  border-color: rgba(71, 220, 247, 0.36);
+  background: rgba(71, 220, 247, 0.07);
+}
+
+.stage-item b {
+  color: inherit;
+}
+
+.stage-item i {
+  width: 0.46rem;
+  height: 0.46rem;
+  border-radius: 50%;
+  background: var(--muted-2);
+  justify-self: end;
+}
+
+.stage-item.done i { background: var(--green); box-shadow: 0 0 0 6px rgba(78,217,158,0.12); }
+.stage-item.active i { background: var(--cyan); box-shadow: 0 0 0 6px rgba(71,220,247,0.12); }
+
+.evidence-content {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.evidence-block {
+  padding: 0.72rem;
+}
+
+.evidence-block ul {
+  margin: 0.52rem 0 0;
+  padding-left: 1rem;
+  color: #d4e6f1;
+  font-size: 0.78rem;
+}
+
+.evidence-block li + li {
+  margin-top: 0.28rem;
+}
+
+.audit-terminal {
+  grid-column: 1 / -1;
+  min-height: 9.5rem;
+  overflow: hidden;
+}
+
+.terminal-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0.85rem;
+}
+
+.terminal-head button {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.035);
+  color: var(--muted);
+  padding: 0.26rem 0.62rem;
+  cursor: pointer;
+  font-size: 0.72rem;
+}
+
+.terminal-body {
+  height: 7rem;
+  overflow: auto;
+  padding: 0.72rem 0.85rem;
+  color: #bfefff;
+  font: 0.78rem/1.75 "Consolas", "Courier New", monospace;
+}
+
+.terminal-line {
+  color: #bdeeff;
+}
+
+.terminal-line span {
+  color: var(--muted-2);
+}
+
+.section {
+  padding: clamp(4.5rem, 8vw, 7.5rem) clamp(1rem, 5vw, 5rem);
+}
+
+.section-head {
+  width: min(64rem, 100%);
+  margin: 0 auto 2.4rem;
+  text-align: center;
+}
+
+.section-head h2 {
+  max-width: 24ch;
+  margin: 0.42rem auto 0.72rem;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
+
+.section-head p {
+  max-width: 50rem;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+.assets-section,
+.metrics-section {
+  background: rgba(255,255,255,0.015);
+}
+
+.object-grid {
+  width: min(104rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.object-card {
+  min-height: 25rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.object-visual,
+.emr-sheet,
+.trap-visual,
+.backup-visual {
+  min-height: 12rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.scan-card {
+  background:
+    radial-gradient(circle at 54% 48%, rgba(255,255,255,0.35), rgba(255,255,255,0.07) 24%, transparent 45%),
+    linear-gradient(135deg, rgba(71,220,247,0.11), rgba(90,141,255,0.08));
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(71,220,247,0.5);
+  box-shadow: 0 0 18px rgba(71,220,247,0.4);
+  animation: scan 4s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0%, 100% { top: 18%; }
+  50% { top: 78%; }
+}
+
+.object-visual span,
+.emr-sheet span,
+.trap-visual span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.object-visual strong,
+.emr-sheet strong,
+.trap-visual strong {
+  z-index: 2;
+  margin-top: 0.35rem;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.emr-sheet {
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+}
+
+.emr-sheet div {
+  width: 72%;
+  height: 1px;
+  margin: 0.35rem 0;
+  background: rgba(255,255,255,0.22);
+}
+
+.trap-visual {
+  background:
+    radial-gradient(circle, rgba(255,105,97,0.16), transparent 50%),
+    rgba(255,105,97,0.035);
+}
+
+.trap-visual strong {
+  font-size: 2.3rem;
+  letter-spacing: 0.18em;
+  color: var(--red);
+}
+
+.backup-visual {
+  background: rgba(78,217,158,0.035);
+}
+
+.backup-visual i {
+  width: 62%;
+  height: 1.8rem;
+  border: 1px solid rgba(78,217,158,0.34);
+  border-radius: 999px;
+  margin: 0.35rem;
+  background: rgba(78,217,158,0.08);
+  box-shadow: 0 0 20px rgba(78,217,158,0.08);
+}
+
+.object-copy {
+  padding: 1rem;
+}
+
+.object-copy h3 {
+  margin-bottom: 0.48rem;
+}
+
+.object-copy p {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.object-copy ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #d7e8f2;
+  font-size: 0.78rem;
+}
+
+.table-controls {
+  width: min(104rem, 100%);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.table-controls label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+select {
+  min-width: 13rem;
+  border: 1px solid rgba(171,225,244,0.18);
+  border-radius: 0;
+  padding: 0.62rem 0.72rem;
+  color: var(--text);
+  background: rgba(6,16,27,0.96);
+}
+
+.table-controls p {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.table-controls strong {
+  color: var(--cyan);
+}
+
+.event-table-wrap {
+  width: min(104rem, 100%);
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 970px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+th, td {
+  padding: 0.82rem 0.86rem;
+  border-bottom: 1px solid rgba(171,225,244,0.1);
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  font-size: 0.72rem;
+}
+
+td {
+  color: #dcecf5;
+  font-size: 0.79rem;
+}
+
+tbody tr {
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+tbody tr:hover {
+  background: rgba(71,220,247,0.065);
+}
+
+.pill,
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(71,220,247,0.24);
+  border-radius: 999px;
+  padding: 0.12rem 0.48rem;
+  color: var(--cyan);
+  background: rgba(71,220,247,0.07);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.status-pill.normal {
+  border-color: rgba(78,217,158,0.28);
+  color: var(--green);
+  background: rgba(78,217,158,0.08);
+}
+
+.status-pill.alert {
+  border-color: rgba(255,105,97,0.28);
+  color: var(--red);
+  background: rgba(255,105,97,0.08);
+}
+
+.metrics-layout {
+  width: min(104rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.metric-panel {
+  padding: 1rem;
+}
+
+.metric-panel h3 {
+  margin-bottom: 0.9rem;
+  font-size: 1.22rem;
+}
+
+.metric-list,
+.bar-list,
+.policy-list,
+.metric-cards {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.metric-row,
+.policy-row,
+.metric-card {
+  padding: 0.72rem;
+}
+
+.metric-row > div,
+.policy-row > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.metric-row strong,
+.policy-row strong {
+  font-size: 0.86rem;
+}
+
+.metric-row span,
+.policy-row span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.rail {
+  height: 0.42rem;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.52rem;
+  background: rgba(171,225,244,0.12);
+}
+
+.rail i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+}
+
+.metric-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-card strong {
+  display: block;
+  margin-top: 0.42rem;
+  font-size: 1.25rem;
+}
+
+.note {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.capability-grid {
+  width: min(88rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.capability-card {
+  padding: 1.15rem;
+}
+
+.capability-card h3 {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.9rem;
+}
+
+.capability-card ul {
+  display: grid;
+  gap: 0.68rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.capability-card li {
+  position: relative;
+  padding-left: 1.22rem;
+  color: #d1e2ee;
+  font-size: 0.85rem;
+}
+
+.capability-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.capability-card.warn li::before {
+  background: var(--amber);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding: 1.2rem clamp(1rem, 5vw, 5rem);
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.footer strong {
+  color: var(--text);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scan-line { animation: none; }
+  .queue-card, .action-btn { transition: none; }
+}
+
+@media (max-width: 1320px) {
+  .incident-console {
+    grid-template-columns: minmax(240px, 0.78fr) minmax(430px, 1.4fr);
+  }
+  .evidence-chain {
+    grid-column: 1 / -1;
+    min-height: auto;
+  }
+  .evidence-content {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .object-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .shell-header {
+    position: static;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .main-nav {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  .main-nav a { white-space: nowrap; }
+  .incident-console,
+  .metrics-layout,
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+  .incident-queue,
+  .workbench,
+  .evidence-chain {
+    min-height: auto;
+  }
+  .system-strip,
+  .case-summary,
+  .action-bar,
+  .evidence-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .asset-preview {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  html { scroll-padding-top: 0; }
+  h1 { font-size: clamp(4rem, 18vw, 6.8rem); }
+  .section { padding-block: 4rem; }
+  .system-strip,
+  .case-summary,
+  .action-bar,
+  .evidence-content,
+  .object-grid,
+  .metric-cards {
+    grid-template-columns: 1fr;
+  }
+  .stage-item {
+    grid-template-columns: 1fr auto;
+  }
+  .stage-item span {
+    grid-column: 1 / -1;
+  }
+  .table-controls p {
+    margin-left: 0;
+  }
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+/* ===== V5.2 Neural Float Background ===== */
+.neural-background {
+  position: fixed;
+  inset: 0;
+  z-index: -6;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: .72;
+  filter: saturate(.92);
+  transition: opacity 500ms ease;
+}
+.neural-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 32%, transparent 0 34%, rgba(4,11,19,.08) 58%, rgba(4,11,19,.48) 100%),
+    linear-gradient(180deg, rgba(5,14,24,.04), rgba(5,14,24,.20));
+}
+.console-hero { position: relative; isolation: isolate; }
+.console-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 24%, rgba(71,220,247,.045), transparent 38rem);
+}
+body.neural-dim .neural-background { opacity: .28; }
+@media (max-width: 900px) { .neural-background { opacity: .48; } }
+@media (prefers-reduced-motion: reduce) { .neural-background { opacity: .20; } }
+
+
+/* FULLSTACK API STATE */
+.action-btn.loading {
+  border-color: rgba(71, 220, 247, 0.42);
+  color: var(--cyan);
+  background: rgba(71, 220, 247, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.action-btn.loading::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: api-loading 1s linear infinite;
+}
+@keyframes api-loading {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+
+
+/* ==========================================================
+   SOURCE: competition.css
+   ========================================================== */
+
+html{scroll-behavior:smooth}body{background:#000!important;color:#fff}.competition-nav{position:fixed;inset:0 0 auto;z-index:1000;height:74px;border-bottom:1px solid transparent;transition:.3s;background:transparent}.competition-nav.scrolled{background:rgba(0,0,0,.82);border-color:rgba(255,255,255,.07);backdrop-filter:blur(18px)}.competition-nav-inner{max-width:1280px;height:74px;margin:auto;padding:0 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}.competition-brand{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:650}.competition-brand svg{width:29px;height:29px}.competition-nav-links{display:flex;gap:34px}.competition-nav-links a,.mobile-drawer a{color:#9b9ba2;text-decoration:none;font-size:13px}.competition-nav-right{display:flex;justify-content:flex-end;align-items:center;gap:13px}.backend-live{display:flex;align-items:center;gap:7px;color:#777d83;font-size:10px}.backend-live i{width:6px;height:6px;border-radius:50%;background:#777}.backend-live.online{color:#80dba6}.backend-live.online i{background:#5ee39b;box-shadow:0 0 10px rgba(94,227,155,.65)}.nav-enter{display:inline-flex;gap:8px;align-items:center;padding:10px 18px;border-radius:999px;background:#1f1f22;border:1px solid rgba(255,255,255,.07);color:#fff;text-decoration:none;font-size:12px}.mobile-toggle,.mobile-drawer{display:none}.competition-hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 32%,rgba(25,101,138,.22),transparent 36%),#000}#competition-tech-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.92}.hero-grid{position:absolute;inset:0;z-index:1;opacity:.16;background-image:linear-gradient(rgba(73,189,225,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(73,189,225,.12) 1px,transparent 1px);background-size:76px 76px;mask-image:linear-gradient(#000,transparent 90%)}.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.77),transparent 25%,transparent 75%,rgba(0,0,0,.77)),linear-gradient(180deg,rgba(0,0,0,.22),transparent 42%,#000)}.hero-content{position:relative;z-index:2;width:min(900px,calc(100% - 48px));padding:130px 0 110px;text-align:center}.hero-badge{width:max-content;margin:0 auto 28px;padding:8px 13px;border-radius:999px;display:flex;align-items:center;gap:8px;background:rgba(10,28,39,.52);border:1px solid rgba(104,210,237,.18);color:#b8c9d1;font-size:11px}.hero-badge i,.hero-runtime i{width:6px;height:6px;border-radius:50%;background:#6ee7f5;box-shadow:0 0 12px rgba(110,231,245,.62)}.hero-content h1{margin:0;font-size:clamp(64px,9vw,116px);line-height:.93;letter-spacing:-.065em;font-weight:650}.hero-subtitle{margin:26px 0 0;color:#d8dde1;font-size:clamp(18px,2vw,25px)}.hero-copy{max-width:720px;margin:19px auto 0;color:#7d858c;font-size:15px;line-height:1.9}.hero-actions{margin-top:34px;display:flex;justify-content:center;gap:12px}.hero-primary,.hero-secondary,.showcase-button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 21px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600;transition:.22s}.hero-primary{background:#fff;color:#080808}.hero-secondary{background:rgba(26,26,29,.72);color:#fff;border:1px solid rgba(255,255,255,.11)}.hero-runtime{margin-top:29px;display:flex;justify-content:center;gap:24px;color:#5d646b;font-size:10px;text-transform:uppercase}.hero-runtime span{display:flex;align-items:center;gap:7px}.hero-bottom-fade{position:absolute;z-index:2;inset:auto 0 0;height:220px;background:linear-gradient(transparent,#000)}.reveal-up{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}.reveal-up.visible{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.19s}.delay-3{transition-delay:.28s}.delay-4{transition-delay:.37s}.capability-strip{padding:5px 0 58px;background:#000}.capability-strip>p{text-align:center;color:#444a50;font-size:9px;letter-spacing:.18em}.marquee-mask{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent)}.marquee-track{width:max-content;display:flex;animation:medshield-marquee 34s linear infinite}.marquee-set{display:flex}.marquee-set span{padding:0 24px;color:#67727b;font-size:11px;white-space:nowrap}@keyframes medshield-marquee{to{transform:translateX(-33.333%)}}.showcase-wrap{max-width:1240px;margin:auto;padding:80px 28px}.showcase-row{min-height:720px;display:grid;grid-template-columns:.86fr 1.14fr;align-items:center;gap:78px}.showcase-row.reverse{grid-template-columns:1.14fr .86fr}.showcase-copy h2,.capability-panel h2,.competition-faq h2,.footer-cta h2{margin:18px 0 22px;color:#f6f6f7;font-size:clamp(38px,4.8vw,58px);line-height:1.04;letter-spacing:-.045em}.showcase-copy h2 em,.footer-cta h2 em{font-family:Georgia,serif;font-weight:400;color:#86cbe5}.eyebrow{color:#4ebde2;font-size:10px;font-weight:650;letter-spacing:.12em}.showcase-copy p{color:#7b8288;font-size:14px;line-height:1.85}.showcase-copy ul{list-style:none;padding:0}.showcase-copy li{position:relative;padding:7px 0 7px 23px;color:#a1a7ac;font-size:12px}.showcase-copy li:before{content:"✓";position:absolute;left:0;color:#55bfe3}.showcase-button{background:#fff;color:#080808}.glass-window{padding:16px;border-radius:20px;background:linear-gradient(180deg,rgba(17,18,20,.94),rgba(7,8,10,.94));border:1px solid rgba(255,255,255,.11);box-shadow:0 30px 100px rgba(0,0,0,.48)}.window-top{display:flex;justify-content:space-between;padding:2px 4px 15px;font-size:11px}.window-top b{color:#75d49f;font-size:9px}.risk-upper{display:grid;grid-template-columns:1fr 1fr;gap:9px}.event-preview,.risk-preview,.explain-preview,.recovery-data,.recovery-result{border:1px solid rgba(255,255,255,.08);background:rgba(5,7,9,.74);border-radius:13px}.event-preview,.risk-preview{min-height:250px;padding:18px}.glass-window small{color:#555c62;font-size:8px}.event-preview>strong{display:block;margin:14px 0 18px}.event-preview dd{margin:4px 0;color:#aab1b6;font-size:10px}.risk-ring{width:150px;height:150px;margin:13px auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#ff5148 0 79%,rgba(255,255,255,.06) 79%);position:relative}.risk-ring:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#090b0d}.risk-inner{z-index:1;text-align:center}.risk-inner strong{display:block;color:#ff746c}.risk-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px}.risk-meta span{font-size:7px;color:#555c62}.risk-meta b{display:block;color:#aeb4b8}.explain-preview{margin-top:9px;min-height:195px;padding:13px;display:grid;grid-template-columns:180px 1fr;gap:17px}.ct-preview{position:relative;border-radius:9px;background:radial-gradient(circle,#91a0a8 0 7%,#313b42 8% 18%,#0e161c 19% 35%,#030608 36%)}.ct-core{position:absolute;width:50px;height:50px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#ff3838,#ff8a00 37%,rgba(255,215,0,.34) 60%,transparent 72%)}.scan-sweep{position:absolute;left:0;right:0;height:1px;background:#5ee4ff;box-shadow:0 0 12px #5ee4ff;animation:scan-down 3.2s linear infinite}@keyframes scan-down{from{top:8%}to{top:92%}}.signal-list>div{display:grid;grid-template-columns:110px 1fr 32px;gap:8px;margin-top:18px;font-size:8px}.signal-list i{height:2px;background:rgba(255,255,255,.07);position:relative}.signal-list i:after{content:"";position:absolute;width:var(--bar);height:100%;background:linear-gradient(90deg,#4dc8ef,#ff534b)}.recovery-steps{display:flex;align-items:center}.recovery-steps span{display:grid;place-items:center;width:52px;height:52px;border:1px solid rgba(255,255,255,.09);border-radius:50%;font-size:8px}.recovery-steps>i{flex:1;height:1px;background:rgba(255,255,255,.08)}.recovery-main{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:8px;align-items:center;margin-top:15px}.recovery-data,.recovery-result{min-height:260px;padding:13px}.ct-round{height:205px;margin-top:12px;border-radius:9px;background:radial-gradient(circle,#d8dde0 0 8%,#7d878d 9% 16%,#2b3237 17% 22%,#0b0f12 23% 33%,#020304 34%)}.recovery-result{display:flex;flex-direction:column;align-items:center;justify-content:center}.recovery-result>span{font-size:28px;color:#64e59c}.recovery-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.recovery-meta span{padding:12px;border:1px solid rgba(255,255,255,.07);font-size:8px}.capability-panel{max-width:1180px;margin:90px auto 120px;padding:44px;border:1px solid rgba(255,255,255,.09);border-radius:18px;text-align:center}.capability-grid{display:grid;grid-template-columns:repeat(8,1fr)}.capability-grid div{display:flex;flex-direction:column;align-items:center}.competition-faq{max-width:800px;margin:auto;padding:120px 24px}.faq-heading{text-align:center}.faq-box{border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden}.faq-item:not(:last-child){border-bottom:1px solid rgba(255,255,255,.08)}.faq-trigger{width:100%;padding:23px;border:0;display:flex;justify-content:space-between;background:transparent;color:#fff;text-align:left}.faq-answer{display:grid;grid-template-rows:0fr;transition:.4s}.faq-item.open .faq-answer{grid-template-rows:1fr}.faq-answer>div{overflow:hidden;padding:0 22px;color:#737a80;font-size:12px;line-height:1.8}.faq-item.open .faq-answer>div{padding-bottom:23px}.competition-footer{position:relative;padding:100px 28px 30px;border-top:1px solid rgba(255,255,255,.06)}.footer-ambient{position:absolute;inset:0;background:radial-gradient(circle at 50% 0,rgba(34,128,164,.2),transparent 39%)}.footer-cta,.footer-links,.footer-bottom{position:relative}.footer-cta{max-width:1100px;min-height:370px;margin:0 auto 110px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.09);border-radius:22px;text-align:center}.footer-links{max-width:1180px;margin:0 auto 60px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px}.footer-links>div{display:flex;flex-direction:column;gap:13px}.footer-links a,.footer-links span,.footer-brand p{color:#5f666c;text-decoration:none;font-size:10px}.footer-bottom{max-width:1180px;margin:auto;padding-top:23px;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.06);color:#484e53;font-size:9px}@media(max-width:980px){.competition-nav-inner{grid-template-columns:1fr auto}.competition-nav-links,.backend-live{display:none}.mobile-toggle{display:grid}.showcase-row,.showcase-row.reverse{grid-template-columns:1fr;gap:48px}.showcase-row.reverse .showcase-copy{order:-1}.capability-grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:680px){.nav-enter{display:none}.hero-content h1{font-size:58px}.risk-upper,.explain-preview,.recovery-main{grid-template-columns:1fr}.capability-grid{grid-template-columns:repeat(2,1fr)}.footer-links{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-up{opacity:1;transform:none}.marquee-track{animation:none}}
+
+
+
+/* ==========================================================
+   SOURCE: impeccable-v14.css
+   ========================================================== */
+
+:root{--v14-cyan:#68d8f2;--v14-green:#69e39e;--v14-red:#ff5d57}
+html{scroll-behavior:smooth}body{background:#000!important;overflow-x:hidden}
+.v14-hero{min-height:180vh!important;display:block!important;position:relative!important;overflow:visible!important}
+.v14-hero-stage{position:sticky;top:0;height:100vh;display:grid;place-items:center;z-index:3;overflow:hidden}
+.v14-hero .hero-content{position:relative!important;width:min(900px,calc(100% - 48px))!important;min-height:auto!important;padding:0!important;margin:0 auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;z-index:4}
+.v14-hero #competition-tech-canvas{position:absolute!important;inset:0!important;width:100%!important;height:100vh!important;z-index:0!important;transform-origin:center}
+.v14-hero .hero-grid,.v14-hero .hero-shade{position:absolute!important;inset:0!important;height:100vh!important;pointer-events:none}
+.v14-float-card{position:absolute;z-index:5;width:210px;padding:15px 16px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(4,9,13,.72);backdrop-filter:blur(18px);box-shadow:0 24px 80px rgba(0,0,0,.32);transform-style:preserve-3d}
+.threat-card{left:5.5%;top:32%}.system-card{right:5.5%;top:29%}.float-label{display:block;margin-bottom:12px;color:#56626a;font-size:8px;letter-spacing:.14em}.threat-card strong{display:block;color:var(--v14-red);font-size:25px}.threat-card b{display:block;margin-top:8px;color:#d9dde0;font-size:10px}.threat-card small{display:block;margin-top:5px;color:#767f86;font-size:9px}.system-card>div{display:flex;justify-content:space-between;padding:6px 0;color:#7c858b;font-size:9px;border-top:1px solid rgba(255,255,255,.045)}.system-card>div:first-of-type{border-top:0}.system-card b{color:var(--v14-green);font-size:8px}
+.v14-runtime-strip{margin-top:34px;min-width:min(760px,100%);padding:12px 18px;display:flex;align-items:center;justify-content:center;gap:18px;border:1px solid rgba(255,255,255,.07);border-radius:999px;background:rgba(6,10,13,.56);backdrop-filter:blur(16px);color:#657078;font-size:9px}.v14-runtime-strip b{color:#d7dde1;font-size:10px}.v14-runtime-strip i{width:1px;height:14px;background:rgba(255,255,255,.08)}
+.v14-hero::after{content:"";position:absolute;z-index:2;inset:-160px 0 auto;height:180px;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(71,209,237,.025),rgba(71,209,237,.12),rgba(71,209,237,.025),transparent);animation:v14scanner 6.8s linear infinite}@keyframes v14scanner{from{transform:translateY(0)}to{transform:translateY(135vh)}}
+.v14-risk-story,.v14-recovery-story{position:relative}.v14-story-rail{position:absolute;top:36px;left:50%;transform:translateX(-50%);width:min(760px,90%);display:grid;grid-template-columns:repeat(5,1fr);z-index:8;border:1px solid rgba(255,255,255,.07);border-radius:999px;background:rgba(5,9,12,.65);backdrop-filter:blur(14px);overflow:hidden}.v14-story-rail span{padding:10px 8px;color:#4f5960;font-size:8px;text-align:center;transition:.3s}.v14-story-rail span b{display:block}.v14-story-rail span.active{color:#9cecff;background:rgba(82,202,233,.08)}
+.v14-recovery-rail{position:absolute;top:30px;left:50%;transform:translateX(-50%);width:min(700px,86%);display:flex;align-items:center;justify-content:center;gap:10px;z-index:8}.v14-recovery-rail span{color:#59636a;font-size:8px;transition:.3s}.v14-recovery-rail span.active{color:#8eeab0}.v14-recovery-rail i{width:42px;height:1px;background:rgba(255,255,255,.08)}
+@media(min-width:981px){.v14-risk-story{min-height:250vh!important;align-items:start!important}.v14-recovery-story{min-height:210vh!important;align-items:start!important}.v14-risk-story>.showcase-copy,.v14-risk-story>.showcase-visual,.v14-recovery-story>.showcase-copy,.v14-recovery-story>.showcase-visual{position:sticky;top:128px}}
+.capability-grid>div{position:relative;opacity:.35;transform:translateY(18px)}.capability-grid>div::after{content:"";position:absolute;bottom:0;width:24px;height:1px;background:rgba(104,216,242,.25)}
+.hero-primary,.hero-secondary,.showcase-button,.nav-enter{position:relative;overflow:hidden}.hero-primary::after,.hero-secondary::after,.showcase-button::after,.nav-enter::after{content:"";position:absolute;top:-40%;left:-70%;width:34%;height:180%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);transition:left .65s cubic-bezier(.16,1,.3,1);pointer-events:none}.hero-primary:hover::after,.hero-secondary:hover::after,.showcase-button:hover::after,.nav-enter:hover::after{left:140%}
+.competition-footer .footer-cta{opacity:0;transform:translateY(60px) scale(.97);will-change:transform,opacity}
+@media(max-width:1100px){.v14-float-card{display:none}.v14-runtime-strip{min-width:0;flex-wrap:wrap;border-radius:18px}}
+@media(max-width:680px){.v14-runtime-strip i,.v14-story-rail,.v14-recovery-rail{display:none}}
+@media(prefers-reduced-motion:reduce){.v14-hero::after{animation:none}}
+
+
+/* ==========================================================
+   v1.4.1 Capability Architecture
+   ========================================================== */
+
+.capability-architecture{
+  position:relative;
+  width:min(1240px,calc(100% - 64px));
+  margin:0 auto;
+  padding:128px 0 138px;
+}
+
+.capability-architecture::before{
+  content:"";
+  position:absolute;
+  inset:64px 12% auto;
+  height:420px;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 30%,rgba(62,176,211,.07),transparent 68%);
+  filter:blur(18px);
+}
+
+.capability-architecture-head{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.75fr);
+  gap:80px;
+  align-items:end;
+  padding-bottom:44px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.capability-architecture-head h2{
+  margin:12px 0 0;
+  color:#f2f5f6;
+  font-size:clamp(38px,4.2vw,64px);
+  line-height:1.02;
+  letter-spacing:-.045em;
+  font-weight:520;
+}
+
+.capability-architecture-head h2 em{
+  color:#7adcf4;
+  font-style:normal;
+  font-weight:520;
+}
+
+.capability-architecture-head>p{
+  margin:0 0 4px;
+  color:#717b82;
+  font-size:13px;
+  line-height:1.9;
+}
+
+.capability-architecture-list{
+  position:relative;
+  z-index:2;
+}
+
+.capability-row{
+  min-height:150px;
+  display:grid;
+  grid-template-columns:72px minmax(320px,1fr) minmax(360px,.82fr);
+  gap:34px;
+  align-items:center;
+  padding:28px 18px 28px 0;
+  border-bottom:1px solid rgba(255,255,255,.075);
+  opacity:.22;
+  transform:translateY(24px);
+  transition:background .28s ease,border-color .28s ease;
+}
+
+.capability-row:hover{
+  background:linear-gradient(90deg,transparent,rgba(97,211,239,.025),transparent);
+  border-color:rgba(106,216,243,.15);
+}
+
+.cap-index{
+  color:#3f4b53;
+  font-size:11px;
+  letter-spacing:.16em;
+  align-self:start;
+  padding-top:8px;
+}
+
+.cap-kicker{
+  color:#4f929f;
+  font-size:8px;
+  letter-spacing:.14em;
+}
+
+.cap-copy h3{
+  margin:7px 0 8px;
+  color:#e8edef;
+  font-size:24px;
+  font-weight:520;
+  letter-spacing:-.02em;
+}
+
+.cap-copy p{
+  max-width:600px;
+  margin:0;
+  color:#69747b;
+  font-size:11px;
+  line-height:1.75;
+}
+
+.cap-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:14px;
+}
+
+.cap-tags span{
+  padding:4px 7px;
+  border:1px solid rgba(255,255,255,.065);
+  border-radius:999px;
+  color:#58636a;
+  background:rgba(255,255,255,.018);
+  font-size:7px;
+  letter-spacing:.08em;
+}
+
+.cap-visual{
+  min-height:104px;
+  padding:13px 15px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent),
+    rgba(4,8,11,.72);
+  box-shadow:0 18px 55px rgba(0,0,0,.22);
+  overflow:hidden;
+  will-change:transform,opacity;
+}
+
+.mini-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+  color:#465159;
+  font-size:7px;
+  letter-spacing:.12em;
+}
+
+.mini-head b{
+  color:#61d4ee;
+  font-size:7px;
+}
+
+.risk-wave svg{width:100%;height:54px;overflow:visible}
+.risk-area{fill:url(#riskFill141)}
+.risk-line{
+  fill:none;
+  stroke:#68d8f2;
+  stroke-width:1.7;
+  vector-effect:non-scaling-stroke;
+  stroke-dasharray:440;
+  stroke-dashoffset:440;
+}
+.risk-scale{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#4e5960;
+  font-size:7px;
+}
+.risk-scale i{height:1px;flex:1;background:linear-gradient(90deg,rgba(104,216,242,.1),rgba(104,216,242,.42))}
+.risk-scale strong{color:#ff706b;font-size:8px}
+
+.policy-levels{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+}
+.policy-levels span{
+  padding:9px 6px;
+  border:1px solid rgba(255,255,255,.055);
+  border-radius:8px;
+  text-align:center;
+  color:#576168;
+  font-size:10px;
+}
+.policy-levels small{display:block;margin-top:3px;font-size:6px}
+.policy-levels .active{
+  color:#ff827d;
+  border-color:rgba(255,94,88,.25);
+  background:rgba(255,94,88,.055);
+  box-shadow:inset 0 0 24px rgba(255,94,88,.035);
+}
+.policy-equation{margin-top:9px;color:#4d585f;font-size:7px;text-align:right}
+.policy-equation b{color:#ff827d}
+
+.defense-nodes,.backup-nodes{
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+}
+.defense-nodes span,.backup-nodes span{
+  min-width:76px;
+  color:#6a747b;
+  font-size:7px;
+  text-align:center;
+}
+.defense-nodes span i{
+  display:block;
+  width:7px;height:7px;
+  margin:0 auto 6px;
+  border-radius:50%;
+  background:#69e39e;
+  box-shadow:0 0 16px rgba(105,227,158,.34);
+}
+.defense-nodes em,.backup-nodes em{color:#364047;font-style:normal;font-size:11px}
+.contain-bar{
+  height:2px;
+  margin-top:8px;
+  background:rgba(255,255,255,.045);
+  overflow:hidden;
+}
+.contain-bar i{
+  display:block;
+  width:100%;height:100%;
+  transform:scaleX(.05);
+  background:linear-gradient(90deg,#5adf98,#68d8f2);
+}
+
+.proof-grid{
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.proof-image{
+  position:relative;
+  width:58px;height:48px;
+  border:1px solid rgba(104,216,242,.16);
+  background:radial-gradient(circle at center,rgba(104,216,242,.14),transparent 48%);
+}
+.proof-image i{
+  position:absolute;
+  width:10px;height:10px;
+  border:1px solid rgba(104,216,242,.18);
+}
+.proof-image i:nth-child(1){top:7px;left:9px}.proof-image i:nth-child(2){top:7px;right:9px}.proof-image i:nth-child(3){bottom:7px;left:9px}.proof-image i:nth-child(4){bottom:7px;right:9px}
+.proof-image span{position:absolute;inset:auto 0 3px;text-align:center;color:#536068;font-size:6px}
+.proof-token{
+  width:62px;
+  padding:9px 5px;
+  border:1px solid rgba(105,227,158,.14);
+  border-radius:8px;
+  color:#79e7a8;
+  text-align:center;
+  font-size:11px;
+}
+.proof-token small{display:block;margin-top:3px;color:#526058;font-size:6px}
+.proof-arrow{color:#344047}
+
+.backup-nodes .db{
+  display:block;
+  width:25px;height:16px;
+  margin:0 auto 5px;
+  border:1px solid rgba(104,216,242,.18);
+  border-radius:50%;
+  box-shadow:inset 0 -5px 0 rgba(104,216,242,.025);
+}
+.backup-nodes small{display:block;margin-top:3px;color:#4d595f;font-size:6px}
+.backup-nodes .cold{color:#7ae6a8}
+
+.feedback-loop{
+  position:relative;
+  min-height:104px;
+}
+.event-core{
+  position:absolute;
+  top:44px;left:50%;
+  transform:translate(-50%,-50%);
+  width:55px;height:55px;
+  display:grid;place-items:center;
+  border:1px solid rgba(104,216,242,.18);
+  border-radius:50%;
+  color:#6ed9f1;
+  background:rgba(104,216,242,.035);
+  font-size:7px;
+  line-height:1.25;
+  text-align:center;
+  z-index:2;
+}
+.orbit-ring{
+  position:absolute;
+  top:44px;left:50%;
+  width:190px;height:65px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:50%;
+}
+.orbit-node{
+  position:absolute;
+  z-index:3;
+  padding:3px 5px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:5px;
+  color:#58636a;
+  background:#060a0d;
+  font-size:6px;
+}
+.n1{left:16%;top:35px}.n2{left:36%;top:64px}.n3{right:36%;top:64px}.n4{right:16%;top:35px}
+
+@media(max-width:980px){
+  .capability-architecture{width:min(100% - 36px,760px);padding:90px 0 100px}
+  .capability-architecture-head{grid-template-columns:1fr;gap:20px}
+  .capability-row{grid-template-columns:48px 1fr;gap:18px;padding:26px 0}
+  .cap-visual{grid-column:2;margin-top:4px}
+}
+
+@media(max-width:620px){
+  .capability-architecture-head h2{font-size:36px}
+  .capability-row{grid-template-columns:1fr}
+  .cap-index{display:none}
+  .cap-visual{grid-column:1}
+  .cap-copy h3{font-size:21px}
+}
+
+
+
+/* ==========================================================
+   SOURCE: v15-refine.css
+   ========================================================== */
+
+/* ==========================================================
+   MedShield-AI v1.5 — Narrative & Operate Refinement
+   ========================================================== */
+
+:root{
+  --v15-cyan:#61d9f2;
+  --v15-green:#6be5a4;
+  --v15-red:#ff6a65;
+  --v15-line:rgba(97,217,242,.12);
+  --v15-panel:#071119;
+}
+
+/* ----------------------------------------------------------
+   1. Hero -> Risk transition
+   ---------------------------------------------------------- */
+
+.v14-hero{
+  min-height:155vh !important;
+}
+
+.v14-hero .hero-content,
+.v14-float-card,
+.v14-runtime-strip{
+  will-change:transform,opacity;
+}
+
+.competition-marquee,
+.trust-marquee,
+.capability-marquee{
+  will-change:opacity,transform;
+}
+
+/* Risk story should arrive later and read as a new scene */
+.v14-risk-story{
+  position:relative;
+  isolation:isolate;
+}
+
+.v14-risk-story::before{
+  content:"";
+  position:absolute;
+  inset:-90px 0 auto;
+  height:200px;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.86) 62%,#020608);
+  z-index:0;
+}
+
+/* ----------------------------------------------------------
+   2. Recovery becomes a compact terminal bar
+   ---------------------------------------------------------- */
+
+.v14-recovery-story{
+  width:min(1440px,calc(100% - 56px)) !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:52px auto 82px !important;
+  padding:18px 22px !important;
+  display:block !important;
+  border:1px solid var(--v15-line);
+  border-radius:16px;
+  background:
+    linear-gradient(180deg,rgba(9,23,30,.94),rgba(4,11,15,.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 22px 70px rgba(0,0,0,.28);
+}
+
+.v14-recovery-story>.showcase-copy,
+.v14-recovery-story>.showcase-visual{
+  display:none !important;
+}
+
+.v14-recovery-rail{
+  position:static !important;
+  width:100% !important;
+  transform:none !important;
+  display:grid !important;
+  grid-template-columns:
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr);
+  gap:7px !important;
+  align-items:center;
+}
+
+.v14-recovery-rail::before{
+  content:"SECURITY RECOVERY FLOW";
+  grid-column:1/-1;
+  margin-bottom:7px;
+  color:#4f9caf;
+  font-size:8px;
+  letter-spacing:.14em;
+}
+
+.v14-recovery-rail span{
+  min-height:46px;
+  display:grid !important;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:9px;
+  color:#69777e !important;
+  background:rgba(255,255,255,.018);
+  font-size:9px !important;
+  font-weight:600;
+}
+
+.v14-recovery-rail span.active{
+  color:#9af0ba !important;
+  border-color:rgba(107,229,164,.22);
+  background:rgba(107,229,164,.055);
+  box-shadow:inset 0 0 24px rgba(107,229,164,.03);
+}
+
+.v14-recovery-rail i{
+  width:100% !important;
+  height:1px !important;
+  background:linear-gradient(90deg,rgba(97,217,242,.08),rgba(97,217,242,.46),rgba(97,217,242,.08)) !important;
+}
+
+/* ----------------------------------------------------------
+   3. Incident console = Operate mode
+   ---------------------------------------------------------- */
+
+#console,
+.incident-console,
+.response-console{
+  scroll-margin-top:76px;
+}
+
+/* Shrink giant duplicated console hero */
+.console-hero,
+.incident-hero,
+.response-hero{
+  padding-top:90px !important;
+  padding-bottom:34px !important;
+  min-height:0 !important;
+}
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+  font-size:clamp(42px,5vw,78px) !important;
+  line-height:.98 !important;
+  letter-spacing:-.045em !important;
+}
+
+.console-hero h1:first-line,
+.incident-hero h1:first-line,
+.response-hero h1:first-line{
+  color:#eef5f7;
+}
+
+.console-hero p,
+.incident-hero p,
+.response-hero p{
+  max-width:820px !important;
+  margin-inline:auto !important;
+}
+
+/* status strip tighter */
+.console-stats,
+.console-summary,
+.response-summary{
+  gap:10px !important;
+  margin-top:26px !important;
+}
+
+.console-stats>div,
+.console-summary>div,
+.response-summary>div{
+  min-height:72px !important;
+  padding:15px 16px !important;
+}
+
+/* Operate columns */
+.console-grid,
+.response-grid,
+.incident-grid{
+  grid-template-columns:minmax(250px,.78fr) minmax(560px,1.6fr) minmax(300px,.92fr) !important;
+  gap:12px !important;
+}
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+  border-color:rgba(97,217,242,.10) !important;
+}
+
+.case-panel{
+  background:
+    linear-gradient(180deg,rgba(10,24,33,.97),rgba(7,17,24,.98)) !important;
+}
+
+/* Completed workflow rows: local status, not full-row neon */
+.case-panel .done,
+.case-panel [data-status="done"]{
+  background:rgba(107,229,164,.028) !important;
+  border-color:rgba(107,229,164,.15) !important;
+}
+
+/* Audit log: clearer hierarchy */
+.audit-log,
+.audit-panel{
+  font-variant-numeric:tabular-nums;
+}
+
+.audit-log .time,
+.audit-panel time{
+  color:#5a6a72 !important;
+}
+
+.audit-log .actor,
+.audit-panel strong{
+  color:#8bdff1 !important;
+}
+
+/* ----------------------------------------------------------
+   4. Medical Objects becomes asset view, not SaaS cards
+   ---------------------------------------------------------- */
+
+.medical-objects,
+.objects-section,
+.data-objects{
+  width:min(1440px,calc(100% - 56px)) !important;
+  margin-inline:auto !important;
+}
+
+.medical-objects-grid,
+.objects-grid,
+.data-object-grid{
+  display:grid !important;
+  grid-template-columns:1.25fr 1.25fr .95fr !important;
+  gap:12px !important;
+}
+
+.medical-objects-grid>*,
+.objects-grid>*,
+.data-object-grid>*{
+  min-height:260px !important;
+  border-color:rgba(97,217,242,.10) !important;
+  background:
+    linear-gradient(180deg,rgba(10,24,32,.93),rgba(6,14,20,.97)) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.02) !important;
+}
+
+.medical-objects-grid>*:nth-child(4),
+.objects-grid>*:nth-child(4),
+.data-object-grid>*:nth-child(4){
+  grid-column:1/-1 !important;
+  min-height:150px !important;
+}
+
+/* Trap should read as a policy asset */
+.medical-objects-grid>*:nth-child(3),
+.objects-grid>*:nth-child(3),
+.data-object-grid>*:nth-child(3){
+  background:
+    radial-gradient(circle at 50% 28%,rgba(255,97,91,.07),transparent 34%),
+    linear-gradient(180deg,rgba(19,18,27,.95),rgba(8,12,18,.97)) !important;
+}
+
+/* ----------------------------------------------------------
+   5. Formal Evidence: convert bars into evidence statements
+   ---------------------------------------------------------- */
+
+.formal-evidence,
+.evidence-section,
+.metrics-section{
+  width:min(1440px,calc(100% - 56px)) !important;
+  margin-inline:auto !important;
+}
+
+.formal-evidence-grid,
+.metrics-grid,
+.evidence-grid{
+  gap:12px !important;
+}
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+  border-color:rgba(97,217,242,.10) !important;
+  background:
+    linear-gradient(180deg,rgba(9,22,30,.94),rgba(6,15,21,.97)) !important;
+}
+
+/* Bars become understated evidence, not dashboard chrome */
+.metric-bar,
+.progress-track,
+.metrics-panel .bar{
+  height:3px !important;
+  border-radius:999px !important;
+  background:rgba(255,255,255,.055) !important;
+}
+
+.metric-bar>i,
+.progress-track>i,
+.metrics-panel .bar>i{
+  background:linear-gradient(90deg,#57d6f1,#77a7ff) !important;
+  box-shadow:none !important;
+}
+
+/* emphasize only the number */
+.metric-card strong,
+.evidence-card strong,
+.metrics-panel strong{
+  color:#ecf5f7 !important;
+  letter-spacing:-.025em;
+}
+
+/* ----------------------------------------------------------
+   Footer: competition work, not corporate sitemap
+   ---------------------------------------------------------- */
+
+.competition-footer{
+  padding-top:90px !important;
+}
+
+.competition-footer .footer-links,
+.competition-footer .footer-columns{
+  opacity:.58;
+}
+
+.competition-footer .footer-cta{
+  border-color:rgba(97,217,242,.10) !important;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(97,217,242,.05),transparent 34%),
+    rgba(4,10,14,.6) !important;
+}
+
+/* ----------------------------------------------------------
+   responsive
+   ---------------------------------------------------------- */
+
+@media(max-width:1100px){
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .medical-objects-grid,
+  .objects-grid,
+  .data-object-grid{
+    grid-template-columns:1fr 1fr !important;
+  }
+
+  .medical-objects-grid>*:nth-child(4),
+  .objects-grid>*:nth-child(4),
+  .data-object-grid>*:nth-child(4){
+    grid-column:auto !important;
+  }
+}
+
+@media(max-width:720px){
+  .v14-recovery-story,
+  .medical-objects,
+  .objects-section,
+  .data-objects,
+  .formal-evidence,
+  .evidence-section,
+  .metrics-section{
+    width:calc(100% - 28px) !important;
+  }
+
+  .v14-recovery-rail{
+    grid-template-columns:1fr !important;
+  }
+
+  .v14-recovery-rail i{
+    width:1px !important;
+    height:16px !important;
+    justify-self:center;
+  }
+
+  .medical-objects-grid,
+  .objects-grid,
+  .data-object-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* Operate mode nav */
+.operate-mode{
+  background:rgba(3,9,13,.86) !important;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(97,217,242,.09);
+}
+
+
+
+/* ==========================================================
+   SOURCE: v151-compact-dark.css
+   ========================================================== */
+
+/* ==========================================================
+   MedShield-AI v1.5.1 — Compact Dark
+   Goal:
+   1) deeper dark-blue system palette, not gray-black
+   2) remove dead vertical space
+   ========================================================== */
+
+:root{
+  --v151-bg:#010406;
+  --v151-bg2:#02080d;
+  --v151-panel:#06111a;
+  --v151-panel2:#081722;
+  --v151-panel3:#0a1b27;
+  --v151-line:rgba(66,164,195,.14);
+  --v151-line-strong:rgba(82,200,232,.22);
+  --v151-cyan:#58d7f2;
+  --v151-green:#63dfa0;
+  --v151-red:#ff6761;
+  --v151-text:#eaf2f5;
+  --v151-muted:#718089;
+}
+
+/* ----------------------------------------------------------
+   Global darker visual world
+   ---------------------------------------------------------- */
+
+html,
+body{
+  background:#010406 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 10%,rgba(18,72,92,.13),transparent 34%),
+    radial-gradient(circle at 88% 56%,rgba(15,65,49,.08),transparent 30%),
+    #010406 !important;
+  color:var(--v151-text);
+}
+
+/* grid should remain visible but subdued */
+body::before{
+  opacity:.28 !important;
+}
+
+.competition-main,
+.showcase-shell,
+.capability-architecture,
+.medical-objects,
+.objects-section,
+.data-objects,
+.formal-evidence,
+.evidence-section,
+.metrics-section{
+  background:transparent !important;
+}
+
+/* ----------------------------------------------------------
+   Navigation
+   ---------------------------------------------------------- */
+
+.competition-nav,
+.site-nav{
+  background:rgba(1,5,8,.76) !important;
+  border-bottom:1px solid rgba(88,215,242,.055) !important;
+  backdrop-filter:blur(18px);
+}
+
+/* ----------------------------------------------------------
+   Hero: darker panels but keep text readable
+   ---------------------------------------------------------- */
+
+.v14-hero{
+  min-height:132vh !important;
+}
+
+.v14-hero-stage{
+  background:
+    radial-gradient(circle at 50% 43%,rgba(31,112,139,.09),transparent 32%),
+    linear-gradient(180deg,rgba(1,5,8,.2),rgba(1,4,6,.58)) !important;
+}
+
+.v14-float-card{
+  background:
+    linear-gradient(180deg,#08141d 0%,#03090e 100%) !important;
+  border-color:rgba(74,183,214,.16) !important;
+}
+
+.v14-runtime-strip{
+  background:rgba(3,10,15,.86) !important;
+  border-color:rgba(76,185,216,.13) !important;
+}
+
+/* ----------------------------------------------------------
+   IMPORTANT: Risk Story
+   remove the 2–2.5 viewport dead zone
+   ---------------------------------------------------------- */
+
+.v14-risk-story{
+  min-height:118vh !important;
+  height:auto !important;
+  margin-top:0 !important;
+  padding-top:20px !important;
+  padding-bottom:34px !important;
+}
+
+@media(min-width:981px){
+  .v14-risk-story{
+    min-height:118vh !important;
+  }
+
+  .v14-risk-story>.showcase-copy,
+  .v14-risk-story>.showcase-visual{
+    top:104px !important;
+  }
+}
+
+/* move the story rail into the content instead of floating in empty air */
+.v14-story-rail{
+  top:18px !important;
+  width:min(760px,72vw) !important;
+  background:#041017 !important;
+  border-color:rgba(76,188,218,.15) !important;
+  box-shadow:
+    0 12px 44px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+.v14-story-rail span{
+  color:#4f626c !important;
+}
+
+.v14-story-rail span.active{
+  color:#94ebff !important;
+  background:rgba(74,198,228,.085) !important;
+}
+
+/* ensure the actual two-column story remains readable */
+.v14-risk-story .showcase-copy,
+.v14-risk-story .showcase-visual{
+  opacity:1 !important;
+}
+
+.v14-risk-story .glass-window{
+  background:
+    linear-gradient(180deg,#081722,#041018) !important;
+  border-color:rgba(76,188,218,.15) !important;
+}
+
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3{
+  color:#e8f0f3 !important;
+}
+
+.v14-risk-story .showcase-copy p{
+  color:#71818a !important;
+}
+
+/* ----------------------------------------------------------
+   Recovery: more compact
+   ---------------------------------------------------------- */
+
+.v14-recovery-story{
+  margin:30px auto 54px !important;
+  padding:14px 18px !important;
+  background:
+    linear-gradient(180deg,#07151e,#030a0f) !important;
+  border-color:rgba(77,186,216,.13) !important;
+}
+
+.v14-recovery-rail{
+  gap:6px !important;
+}
+
+.v14-recovery-rail::before{
+  margin-bottom:4px !important;
+}
+
+.v14-recovery-rail span{
+  min-height:40px !important;
+  background:#061019 !important;
+}
+
+.v14-recovery-rail i{
+  opacity:.72;
+}
+
+/* ----------------------------------------------------------
+   Core capabilities: deeper, denser
+   ---------------------------------------------------------- */
+
+.capability-architecture{
+  padding-top:62px !important;
+  padding-bottom:68px !important;
+}
+
+.capability-architecture-head{
+  padding-bottom:26px !important;
+}
+
+.capability-architecture-list{
+  margin-top:10px !important;
+  background:
+    linear-gradient(180deg,#07141d,#030a0f) !important;
+  border-color:rgba(74,184,214,.13) !important;
+}
+
+.capability-row{
+  min-height:116px !important;
+  padding-top:14px !important;
+  padding-bottom:14px !important;
+  background:
+    linear-gradient(90deg,#06131c,#041017) !important;
+  border-bottom-color:rgba(75,184,214,.08) !important;
+}
+
+.capability-row:hover{
+  background:
+    linear-gradient(90deg,#081a25,#05131b) !important;
+}
+
+.cap-index{
+  background:
+    linear-gradient(135deg,rgba(66,184,215,.10),rgba(19,53,69,.28)) !important;
+  border-color:rgba(77,192,222,.16) !important;
+}
+
+.cap-copy p{
+  color:#6e7d86 !important;
+}
+
+.cap-visual{
+  min-height:78px !important;
+  background:
+    linear-gradient(180deg,#081924,#041018) !important;
+  border-color:rgba(78,191,221,.14) !important;
+}
+
+/* ----------------------------------------------------------
+   Generic section rhythm
+   ---------------------------------------------------------- */
+
+.showcase-shell{
+  padding-top:54px !important;
+  padding-bottom:58px !important;
+}
+
+.section-head,
+.section-header{
+  margin-bottom:28px !important;
+}
+
+section{
+  scroll-margin-top:74px;
+}
+
+/* reduce oversized hero-like sections after the first viewport */
+.medical-objects,
+.objects-section,
+.data-objects,
+.event-samples,
+.samples-section,
+.formal-evidence,
+.evidence-section,
+.metrics-section{
+  padding-top:70px !important;
+  padding-bottom:72px !important;
+}
+
+/* ----------------------------------------------------------
+   Console: dark navy, slightly tighter
+   ---------------------------------------------------------- */
+
+.console-grid,
+.response-grid,
+.incident-grid{
+  gap:10px !important;
+}
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+  background:#07131d !important;
+  border-color:rgba(77,184,214,.12) !important;
+}
+
+.case-panel{
+  background:
+    linear-gradient(180deg,#081723,#06121b) !important;
+}
+
+.console-stats>div,
+.console-summary>div,
+.response-summary>div{
+  background:#07131b !important;
+}
+
+/* ----------------------------------------------------------
+   Medical objects: deeper panels, less visual air
+   ---------------------------------------------------------- */
+
+.medical-objects-grid,
+.objects-grid,
+.data-object-grid{
+  gap:10px !important;
+}
+
+.medical-objects-grid>*,
+.objects-grid>*,
+.data-object-grid>*{
+  min-height:220px !important;
+  background:
+    linear-gradient(180deg,#081722,#05111a) !important;
+  border-color:rgba(78,187,216,.12) !important;
+}
+
+.medical-objects-grid>*:nth-child(4),
+.objects-grid>*:nth-child(4),
+.data-object-grid>*:nth-child(4){
+  min-height:130px !important;
+}
+
+/* ----------------------------------------------------------
+   Event samples: tighter table area
+   ---------------------------------------------------------- */
+
+.event-samples table,
+.samples-section table{
+  background:#06121b !important;
+}
+
+.event-samples th,
+.samples-section th{
+  background:#0a1924 !important;
+}
+
+.event-samples td,
+.samples-section td{
+  border-color:rgba(74,171,199,.09) !important;
+}
+
+/* ----------------------------------------------------------
+   Formal evidence
+   ---------------------------------------------------------- */
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+  background:
+    linear-gradient(180deg,#081722,#05111a) !important;
+  border-color:rgba(75,182,211,.12) !important;
+}
+
+/* ----------------------------------------------------------
+   Footer: less empty vertical room
+   ---------------------------------------------------------- */
+
+.competition-footer{
+  padding-top:64px !important;
+  padding-bottom:30px !important;
+}
+
+.competition-footer .footer-cta{
+  margin-bottom:48px !important;
+  background:
+    radial-gradient(circle at 50% 36%,rgba(36,130,158,.06),transparent 34%),
+    #030a0f !important;
+}
+
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
+
+@media(max-width:1100px){
+  .v14-risk-story{
+    min-height:auto !important;
+  }
+
+  .capability-architecture{
+    padding-top:48px !important;
+    padding-bottom:54px !important;
+  }
+}
+
+@media(max-width:720px){
+  .v14-hero{
+    min-height:112vh !important;
+  }
+
+  .v14-risk-story{
+    min-height:auto !important;
+    padding-bottom:20px !important;
+  }
+
+  .v14-story-rail{
+    width:calc(100% - 28px) !important;
+  }
+
+  .medical-objects,
+  .objects-section,
+  .data-objects,
+  .event-samples,
+  .samples-section,
+  .formal-evidence,
+  .evidence-section,
+  .metrics-section{
+    padding-top:48px !important;
+    padding-bottom:50px !important;
+  }
+}
+
+
+
+/* ==========================================================
+   SOURCE: v153-deeper-dark.css
+   ========================================================== */
+/* ==========================================================
+   MedShield-AI v1.5.3 — Deeper Dark
+   Color refinement only.
+   ========================================================== */
+
+:root{
+  --deep-00:#000203;
+  --deep-01:#010507;
+  --deep-02:#02090d;
+
+  --panel-01:#031018;
+  --panel-02:#05141e;
+  --panel-03:#071923;
+
+  --cyan:#5bdcf5;
+  --cyan-soft:#91ecfb;
+
+  --green:#6be5a4;
+  --red:#ff625d;
+
+  --text-main:#edf4f6;
+  --text-sub:#96a4aa;
+  --text-muted:#67767e;
+
+  --line:rgba(82,192,222,.14);
+  --line-strong:rgba(86,213,243,.24);
+}
+
+
+/* ==========================================================
+   GLOBAL
+   ========================================================== */
+
+html,
+body{
+  background:#000203 !important;
+}
+
+body{
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(22,85,106,.08),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 92% 65%,
+      rgba(15,69,51,.055),
+      transparent 27%
+    ),
+    #000203 !important;
+}
+
+
+/* background grid darker */
+
+body::before{
+  opacity:.20 !important;
+}
+
+.hero-grid{
+  opacity:.12 !important;
+}
+
+
+/* ==========================================================
+   NAV
+   ========================================================== */
+
+.competition-nav,
+.site-nav{
+  background:rgba(0,3,5,.90) !important;
+
+  border-bottom:
+    1px solid rgba(76,173,201,.065) !important;
+
+  backdrop-filter:
+    blur(20px) saturate(115%) !important;
+}
+
+
+/* ==========================================================
+   RISK STORY SECTION
+   ========================================================== */
+
+.v14-risk-story{
+
+  background:
+    radial-gradient(
+      circle at 52% 45%,
+      rgba(22,90,111,.055),
+      transparent 42%
+    ) !important;
+
+}
+
+
+/* left text */
+
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3{
+
+  color:#eaf2f4 !important;
+
+  text-shadow:
+    0 8px 40px rgba(0,0,0,.35);
+
+}
+
+.v14-risk-story .showcase-copy p{
+
+  color:#798990 !important;
+
+}
+
+.v14-risk-story .showcase-copy li{
+
+  color:#88969c !important;
+
+}
+
+
+/* ==========================================================
+   01-05 STATE RAIL
+   ========================================================== */
+
+.v14-story-rail{
+
+  background:
+    linear-gradient(
+      180deg,
+      #041017 0%,
+      #02090d 100%
+    ) !important;
+
+  border:
+    1px solid rgba(78,181,210,.16) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 16px 55px rgba(0,0,0,.48) !important;
+
+}
+
+.v14-story-rail span{
+
+  color:#51626a !important;
+
+  background:
+    rgba(0,0,0,.05) !important;
+
+}
+
+.v14-story-rail span.active{
+
+  color:#9cecff !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(55,173,205,.13),
+      rgba(19,69,85,.09)
+    ) !important;
+
+  box-shadow:
+    inset 0 0 30px rgba(61,199,230,.04);
+
+}
+
+
+/* ==========================================================
+   RISK CONSOLE / GLASS WINDOW
+   ========================================================== */
+
+.v14-risk-story .glass-window{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04121a 0%,
+      #02090e 100%
+    ) !important;
+
+  border:
+    1px solid rgba(85,195,224,.17) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 28px 80px rgba(0,0,0,.48),
+    0 0 60px rgba(45,165,195,.025) !important;
+
+}
+
+
+/* inner risk panels */
+
+.risk-inner,
+.risk-panel,
+.risk-console-panel{
+
+  background:
+    linear-gradient(
+      180deg,
+      #031018,
+      #01070b
+    ) !important;
+
+  border-color:
+    rgba(72,166,193,.12) !important;
+
+}
+
+
+/* Risk circle */
+
+.risk-inner strong{
+
+  color:var(--red) !important;
+
+  text-shadow:
+    0 0 18px rgba(255,98,93,.12);
+
+}
+
+.risk-inner span{
+
+  color:#9ba8ad !important;
+
+}
+
+
+/* ==========================================================
+   CAPABILITY SECTION
+   ========================================================== */
+
+.capability-architecture{
+
+  background:
+    radial-gradient(
+      circle at 50% 14%,
+      rgba(25,99,123,.055),
+      transparent 35%
+    ) !important;
+
+}
+
+.capability-architecture-list{
+
+  background:
+    linear-gradient(
+      180deg,
+      #041119,
+      #02080d
+    ) !important;
+
+  border:
+    1px solid rgba(74,174,203,.14) !important;
+
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(255,255,255,.015) !important;
+
+}
+
+
+/* Six rows */
+
+.capability-row{
+
+  background:
+    linear-gradient(
+      90deg,
+      #041119,
+      #020a0e
+    ) !important;
+
+  border-bottom:
+    1px solid rgba(68,160,187,.085) !important;
+
+}
+
+.capability-row:hover{
+
+  background:
+    linear-gradient(
+      90deg,
+      #061923,
+      #031018
+    ) !important;
+
+}
+
+
+/* Numbers */
+
+.cap-index{
+
+  color:#61ddf5 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(61,189,219,.10),
+      rgba(11,42,54,.42)
+    ) !important;
+
+  border:
+    1px solid rgba(70,188,218,.18) !important;
+
+  box-shadow:
+    inset 0 0 28px rgba(52,178,207,.035),
+    0 14px 32px rgba(0,0,0,.30) !important;
+
+}
+
+
+/* headings */
+
+.cap-kicker{
+
+  color:#58a8ba !important;
+
+}
+
+.cap-copy h3{
+
+  color:#eaf2f4 !important;
+
+}
+
+.cap-copy p{
+
+  color:#73828a !important;
+
+}
+
+
+/* tags */
+
+.cap-tags span{
+
+  color:#65767e !important;
+
+  background:
+    rgba(45,133,155,.025) !important;
+
+  border:
+    1px solid rgba(76,174,202,.09) !important;
+
+}
+
+
+/* ==========================================================
+   CAPABILITY RIGHT VISUAL
+   ========================================================== */
+
+.cap-visual{
+
+  background:
+    linear-gradient(
+      180deg,
+      #05151f 0%,
+      #020a0f 100%
+    ) !important;
+
+  border:
+    1px solid rgba(80,188,217,.15) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.016),
+    0 18px 44px rgba(0,0,0,.32) !important;
+
+}
+
+.mini-head{
+
+  color:#526770 !important;
+
+}
+
+.mini-head b{
+
+  color:#61dcf4 !important;
+
+}
+
+
+/* ==========================================================
+   RISK GRAPH
+   ========================================================== */
+
+.risk-line{
+
+  stroke:#5ee0f8 !important;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(94,224,248,.25)
+    ) !important;
+
+}
+
+.risk-area{
+
+  opacity:.52 !important;
+
+}
+
+
+/* ==========================================================
+   POLICY
+   ========================================================== */
+
+.policy-levels span{
+
+  background:
+    #020a0f !important;
+
+  border:
+    1px solid rgba(71,163,190,.095) !important;
+
+  color:#5b6a71 !important;
+
+}
+
+.policy-levels span.active{
+
+  color:#d5f8ff !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(60,191,222,.18),
+      rgba(16,70,87,.13)
+    ) !important;
+
+  border-color:
+    rgba(80,210,240,.32) !important;
+
+  box-shadow:
+    inset 0 0 28px rgba(70,203,234,.065),
+    0 0 22px rgba(53,181,211,.045) !important;
+
+}
+
+
+/* ==========================================================
+   ACTIVE DEFENSE
+   ========================================================== */
+
+.defense-flow{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04141d,
+      #02090e
+    ) !important;
+
+}
+
+.defense-nodes span{
+
+  color:#68777e !important;
+
+}
+
+.defense-nodes span i{
+
+  background:#63dfa0 !important;
+
+  box-shadow:
+    0 0 12px rgba(99,223,160,.28) !important;
+
+}
+
+.contain-bar{
+
+  background:
+    rgba(255,255,255,.035) !important;
+
+}
+
+.contain-bar i{
+
+  background:
+    linear-gradient(
+      90deg,
+      #62df9f,
+      #58d8f2
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   INTEGRITY
+   ========================================================== */
+
+.integrity-proof{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04131c,
+      #02090d
+    ) !important;
+
+}
+
+.proof-image{
+
+  border-color:
+    rgba(85,207,236,.18) !important;
+
+}
+
+.proof-token{
+
+  color:#78e8ab !important;
+
+  background:
+    rgba(74,219,148,.025) !important;
+
+  border-color:
+    rgba(75,218,149,.17) !important;
+
+}
+
+
+/* ==========================================================
+   BACKUP
+   ========================================================== */
+
+.backup-pipeline{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04131c,
+      #02090d
+    ) !important;
+
+}
+
+.backup-nodes span{
+
+  color:#64747b !important;
+
+}
+
+.backup-nodes .cold{
+
+  color:#6be5a4 !important;
+
+}
+
+
+/* ==========================================================
+   EVENT POOL
+   ========================================================== */
+
+.feedback-loop{
+
+  background:
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(49,185,216,.07),
+      transparent 48%
+    ) !important;
+
+}
+
+.event-core{
+
+  color:#7be9ff !important;
+
+  border-color:
+    rgba(85,207,236,.25) !important;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(54,184,216,.13),
+      rgba(14,53,65,.045)
+    ) !important;
+
+  box-shadow:
+    0 0 30px rgba(54,183,214,.085) !important;
+
+}
+
+
+/* ==========================================================
+   RECOVERY FLOW
+   ========================================================== */
+
+.v14-recovery-story{
+
+  background:
+    linear-gradient(
+      180deg,
+      #04131b,
+      #02090d
+    ) !important;
+
+  border-color:
+    rgba(76,177,205,.14) !important;
+
+  box-shadow:
+    0 24px 65px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.014) !important;
+
+}
+
+.v14-recovery-rail span{
+
+  background:
+    #020a0f !important;
+
+  border-color:
+    rgba(75,170,198,.10) !important;
+
+  color:#627179 !important;
+
+}
+
+.v14-recovery-rail span.active{
+
+  color:#9bf0b9 !important;
+
+  border-color:
+    rgba(102,226,161,.21) !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(75,207,141,.075),
+      rgba(17,68,47,.06)
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   KEEP TEXT READABLE
+   ========================================================== */
+
+h1,
+h2,
+h3,
+h4{
+
+  text-rendering:
+    geometricPrecision;
+
+}
+
+p{
+
+  text-rendering:
+    optimizeLegibility;
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:720px){
+
+  .capability-row,
+  .cap-visual,
+  .v14-risk-story .glass-window{
+
+    background:#031018 !important;
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   SOURCE: v154-readability.css
+   ========================================================== */
+/* ==========================================================
+   MedShield-AI v1.5.4 — Capability Readability Fix
+   Keep background dark, restore information contrast.
+   ========================================================== */
+
+
+/* ==========================================================
+   SECTION BACKGROUND
+   ========================================================== */
+
+.capability-architecture{
+
+  background:
+    radial-gradient(
+      circle at 50% 16%,
+      rgba(24,96,119,.075),
+      transparent 38%
+    ),
+    #010507 !important;
+
+}
+
+
+/* ==========================================================
+   CRITICAL FIX
+   Previous GSAP versions may leave opacity / visibility low.
+   ========================================================== */
+
+.capability-architecture-list,
+.capability-row,
+.capability-row .cap-index,
+.capability-row .cap-copy,
+.capability-row .cap-visual{
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+
+}
+
+.capability-row{
+
+  transform:none !important;
+
+}
+
+
+/* ==========================================================
+   ROWS
+   ========================================================== */
+
+.capability-architecture-list{
+
+  background:
+    linear-gradient(
+      180deg,
+      #06131c 0%,
+      #02090e 100%
+    ) !important;
+
+  border:
+    1px solid rgba(89,196,225,.19) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 30px 90px rgba(0,0,0,.48) !important;
+
+}
+
+
+.capability-row{
+
+  background:
+    linear-gradient(
+      90deg,
+      #07151f 0%,
+      #041017 100%
+    ) !important;
+
+  border-bottom:
+    1px solid rgba(85,185,214,.13) !important;
+
+}
+
+
+.capability-row:hover{
+
+  background:
+    linear-gradient(
+      90deg,
+      #0a1c28 0%,
+      #06141d 100%
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   NUMBER
+   ========================================================== */
+
+.cap-index{
+
+  color:#72e4fb !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(75,194,224,.15),
+      rgba(12,50,64,.55)
+    ) !important;
+
+  border:
+    1px solid rgba(91,209,238,.25) !important;
+
+  text-shadow:
+    0 0 16px rgba(91,220,246,.15) !important;
+
+}
+
+
+/* ==========================================================
+   LEFT CONTENT
+   ========================================================== */
+
+.cap-kicker{
+
+  color:#67c6da !important;
+
+  opacity:1 !important;
+
+}
+
+
+.cap-copy h3{
+
+  color:#edf5f7 !important;
+
+  opacity:1 !important;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,.38);
+
+}
+
+
+.cap-copy p{
+
+  color:#9aa9b0 !important;
+
+  opacity:1 !important;
+
+  line-height:1.72 !important;
+
+}
+
+
+/* pills */
+
+.cap-tags span{
+
+  color:#8c9ba2 !important;
+
+  opacity:1 !important;
+
+  background:
+    rgba(72,171,196,.055) !important;
+
+  border:
+    1px solid rgba(81,181,208,.15) !important;
+
+}
+
+
+/* ==========================================================
+   RIGHT VISUAL PANEL
+   ========================================================== */
+
+.cap-visual{
+
+  background:
+    linear-gradient(
+      180deg,
+      #081923 0%,
+      #031018 100%
+    ) !important;
+
+  border:
+    1px solid rgba(91,201,230,.20) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 16px 40px rgba(0,0,0,.32) !important;
+
+}
+
+
+.mini-head{
+
+  color:#79909a !important;
+
+  opacity:1 !important;
+
+}
+
+
+.mini-head b{
+
+  color:#71e1f9 !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   AI RISK VISUAL
+   ========================================================== */
+
+.risk-wave,
+.risk-wave svg{
+
+  opacity:1 !important;
+
+}
+
+
+.risk-line{
+
+  opacity:1 !important;
+
+  stroke:#66e1fa !important;
+
+  stroke-width:2 !important;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(102,225,250,.3)
+    ) !important;
+
+}
+
+
+.risk-area{
+
+  opacity:.72 !important;
+
+}
+
+
+.risk-scale{
+
+  color:#73858d !important;
+
+  opacity:1 !important;
+
+}
+
+
+.risk-scale strong{
+
+  color:#ff756f !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   POLICY
+   ========================================================== */
+
+.policy-levels{
+
+  opacity:1 !important;
+
+}
+
+
+.policy-levels span{
+
+  color:#74858c !important;
+
+  opacity:1 !important;
+
+  background:
+    #041019 !important;
+
+  border:
+    1px solid rgba(83,180,207,.14) !important;
+
+}
+
+
+.policy-levels span small{
+
+  color:#687880 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.policy-levels span.active{
+
+  color:#e1faff !important;
+
+  opacity:1 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(74,196,226,.24),
+      rgba(22,80,96,.18)
+    ) !important;
+
+  border-color:
+    rgba(91,218,246,.42) !important;
+
+  box-shadow:
+    inset 0 0 28px rgba(72,200,230,.08),
+    0 0 20px rgba(61,188,218,.07) !important;
+
+}
+
+
+.policy-equation{
+
+  color:#78888f !important;
+  opacity:1 !important;
+
+}
+
+
+.policy-equation b{
+
+  color:#70e1f8 !important;
+
+}
+
+
+/* ==========================================================
+   ACTIVE DEFENSE
+   ========================================================== */
+
+.defense-nodes,
+.defense-nodes span,
+.defense-nodes em{
+
+  opacity:1 !important;
+
+}
+
+
+.defense-nodes span{
+
+  color:#8a999f !important;
+
+}
+
+
+.defense-nodes span i{
+
+  opacity:1 !important;
+
+  background:#6ce8a7 !important;
+
+  box-shadow:
+    0 0 14px rgba(108,232,167,.4) !important;
+
+}
+
+
+.contain-bar{
+
+  opacity:1 !important;
+
+  background:
+    rgba(255,255,255,.065) !important;
+
+}
+
+
+.contain-bar i{
+
+  opacity:1 !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6be5a4,
+      #64dff5
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   INTEGRITY
+   ========================================================== */
+
+.integrity-proof,
+.proof-grid,
+.proof-image,
+.proof-token,
+.proof-arrow{
+
+  opacity:1 !important;
+
+}
+
+
+.proof-image{
+
+  border-color:
+    rgba(91,204,233,.24) !important;
+
+}
+
+
+.proof-image span{
+
+  color:#758890 !important;
+
+}
+
+
+.proof-token{
+
+  color:#83edb2 !important;
+
+  background:
+    rgba(82,210,143,.065) !important;
+
+  border-color:
+    rgba(100,229,162,.25) !important;
+
+}
+
+
+.proof-token small{
+
+  color:#7e9b88 !important;
+
+}
+
+
+.proof-arrow{
+
+  color:#697b83 !important;
+
+}
+
+
+/* ==========================================================
+   BACKUP
+   ========================================================== */
+
+.backup-nodes,
+.backup-nodes span,
+.backup-nodes small,
+.backup-nodes em{
+
+  opacity:1 !important;
+
+}
+
+
+.backup-nodes span{
+
+  color:#84949b !important;
+
+}
+
+
+.backup-nodes small{
+
+  color:#718189 !important;
+
+}
+
+
+.backup-nodes .db{
+
+  border-color:
+    rgba(94,211,239,.26) !important;
+
+}
+
+
+.backup-nodes .cold{
+
+  color:#79e9ab !important;
+
+}
+
+
+/* ==========================================================
+   EVENT POOL
+   ========================================================== */
+
+.feedback-loop,
+.event-core,
+.orbit-ring,
+.orbit-node{
+
+  opacity:1 !important;
+
+}
+
+
+.event-core{
+
+  color:#85ebff !important;
+
+  border-color:
+    rgba(93,215,243,.34) !important;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(62,188,220,.20),
+      rgba(13,51,63,.08)
+    ) !important;
+
+  box-shadow:
+    0 0 32px rgba(58,193,224,.13) !important;
+
+}
+
+
+.orbit-ring{
+
+  border-color:
+    rgba(89,197,224,.17) !important;
+
+}
+
+
+.orbit-node{
+
+  color:#819198 !important;
+
+  background:#041017 !important;
+
+  border-color:
+    rgba(78,177,204,.15) !important;
+
+}
+
+
+/* ==========================================================
+   SECTION HEADER
+   ========================================================== */
+
+.capability-architecture-head{
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head .eyebrow{
+
+  color:#6ddcf4 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head h2{
+
+  color:#f0f6f7 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head h2 em{
+
+  color:#69def5 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head > p{
+
+  color:#91a0a7 !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   Prevent parent fades from darkening this section
+   ========================================================== */
+
+.capability-architecture,
+.capability-architecture *{
+
+  visibility:visible !important;
+
+}
+
+
+/* do NOT globally force opacity for decorative elements */
+.capability-row .cap-copy,
+.capability-row .cap-copy *,
+.capability-row .cap-visual,
+.capability-row .mini-head,
+.capability-row .policy-levels,
+.capability-row .defense-nodes,
+.capability-row .proof-grid,
+.capability-row .backup-nodes,
+.capability-row .feedback-loop{
+
+  opacity:1 !important;
+
+}
+
+
+
+/* ==========================================================
+   SOURCE: v157-layout-typeset.css
+   ========================================================== */
+/* ==========================================================
+   MedShield-AI v1.5.7
+   Layout + Typeset Refinement
+   ----------------------------------------------------------
+   No animation changes.
+   No backend changes.
+   ========================================================== */
+
+:root{
+  --layout-max:1440px;
+  --content-max:1220px;
+
+  --space-section:88px;
+  --space-section-tight:64px;
+
+  --text-primary:#eef4f6;
+  --text-secondary:#9aa8ae;
+  --text-muted:#6e7d84;
+
+  --line-soft:rgba(85,185,214,.10);
+}
+
+
+/* ==========================================================
+   GLOBAL WIDTH SYSTEM
+   ========================================================== */
+
+.competition-main,
+.showcase-shell,
+.capability-architecture,
+.medical-objects,
+.objects-section,
+.data-objects,
+.event-samples,
+.samples-section,
+.formal-evidence,
+.evidence-section,
+.metrics-section,
+.competition-faq{
+
+  width:min(
+    var(--layout-max),
+    calc(100% - 56px)
+  ) !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+}
+
+
+/* ==========================================================
+   GLOBAL SECTION RHYTHM
+   ========================================================== */
+
+section{
+
+  scroll-margin-top:80px;
+
+}
+
+
+.showcase-shell,
+.medical-objects,
+.objects-section,
+.data-objects,
+.event-samples,
+.samples-section,
+.formal-evidence,
+.evidence-section,
+.metrics-section,
+.competition-faq{
+
+  padding-top:
+    var(--space-section) !important;
+
+  padding-bottom:
+    var(--space-section) !important;
+
+}
+
+
+/* Tight transition between strongly related sections */
+
+.v14-risk-story{
+
+  padding-bottom:
+    42px !important;
+
+}
+
+
+.v14-recovery-story{
+
+  margin-bottom:
+    62px !important;
+
+}
+
+
+.capability-architecture{
+
+  padding-top:
+    68px !important;
+
+  padding-bottom:
+    78px !important;
+
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY SYSTEM
+   ========================================================== */
+
+/*
+   Level 1:
+   Hero only
+*/
+
+.v14-hero h1{
+
+  font-size:
+    clamp(
+      78px,
+      8vw,
+      132px
+    ) !important;
+
+  line-height:
+    .92 !important;
+
+  letter-spacing:
+    -.065em !important;
+
+}
+
+
+/*
+   Level 2:
+   major narrative section titles
+*/
+
+.capability-architecture-head h2,
+.medical-objects h2,
+.objects-section h2,
+.data-objects h2,
+.event-samples h2,
+.samples-section h2,
+.formal-evidence h2,
+.evidence-section h2,
+.metrics-section h2,
+.competition-faq h2{
+
+  font-size:
+    clamp(
+      42px,
+      4.4vw,
+      68px
+    ) !important;
+
+  line-height:
+    1.04 !important;
+
+  letter-spacing:
+    -.045em !important;
+
+  font-weight:
+    540 !important;
+
+}
+
+
+/*
+   Level 3:
+   Risk Story narrative
+*/
+
+.v14-risk-story
+.showcase-copy h2{
+
+  font-size:
+    clamp(
+      42px,
+      4.1vw,
+      64px
+    ) !important;
+
+  line-height:
+    1.03 !important;
+
+  letter-spacing:
+    -.045em !important;
+
+}
+
+
+/*
+   Level 4:
+   functional headings
+*/
+
+.cap-copy h3,
+.console-panel h2,
+.queue-panel h2,
+.case-panel h2,
+.evidence-panel h2,
+.audit-panel h2{
+
+  font-size:
+    clamp(
+      20px,
+      1.7vw,
+      26px
+    ) !important;
+
+  line-height:
+    1.2 !important;
+
+  letter-spacing:
+    -.02em !important;
+
+}
+
+
+/* ==========================================================
+   EYEBROW / KICKER SYSTEM
+   ========================================================== */
+
+.eyebrow,
+.cap-kicker,
+.section-kicker,
+[class*="eyebrow"]{
+
+  font-size:
+    9px !important;
+
+  line-height:
+    1.25 !important;
+
+  letter-spacing:
+    .15em !important;
+
+  font-weight:
+    650 !important;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+/* ==========================================================
+   PARAGRAPH SYSTEM
+   ========================================================== */
+
+p{
+
+  text-wrap:
+    pretty;
+
+}
+
+
+.hero-copy{
+
+  max-width:
+    780px !important;
+
+  font-size:
+    13px !important;
+
+  line-height:
+    1.85 !important;
+
+}
+
+
+.capability-architecture-head > p{
+
+  max-width:
+    520px !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.8 !important;
+
+}
+
+
+.cap-copy p{
+
+  max-width:
+    610px !important;
+
+  font-size:
+    11px !important;
+
+  line-height:
+    1.7 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy p{
+
+  max-width:
+    570px !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.78 !important;
+
+}
+
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+
+.v14-hero .hero-subtitle{
+
+  margin-top:
+    20px !important;
+
+  font-size:
+    clamp(
+      18px,
+      1.5vw,
+      25px
+    ) !important;
+
+}
+
+
+.v14-hero .hero-copy{
+
+  margin-top:
+    18px !important;
+
+}
+
+
+.v14-hero .hero-actions{
+
+  margin-top:
+    26px !important;
+
+}
+
+
+.v14-runtime-strip{
+
+  margin-top:
+    26px !important;
+
+}
+
+
+/* ==========================================================
+   RISK STORY
+   ========================================================== */
+
+.v14-risk-story{
+
+  column-gap:
+    64px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy{
+
+  padding-left:
+    4px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy ul{
+
+  margin-top:
+    20px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy li{
+
+  margin-bottom:
+    9px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-button{
+
+  margin-top:
+    22px !important;
+
+}
+
+
+/* ==========================================================
+   RECOVERY
+   ========================================================== */
+
+.v14-recovery-story{
+
+  padding:
+    15px 20px !important;
+
+}
+
+
+.v14-recovery-rail::before{
+
+  font-size:
+    8px !important;
+
+  letter-spacing:
+    .15em !important;
+
+}
+
+
+.v14-recovery-rail span{
+
+  min-height:
+    42px !important;
+
+  font-size:
+    9px !important;
+
+}
+
+
+/* ==========================================================
+   CORE CAPABILITIES
+   ========================================================== */
+
+.capability-architecture-head{
+
+  grid-template-columns:
+    minmax(0,1.18fr)
+    minmax(360px,.72fr)
+    !important;
+
+  gap:
+    76px !important;
+
+}
+
+
+.capability-row{
+
+  min-height:
+    112px !important;
+
+  grid-template-columns:
+    72px
+    minmax(360px,.96fr)
+    minmax(440px,1.04fr)
+    !important;
+
+  gap:
+    28px !important;
+
+  padding:
+    14px 22px
+    14px 16px
+    !important;
+
+}
+
+
+.cap-index{
+
+  width:
+    56px !important;
+
+  height:
+    56px !important;
+
+  font-size:
+    19px !important;
+
+}
+
+
+.cap-copy h3{
+
+  margin:
+    5px 0 7px
+    !important;
+
+}
+
+
+.cap-tags{
+
+  margin-top:
+    10px !important;
+
+}
+
+
+/* visual consistency */
+
+.cap-visual{
+
+  min-height:
+    82px !important;
+
+  padding:
+    11px 14px
+    !important;
+
+}
+
+
+/* ==========================================================
+   INCIDENT CONSOLE
+   Operate mode should be denser than marketing surfaces
+   ========================================================== */
+
+#console,
+.incident-console,
+.response-console{
+
+  --console-gap:10px;
+
+}
+
+
+.console-hero,
+.incident-hero,
+.response-hero{
+
+  padding-top:
+    72px !important;
+
+  padding-bottom:
+    26px !important;
+
+}
+
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+
+  font-size:
+    clamp(
+      40px,
+      4.5vw,
+      70px
+    ) !important;
+
+  margin-bottom:
+    12px !important;
+
+}
+
+
+.console-hero p,
+.incident-hero p,
+.response-hero p{
+
+  max-width:
+    780px !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.7 !important;
+
+}
+
+
+.console-stats,
+.console-summary,
+.response-summary{
+
+  margin-top:
+    20px !important;
+
+}
+
+
+.console-grid,
+.response-grid,
+.incident-grid{
+
+  grid-template-columns:
+    minmax(230px,.72fr)
+    minmax(620px,1.72fr)
+    minmax(300px,.88fr)
+    !important;
+
+  gap:
+    var(--console-gap)
+    !important;
+
+}
+
+
+.queue-panel,
+.case-panel,
+.evidence-panel{
+
+  padding:
+    16px !important;
+
+}
+
+
+.queue-panel h2,
+.case-panel h2,
+.evidence-panel h2{
+
+  margin-bottom:
+    14px !important;
+
+}
+
+
+/* Event queue */
+
+.queue-panel article,
+.queue-panel .incident-item{
+
+  padding:
+    13px !important;
+
+  margin-bottom:
+    8px !important;
+
+}
+
+
+/* Main work order */
+
+.case-panel
+[class*="step"]{
+
+  min-height:
+    52px !important;
+
+}
+
+
+/* Evidence chain */
+
+.evidence-panel
+> div{
+
+  margin-bottom:
+    10px !important;
+
+}
+
+
+/* ==========================================================
+   AUDIT LOG
+   ========================================================== */
+
+.audit-panel{
+
+  margin-top:
+    10px !important;
+
+}
+
+
+.audit-log{
+
+  line-height:
+    1.65 !important;
+
+  font-size:
+    11px !important;
+
+}
+
+
+/* ==========================================================
+   MEDICAL OBJECTS
+   ========================================================== */
+
+.medical-objects-grid,
+.objects-grid,
+.data-object-grid{
+
+  gap:
+    12px !important;
+
+}
+
+
+.medical-objects-grid > *,
+.objects-grid > *,
+.data-object-grid > *{
+
+  padding:
+    22px !important;
+
+}
+
+
+/* ==========================================================
+   EVENT SAMPLES
+   ========================================================== */
+
+.event-samples
+.section-header,
+.samples-section
+.section-header{
+
+  margin-bottom:
+    30px !important;
+
+}
+
+
+.event-samples table,
+.samples-section table{
+
+  font-size:
+    11px !important;
+
+}
+
+
+.event-samples th,
+.samples-section th{
+
+  height:
+    46px !important;
+
+}
+
+
+.event-samples td,
+.samples-section td{
+
+  height:
+    48px !important;
+
+}
+
+
+/* ==========================================================
+   FORMAL EVIDENCE
+   ========================================================== */
+
+.formal-evidence-grid,
+.metrics-grid,
+.evidence-grid{
+
+  gap:
+    12px !important;
+
+}
+
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+
+  padding:
+    18px !important;
+
+}
+
+
+.metric-card h3,
+.evidence-card h3,
+.metrics-panel h3{
+
+  margin-bottom:
+    14px !important;
+
+}
+
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+
+.competition-faq{
+
+  padding-top:
+    76px !important;
+
+  padding-bottom:
+    82px !important;
+
+}
+
+
+.competition-faq
+details{
+
+  padding:
+    17px 0 !important;
+
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.competition-footer{
+
+  padding-top:
+    60px !important;
+
+}
+
+
+.competition-footer
+.footer-cta{
+
+  max-width:
+    1260px !important;
+
+  margin-left:
+    auto !important;
+
+  margin-right:
+    auto !important;
+
+  padding:
+    72px 28px !important;
+
+}
+
+
+.competition-footer
+.footer-cta h2{
+
+  font-size:
+    clamp(
+      42px,
+      4.7vw,
+      72px
+    ) !important;
+
+  line-height:
+    1.02 !important;
+
+}
+
+
+.competition-footer
+.footer-links,
+.competition-footer
+.footer-columns{
+
+  margin-top:
+    52px !important;
+
+}
+
+
+/* ==========================================================
+   DESKTOP LARGE SCREEN
+   ========================================================== */
+
+@media(min-width:1600px){
+
+  :root{
+
+    --layout-max:
+      1480px;
+
+  }
+
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media(max-width:1100px){
+
+  :root{
+
+    --space-section:
+      70px;
+
+  }
+
+
+  .capability-architecture-head{
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      22px !important;
+
+  }
+
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+
+  .capability-row{
+
+    grid-template-columns:
+      62px 1fr
+      !important;
+
+  }
+
+
+  .cap-visual{
+
+    grid-column:
+      2 !important;
+
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:720px){
+
+  :root{
+
+    --space-section:
+      54px;
+
+  }
+
+
+  .competition-main,
+  .showcase-shell,
+  .capability-architecture,
+  .medical-objects,
+  .objects-section,
+  .data-objects,
+  .event-samples,
+  .samples-section,
+  .formal-evidence,
+  .evidence-section,
+  .metrics-section,
+  .competition-faq{
+
+    width:
+      calc(100% - 28px)
+      !important;
+
+  }
+
+
+  .v14-hero h1{
+
+    font-size:
+      clamp(
+        56px,
+        18vw,
+        82px
+      ) !important;
+
+  }
+
+
+  .capability-architecture-head h2,
+  .medical-objects h2,
+  .objects-section h2,
+  .data-objects h2,
+  .event-samples h2,
+  .samples-section h2,
+  .formal-evidence h2,
+  .evidence-section h2,
+  .metrics-section h2,
+  .competition-faq h2{
+
+    font-size:
+      36px !important;
+
+  }
+
+
+  .capability-row{
+
+    grid-template-columns:
+      1fr !important;
+
+    padding:
+      20px 16px
+      !important;
+
+  }
+
+
+  .cap-index{
+
+    width:
+      48px !important;
+
+    height:
+      48px !important;
+
+  }
+
+
+  .cap-visual{
+
+    grid-column:
+      1 !important;
+
+  }
+
+
+  .competition-footer
+  .footer-cta{
+
+    padding:
+      50px 20px
+      !important;
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   SOURCE: v158-operate-evidence.css
+   ========================================================== */
+/* ==========================================================
+   MedShield-AI v1.5.8
+   Operate + Evidence Polish
+   ========================================================== */
+
+:root{
+  --op-bg:#02080d;
+  --op-panel:#06131d;
+  --op-panel-2:#081924;
+
+  --op-line:rgba(88,194,224,.13);
+  --op-line-strong:rgba(91,211,241,.24);
+
+  --op-cyan:#66ddf5;
+  --op-green:#6ae3a4;
+  --op-red:#ff6963;
+
+  --op-text:#edf4f6;
+  --op-sub:#9aa9af;
+  --op-muted:#6e7d85;
+}
+
+
+/* ==========================================================
+   OPERATE SURFACE
+   ========================================================== */
+
+#console,
+.incident-console,
+.response-console{
+
+  position:relative;
+
+  width:min(
+    1500px,
+    calc(100% - 42px)
+  ) !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+}
+
+
+/* subtle system boundary */
+
+#console::before,
+.incident-console::before,
+.response-console::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:60px -12px 20px;
+
+  pointer-events:none;
+
+  border:
+    1px solid rgba(82,185,214,.055);
+
+  border-radius:22px;
+
+  background:
+    radial-gradient(
+      circle at 50% 5%,
+      rgba(42,139,164,.045),
+      transparent 32%
+    );
+
+}
+
+
+/* ==========================================================
+   CONSOLE HERO
+   ========================================================== */
+
+.console-hero,
+.incident-hero,
+.response-hero{
+
+  position:relative;
+
+  z-index:2;
+
+  text-align:left !important;
+
+  padding:
+    66px 10px 26px
+    !important;
+
+}
+
+
+.console-hero .eyebrow,
+.incident-hero .eyebrow,
+.response-hero .eyebrow{
+
+  color:var(--op-cyan) !important;
+
+  font-size:9px !important;
+
+  letter-spacing:.16em !important;
+
+}
+
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+
+  max-width:760px;
+
+  margin:
+    10px 0 12px
+    !important;
+
+  font-size:
+    clamp(
+      42px,
+      4vw,
+      66px
+    ) !important;
+
+  line-height:.98 !important;
+
+  color:var(--op-text) !important;
+
+}
+
+
+.console-hero p,
+.incident-hero p,
+.response-hero p{
+
+  max-width:760px !important;
+
+  margin:
+    0 !important;
+
+  color:
+    var(--op-sub) !important;
+
+  font-size:
+    12px !important;
+
+}
+
+
+/* ==========================================================
+   TOP SYSTEM STATUS
+   ========================================================== */
+
+.console-stats,
+.console-summary,
+.response-summary{
+
+  position:relative;
+
+  z-index:2;
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(5,1fr)
+    !important;
+
+  gap:8px !important;
+
+  margin-top:
+    24px !important;
+
+}
+
+
+.console-stats > div,
+.console-summary > div,
+.response-summary > div{
+
+  min-height:
+    70px !important;
+
+  padding:
+    13px 15px
+    !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #07151f,
+      #041018
+    ) !important;
+
+  border:
+    1px solid var(--op-line)
+    !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018)
+    !important;
+
+}
+
+
+.console-stats > div:first-child,
+.console-summary > div:first-child,
+.response-summary > div:first-child{
+
+  border-color:
+    rgba(105,227,164,.19)
+    !important;
+
+}
+
+
+.console-stats strong,
+.console-summary strong,
+.response-summary strong{
+
+  color:
+    #edf5f7 !important;
+
+}
+
+
+/* ==========================================================
+   THREE-COLUMN OPERATE GRID
+   ========================================================== */
+
+.console-grid,
+.response-grid,
+.incident-grid{
+
+  position:relative;
+
+  z-index:2;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(240px,.68fr)
+    minmax(650px,1.8fr)
+    minmax(315px,.9fr)
+    !important;
+
+  gap:
+    10px !important;
+
+  align-items:
+    stretch !important;
+
+}
+
+
+/* all panels */
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+
+  background:
+    linear-gradient(
+      180deg,
+      #07151f,
+      #041019
+    ) !important;
+
+  border:
+    1px solid var(--op-line)
+    !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 18px 50px rgba(0,0,0,.20)
+    !important;
+
+}
+
+
+/* ==========================================================
+   QUEUE
+   ========================================================== */
+
+.queue-panel{
+
+  padding:
+    15px !important;
+
+}
+
+
+.queue-panel h2{
+
+  color:
+    var(--op-text) !important;
+
+}
+
+
+.queue-panel article,
+.queue-panel .incident-item{
+
+  position:relative;
+
+  margin-bottom:
+    7px !important;
+
+  padding:
+    12px !important;
+
+  background:
+    #081721 !important;
+
+  border:
+    1px solid
+    rgba(88,178,205,.11)
+    !important;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+
+}
+
+
+.queue-panel article:hover,
+.queue-panel .incident-item:hover{
+
+  transform:
+    translateX(2px);
+
+  background:
+    #0a1b26 !important;
+
+  border-color:
+    rgba(90,207,237,.22)
+    !important;
+
+}
+
+
+.queue-panel article.active,
+.queue-panel .incident-item.active,
+.queue-panel [aria-selected="true"]{
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(63,185,215,.12),
+      #081720
+    ) !important;
+
+  border-color:
+    rgba(91,210,240,.30)
+    !important;
+
+}
+
+
+/* ==========================================================
+   CASE / WORK ORDER
+   ========================================================== */
+
+.case-panel{
+
+  padding:
+    16px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #081923,
+      #05131d
+    ) !important;
+
+}
+
+
+.case-panel::before{
+
+  content:"ACTIVE WORK ORDER";
+
+  display:block;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #4faec2;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    .15em;
+
+}
+
+
+.case-panel h2{
+
+  color:
+    #eef5f7 !important;
+
+}
+
+
+/* Case metadata */
+
+.case-panel
+[class*="meta"],
+.case-panel
+[class*="summary"]{
+
+  background:
+    rgba(255,255,255,.015);
+
+}
+
+
+/* ==========================================================
+   WORKFLOW STEPS
+   ========================================================== */
+
+.case-panel
+[class*="step"]{
+
+  position:relative;
+
+  min-height:
+    50px !important;
+
+  display:flex;
+
+  align-items:center;
+
+  border-color:
+    rgba(84,176,203,.10)
+    !important;
+
+  background:
+    #06131c !important;
+
+}
+
+
+.case-panel
+[class*="step"]::before{
+
+  content:"";
+
+  flex:
+    0 0 7px;
+
+  width:7px;
+
+  height:7px;
+
+  margin-right:
+    11px;
+
+  border-radius:
+    50%;
+
+  background:
+    #42535b;
+
+}
+
+
+.case-panel
+[class*="step"].done::before,
+.case-panel
+[class*="step"][data-status="done"]::before{
+
+  background:
+    var(--op-green);
+
+  box-shadow:
+    0 0 12px
+    rgba(106,227,164,.32);
+
+}
+
+
+.case-panel
+[class*="step"].active::before{
+
+  background:
+    var(--op-cyan);
+
+  box-shadow:
+    0 0 12px
+    rgba(102,221,245,.32);
+
+}
+
+
+/* Completed step should remain quiet */
+
+.case-panel
+[class*="step"].done,
+.case-panel
+[class*="step"][data-status="done"]{
+
+  color:
+    #9eb1a7 !important;
+
+  background:
+    rgba(80,196,135,.025)
+    !important;
+
+}
+
+
+/* ==========================================================
+   EVIDENCE CHAIN
+   ========================================================== */
+
+.evidence-panel{
+
+  padding:
+    15px !important;
+
+}
+
+
+.evidence-panel::before{
+
+  content:"LIVE EVIDENCE";
+
+  display:block;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #4faec2;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    .15em;
+
+}
+
+
+.evidence-panel > div{
+
+  margin-bottom:
+    8px !important;
+
+  padding:
+    12px !important;
+
+  background:
+    #07151f !important;
+
+  border:
+    1px solid
+    rgba(83,172,199,.10)
+    !important;
+
+}
+
+
+.evidence-panel li{
+
+  margin-bottom:
+    5px !important;
+
+  color:
+    #a0adb2 !important;
+
+}
+
+
+/* ==========================================================
+   AUDIT LOG
+   ========================================================== */
+
+.audit-panel{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-top:
+    10px !important;
+
+  padding:
+    13px 15px
+    !important;
+
+}
+
+
+.audit-panel::before{
+
+  content:"IMMUTABLE EVENT TRACE";
+
+  display:block;
+
+  margin-bottom:
+    7px;
+
+  color:
+    #4faec2;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    .15em;
+
+}
+
+
+.audit-log{
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace
+    !important;
+
+  color:
+    #86969e !important;
+
+  font-size:
+    10px !important;
+
+  line-height:
+    1.7 !important;
+
+}
+
+
+/* ==========================================================
+   FORMAL EVIDENCE SURFACE
+   ========================================================== */
+
+.formal-evidence,
+.evidence-section,
+.metrics-section{
+
+  position:relative;
+
+}
+
+
+/* small system context before evidence */
+
+.formal-evidence::before,
+.evidence-section::before,
+.metrics-section::before{
+
+  content:
+    "FORMAL RUN · READ-ONLY EVIDENCE";
+
+  display:block;
+
+  margin-bottom:
+    12px;
+
+  color:
+    var(--op-cyan);
+
+  font-size:
+    8px;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    .16em;
+
+}
+
+
+/* ==========================================================
+   EVIDENCE PANELS
+   ========================================================== */
+
+.formal-evidence-grid,
+.metrics-grid,
+.evidence-grid{
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr))
+    !important;
+
+  gap:
+    10px !important;
+
+}
+
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+
+  position:relative;
+
+  padding:
+    17px !important;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #071620,
+      #041019
+    ) !important;
+
+  border:
+    1px solid var(--op-line)
+    !important;
+
+}
+
+
+/* numbered evidence block */
+
+.metric-card::before,
+.evidence-card::before,
+.metrics-panel::before{
+
+  position:absolute;
+
+  top:
+    12px;
+
+  right:
+    14px;
+
+  color:
+    rgba(100,215,240,.22);
+
+  font-size:
+    26px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    -.04em;
+
+}
+
+
+/* Give different cards subtle visual indexing */
+
+.metric-card:nth-child(1)::before,
+.evidence-card:nth-child(1)::before,
+.metrics-panel:nth-child(1)::before{
+
+  content:"01";
+
+}
+
+.metric-card:nth-child(2)::before,
+.evidence-card:nth-child(2)::before,
+.metrics-panel:nth-child(2)::before{
+
+  content:"02";
+
+}
+
+.metric-card:nth-child(3)::before,
+.evidence-card:nth-child(3)::before,
+.metrics-panel:nth-child(3)::before{
+
+  content:"03";
+
+}
+
+.metric-card:nth-child(4)::before,
+.evidence-card:nth-child(4)::before,
+.metrics-panel:nth-child(4)::before{
+
+  content:"04";
+
+}
+
+
+/* headings */
+
+.metric-card h2,
+.metric-card h3,
+.evidence-card h2,
+.evidence-card h3,
+.metrics-panel h2,
+.metrics-panel h3{
+
+  color:
+    var(--op-text) !important;
+
+}
+
+
+/* metric rows */
+
+.metric-card > div,
+.evidence-card > div,
+.metrics-panel > div{
+
+  border-color:
+    rgba(81,167,193,.085)
+    !important;
+
+}
+
+
+/* the number is evidence */
+
+.metric-card strong,
+.evidence-card strong,
+.metrics-panel strong{
+
+  color:
+    #f0f6f7 !important;
+
+}
+
+
+/* bars become secondary */
+
+.metric-bar,
+.progress-track,
+.metrics-panel .bar{
+
+  height:
+    2px !important;
+
+  margin-top:
+    7px !important;
+
+  background:
+    rgba(255,255,255,.055)
+    !important;
+
+}
+
+
+.metric-bar > i,
+.progress-track > i,
+.metrics-panel .bar > i{
+
+  background:
+    linear-gradient(
+      90deg,
+      #5cdbf4,
+      #759cff
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   SELECT EMPHASIS
+   ========================================================== */
+
+/* unseen attack detection */
+
+.metric-card strong:has(+ *),
+.evidence-card strong:has(+ *){
+
+  font-variant-numeric:
+    tabular-nums;
+
+}
+
+
+/* ==========================================================
+   OPERATE NAV STATE
+   ========================================================== */
+
+.competition-nav.operate-mode,
+.site-nav.operate-mode{
+
+  background:
+    rgba(1,6,9,.96) !important;
+
+  box-shadow:
+    0 8px 34px
+    rgba(0,0,0,.25);
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media(max-width:1150px){
+
+  .console-stats,
+  .console-summary,
+  .response-summary{
+
+    grid-template-columns:
+      repeat(3,1fr)
+      !important;
+
+  }
+
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+}
+
+
+@media(max-width:720px){
+
+  #console,
+  .incident-console,
+  .response-console{
+
+    width:
+      calc(100% - 20px)
+      !important;
+
+  }
+
+
+  .console-stats,
+  .console-summary,
+  .response-summary{
+
+    grid-template-columns:
+      1fr 1fr
+      !important;
+
+  }
+
+
+  .formal-evidence-grid,
+  .metrics-grid,
+  .evidence-grid{
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   SOURCE: v159-multi-incidents.css
+   ========================================================== */
+
+/* MedShield-AI v1.5.9 — Multi Incident Queue */
+
+.v159-filter-bar{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin:0 0 10px;
+  padding:8px;
+  border:1px solid rgba(82,184,213,.10);
+  border-radius:10px;
+  background:#041018;
+}
+
+.v159-filter-bar button{
+  appearance:none;
+  border:1px solid transparent;
+  border-radius:999px;
+  padding:5px 8px;
+  background:transparent;
+  color:#64767e;
+  font:inherit;
+  font-size:7px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.v159-filter-bar button:hover{
+  color:#a9bbc2;
+  background:rgba(255,255,255,.025);
+}
+
+.v159-filter-bar button.active{
+  color:#a7efff;
+  border-color:rgba(88,208,237,.18);
+  background:rgba(72,191,220,.085);
+}
+
+#incident-queue{
+  max-height:570px;
+  overflow:auto;
+  padding-right:3px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(93,198,224,.2) transparent;
+}
+
+#incident-queue::-webkit-scrollbar{width:5px}
+#incident-queue::-webkit-scrollbar-track{background:transparent}
+#incident-queue::-webkit-scrollbar-thumb{
+  background:rgba(93,198,224,.18);
+  border-radius:99px;
+}
+
+.queue-card{
+  text-align:left;
+}
+
+.v159-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:7px;
+}
+
+.v159-source{
+  padding:3px 6px;
+  border-radius:999px;
+  font-size:6px;
+  letter-spacing:.04em;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.v159-source.formal{
+  color:#69ddf5;
+  border-color:rgba(88,209,238,.14);
+  background:rgba(72,191,220,.045);
+}
+
+.v159-source.demo{
+  color:#9b8fae;
+  border-color:rgba(158,133,186,.13);
+  background:rgba(124,94,153,.035);
+}
+
+.queue-card .risk.low{
+  color:#78dda3;
+  border-color:rgba(108,224,160,.16);
+  background:rgba(75,190,132,.045);
+}
+
+.v159-empty{
+  padding:24px 10px;
+  color:#63747c;
+  text-align:center;
+  font-size:9px;
+}
+
+
+
+/* ==========================================================
+   SOURCE: v160-visual-polish.css
+   ========================================================== */
+
+:root{
+  --v160-cyan:#69def6;--v160-green:#6fe3a6;--v160-red:#ff6b65;
+  --v160-amber:#f1bd68;--v160-text:#edf4f6;--v160-sub:#9aa9af;
+}
+#console,.incident-console,.response-console{
+  position:relative;isolation:isolate;border-radius:24px;
+  background:radial-gradient(circle at 52% 0%,rgba(39,129,151,.055),transparent 33%);
+}
+.console-hero,.incident-hero,.response-hero{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:end!important;gap:28px!important;
+}
+.console-hero::after,.incident-hero::after,.response-hero::after{
+  content:"LIVE OPERATIONS";justify-self:end;align-self:start;margin-top:12px;
+  padding:7px 10px;border:1px solid rgba(105,222,246,.16);border-radius:999px;
+  color:#7ae3f8;background:rgba(61,183,212,.035);font-size:7px;font-weight:650;letter-spacing:.16em;
+}
+.console-stats>div,.console-summary>div,.response-summary>div{
+  position:relative;overflow:hidden;border-radius:12px!important;
+  background:linear-gradient(180deg,#071721,#041018)!important;
+}
+.console-stats>div::after,.console-summary>div::after,.response-summary>div::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:8px;height:1px;
+  background:linear-gradient(90deg,rgba(104,222,246,.24),transparent);opacity:.58;
+}
+.queue-panel,.case-panel,.evidence-panel{border-radius:14px!important;}
+.queue-panel>h2{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px!important;}
+.queue-panel>h2::after{content:"QUEUE";color:#4e8796;font-size:6px;letter-spacing:.18em;}
+.v159-filter-bar{gap:4px!important;padding:7px!important;border-radius:10px!important;
+  background:#041019!important;border-color:rgba(87,185,213,.10)!important;}
+.v159-filter-bar button{min-height:24px;padding:4px 8px!important;color:#6b7d85!important;
+  transition:transform .18s ease,color .18s ease,background .18s ease,border-color .18s ease;}
+.v159-filter-bar button:hover{transform:translateY(-1px);}
+.v159-filter-bar button.active{color:#a5efff!important;
+  background:linear-gradient(180deg,rgba(74,188,216,.11),rgba(32,98,116,.08))!important;
+  border-color:rgba(94,209,237,.21)!important;}
+.queue-card{position:relative;overflow:hidden;min-height:82px;border-radius:10px!important;
+  background:linear-gradient(180deg,#071620,#05111a)!important;
+  border:1px solid rgba(84,174,202,.095)!important;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease!important;}
+.queue-card::before{content:"";position:absolute;top:0;left:0;bottom:0;width:2px;background:transparent;}
+.queue-card:hover{transform:translateX(2px);background:linear-gradient(180deg,#091b27,#06141d)!important;
+  border-color:rgba(91,207,236,.18)!important;}
+.queue-card.active{transform:translateX(3px);background:linear-gradient(90deg,rgba(61,180,209,.105),#081722 35%,#06131c)!important;
+  border-color:rgba(99,218,246,.30)!important;box-shadow:inset 0 0 26px rgba(75,196,224,.03),0 12px 28px rgba(0,0,0,.18)!important;}
+.queue-card.active::before{background:var(--v160-cyan);box-shadow:0 0 10px rgba(105,222,246,.30);}
+.queue-card strong{display:block;margin-bottom:5px;color:#e8f0f2!important;font-size:10px!important;line-height:1.35;}
+.queue-card small{color:#697981!important;font-size:7px!important;}
+.queue-card .risk{display:inline-flex;align-items:center;gap:5px;}
+.queue-card .risk::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--v160-red);box-shadow:0 0 10px rgba(255,107,101,.24);}
+.queue-card .risk.mid::before{background:var(--v160-amber);box-shadow:0 0 10px rgba(241,189,104,.20);}
+.queue-card .risk.low::before{background:var(--v160-green);box-shadow:0 0 10px rgba(111,227,166,.20);}
+.case-panel{position:relative;background:linear-gradient(180deg,#091a25,#06131d)!important;}
+.case-panel::after{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(105,222,246,.22),transparent);}
+.case-panel h2{font-size:clamp(22px,2vw,29px)!important;letter-spacing:-.025em!important;}
+.case-panel [class*="step"]{border-radius:9px!important;transition:transform .18s ease,background .18s ease,border-color .18s ease;}
+.case-panel [class*="step"]:hover{transform:translateX(2px);background:#081923!important;border-color:rgba(93,199,228,.16)!important;}
+.evidence-panel>div{position:relative;border-radius:9px!important;overflow:hidden;}
+.evidence-panel>div::before{content:"";position:absolute;top:11px;left:0;width:2px;height:18px;background:rgba(105,222,246,.34);}
+.evidence-panel li{position:relative;padding-left:9px;}
+.evidence-panel li::before{content:"";position:absolute;left:0;top:.72em;width:3px;height:3px;border-radius:50%;background:#5d96a5;}
+.audit-panel{border-radius:12px!important;background:linear-gradient(180deg,#06131c,#041019)!important;}
+.audit-log{max-height:170px;overflow:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:rgba(95,197,225,.16) transparent;}
+.metric-card,.evidence-card,.metrics-panel,
+.medical-objects-grid>*,.objects-grid>*,.data-object-grid>*{
+  position:relative;overflow:hidden;border-radius:14px!important;
+  background:linear-gradient(180deg,#071720,#041019)!important;
+  border:1px solid rgba(83,178,205,.10)!important;
+  transition:transform .20s ease,border-color .20s ease,background .20s ease;
+}
+.metric-card:hover,.evidence-card:hover,.metrics-panel:hover,
+.medical-objects-grid>*:hover,.objects-grid>*:hover,.data-object-grid>*:hover{
+  transform:translateY(-2px);border-color:rgba(93,205,235,.18)!important;
+}
+.event-samples table,.samples-section table{border-collapse:separate!important;border-spacing:0 5px!important;}
+.event-samples tbody tr,.samples-section tbody tr{background:#06131c;}
+.event-samples tbody tr:hover,.samples-section tbody tr:hover{background:#081923;}
+.competition-footer{background:radial-gradient(circle at 50% 0%,rgba(35,112,135,.055),transparent 30%),#010507!important;}
+@media(max-width:1100px){
+  .console-hero,.incident-hero,.response-hero{grid-template-columns:1fr!important;}
+  .console-hero::after,.incident-hero::after,.response-hero::after{justify-self:start;}
+}
+@media(max-width:720px){
+  .console-hero::after,.incident-hero::after,.response-hero::after{display:none;}
+  .queue-card{min-height:76px;}
+}
+
+
+
+/* ==========================================================
+   SOURCE: v161-wide-console.css
+   ========================================================== */
+
+/* ==========================================================
+   MedShield-AI v1.6.1 — Wide Console Balance
+   Fix the large empty black area on the right.
+   ========================================================== */
+
+:root{
+  --v161-console-max:1580px;
+}
+
+/* Expand the entire operate section */
+#console,
+.incident-console,
+.response-console,
+.console-section,
+.incident-response-section{
+  width:min(var(--v161-console-max),calc(100vw - 56px)) !important;
+  max-width:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+/* Also expand common inner wrappers that may still constrain width */
+#console > .container,
+.incident-console > .container,
+.response-console > .container,
+.console-shell,
+.incident-console-shell,
+.response-console-shell,
+.console-layout,
+.response-layout{
+  width:100% !important;
+  max-width:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Main 3-column operate layout */
+.console-grid,
+.response-grid,
+.incident-grid{
+  width:100% !important;
+  max-width:none !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(250px,0.72fr)
+    minmax(590px,1.42fr)
+    minmax(360px,0.98fr)
+    !important;
+
+  gap:12px !important;
+  align-items:stretch !important;
+}
+
+/* Queue: controlled narrow rail */
+.queue-panel{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+/* Case: strongest visual anchor */
+.case-panel{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+/* Evidence now uses the former empty right area */
+.evidence-panel{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+/* Do not let inner content create artificial narrow columns */
+.queue-panel > *,
+.case-panel > *,
+.evidence-panel > *{
+  max-width:none !important;
+}
+
+/* Give center work order more breathing room */
+.case-panel{
+  padding:18px !important;
+}
+
+.case-panel .case-summary,
+.case-panel [class*="overview"],
+.case-panel [class*="asset"],
+.case-panel [class*="object"]{
+  width:100% !important;
+}
+
+/* Make the case overview slightly more horizontal on wide screens */
+@media(min-width:1350px){
+  .case-panel .case-summary,
+  .case-panel [class*="case-overview"]{
+    display:grid !important;
+    grid-template-columns:minmax(250px,.88fr) minmax(280px,1.12fr) !important;
+    gap:18px !important;
+    align-items:center !important;
+  }
+}
+
+/* Evidence cards use the available width instead of staying narrow */
+.evidence-panel > div,
+.evidence-panel [class*="evidence-group"]{
+  width:100% !important;
+}
+
+/* Audit should visually close the whole console */
+.audit-panel{
+  width:100% !important;
+  max-width:none !important;
+  grid-column:1 / -1 !important;
+}
+
+/* Top summary aligns with console width */
+.console-stats,
+.console-summary,
+.response-summary{
+  width:100% !important;
+  max-width:none !important;
+}
+
+/* Keep header aligned to the widened console */
+.console-hero,
+.incident-hero,
+.response-hero{
+  width:100% !important;
+  max-width:none !important;
+}
+
+/* Slightly reduce dead air around the operate block */
+.console-hero,
+.incident-hero,
+.response-hero{
+  padding-top:48px !important;
+}
+
+.console-grid,
+.response-grid,
+.incident-grid{
+  margin-top:10px !important;
+}
+
+/* Wide desktop */
+@media(min-width:1600px){
+  :root{
+    --v161-console-max:1640px;
+  }
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:
+      minmax(260px,.68fr)
+      minmax(650px,1.48fr)
+      minmax(390px,1fr)
+      !important;
+  }
+}
+
+/* Normal laptop */
+@media(max-width:1360px){
+  #console,
+  .incident-console,
+  .response-console,
+  .console-section,
+  .incident-response-section{
+    width:calc(100vw - 36px) !important;
+  }
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:
+      minmax(230px,.72fr)
+      minmax(520px,1.45fr)
+      minmax(320px,.95fr)
+      !important;
+    gap:10px !important;
+  }
+}
+
+/* Tablet: stack only when genuinely necessary */
+@media(max-width:1080px){
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .audit-panel{
+    grid-column:1 !important;
+  }
+}
+
+/* Mobile */
+@media(max-width:720px){
+  #console,
+  .incident-console,
+  .response-console,
+  .console-section,
+  .incident-response-section{
+    width:calc(100vw - 20px) !important;
+  }
+}
+
+
+
+/* ==========================================================
+   SOURCE: v162-forensic-evidence.css
+   ========================================================== */
+
+/* ==========================================================
+   MedShield-AI v1.6.2 — Forensic Case + Evidence Chain
+   Principles:
+   - Impeccable: Operate mode, hierarchy, clarity
+   - Taste: concrete forensic visual language
+   - GSAP Performance: transform-only motion
+   ========================================================== */
+
+:root{
+  --v162-cyan:#69def6;
+  --v162-cyan-2:#8feaff;
+  --v162-green:#6fe3a6;
+  --v162-red:#ff6b65;
+  --v162-amber:#f0bd68;
+  --v162-text:#eef5f7;
+  --v162-sub:#96a7ae;
+  --v162-muted:#65767e;
+  --v162-panel:#07151f;
+  --v162-panel-2:#091b26;
+  --v162-line:rgba(91,195,224,.13);
+  --v162-line-strong:rgba(96,215,243,.23);
+}
+
+
+/* ==========================================================
+   CASE PANEL — forensic workstation
+   ========================================================== */
+
+.case-panel{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(50,146,169,.06),transparent 28%),
+    linear-gradient(180deg,#091a24 0%,#06131d 100%) !important;
+}
+
+.case-panel::before{
+  content:"FORENSIC WORKSPACE";
+  display:block;
+  margin-bottom:10px;
+  color:#5dbcd1;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+.case-panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(105,222,246,.025) 1px,transparent 1px),
+    linear-gradient(rgba(105,222,246,.018) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 62%);
+}
+
+
+/* Case heading */
+.case-panel h2{
+  position:relative;
+  z-index:2;
+  font-size:clamp(24px,2vw,31px)!important;
+  color:var(--v162-text)!important;
+  letter-spacing:-.035em!important;
+  margin-bottom:14px!important;
+}
+
+
+/* Metric tiles */
+.case-panel > .case-meta,
+.case-panel [class*="meta-grid"],
+.case-panel [class*="case-stats"]{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:8px!important;
+  position:relative;
+  z-index:2;
+}
+
+.case-panel > .case-meta > *,
+.case-panel [class*="meta-grid"] > *,
+.case-panel [class*="case-stats"] > *{
+  min-height:82px!important;
+  padding:13px!important;
+  border:1px solid rgba(89,187,215,.11)!important;
+  background:
+    linear-gradient(180deg,#0a1b26,#06131c)!important;
+  border-radius:9px!important;
+}
+
+.case-panel > .case-meta > * span,
+.case-panel [class*="meta-grid"] > * span,
+.case-panel [class*="case-stats"] > * span{
+  color:#697b83!important;
+  font-size:7px!important;
+  letter-spacing:.07em!important;
+}
+
+.case-panel > .case-meta > * strong,
+.case-panel [class*="meta-grid"] > * strong,
+.case-panel [class*="case-stats"] > * strong{
+  display:block;
+  margin-top:6px;
+  color:#eef5f7!important;
+  font-size:15px!important;
+}
+
+
+/* ==========================================================
+   ASSET / OBJECT FORENSIC VIEW
+   ========================================================== */
+
+.case-panel [class*="asset"],
+.case-panel [class*="object"],
+.case-panel [class*="overview"]{
+  position:relative;
+  z-index:2;
+}
+
+.case-panel [class*="asset-card"],
+.case-panel [class*="object-card"],
+.case-panel [class*="asset-view"],
+.case-panel [class*="object-view"]{
+  overflow:hidden;
+  border-radius:11px!important;
+  border:1px solid rgba(90,191,219,.13)!important;
+  background:
+    linear-gradient(180deg,#081924,#05121a)!important;
+}
+
+
+/* Left object visual */
+.case-panel [class*="asset-visual"],
+.case-panel [class*="object-visual"]{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,#1d2832,#101820)!important;
+  border:1px solid rgba(132,159,174,.12)!important;
+}
+
+.case-panel [class*="asset-visual"]::before,
+.case-panel [class*="object-visual"]::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.028) 0,
+      rgba(255,255,255,.028) 1px,
+      transparent 1px,
+      transparent 15px
+    );
+}
+
+.case-panel [class*="asset-visual"]::after,
+.case-panel [class*="object-visual"]::after{
+  content:"SOURCE / DERIVED / VERIFIED";
+  position:absolute;
+  left:12px;
+  bottom:10px;
+  color:rgba(199,222,231,.48);
+  font-size:6px;
+  font-weight:650;
+  letter-spacing:.13em;
+}
+
+
+/* Object detail area */
+.case-panel [class*="asset-info"],
+.case-panel [class*="object-info"]{
+  padding:4px 2px!important;
+}
+
+.case-panel [class*="asset-info"] h3,
+.case-panel [class*="object-info"] h3{
+  color:#edf5f7!important;
+  font-size:18px!important;
+  margin-bottom:9px!important;
+}
+
+.case-panel [class*="asset-info"] p,
+.case-panel [class*="object-info"] p{
+  color:#8f9fa6!important;
+  line-height:1.7!important;
+}
+
+
+/* ==========================================================
+   CASE ACTION STEPS — process rail
+   ========================================================== */
+
+.case-panel [class*="steps"],
+.case-panel [class*="workflow"]{
+  position:relative;
+  z-index:2;
+}
+
+.case-panel [class*="step"]{
+  position:relative;
+  min-height:64px!important;
+  border-radius:9px!important;
+  background:#07151f!important;
+  border:1px solid rgba(85,180,207,.11)!important;
+}
+
+.case-panel [class*="step"]::after{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:8px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(93,197,225,.13),transparent);
+}
+
+.case-panel [class*="step"].done,
+.case-panel [class*="step"][data-status="done"]{
+  background:
+    linear-gradient(180deg,rgba(64,181,124,.065),rgba(29,85,60,.04))!important;
+  border-color:rgba(104,224,160,.16)!important;
+}
+
+.case-panel [class*="step"].done::after,
+.case-panel [class*="step"][data-status="done"]::after{
+  background:linear-gradient(90deg,rgba(111,227,166,.25),transparent);
+}
+
+
+/* ==========================================================
+   EVIDENCE CHAIN — actual vertical evidence rail
+   ========================================================== */
+
+.evidence-panel{
+  position:relative;
+  overflow:hidden;
+  padding-left:20px!important;
+  background:
+    linear-gradient(180deg,#081822,#05121a)!important;
+}
+
+.evidence-panel::before{
+  content:"EVIDENCE GRAPH";
+  display:block;
+  margin-bottom:11px;
+  color:#5dbcd1;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+.evidence-panel::after{
+  content:"";
+  position:absolute;
+  top:84px;
+  bottom:28px;
+  left:26px;
+  width:1px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(105,222,246,.28),
+      rgba(105,222,246,.09) 78%,
+      transparent
+    );
+  pointer-events:none;
+}
+
+
+/* Every evidence group becomes a chain node */
+.evidence-panel > div{
+  position:relative;
+  margin-left:17px!important;
+  padding:13px 13px 13px 16px!important;
+  border-radius:9px!important;
+  background:
+    linear-gradient(180deg,#0a1b26,#07141e)!important;
+  border:1px solid rgba(86,183,211,.11)!important;
+  box-shadow:none!important;
+}
+
+.evidence-panel > div::before{
+  content:"";
+  position:absolute;
+  left:-24px!important;
+  top:18px!important;
+  width:7px!important;
+  height:7px!important;
+  border-radius:50%;
+  background:#5ddcf5!important;
+  box-shadow:
+    0 0 0 4px #06131c,
+    0 0 12px rgba(93,220,245,.22)!important;
+}
+
+.evidence-panel > div::after{
+  content:"";
+  position:absolute;
+  left:-17px;
+  top:21px;
+  width:16px;
+  height:1px;
+  background:rgba(100,210,237,.18);
+}
+
+
+/* Evidence headings */
+.evidence-panel h3,
+.evidence-panel h4{
+  margin-bottom:8px!important;
+  color:#dfeaec!important;
+  font-size:10px!important;
+  letter-spacing:.01em!important;
+}
+
+.evidence-panel ul{
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+
+.evidence-panel li{
+  position:relative;
+  margin-bottom:6px!important;
+  padding-left:10px!important;
+  color:#94a3aa!important;
+  font-size:8px!important;
+  line-height:1.55!important;
+}
+
+.evidence-panel li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.65em;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#5c94a2!important;
+}
+
+
+/* Give first and last nodes semantic strength */
+.evidence-panel > div:first-of-type::before{
+  background:var(--v162-cyan)!important;
+}
+
+.evidence-panel > div:last-of-type::before{
+  background:var(--v162-green)!important;
+  box-shadow:
+    0 0 0 4px #06131c,
+    0 0 12px rgba(111,227,166,.24)!important;
+}
+
+
+/* ==========================================================
+   AUDIT AS TERMINAL EVIDENCE
+   ========================================================== */
+
+.audit-panel{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,#06131c,#031018)!important;
+}
+
+.audit-panel::after{
+  content:"HASH-CHAINED · APPEND-ONLY";
+  position:absolute;
+  top:13px;
+  right:16px;
+  color:#4e7e8b;
+  font-size:6px;
+  letter-spacing:.14em;
+}
+
+.audit-log{
+  font-variant-numeric:tabular-nums;
+}
+
+
+/* ==========================================================
+   MICRO HOVER — transform only
+   ========================================================== */
+
+.case-panel [class*="step"],
+.evidence-panel > div{
+  will-change:transform;
+}
+
+.case-panel [class*="step"]:hover,
+.evidence-panel > div:hover{
+  transform:translateX(2px);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media(max-width:1180px){
+  .case-panel > .case-meta,
+  .case-panel [class*="meta-grid"],
+  .case-panel [class*="case-stats"]{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+@media(max-width:720px){
+  .evidence-panel{
+    padding-left:15px!important;
+  }
+
+  .evidence-panel::after{
+    left:20px;
+  }
+
+  .evidence-panel > div{
+    margin-left:15px!important;
+  }
+}
+
+
+
+/* ==========================================================
+   SOURCE: v163-content-rich.css
+   ========================================================== */
+
+.v163-rich-host{position:relative;z-index:3;display:grid;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(88,185,213,.10);}
+.v163-intel-grid{display:grid;grid-template-columns:1.25fr .9fr .9fr;gap:9px;}
+.v163-block,.v163-decision,.v163-timeline,.v163-formal-context{border:1px solid rgba(87,182,210,.11);border-radius:10px;background:linear-gradient(180deg,#081923,#05131c);box-shadow:inset 0 1px 0 rgba(255,255,255,.015);}
+.v163-block{padding:13px;}
+.v163-block header,.v163-timeline header,.v163-formal-context>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;}
+.v163-block header span,.v163-timeline header span,.v163-formal-context>div:first-child span,.v163-decision-head span{color:#56aabd;font-size:6px;font-weight:700;letter-spacing:.15em;}
+.v163-block header b,.v163-timeline h4,.v163-formal-context h4,.v163-decision-head h4{margin:0;color:#dfeaec;font-size:9px;font-weight:650;}
+.v163-driver-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.v163-driver-grid>div{padding:9px;border:1px solid rgba(85,175,202,.085);border-radius:7px;background:#06141d;}
+.v163-driver-grid small,.v163-kv-list span,.v163-formal-stats small{display:block;color:#64767e;font-size:6px;letter-spacing:.05em;}
+.v163-driver-grid strong{display:block;margin-top:5px;color:#e7f0f2;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.v163-policy-chain{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:9px;}
+.v163-policy-chain span,.v163-policy-chain strong{padding:5px 7px;border:1px solid rgba(91,192,221,.11);border-radius:6px;color:#8fa1a8;background:#05121a;font-size:6px;}
+.v163-policy-chain span.hot{color:#f3c16d;border-color:rgba(240,189,104,.18);}
+.v163-policy-chain strong{color:#8aebff;border-color:rgba(105,222,246,.23);}
+.v163-policy-chain i,.v163-policy-chain em{color:#50636b;font-style:normal;font-size:7px;}
+.v163-risk-block p,.v163-formal-context p{margin:8px 0 0;color:#71828a;font-size:6.5px;line-height:1.55;}
+.v163-kv-list{display:grid;gap:6px;}
+.v163-kv-list>div{display:flex;justify-content:space-between;gap:10px;padding-bottom:6px;border-bottom:1px solid rgba(85,173,199,.07);}
+.v163-kv-list>div:last-child{padding-bottom:0;border-bottom:0;}
+.v163-kv-list b{color:#c7d4d8;font-size:7px;font-weight:550;text-align:right;}
+.v163-decision{padding:13px;}
+.v163-decision-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;}
+.v163-decision-head strong{padding:6px 9px;border:1px solid rgba(105,222,246,.20);border-radius:7px;color:#8de8fb;background:rgba(61,180,208,.045);font-size:9px;}
+.v163-decision-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:6px;}
+.v163-decision-flow>div{min-width:0;padding:9px;border:1px solid rgba(84,176,203,.085);border-radius:7px;background:#06141d;}
+.v163-decision-flow small{display:block;color:#4d8c9b;font-size:6px;}
+.v163-decision-flow b{display:block;margin:4px 0;color:#d9e5e8;font-size:7px;}
+.v163-decision-flow span{display:block;color:#65767e;font-size:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.v163-decision-flow>i{color:#3f6c77;font-style:normal;font-size:8px;}
+.v163-timeline{padding:13px;}
+.v163-timeline header>b{color:#527d88;font-size:6px;letter-spacing:.12em;}
+.v163-life{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;}
+.v163-life>div{position:relative;min-height:70px;padding:9px;border:1px solid rgba(82,171,198,.075);border-radius:7px;background:#05121a;}
+.v163-life b{display:block;margin-top:5px;color:#b9c7cc;font-size:7px;}
+.v163-life small{display:block;margin-top:3px;color:#5f7078;font-size:6px;}
+.v163-life em{position:absolute;right:8px;top:8px;color:#55676f;font-size:5px;font-style:normal;}
+.v163-life .done{border-color:rgba(108,224,160,.13);background:rgba(59,164,110,.035);}
+.v163-life .done em{color:#63ce96;}
+.v163-life .active{border-color:rgba(105,222,246,.20);background:rgba(59,170,197,.055);}
+.v163-life .active em{color:#6bdff5;}
+.v163-formal-context{display:grid;grid-template-columns:190px 1fr;gap:12px;padding:13px;align-items:center;}
+.v163-formal-context>div:first-child{display:block;margin:0;}
+.v163-formal-context h4{margin-top:4px;}
+.v163-formal-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;}
+.v163-formal-stats>div{padding:8px 9px;border-left:1px solid rgba(90,188,216,.10);}
+.v163-formal-stats b{display:block;margin-top:4px;color:#e1ebee;font-size:8px;font-variant-numeric:tabular-nums;}
+.v163-formal-context p{grid-column:1/-1;margin-top:1px;padding-top:9px;border-top:1px solid rgba(85,173,199,.07);}
+@media(max-width:1350px){.v163-intel-grid{grid-template-columns:1fr 1fr}.v163-risk-block{grid-column:1/-1}.v163-decision-flow{grid-template-columns:1fr 1fr 1fr}.v163-decision-flow>i{display:none}.v163-life{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.v163-intel-grid{grid-template-columns:1fr}.v163-risk-block{grid-column:auto}.v163-driver-grid{grid-template-columns:1fr 1fr}.v163-decision-flow{grid-template-columns:1fr}.v163-life{grid-template-columns:1fr 1fr}.v163-formal-context{grid-template-columns:1fr}.v163-formal-stats{grid-template-columns:1fr 1fr}}
+
+
+
+/* ==========================================================
+   SOURCE: v164-sci-fi-hud.css
+   ========================================================== */
+
+/* ==========================================================
+   MedShield-AI v1.6.4 — Sci-Fi Medical Security HUD
+   restrained sci-fi, no game-like particle overload
+   ========================================================== */
+
+:root{
+  --hud-bg:#02070b;
+  --hud-panel:#07151f;
+  --hud-panel-2:#0a1a25;
+  --hud-line:rgba(87,206,236,.16);
+  --hud-line-strong:rgba(103,226,250,.30);
+  --hud-cyan:#6fe5fb;
+  --hud-cyan-2:#a9f2ff;
+  --hud-green:#72e5aa;
+  --hud-red:#ff6e67;
+  --hud-amber:#f2c36e;
+  --hud-text:#edf6f8;
+  --hud-sub:#9cafb6;
+  --hud-muted:#6a7c85;
+}
+
+/* ----------------------------------------------------------
+   GLOBAL SCI-FI SURFACE
+   ---------------------------------------------------------- */
+
+html,body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(28,108,132,.11),transparent 32%),
+    #010507 !important;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(76,170,194,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(76,170,194,.025) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.16) 65%,transparent);
+}
+
+/* faint center-axis line */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:1px;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(to bottom,transparent,rgba(93,212,240,.035) 18%,rgba(93,212,240,.035) 78%,transparent);
+}
+
+/* ----------------------------------------------------------
+   SCI-FI SECTION FRAME
+   ---------------------------------------------------------- */
+
+#console,
+.incident-console,
+.response-console,
+.capability-architecture,
+.formal-evidence,
+.evidence-section,
+.metrics-section,
+.medical-objects,
+.objects-section,
+.data-objects{
+  position:relative;
+}
+
+#console::marker,
+.incident-console::marker,
+.response-console::marker{display:none}
+
+/* HUD corner brackets */
+#console > :first-child::before,
+.incident-console > :first-child::before,
+.response-console > :first-child::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:48px;
+  height:18px;
+  border-left:1px solid rgba(105,229,251,.28);
+  border-top:1px solid rgba(105,229,251,.28);
+  pointer-events:none;
+}
+
+/* ----------------------------------------------------------
+   NAV
+   ---------------------------------------------------------- */
+
+.competition-nav,
+.site-nav{
+  background:rgba(1,5,8,.90)!important;
+  border-bottom:1px solid rgba(86,198,228,.09)!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.20);
+}
+
+.competition-nav a,
+.site-nav a{
+  position:relative;
+}
+
+.competition-nav a::after,
+.site-nav a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  right:50%;
+  bottom:-8px;
+  height:1px;
+  background:var(--hud-cyan);
+  transition:left .2s ease,right .2s ease;
+}
+
+.competition-nav a:hover::after,
+.site-nav a:hover::after{
+  left:18%;
+  right:18%;
+}
+
+/* ----------------------------------------------------------
+   CONSOLE HEADER
+   ---------------------------------------------------------- */
+
+.console-hero,
+.incident-hero,
+.response-hero{
+  position:relative;
+  padding-top:52px!important;
+}
+
+.console-hero::before,
+.incident-hero::before,
+.response-hero::before{
+  content:"MEDSHIELD SECURITY OPERATIONS / NODE 01";
+  display:block;
+  margin-bottom:12px;
+  color:#52afc4;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.20em;
+}
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+  text-shadow:0 0 24px rgba(103,229,251,.06);
+}
+
+/* thin telemetry line */
+.console-hero::after,
+.incident-hero::after,
+.response-hero::after{
+  content:"LIVE · CPU MODE · D1 STATEFUL";
+  justify-self:end;
+  padding:7px 11px;
+  border:1px solid rgba(105,229,251,.18);
+  border-radius:999px;
+  color:#86eafd;
+  background:rgba(50,160,186,.045);
+  font-size:6px;
+  font-weight:700;
+  letter-spacing:.14em;
+  box-shadow:inset 0 0 16px rgba(76,193,219,.025);
+}
+
+/* ----------------------------------------------------------
+   HUD PANEL LANGUAGE
+   ---------------------------------------------------------- */
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel,
+.metric-card,
+.evidence-card,
+.metrics-panel,
+.v163-block,
+.v163-decision,
+.v163-timeline,
+.v163-formal-context{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(9,26,37,.98),rgba(5,16,24,.98))!important;
+  border:1px solid rgba(91,198,227,.13)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 18px 46px rgba(0,0,0,.22)!important;
+}
+
+/* clipped HUD corners */
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+  clip-path:polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+/* top cyber rail */
+.queue-panel::after,
+.case-panel::after,
+.evidence-panel::after,
+.audit-panel::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:34%;
+  height:1px;
+  background:linear-gradient(90deg,var(--hud-cyan),transparent);
+  opacity:.6;
+  pointer-events:none;
+}
+
+/* inner scanline sweep */
+.case-panel .v163-rich-host::before,
+.evidence-panel > div::marker{
+  display:none;
+}
+
+.case-panel .v163-rich-host{
+  position:relative;
+}
+
+.case-panel .v163-rich-host::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-18px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(112,230,251,.22),transparent);
+  transform:translateY(0);
+  animation:hud-scan 5.8s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes hud-scan{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(420px)}
+}
+
+/* ----------------------------------------------------------
+   STATUS TILES
+   ---------------------------------------------------------- */
+
+.console-stats > div,
+.console-summary > div,
+.response-summary > div{
+  position:relative;
+  border-radius:8px!important;
+  background:
+    linear-gradient(180deg,#081923,#05121a)!important;
+  border:1px solid rgba(85,183,211,.11)!important;
+}
+
+.console-stats > div::before,
+.console-summary > div::before,
+.response-summary > div::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:10px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--hud-green);
+  box-shadow:0 0 10px rgba(114,229,170,.34);
+}
+
+.console-stats > div span,
+.console-summary > div span,
+.response-summary > div span{
+  padding-left:10px;
+}
+
+/* ----------------------------------------------------------
+   QUEUE
+   ---------------------------------------------------------- */
+
+.queue-panel>h2::after{
+  content:"EVENT STREAM / LIVE";
+  color:#487f8d;
+  font-size:6px;
+  letter-spacing:.16em;
+}
+
+.queue-card{
+  position:relative;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);
+  background:
+    linear-gradient(180deg,#071721,#05121a)!important;
+}
+
+.queue-card::after{
+  content:"";
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:18px;
+  height:1px;
+  background:rgba(104,220,246,.16);
+}
+
+.queue-card.active{
+  background:
+    linear-gradient(90deg,rgba(55,180,211,.12),#081924 42%,#06131c)!important;
+  box-shadow:inset 0 0 28px rgba(73,194,223,.04)!important;
+}
+
+/* ----------------------------------------------------------
+   FILTERS
+   ---------------------------------------------------------- */
+
+.v159-filter-bar{
+  position:relative;
+  border:1px solid rgba(87,188,216,.10)!important;
+  background:#041018!important;
+}
+
+.v159-filter-bar::before{
+  content:"FILTER MATRIX";
+  position:absolute;
+  top:-8px;
+  left:10px;
+  padding:0 5px;
+  background:#07151f;
+  color:#416f7b;
+  font-size:5px;
+  letter-spacing:.14em;
+}
+
+.v159-filter-bar button.active{
+  color:#a7f0ff!important;
+  border-color:rgba(102,220,246,.22)!important;
+  box-shadow:inset 0 0 14px rgba(80,199,226,.035);
+}
+
+/* ----------------------------------------------------------
+   CASE / FORENSIC
+   ---------------------------------------------------------- */
+
+.case-panel::before{
+  content:"FORENSIC NODE / CASE PROCESSOR";
+  color:#65bfd3!important;
+}
+
+.case-panel h2{
+  color:var(--hud-text)!important;
+}
+
+.case-panel [class*="step"]{
+  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);
+}
+
+/* active process segment */
+.case-panel [class*="step"].active{
+  border-color:rgba(106,225,248,.22)!important;
+  box-shadow:inset 0 0 18px rgba(64,183,211,.045);
+}
+
+/* ----------------------------------------------------------
+   V163 CONTENT
+   ---------------------------------------------------------- */
+
+.v163-block,
+.v163-decision,
+.v163-timeline,
+.v163-formal-context{
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);
+}
+
+.v163-block header span,
+.v163-timeline header span,
+.v163-formal-context span,
+.v163-decision-head span{
+  color:#5bbfd4!important;
+}
+
+.v163-driver-grid>div,
+.v163-decision-flow>div,
+.v163-life>div{
+  background:#05131c!important;
+  border-color:rgba(88,183,211,.09)!important;
+}
+
+.v163-policy-chain strong{
+  color:#99eeff!important;
+  border-color:rgba(105,227,250,.25)!important;
+  box-shadow:inset 0 0 12px rgba(70,192,220,.025);
+}
+
+.v163-life .active{
+  box-shadow:
+    inset 0 0 20px rgba(73,192,220,.05),
+    0 0 20px rgba(73,192,220,.025)!important;
+}
+
+/* ----------------------------------------------------------
+   EVIDENCE GRAPH
+   ---------------------------------------------------------- */
+
+.evidence-panel::before{
+  content:"EVIDENCE GRAPH / CHAIN OF TRUST";
+  color:#65bfd3!important;
+}
+
+.evidence-panel::after{
+  left:28px!important;
+  background:linear-gradient(
+    180deg,
+    rgba(105,229,251,.35),
+    rgba(105,229,251,.08) 85%,
+    transparent
+  )!important;
+}
+
+.evidence-panel > div{
+  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);
+}
+
+.evidence-panel > div::before{
+  width:8px!important;
+  height:8px!important;
+  background:#6fe5fb!important;
+  box-shadow:
+    0 0 0 4px #06131c,
+    0 0 13px rgba(111,229,251,.28)!important;
+}
+
+/* ----------------------------------------------------------
+   AUDIT TERMINAL
+   ---------------------------------------------------------- */
+
+.audit-panel{
+  background:
+    linear-gradient(180deg,#05131c,#02090e)!important;
+}
+
+.audit-panel::before{
+  content:"SECURE AUDIT TERMINAL";
+  display:block;
+  color:#5ab3c6;
+  font-size:6px;
+  font-weight:700;
+  letter-spacing:.16em;
+  margin-bottom:8px;
+}
+
+.audit-log{
+  position:relative;
+  color:#82a1aa!important;
+  text-shadow:0 0 12px rgba(91,198,227,.03);
+}
+
+/* ----------------------------------------------------------
+   FORMAL EVIDENCE
+   ---------------------------------------------------------- */
+
+.formal-evidence::before,
+.evidence-section::before,
+.metrics-section::before{
+  content:"VERIFIED SYSTEM TELEMETRY / FORMAL FULL RUN";
+  color:#65c8dc!important;
+}
+
+.metric-card::after,
+.evidence-card::after,
+.metrics-panel::after{
+  content:"";
+  position:absolute;
+  left:12px;
+  bottom:10px;
+  width:22px;
+  height:1px;
+  background:rgba(106,221,246,.20);
+}
+
+/* ----------------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------------- */
+
+button,
+.button,
+.btn,
+a[class*="button"]{
+  position:relative;
+  overflow:hidden;
+}
+
+button::after,
+.button::after,
+.btn::after,
+a[class*="button"]::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:-45%;
+  width:35%;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(153,239,255,.08),transparent);
+  transform:skewX(-18deg);
+  transition:left .45s ease;
+}
+
+button:hover::after,
+.button:hover::after,
+.btn:hover::after,
+a[class*="button"]:hover::after{
+  left:115%;
+}
+
+/* ----------------------------------------------------------
+   SMALL SCI-FI DATA ACCENTS
+   ---------------------------------------------------------- */
+
+.v163-formal-stats>div{
+  position:relative;
+}
+
+.v163-formal-stats>div::after{
+  content:"";
+  position:absolute;
+  left:9px;
+  right:9px;
+  bottom:4px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(100,217,244,.17),transparent);
+}
+
+.v163-formal-stats b{
+  color:#e8f4f6!important;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+
+@media(max-width:900px){
+  .queue-panel,
+  .case-panel,
+  .evidence-panel,
+  .audit-panel{
+    clip-path:none;
+  }
+
+  .case-panel .v163-rich-host::before{
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .case-panel .v163-rich-host::before{
+    animation:none!important;
+  }
+
+  button::after,
+  .button::after,
+  .btn::after,
+  a[class*="button"]::after{
+    transition:none!important;
+  }
+}
+
+
+
+/* ==========================================================
+   SOURCE: v170-static-risk-final.css
+   ========================================================== */
+/* ==========================================================
+   MedShield-AI v1.7.0
+   FINAL STATIC RISK SECTION
+   ----------------------------------------------------------
+   No pin.
+   No scrub.
+   No opacity animation.
+   No transition overlay.
+   Same document behavior as Core Capabilities.
+   ========================================================== */
+
+
+/* ==========================================================
+   RISK STORY
+   ========================================================== */
+
+.v14-risk-story{
+
+  position:relative !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(360px,.90fr)
+    minmax(560px,1.10fr)
+    !important;
+
+  grid-template-rows:
+    auto auto !important;
+
+  column-gap:
+    64px !important;
+
+  row-gap:
+    24px !important;
+
+  align-items:center !important;
+
+
+  width:
+    min(
+      1440px,
+      calc(100% - 56px)
+    ) !important;
+
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+
+  margin:
+    0 auto !important;
+
+  padding:
+    72px 0 54px !important;
+
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+
+  background:
+    #010507 !important;
+
+}
+
+
+/* ==========================================================
+   禁止任何旧黑色转场层
+   ========================================================== */
+
+.v14-risk-story::before,
+.v14-risk-story::after{
+
+  content:
+    none !important;
+
+  display:
+    none !important;
+
+}
+
+
+/* ==========================================================
+   原先的 showcase 父级不再是滚动舞台
+   ========================================================== */
+
+.showcase-wrap:has(.v14-risk-story),
+.showcase-shell:has(.v14-risk-story){
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  overflow:
+    visible !important;
+
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+}
+
+
+/* ==========================================================
+   01 → 05
+   ========================================================== */
+
+.v14-story-rail{
+
+  position:
+    relative !important;
+
+  top:
+    auto !important;
+
+  left:
+    auto !important;
+
+
+  grid-column:
+    1 / -1 !important;
+
+  grid-row:
+    1 !important;
+
+
+  width:
+    min(
+      820px,
+      74%
+    ) !important;
+
+
+  margin:
+    0 auto 8px !important;
+
+
+  transform:
+    none !important;
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+
+  background:
+    #05131c !important;
+
+  border:
+    1px solid
+    rgba(87,190,219,.16)
+    !important;
+
+}
+
+
+/* ==========================================================
+   COPY
+   ========================================================== */
+
+.v14-risk-story
+> .showcase-copy{
+
+  position:
+    relative !important;
+
+  top:
+    auto !important;
+
+
+  grid-column:
+    1 !important;
+
+  grid-row:
+    2 !important;
+
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy h2{
+
+  color:
+    #eef5f7 !important;
+
+  opacity:
+    1 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy h2 em{
+
+  color:
+    #69dcf3 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy p{
+
+  color:
+    #9aa9af !important;
+
+  opacity:
+    1 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy li{
+
+  color:
+    #9aa9af !important;
+
+  opacity:
+    1 !important;
+
+}
+
+
+.v14-risk-story
+.eyebrow{
+
+  color:
+    #69def6 !important;
+
+  opacity:
+    1 !important;
+
+}
+
+
+/* ==========================================================
+   RIGHT CONSOLE
+   ========================================================== */
+
+.v14-risk-story
+> .showcase-visual{
+
+  position:
+    relative !important;
+
+  top:
+    auto !important;
+
+
+  grid-column:
+    2 !important;
+
+  grid-row:
+    2 !important;
+
+
+  width:
+    100% !important;
+
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+}
+
+
+.v14-risk-story
+.glass-window{
+
+  width:
+    100% !important;
+
+  min-height:
+    420px !important;
+
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #06151e 0%,
+      #02090e 100%
+    )
+
+    !important;
+
+
+  border:
+
+    1px solid
+    rgba(88,193,221,.18)
+
+    !important;
+
+}
+
+
+/* ==========================================================
+   RECOVERY
+   ========================================================== */
+
+.v14-recovery-story{
+
+  position:
+    relative !important;
+
+
+  display:
+    block !important;
+
+
+  width:
+    min(
+      1360px,
+      calc(100% - 80px)
+    ) !important;
+
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+
+  margin:
+    0 auto 56px !important;
+
+  padding:
+    16px 20px !important;
+
+
+  opacity:
+    1 !important;
+
+  visibility:
+    visible !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    )
+
+    !important;
+
+
+  border:
+
+    1px solid
+    rgba(87,188,216,.16)
+
+    !important;
+
+}
+
+
+/* recovery 的左右 sticky 全部取消 */
+
+.v14-recovery-story
+> .showcase-copy,
+
+.v14-recovery-story
+> .showcase-visual{
+
+  position:
+    relative !important;
+
+  top:
+    auto !important;
+
+  opacity:
+    1 !important;
+
+  filter:
+    none !important;
+
+  transform:
+    none !important;
+
+}
+
+
+/* ==========================================================
+   取消旧 v14 的 250vh / 210vh
+   ========================================================== */
+
+@media(min-width:981px){
+
+  .v14-risk-story{
+
+    min-height:
+      0 !important;
+
+  }
+
+
+  .v14-recovery-story{
+
+    min-height:
+      0 !important;
+
+  }
+
+
+  .v14-risk-story
+  > .showcase-copy,
+
+  .v14-risk-story
+  > .showcase-visual,
+
+  .v14-recovery-story
+  > .showcase-copy,
+
+  .v14-recovery-story
+  > .showcase-visual{
+
+    position:
+      relative !important;
+
+    top:
+      auto !important;
+
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:1100px){
+
+  .v14-risk-story{
+
+    grid-template-columns:
+      1fr !important;
+
+    padding:
+      56px 0 48px !important;
+
+  }
+
+
+  .v14-story-rail{
+
+    width:
+      92% !important;
+
+  }
+
+
+  .v14-risk-story
+  > .showcase-copy{
+
+    grid-column:
+      1 !important;
+
+    grid-row:
+      2 !important;
+
+  }
+
+
+  .v14-risk-story
+  > .showcase-visual{
+
+    grid-column:
+      1 !important;
+
+    grid-row:
+      3 !important;
+
+  }
+
+}
+
+
+@media(max-width:720px){
+
+  .v14-risk-story{
+
+    width:
+      calc(100% - 28px)
+      !important;
+
+  }
+
+
+  .v14-recovery-story{
+
+    width:
+      calc(100% - 28px)
+      !important;
+
+  }
+
+}
+
+

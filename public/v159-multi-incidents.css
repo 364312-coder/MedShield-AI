@@ -1,0 +1,97 @@
+
+/* MedShield-AI v1.5.9 — Multi Incident Queue */
+
+.v159-filter-bar{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin:0 0 10px;
+  padding:8px;
+  border:1px solid rgba(82,184,213,.10);
+  border-radius:10px;
+  background:#041018;
+}
+
+.v159-filter-bar button{
+  appearance:none;
+  border:1px solid transparent;
+  border-radius:999px;
+  padding:5px 8px;
+  background:transparent;
+  color:#64767e;
+  font:inherit;
+  font-size:7px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.v159-filter-bar button:hover{
+  color:#a9bbc2;
+  background:rgba(255,255,255,.025);
+}
+
+.v159-filter-bar button.active{
+  color:#a7efff;
+  border-color:rgba(88,208,237,.18);
+  background:rgba(72,191,220,.085);
+}
+
+#incident-queue{
+  max-height:570px;
+  overflow:auto;
+  padding-right:3px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(93,198,224,.2) transparent;
+}
+
+#incident-queue::-webkit-scrollbar{width:5px}
+#incident-queue::-webkit-scrollbar-track{background:transparent}
+#incident-queue::-webkit-scrollbar-thumb{
+  background:rgba(93,198,224,.18);
+  border-radius:99px;
+}
+
+.queue-card{
+  text-align:left;
+}
+
+.v159-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:7px;
+}
+
+.v159-source{
+  padding:3px 6px;
+  border-radius:999px;
+  font-size:6px;
+  letter-spacing:.04em;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.v159-source.formal{
+  color:#69ddf5;
+  border-color:rgba(88,209,238,.14);
+  background:rgba(72,191,220,.045);
+}
+
+.v159-source.demo{
+  color:#9b8fae;
+  border-color:rgba(158,133,186,.13);
+  background:rgba(124,94,153,.035);
+}
+
+.queue-card .risk.low{
+  color:#78dda3;
+  border-color:rgba(108,224,160,.16);
+  background:rgba(75,190,132,.045);
+}
+
+.v159-empty{
+  padding:24px 10px;
+  color:#63747c;
+  text-align:center;
+  font-size:9px;
+}

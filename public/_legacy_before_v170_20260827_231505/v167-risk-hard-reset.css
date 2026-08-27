@@ -1,0 +1,323 @@
+﻿/* ==========================================================
+   MedShield-AI v1.6.7
+   RISK STORY HARD RESET
+   ----------------------------------------------------------
+   目标：
+   彻底移除 Risk Story 上层遮罩 / 淡出 / filter
+   让亮度与 Core Capabilities 一致
+   ========================================================== */
+
+
+/* ==========================================================
+   1. RISK SECTION 本体必须 100% 输出
+   ========================================================== */
+
+.v14-risk-story{
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+
+  mix-blend-mode:normal !important;
+
+  isolation:isolate !important;
+
+  background:
+    #010507 !important;
+
+}
+
+
+/* ==========================================================
+   2. 找到包含 Risk Story 的 showcase-shell
+   它很可能才是真正被旧转场压暗的节点
+   ========================================================== */
+
+.showcase-shell:has(.v14-risk-story){
+
+  opacity:1 !important;
+  visibility:visible !important;
+
+  filter:none !important;
+
+  mix-blend-mode:normal !important;
+
+  background:#010507 !important;
+
+}
+
+
+/* 再往上一层也不要继承 filter */
+
+.showcase-shell:has(.v14-risk-story) > *{
+
+  visibility:visible !important;
+
+}
+
+
+/* ==========================================================
+   3. 彻底关闭 Risk Story 的旧黑场遮罩
+   ========================================================== */
+
+.v14-risk-story::before,
+.v14-risk-story::after,
+
+.showcase-shell:has(.v14-risk-story)::before,
+.showcase-shell:has(.v14-risk-story)::after{
+
+  display:none !important;
+
+  content:none !important;
+
+  opacity:0 !important;
+
+  background:none !important;
+
+  backdrop-filter:none !important;
+
+  filter:none !important;
+
+}
+
+
+/* ==========================================================
+   4. 内容层明确放到最上面
+   ========================================================== */
+
+.v14-risk-story > .showcase-copy,
+.v14-risk-story > .showcase-visual,
+.v14-story-rail{
+
+  position:relative !important;
+
+  z-index:20 !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+}
+
+
+/* ==========================================================
+   5. 左侧文字亮度直接对齐 Core Capabilities
+   ========================================================== */
+
+.v14-risk-story .showcase-copy h1,
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3{
+
+  color:#f0f5f6 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy em{
+
+  color:#65d9f1 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy p{
+
+  color:#9caab0 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy li{
+
+  color:#9eacb2 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.v14-risk-story .showcase-copy .eyebrow,
+.v14-risk-story .showcase-copy [class*="kicker"]{
+
+  color:#68dff5 !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   6. 右侧 Console
+   ========================================================== */
+
+.v14-risk-story .glass-window{
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    ) !important;
+
+  border:
+    1px solid rgba(91,196,224,.19) !important;
+
+}
+
+
+.v14-risk-story .glass-window *{
+
+  visibility:visible !important;
+
+}
+
+
+/* 不允许某些旧动画留下低 opacity */
+
+.v14-risk-story .glass-window h1,
+.v14-risk-story .glass-window h2,
+.v14-risk-story .glass-window h3,
+.v14-risk-story .glass-window h4,
+.v14-risk-story .glass-window strong,
+.v14-risk-story .glass-window p,
+.v14-risk-story .glass-window span,
+.v14-risk-story .glass-window small{
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   7. 01—05 Rail
+   ========================================================== */
+
+.v14-story-rail{
+
+  opacity:1 !important;
+
+  filter:none !important;
+
+  background:#041018 !important;
+
+  border:
+    1px solid rgba(85,184,212,.16) !important;
+
+}
+
+
+.v14-story-rail span{
+
+  opacity:1 !important;
+
+  color:#73858d !important;
+
+}
+
+
+.v14-story-rail span.active{
+
+  color:#a2efff !important;
+
+}
+
+
+/* ==========================================================
+   8. Recovery Flow
+   ========================================================== */
+
+.v14-recovery-story{
+
+  position:relative !important;
+
+  z-index:20 !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+  mix-blend-mode:normal !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #06151e,
+      #02090e
+    ) !important;
+
+}
+
+
+/* 删除 Recovery 可能存在的过渡遮罩 */
+
+.v14-recovery-story::after{
+
+  display:none !important;
+
+  content:none !important;
+
+}
+
+
+.v14-recovery-rail,
+.v14-recovery-rail *{
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+}
+
+
+/* ==========================================================
+   9. GSAP Pin Spacer
+   如果旧滚动动画用了 pin，pin-spacer 也不能半透明
+   ========================================================== */
+
+.pin-spacer:has(.v14-risk-story),
+.pin-spacer:has(.v14-recovery-story){
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  filter:none !important;
+
+}
+
+
+/* ==========================================================
+   10. 防止 transition 再次修改 opacity
+   ========================================================== */
+
+.v14-risk-story,
+.v14-risk-story > .showcase-copy,
+.v14-risk-story > .showcase-visual,
+.v14-story-rail,
+.v14-recovery-story{
+
+  transition-property:
+    transform,
+    border-color,
+    background-color
+    !important;
+
+}

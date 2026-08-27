@@ -1,0 +1,210 @@
+
+/* ==========================================================
+   MedShield-AI v1.6.1 — Wide Console Balance
+   Fix the large empty black area on the right.
+   ========================================================== */
+
+:root{
+  --v161-console-max:1580px;
+}
+
+/* Expand the entire operate section */
+#console,
+.incident-console,
+.response-console,
+.console-section,
+.incident-response-section{
+  width:min(var(--v161-console-max),calc(100vw - 56px)) !important;
+  max-width:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+/* Also expand common inner wrappers that may still constrain width */
+#console > .container,
+.incident-console > .container,
+.response-console > .container,
+.console-shell,
+.incident-console-shell,
+.response-console-shell,
+.console-layout,
+.response-layout{
+  width:100% !important;
+  max-width:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Main 3-column operate layout */
+.console-grid,
+.response-grid,
+.incident-grid{
+  width:100% !important;
+  max-width:none !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(250px,0.72fr)
+    minmax(590px,1.42fr)
+    minmax(360px,0.98fr)
+    !important;
+
+  gap:12px !important;
+  align-items:stretch !important;
+}
+
+/* Queue: controlled narrow rail */
+.queue-panel{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+/* Case: strongest visual anchor */
+.case-panel{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+/* Evidence now uses the former empty right area */
+.evidence-panel{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+/* Do not let inner content create artificial narrow columns */
+.queue-panel > *,
+.case-panel > *,
+.evidence-panel > *{
+  max-width:none !important;
+}
+
+/* Give center work order more breathing room */
+.case-panel{
+  padding:18px !important;
+}
+
+.case-panel .case-summary,
+.case-panel [class*="overview"],
+.case-panel [class*="asset"],
+.case-panel [class*="object"]{
+  width:100% !important;
+}
+
+/* Make the case overview slightly more horizontal on wide screens */
+@media(min-width:1350px){
+  .case-panel .case-summary,
+  .case-panel [class*="case-overview"]{
+    display:grid !important;
+    grid-template-columns:minmax(250px,.88fr) minmax(280px,1.12fr) !important;
+    gap:18px !important;
+    align-items:center !important;
+  }
+}
+
+/* Evidence cards use the available width instead of staying narrow */
+.evidence-panel > div,
+.evidence-panel [class*="evidence-group"]{
+  width:100% !important;
+}
+
+/* Audit should visually close the whole console */
+.audit-panel{
+  width:100% !important;
+  max-width:none !important;
+  grid-column:1 / -1 !important;
+}
+
+/* Top summary aligns with console width */
+.console-stats,
+.console-summary,
+.response-summary{
+  width:100% !important;
+  max-width:none !important;
+}
+
+/* Keep header aligned to the widened console */
+.console-hero,
+.incident-hero,
+.response-hero{
+  width:100% !important;
+  max-width:none !important;
+}
+
+/* Slightly reduce dead air around the operate block */
+.console-hero,
+.incident-hero,
+.response-hero{
+  padding-top:48px !important;
+}
+
+.console-grid,
+.response-grid,
+.incident-grid{
+  margin-top:10px !important;
+}
+
+/* Wide desktop */
+@media(min-width:1600px){
+  :root{
+    --v161-console-max:1640px;
+  }
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:
+      minmax(260px,.68fr)
+      minmax(650px,1.48fr)
+      minmax(390px,1fr)
+      !important;
+  }
+}
+
+/* Normal laptop */
+@media(max-width:1360px){
+  #console,
+  .incident-console,
+  .response-console,
+  .console-section,
+  .incident-response-section{
+    width:calc(100vw - 36px) !important;
+  }
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:
+      minmax(230px,.72fr)
+      minmax(520px,1.45fr)
+      minmax(320px,.95fr)
+      !important;
+    gap:10px !important;
+  }
+}
+
+/* Tablet: stack only when genuinely necessary */
+@media(max-width:1080px){
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .audit-panel{
+    grid-column:1 !important;
+  }
+}
+
+/* Mobile */
+@media(max-width:720px){
+  #console,
+  .incident-console,
+  .response-console,
+  .console-section,
+  .incident-response-section{
+    width:calc(100vw - 20px) !important;
+  }
+}

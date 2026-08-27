@@ -1,0 +1,239 @@
+﻿/* ==========================================================
+   MedShield-AI v1.6.6
+   Match Risk Story brightness to Core Capabilities
+   ========================================================== */
+
+/* =========================
+   Risk Story left content
+   ========================= */
+
+.v14-risk-story .showcase-copy .eyebrow,
+.v14-risk-story .showcase-copy [class*="kicker"]{
+  color:#69dff5 !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story .showcase-copy h1,
+.v14-risk-story .showcase-copy h2,
+.v14-risk-story .showcase-copy h3{
+  color:#edf4f6 !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story .showcase-copy em{
+  color:#68dff5 !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story .showcase-copy p{
+  color:#97a7ae !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story .showcase-copy li{
+  color:#98a8ae !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story .showcase-copy li::marker{
+  color:#65d9f1 !important;
+}
+
+/* =========================
+   CTA button
+   ========================= */
+
+.v14-risk-story .showcase-button{
+  color:#dce7ea !important;
+  background:#06131c !important;
+  border-color:rgba(91,198,226,.18) !important;
+}
+
+.v14-risk-story .showcase-button:hover{
+  color:#f2f8f9 !important;
+  border-color:rgba(105,220,246,.28) !important;
+  background:#081923 !important;
+}
+
+/* =========================
+   01–05 state rail
+   ========================= */
+
+.v14-story-rail{
+  background:#041018 !important;
+  border-color:rgba(87,185,214,.16) !important;
+}
+
+.v14-story-rail span{
+  color:#697c84 !important;
+  opacity:1 !important;
+}
+
+.v14-story-rail span.active{
+  color:#9feeff !important;
+  background:rgba(67,180,210,.09) !important;
+}
+
+/* =========================
+   Main console
+   ========================= */
+
+.v14-risk-story .glass-window{
+  background:
+    linear-gradient(
+      180deg,
+      #05141d 0%,
+      #020a0f 100%
+    ) !important;
+
+  border-color:
+    rgba(88,193,221,.18) !important;
+}
+
+/* console title / labels */
+
+.v14-risk-story .glass-window h2,
+.v14-risk-story .glass-window h3,
+.v14-risk-story .glass-window h4{
+  color:#dfeaec !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story .glass-window span,
+.v14-risk-story .glass-window small{
+  opacity:1 !important;
+}
+
+/* =========================
+   Current event text
+   ========================= */
+
+.v14-risk-story .glass-window strong{
+  color:#dce7ea !important;
+}
+
+.v14-risk-story .glass-window [class*="label"]{
+  color:#697b83 !important;
+}
+
+.v14-risk-story .glass-window [class*="value"]{
+  color:#b3c0c5 !important;
+}
+
+/* =========================
+   Risk ring
+   ========================= */
+
+.risk-inner strong{
+  color:#ee625c !important;
+  opacity:1 !important;
+}
+
+.risk-inner span{
+  color:#99a7ad !important;
+  opacity:1 !important;
+}
+
+/* =========================
+   Signal area
+   ========================= */
+
+.v14-risk-story [class*="signal"]{
+  color:#7d8d94 !important;
+  opacity:1 !important;
+}
+
+.v14-risk-story [class*="signal"] strong{
+  color:#9dabb0 !important;
+}
+
+.v14-risk-story [class*="bar"]{
+  opacity:1 !important;
+}
+
+/* =========================
+   Recovery Flow
+   ========================= */
+
+.v14-recovery-story{
+  background:
+    linear-gradient(
+      180deg,
+      #05141d,
+      #020a0f
+    ) !important;
+
+  border-color:
+    rgba(87,188,216,.16) !important;
+}
+
+/* Recovery Flow title */
+
+.v14-recovery-story::before,
+.v14-recovery-rail::before{
+  color:#60bfd4 !important;
+  opacity:1 !important;
+}
+
+/* recovery nodes */
+
+.v14-recovery-rail span{
+  color:#829199 !important;
+
+  background:
+    #041018 !important;
+
+  border-color:
+    rgba(84,179,207,.12) !important;
+
+  opacity:1 !important;
+}
+
+.v14-recovery-rail span.active{
+  color:#8de7ad !important;
+
+  background:
+    rgba(65,181,120,.07) !important;
+
+  border-color:
+    rgba(105,224,160,.19) !important;
+}
+
+/* connectors */
+
+.v14-recovery-rail i,
+.v14-recovery-rail::after{
+  opacity:.85 !important;
+}
+
+/* =========================
+   Force final visibility
+   ========================= */
+
+.v14-risk-story,
+.v14-risk-story > .showcase-copy,
+.v14-risk-story > .showcase-visual,
+.v14-story-rail,
+.v14-recovery-story{
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+}
+
+/* =========================
+   Keep the background dark
+   ========================= */
+
+.v14-risk-story{
+  background:
+    radial-gradient(
+      circle at 60% 45%,
+      rgba(22,80,98,.055),
+      transparent 42%
+    ),
+    #010507 !important;
+}
+
+.showcase-shell:has(.v14-risk-story){
+  background:#010507 !important;
+}

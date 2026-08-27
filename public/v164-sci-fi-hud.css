@@ -1,0 +1,580 @@
+
+/* ==========================================================
+   MedShield-AI v1.6.4 — Sci-Fi Medical Security HUD
+   restrained sci-fi, no game-like particle overload
+   ========================================================== */
+
+:root{
+  --hud-bg:#02070b;
+  --hud-panel:#07151f;
+  --hud-panel-2:#0a1a25;
+  --hud-line:rgba(87,206,236,.16);
+  --hud-line-strong:rgba(103,226,250,.30);
+  --hud-cyan:#6fe5fb;
+  --hud-cyan-2:#a9f2ff;
+  --hud-green:#72e5aa;
+  --hud-red:#ff6e67;
+  --hud-amber:#f2c36e;
+  --hud-text:#edf6f8;
+  --hud-sub:#9cafb6;
+  --hud-muted:#6a7c85;
+}
+
+/* ----------------------------------------------------------
+   GLOBAL SCI-FI SURFACE
+   ---------------------------------------------------------- */
+
+html,body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(28,108,132,.11),transparent 32%),
+    #010507 !important;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(76,170,194,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(76,170,194,.025) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.16) 65%,transparent);
+}
+
+/* faint center-axis line */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:1px;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(to bottom,transparent,rgba(93,212,240,.035) 18%,rgba(93,212,240,.035) 78%,transparent);
+}
+
+/* ----------------------------------------------------------
+   SCI-FI SECTION FRAME
+   ---------------------------------------------------------- */
+
+#console,
+.incident-console,
+.response-console,
+.capability-architecture,
+.formal-evidence,
+.evidence-section,
+.metrics-section,
+.medical-objects,
+.objects-section,
+.data-objects{
+  position:relative;
+}
+
+#console::marker,
+.incident-console::marker,
+.response-console::marker{display:none}
+
+/* HUD corner brackets */
+#console > :first-child::before,
+.incident-console > :first-child::before,
+.response-console > :first-child::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:48px;
+  height:18px;
+  border-left:1px solid rgba(105,229,251,.28);
+  border-top:1px solid rgba(105,229,251,.28);
+  pointer-events:none;
+}
+
+/* ----------------------------------------------------------
+   NAV
+   ---------------------------------------------------------- */
+
+.competition-nav,
+.site-nav{
+  background:rgba(1,5,8,.90)!important;
+  border-bottom:1px solid rgba(86,198,228,.09)!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.20);
+}
+
+.competition-nav a,
+.site-nav a{
+  position:relative;
+}
+
+.competition-nav a::after,
+.site-nav a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  right:50%;
+  bottom:-8px;
+  height:1px;
+  background:var(--hud-cyan);
+  transition:left .2s ease,right .2s ease;
+}
+
+.competition-nav a:hover::after,
+.site-nav a:hover::after{
+  left:18%;
+  right:18%;
+}
+
+/* ----------------------------------------------------------
+   CONSOLE HEADER
+   ---------------------------------------------------------- */
+
+.console-hero,
+.incident-hero,
+.response-hero{
+  position:relative;
+  padding-top:52px!important;
+}
+
+.console-hero::before,
+.incident-hero::before,
+.response-hero::before{
+  content:"MEDSHIELD SECURITY OPERATIONS / NODE 01";
+  display:block;
+  margin-bottom:12px;
+  color:#52afc4;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.20em;
+}
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+  text-shadow:0 0 24px rgba(103,229,251,.06);
+}
+
+/* thin telemetry line */
+.console-hero::after,
+.incident-hero::after,
+.response-hero::after{
+  content:"LIVE · CPU MODE · D1 STATEFUL";
+  justify-self:end;
+  padding:7px 11px;
+  border:1px solid rgba(105,229,251,.18);
+  border-radius:999px;
+  color:#86eafd;
+  background:rgba(50,160,186,.045);
+  font-size:6px;
+  font-weight:700;
+  letter-spacing:.14em;
+  box-shadow:inset 0 0 16px rgba(76,193,219,.025);
+}
+
+/* ----------------------------------------------------------
+   HUD PANEL LANGUAGE
+   ---------------------------------------------------------- */
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel,
+.metric-card,
+.evidence-card,
+.metrics-panel,
+.v163-block,
+.v163-decision,
+.v163-timeline,
+.v163-formal-context{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(9,26,37,.98),rgba(5,16,24,.98))!important;
+  border:1px solid rgba(91,198,227,.13)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 18px 46px rgba(0,0,0,.22)!important;
+}
+
+/* clipped HUD corners */
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+  clip-path:polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+/* top cyber rail */
+.queue-panel::after,
+.case-panel::after,
+.evidence-panel::after,
+.audit-panel::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:34%;
+  height:1px;
+  background:linear-gradient(90deg,var(--hud-cyan),transparent);
+  opacity:.6;
+  pointer-events:none;
+}
+
+/* inner scanline sweep */
+.case-panel .v163-rich-host::before,
+.evidence-panel > div::marker{
+  display:none;
+}
+
+.case-panel .v163-rich-host{
+  position:relative;
+}
+
+.case-panel .v163-rich-host::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-18px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(112,230,251,.22),transparent);
+  transform:translateY(0);
+  animation:hud-scan 5.8s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes hud-scan{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(420px)}
+}
+
+/* ----------------------------------------------------------
+   STATUS TILES
+   ---------------------------------------------------------- */
+
+.console-stats > div,
+.console-summary > div,
+.response-summary > div{
+  position:relative;
+  border-radius:8px!important;
+  background:
+    linear-gradient(180deg,#081923,#05121a)!important;
+  border:1px solid rgba(85,183,211,.11)!important;
+}
+
+.console-stats > div::before,
+.console-summary > div::before,
+.response-summary > div::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:10px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--hud-green);
+  box-shadow:0 0 10px rgba(114,229,170,.34);
+}
+
+.console-stats > div span,
+.console-summary > div span,
+.response-summary > div span{
+  padding-left:10px;
+}
+
+/* ----------------------------------------------------------
+   QUEUE
+   ---------------------------------------------------------- */
+
+.queue-panel>h2::after{
+  content:"EVENT STREAM / LIVE";
+  color:#487f8d;
+  font-size:6px;
+  letter-spacing:.16em;
+}
+
+.queue-card{
+  position:relative;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);
+  background:
+    linear-gradient(180deg,#071721,#05121a)!important;
+}
+
+.queue-card::after{
+  content:"";
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:18px;
+  height:1px;
+  background:rgba(104,220,246,.16);
+}
+
+.queue-card.active{
+  background:
+    linear-gradient(90deg,rgba(55,180,211,.12),#081924 42%,#06131c)!important;
+  box-shadow:inset 0 0 28px rgba(73,194,223,.04)!important;
+}
+
+/* ----------------------------------------------------------
+   FILTERS
+   ---------------------------------------------------------- */
+
+.v159-filter-bar{
+  position:relative;
+  border:1px solid rgba(87,188,216,.10)!important;
+  background:#041018!important;
+}
+
+.v159-filter-bar::before{
+  content:"FILTER MATRIX";
+  position:absolute;
+  top:-8px;
+  left:10px;
+  padding:0 5px;
+  background:#07151f;
+  color:#416f7b;
+  font-size:5px;
+  letter-spacing:.14em;
+}
+
+.v159-filter-bar button.active{
+  color:#a7f0ff!important;
+  border-color:rgba(102,220,246,.22)!important;
+  box-shadow:inset 0 0 14px rgba(80,199,226,.035);
+}
+
+/* ----------------------------------------------------------
+   CASE / FORENSIC
+   ---------------------------------------------------------- */
+
+.case-panel::before{
+  content:"FORENSIC NODE / CASE PROCESSOR";
+  color:#65bfd3!important;
+}
+
+.case-panel h2{
+  color:var(--hud-text)!important;
+}
+
+.case-panel [class*="step"]{
+  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);
+}
+
+/* active process segment */
+.case-panel [class*="step"].active{
+  border-color:rgba(106,225,248,.22)!important;
+  box-shadow:inset 0 0 18px rgba(64,183,211,.045);
+}
+
+/* ----------------------------------------------------------
+   V163 CONTENT
+   ---------------------------------------------------------- */
+
+.v163-block,
+.v163-decision,
+.v163-timeline,
+.v163-formal-context{
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);
+}
+
+.v163-block header span,
+.v163-timeline header span,
+.v163-formal-context span,
+.v163-decision-head span{
+  color:#5bbfd4!important;
+}
+
+.v163-driver-grid>div,
+.v163-decision-flow>div,
+.v163-life>div{
+  background:#05131c!important;
+  border-color:rgba(88,183,211,.09)!important;
+}
+
+.v163-policy-chain strong{
+  color:#99eeff!important;
+  border-color:rgba(105,227,250,.25)!important;
+  box-shadow:inset 0 0 12px rgba(70,192,220,.025);
+}
+
+.v163-life .active{
+  box-shadow:
+    inset 0 0 20px rgba(73,192,220,.05),
+    0 0 20px rgba(73,192,220,.025)!important;
+}
+
+/* ----------------------------------------------------------
+   EVIDENCE GRAPH
+   ---------------------------------------------------------- */
+
+.evidence-panel::before{
+  content:"EVIDENCE GRAPH / CHAIN OF TRUST";
+  color:#65bfd3!important;
+}
+
+.evidence-panel::after{
+  left:28px!important;
+  background:linear-gradient(
+    180deg,
+    rgba(105,229,251,.35),
+    rgba(105,229,251,.08) 85%,
+    transparent
+  )!important;
+}
+
+.evidence-panel > div{
+  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);
+}
+
+.evidence-panel > div::before{
+  width:8px!important;
+  height:8px!important;
+  background:#6fe5fb!important;
+  box-shadow:
+    0 0 0 4px #06131c,
+    0 0 13px rgba(111,229,251,.28)!important;
+}
+
+/* ----------------------------------------------------------
+   AUDIT TERMINAL
+   ---------------------------------------------------------- */
+
+.audit-panel{
+  background:
+    linear-gradient(180deg,#05131c,#02090e)!important;
+}
+
+.audit-panel::before{
+  content:"SECURE AUDIT TERMINAL";
+  display:block;
+  color:#5ab3c6;
+  font-size:6px;
+  font-weight:700;
+  letter-spacing:.16em;
+  margin-bottom:8px;
+}
+
+.audit-log{
+  position:relative;
+  color:#82a1aa!important;
+  text-shadow:0 0 12px rgba(91,198,227,.03);
+}
+
+/* ----------------------------------------------------------
+   FORMAL EVIDENCE
+   ---------------------------------------------------------- */
+
+.formal-evidence::before,
+.evidence-section::before,
+.metrics-section::before{
+  content:"VERIFIED SYSTEM TELEMETRY / FORMAL FULL RUN";
+  color:#65c8dc!important;
+}
+
+.metric-card::after,
+.evidence-card::after,
+.metrics-panel::after{
+  content:"";
+  position:absolute;
+  left:12px;
+  bottom:10px;
+  width:22px;
+  height:1px;
+  background:rgba(106,221,246,.20);
+}
+
+/* ----------------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------------- */
+
+button,
+.button,
+.btn,
+a[class*="button"]{
+  position:relative;
+  overflow:hidden;
+}
+
+button::after,
+.button::after,
+.btn::after,
+a[class*="button"]::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:-45%;
+  width:35%;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(153,239,255,.08),transparent);
+  transform:skewX(-18deg);
+  transition:left .45s ease;
+}
+
+button:hover::after,
+.button:hover::after,
+.btn:hover::after,
+a[class*="button"]:hover::after{
+  left:115%;
+}
+
+/* ----------------------------------------------------------
+   SMALL SCI-FI DATA ACCENTS
+   ---------------------------------------------------------- */
+
+.v163-formal-stats>div{
+  position:relative;
+}
+
+.v163-formal-stats>div::after{
+  content:"";
+  position:absolute;
+  left:9px;
+  right:9px;
+  bottom:4px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(100,217,244,.17),transparent);
+}
+
+.v163-formal-stats b{
+  color:#e8f4f6!important;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+
+@media(max-width:900px){
+  .queue-panel,
+  .case-panel,
+  .evidence-panel,
+  .audit-panel{
+    clip-path:none;
+  }
+
+  .case-panel .v163-rich-host::before{
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .case-panel .v163-rich-host::before{
+    animation:none!important;
+  }
+
+  button::after,
+  .button::after,
+  .btn::after,
+  a[class*="button"]::after{
+    transition:none!important;
+  }
+}

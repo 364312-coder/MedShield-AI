@@ -1,0 +1,961 @@
+﻿/* ==========================================================
+   MedShield-AI v1.5.8
+   Operate + Evidence Polish
+   ========================================================== */
+
+:root{
+  --op-bg:#02080d;
+  --op-panel:#06131d;
+  --op-panel-2:#081924;
+
+  --op-line:rgba(88,194,224,.13);
+  --op-line-strong:rgba(91,211,241,.24);
+
+  --op-cyan:#66ddf5;
+  --op-green:#6ae3a4;
+  --op-red:#ff6963;
+
+  --op-text:#edf4f6;
+  --op-sub:#9aa9af;
+  --op-muted:#6e7d85;
+}
+
+
+/* ==========================================================
+   OPERATE SURFACE
+   ========================================================== */
+
+#console,
+.incident-console,
+.response-console{
+
+  position:relative;
+
+  width:min(
+    1500px,
+    calc(100% - 42px)
+  ) !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+}
+
+
+/* subtle system boundary */
+
+#console::before,
+.incident-console::before,
+.response-console::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:60px -12px 20px;
+
+  pointer-events:none;
+
+  border:
+    1px solid rgba(82,185,214,.055);
+
+  border-radius:22px;
+
+  background:
+    radial-gradient(
+      circle at 50% 5%,
+      rgba(42,139,164,.045),
+      transparent 32%
+    );
+
+}
+
+
+/* ==========================================================
+   CONSOLE HERO
+   ========================================================== */
+
+.console-hero,
+.incident-hero,
+.response-hero{
+
+  position:relative;
+
+  z-index:2;
+
+  text-align:left !important;
+
+  padding:
+    66px 10px 26px
+    !important;
+
+}
+
+
+.console-hero .eyebrow,
+.incident-hero .eyebrow,
+.response-hero .eyebrow{
+
+  color:var(--op-cyan) !important;
+
+  font-size:9px !important;
+
+  letter-spacing:.16em !important;
+
+}
+
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+
+  max-width:760px;
+
+  margin:
+    10px 0 12px
+    !important;
+
+  font-size:
+    clamp(
+      42px,
+      4vw,
+      66px
+    ) !important;
+
+  line-height:.98 !important;
+
+  color:var(--op-text) !important;
+
+}
+
+
+.console-hero p,
+.incident-hero p,
+.response-hero p{
+
+  max-width:760px !important;
+
+  margin:
+    0 !important;
+
+  color:
+    var(--op-sub) !important;
+
+  font-size:
+    12px !important;
+
+}
+
+
+/* ==========================================================
+   TOP SYSTEM STATUS
+   ========================================================== */
+
+.console-stats,
+.console-summary,
+.response-summary{
+
+  position:relative;
+
+  z-index:2;
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(5,1fr)
+    !important;
+
+  gap:8px !important;
+
+  margin-top:
+    24px !important;
+
+}
+
+
+.console-stats > div,
+.console-summary > div,
+.response-summary > div{
+
+  min-height:
+    70px !important;
+
+  padding:
+    13px 15px
+    !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #07151f,
+      #041018
+    ) !important;
+
+  border:
+    1px solid var(--op-line)
+    !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018)
+    !important;
+
+}
+
+
+.console-stats > div:first-child,
+.console-summary > div:first-child,
+.response-summary > div:first-child{
+
+  border-color:
+    rgba(105,227,164,.19)
+    !important;
+
+}
+
+
+.console-stats strong,
+.console-summary strong,
+.response-summary strong{
+
+  color:
+    #edf5f7 !important;
+
+}
+
+
+/* ==========================================================
+   THREE-COLUMN OPERATE GRID
+   ========================================================== */
+
+.console-grid,
+.response-grid,
+.incident-grid{
+
+  position:relative;
+
+  z-index:2;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(240px,.68fr)
+    minmax(650px,1.8fr)
+    minmax(315px,.9fr)
+    !important;
+
+  gap:
+    10px !important;
+
+  align-items:
+    stretch !important;
+
+}
+
+
+/* all panels */
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+
+  background:
+    linear-gradient(
+      180deg,
+      #07151f,
+      #041019
+    ) !important;
+
+  border:
+    1px solid var(--op-line)
+    !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 18px 50px rgba(0,0,0,.20)
+    !important;
+
+}
+
+
+/* ==========================================================
+   QUEUE
+   ========================================================== */
+
+.queue-panel{
+
+  padding:
+    15px !important;
+
+}
+
+
+.queue-panel h2{
+
+  color:
+    var(--op-text) !important;
+
+}
+
+
+.queue-panel article,
+.queue-panel .incident-item{
+
+  position:relative;
+
+  margin-bottom:
+    7px !important;
+
+  padding:
+    12px !important;
+
+  background:
+    #081721 !important;
+
+  border:
+    1px solid
+    rgba(88,178,205,.11)
+    !important;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+
+}
+
+
+.queue-panel article:hover,
+.queue-panel .incident-item:hover{
+
+  transform:
+    translateX(2px);
+
+  background:
+    #0a1b26 !important;
+
+  border-color:
+    rgba(90,207,237,.22)
+    !important;
+
+}
+
+
+.queue-panel article.active,
+.queue-panel .incident-item.active,
+.queue-panel [aria-selected="true"]{
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(63,185,215,.12),
+      #081720
+    ) !important;
+
+  border-color:
+    rgba(91,210,240,.30)
+    !important;
+
+}
+
+
+/* ==========================================================
+   CASE / WORK ORDER
+   ========================================================== */
+
+.case-panel{
+
+  padding:
+    16px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #081923,
+      #05131d
+    ) !important;
+
+}
+
+
+.case-panel::before{
+
+  content:"ACTIVE WORK ORDER";
+
+  display:block;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #4faec2;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    .15em;
+
+}
+
+
+.case-panel h2{
+
+  color:
+    #eef5f7 !important;
+
+}
+
+
+/* Case metadata */
+
+.case-panel
+[class*="meta"],
+.case-panel
+[class*="summary"]{
+
+  background:
+    rgba(255,255,255,.015);
+
+}
+
+
+/* ==========================================================
+   WORKFLOW STEPS
+   ========================================================== */
+
+.case-panel
+[class*="step"]{
+
+  position:relative;
+
+  min-height:
+    50px !important;
+
+  display:flex;
+
+  align-items:center;
+
+  border-color:
+    rgba(84,176,203,.10)
+    !important;
+
+  background:
+    #06131c !important;
+
+}
+
+
+.case-panel
+[class*="step"]::before{
+
+  content:"";
+
+  flex:
+    0 0 7px;
+
+  width:7px;
+
+  height:7px;
+
+  margin-right:
+    11px;
+
+  border-radius:
+    50%;
+
+  background:
+    #42535b;
+
+}
+
+
+.case-panel
+[class*="step"].done::before,
+.case-panel
+[class*="step"][data-status="done"]::before{
+
+  background:
+    var(--op-green);
+
+  box-shadow:
+    0 0 12px
+    rgba(106,227,164,.32);
+
+}
+
+
+.case-panel
+[class*="step"].active::before{
+
+  background:
+    var(--op-cyan);
+
+  box-shadow:
+    0 0 12px
+    rgba(102,221,245,.32);
+
+}
+
+
+/* Completed step should remain quiet */
+
+.case-panel
+[class*="step"].done,
+.case-panel
+[class*="step"][data-status="done"]{
+
+  color:
+    #9eb1a7 !important;
+
+  background:
+    rgba(80,196,135,.025)
+    !important;
+
+}
+
+
+/* ==========================================================
+   EVIDENCE CHAIN
+   ========================================================== */
+
+.evidence-panel{
+
+  padding:
+    15px !important;
+
+}
+
+
+.evidence-panel::before{
+
+  content:"LIVE EVIDENCE";
+
+  display:block;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #4faec2;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    .15em;
+
+}
+
+
+.evidence-panel > div{
+
+  margin-bottom:
+    8px !important;
+
+  padding:
+    12px !important;
+
+  background:
+    #07151f !important;
+
+  border:
+    1px solid
+    rgba(83,172,199,.10)
+    !important;
+
+}
+
+
+.evidence-panel li{
+
+  margin-bottom:
+    5px !important;
+
+  color:
+    #a0adb2 !important;
+
+}
+
+
+/* ==========================================================
+   AUDIT LOG
+   ========================================================== */
+
+.audit-panel{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-top:
+    10px !important;
+
+  padding:
+    13px 15px
+    !important;
+
+}
+
+
+.audit-panel::before{
+
+  content:"IMMUTABLE EVENT TRACE";
+
+  display:block;
+
+  margin-bottom:
+    7px;
+
+  color:
+    #4faec2;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    .15em;
+
+}
+
+
+.audit-log{
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace
+    !important;
+
+  color:
+    #86969e !important;
+
+  font-size:
+    10px !important;
+
+  line-height:
+    1.7 !important;
+
+}
+
+
+/* ==========================================================
+   FORMAL EVIDENCE SURFACE
+   ========================================================== */
+
+.formal-evidence,
+.evidence-section,
+.metrics-section{
+
+  position:relative;
+
+}
+
+
+/* small system context before evidence */
+
+.formal-evidence::before,
+.evidence-section::before,
+.metrics-section::before{
+
+  content:
+    "FORMAL RUN · READ-ONLY EVIDENCE";
+
+  display:block;
+
+  margin-bottom:
+    12px;
+
+  color:
+    var(--op-cyan);
+
+  font-size:
+    8px;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    .16em;
+
+}
+
+
+/* ==========================================================
+   EVIDENCE PANELS
+   ========================================================== */
+
+.formal-evidence-grid,
+.metrics-grid,
+.evidence-grid{
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr))
+    !important;
+
+  gap:
+    10px !important;
+
+}
+
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+
+  position:relative;
+
+  padding:
+    17px !important;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #071620,
+      #041019
+    ) !important;
+
+  border:
+    1px solid var(--op-line)
+    !important;
+
+}
+
+
+/* numbered evidence block */
+
+.metric-card::before,
+.evidence-card::before,
+.metrics-panel::before{
+
+  position:absolute;
+
+  top:
+    12px;
+
+  right:
+    14px;
+
+  color:
+    rgba(100,215,240,.22);
+
+  font-size:
+    26px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    -.04em;
+
+}
+
+
+/* Give different cards subtle visual indexing */
+
+.metric-card:nth-child(1)::before,
+.evidence-card:nth-child(1)::before,
+.metrics-panel:nth-child(1)::before{
+
+  content:"01";
+
+}
+
+.metric-card:nth-child(2)::before,
+.evidence-card:nth-child(2)::before,
+.metrics-panel:nth-child(2)::before{
+
+  content:"02";
+
+}
+
+.metric-card:nth-child(3)::before,
+.evidence-card:nth-child(3)::before,
+.metrics-panel:nth-child(3)::before{
+
+  content:"03";
+
+}
+
+.metric-card:nth-child(4)::before,
+.evidence-card:nth-child(4)::before,
+.metrics-panel:nth-child(4)::before{
+
+  content:"04";
+
+}
+
+
+/* headings */
+
+.metric-card h2,
+.metric-card h3,
+.evidence-card h2,
+.evidence-card h3,
+.metrics-panel h2,
+.metrics-panel h3{
+
+  color:
+    var(--op-text) !important;
+
+}
+
+
+/* metric rows */
+
+.metric-card > div,
+.evidence-card > div,
+.metrics-panel > div{
+
+  border-color:
+    rgba(81,167,193,.085)
+    !important;
+
+}
+
+
+/* the number is evidence */
+
+.metric-card strong,
+.evidence-card strong,
+.metrics-panel strong{
+
+  color:
+    #f0f6f7 !important;
+
+}
+
+
+/* bars become secondary */
+
+.metric-bar,
+.progress-track,
+.metrics-panel .bar{
+
+  height:
+    2px !important;
+
+  margin-top:
+    7px !important;
+
+  background:
+    rgba(255,255,255,.055)
+    !important;
+
+}
+
+
+.metric-bar > i,
+.progress-track > i,
+.metrics-panel .bar > i{
+
+  background:
+    linear-gradient(
+      90deg,
+      #5cdbf4,
+      #759cff
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   SELECT EMPHASIS
+   ========================================================== */
+
+/* unseen attack detection */
+
+.metric-card strong:has(+ *),
+.evidence-card strong:has(+ *){
+
+  font-variant-numeric:
+    tabular-nums;
+
+}
+
+
+/* ==========================================================
+   OPERATE NAV STATE
+   ========================================================== */
+
+.competition-nav.operate-mode,
+.site-nav.operate-mode{
+
+  background:
+    rgba(1,6,9,.96) !important;
+
+  box-shadow:
+    0 8px 34px
+    rgba(0,0,0,.25);
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media(max-width:1150px){
+
+  .console-stats,
+  .console-summary,
+  .response-summary{
+
+    grid-template-columns:
+      repeat(3,1fr)
+      !important;
+
+  }
+
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+}
+
+
+@media(max-width:720px){
+
+  #console,
+  .incident-console,
+  .response-console{
+
+    width:
+      calc(100% - 20px)
+      !important;
+
+  }
+
+
+  .console-stats,
+  .console-summary,
+  .response-summary{
+
+    grid-template-columns:
+      1fr 1fr
+      !important;
+
+  }
+
+
+  .formal-evidence-grid,
+  .metrics-grid,
+  .evidence-grid{
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+}

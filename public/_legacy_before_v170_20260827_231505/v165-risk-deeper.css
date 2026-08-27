@@ -1,0 +1,405 @@
+﻿/* ==========================================================
+   MedShield-AI v1.6.5
+   Risk Story — Deeper Dark
+   只加深背景，不降低文字可读性
+   ========================================================== */
+
+
+/* ==========================================================
+   整个 Risk Story
+   ========================================================== */
+
+.v14-risk-story{
+
+  background:
+    radial-gradient(
+      circle at 63% 42%,
+      rgba(16,72,89,.045),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #010507 0%,
+      #000304 100%
+    ) !important;
+
+}
+
+
+/* 如果外层 shell 还有浅蓝底，一并压暗 */
+
+.showcase-shell:has(.v14-risk-story){
+
+  background:
+    linear-gradient(
+      180deg,
+      #010507,
+      #000304
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   01–05 状态轨
+   ========================================================== */
+
+.v14-story-rail{
+
+  background:
+    linear-gradient(
+      180deg,
+      #031018 0%,
+      #010609 100%
+    ) !important;
+
+  border:
+    1px solid rgba(73,166,192,.14) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.012),
+    0 14px 38px rgba(0,0,0,.42)
+    !important;
+
+}
+
+
+.v14-story-rail span{
+
+  color:
+    #53656d !important;
+
+}
+
+
+.v14-story-rail span.active{
+
+  color:
+    #8fe8fb !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(46,144,168,.10),
+      rgba(16,60,73,.06)
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   左侧标题区域
+   ========================================================== */
+
+/* 保持标题清晰，不跟着一起压黑 */
+
+.v14-risk-story
+.showcase-copy h1,
+.v14-risk-story
+.showcase-copy h2,
+.v14-risk-story
+.showcase-copy h3{
+
+  color:
+    #e5edef !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy em{
+
+  color:
+    #58bfd4 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy p{
+
+  color:
+    #83939a !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy li{
+
+  color:
+    #8c9ba1 !important;
+
+}
+
+
+/* ==========================================================
+   主 Risk Detection Console
+   ========================================================== */
+
+.v14-risk-story
+.glass-window{
+
+  background:
+    linear-gradient(
+      180deg,
+      #031019 0%,
+      #01070b 58%,
+      #000407 100%
+    ) !important;
+
+  border:
+    1px solid rgba(76,175,202,.16) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.014),
+    0 28px 70px rgba(0,0,0,.50),
+    0 0 50px rgba(29,117,139,.018)
+    !important;
+
+}
+
+
+/* ==========================================================
+   Console 内部面板
+   ========================================================== */
+
+.v14-risk-story
+.risk-panel,
+
+.v14-risk-story
+.risk-console-panel,
+
+.v14-risk-story
+.risk-inner{
+
+  background:
+    linear-gradient(
+      180deg,
+      #020b10,
+      #000407
+    ) !important;
+
+  border-color:
+    rgba(69,151,174,.11) !important;
+
+}
+
+
+/* 如果内部没有这些 class，
+   用 glass-window 内常见 div 再压一层 */
+
+.v14-risk-story
+.glass-window > div{
+
+  border-color:
+    rgba(73,157,181,.10) !important;
+
+}
+
+
+/* ==========================================================
+   风险圆环
+   ========================================================== */
+
+.risk-inner strong{
+
+  color:
+    #e85c57 !important;
+
+}
+
+
+.risk-inner span{
+
+  color:
+    #839198 !important;
+
+}
+
+
+/* ==========================================================
+   signal area
+   ========================================================== */
+
+.v14-risk-story
+[class*="signal"]{
+
+  color:
+    #66777f !important;
+
+}
+
+
+.v14-risk-story
+[class*="signal"]
+strong{
+
+  color:
+    #8c9ba1 !important;
+
+}
+
+
+/* bar 底槽 */
+
+.v14-risk-story
+[class*="bar"]{
+
+  background:
+    rgba(255,255,255,.035) !important;
+
+}
+
+
+/* ==========================================================
+   按钮
+   ========================================================== */
+
+.v14-risk-story
+.showcase-button{
+
+  background:
+    linear-gradient(
+      180deg,
+      #061018,
+      #02080c
+    ) !important;
+
+  border:
+    1px solid rgba(80,178,204,.15) !important;
+
+  color:
+    #c9d6da !important;
+
+  box-shadow:
+    none !important;
+
+}
+
+
+.v14-risk-story
+.showcase-button:hover{
+
+  background:
+    linear-gradient(
+      180deg,
+      #08151d,
+      #030a0f
+    ) !important;
+
+  border-color:
+    rgba(88,198,225,.24) !important;
+
+}
+
+
+/* ==========================================================
+   Recovery Flow
+   ========================================================== */
+
+.v14-recovery-story{
+
+  background:
+    linear-gradient(
+      180deg,
+      #031019 0%,
+      #01070b 100%
+    ) !important;
+
+  border:
+    1px solid rgba(74,165,191,.13) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.012),
+    0 18px 46px rgba(0,0,0,.32)
+    !important;
+
+}
+
+
+.v14-recovery-rail span{
+
+  background:
+    linear-gradient(
+      180deg,
+      #020b10,
+      #010609
+    ) !important;
+
+  border-color:
+    rgba(70,151,175,.09) !important;
+
+  color:
+    #728087 !important;
+
+}
+
+
+.v14-recovery-rail span.active{
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(45,142,99,.09),
+      rgba(17,58,42,.06)
+    ) !important;
+
+  border-color:
+    rgba(93,206,145,.17) !important;
+
+  color:
+    #86dda9 !important;
+
+}
+
+
+/* Recovery 连线也压暗 */
+
+.v14-recovery-rail i,
+.v14-recovery-rail::after{
+
+  opacity:
+    .55 !important;
+
+}
+
+
+/* ==========================================================
+   去掉过度蓝光
+   ========================================================== */
+
+.v14-risk-story *,
+.v14-recovery-story *{
+
+  text-shadow:
+    none;
+
+}
+
+
+/* 仅风险数值允许红色轻微 glow */
+
+.risk-inner strong{
+
+  text-shadow:
+    0 0 13px rgba(230,83,78,.12) !important;
+
+}
+
+
+/* ==========================================================
+   手机端
+   ========================================================== */
+
+@media(max-width:720px){
+
+  .v14-risk-story
+  .glass-window{
+
+    background:
+      #02090e !important;
+
+  }
+
+}

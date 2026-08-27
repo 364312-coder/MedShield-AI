@@ -1,0 +1,624 @@
+﻿/* ==========================================================
+   MedShield-AI v1.5.4 — Capability Readability Fix
+   Keep background dark, restore information contrast.
+   ========================================================== */
+
+
+/* ==========================================================
+   SECTION BACKGROUND
+   ========================================================== */
+
+.capability-architecture{
+
+  background:
+    radial-gradient(
+      circle at 50% 16%,
+      rgba(24,96,119,.075),
+      transparent 38%
+    ),
+    #010507 !important;
+
+}
+
+
+/* ==========================================================
+   CRITICAL FIX
+   Previous GSAP versions may leave opacity / visibility low.
+   ========================================================== */
+
+.capability-architecture-list,
+.capability-row,
+.capability-row .cap-index,
+.capability-row .cap-copy,
+.capability-row .cap-visual{
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+
+}
+
+.capability-row{
+
+  transform:none !important;
+
+}
+
+
+/* ==========================================================
+   ROWS
+   ========================================================== */
+
+.capability-architecture-list{
+
+  background:
+    linear-gradient(
+      180deg,
+      #06131c 0%,
+      #02090e 100%
+    ) !important;
+
+  border:
+    1px solid rgba(89,196,225,.19) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 30px 90px rgba(0,0,0,.48) !important;
+
+}
+
+
+.capability-row{
+
+  background:
+    linear-gradient(
+      90deg,
+      #07151f 0%,
+      #041017 100%
+    ) !important;
+
+  border-bottom:
+    1px solid rgba(85,185,214,.13) !important;
+
+}
+
+
+.capability-row:hover{
+
+  background:
+    linear-gradient(
+      90deg,
+      #0a1c28 0%,
+      #06141d 100%
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   NUMBER
+   ========================================================== */
+
+.cap-index{
+
+  color:#72e4fb !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(75,194,224,.15),
+      rgba(12,50,64,.55)
+    ) !important;
+
+  border:
+    1px solid rgba(91,209,238,.25) !important;
+
+  text-shadow:
+    0 0 16px rgba(91,220,246,.15) !important;
+
+}
+
+
+/* ==========================================================
+   LEFT CONTENT
+   ========================================================== */
+
+.cap-kicker{
+
+  color:#67c6da !important;
+
+  opacity:1 !important;
+
+}
+
+
+.cap-copy h3{
+
+  color:#edf5f7 !important;
+
+  opacity:1 !important;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,.38);
+
+}
+
+
+.cap-copy p{
+
+  color:#9aa9b0 !important;
+
+  opacity:1 !important;
+
+  line-height:1.72 !important;
+
+}
+
+
+/* pills */
+
+.cap-tags span{
+
+  color:#8c9ba2 !important;
+
+  opacity:1 !important;
+
+  background:
+    rgba(72,171,196,.055) !important;
+
+  border:
+    1px solid rgba(81,181,208,.15) !important;
+
+}
+
+
+/* ==========================================================
+   RIGHT VISUAL PANEL
+   ========================================================== */
+
+.cap-visual{
+
+  background:
+    linear-gradient(
+      180deg,
+      #081923 0%,
+      #031018 100%
+    ) !important;
+
+  border:
+    1px solid rgba(91,201,230,.20) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 16px 40px rgba(0,0,0,.32) !important;
+
+}
+
+
+.mini-head{
+
+  color:#79909a !important;
+
+  opacity:1 !important;
+
+}
+
+
+.mini-head b{
+
+  color:#71e1f9 !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   AI RISK VISUAL
+   ========================================================== */
+
+.risk-wave,
+.risk-wave svg{
+
+  opacity:1 !important;
+
+}
+
+
+.risk-line{
+
+  opacity:1 !important;
+
+  stroke:#66e1fa !important;
+
+  stroke-width:2 !important;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(102,225,250,.3)
+    ) !important;
+
+}
+
+
+.risk-area{
+
+  opacity:.72 !important;
+
+}
+
+
+.risk-scale{
+
+  color:#73858d !important;
+
+  opacity:1 !important;
+
+}
+
+
+.risk-scale strong{
+
+  color:#ff756f !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   POLICY
+   ========================================================== */
+
+.policy-levels{
+
+  opacity:1 !important;
+
+}
+
+
+.policy-levels span{
+
+  color:#74858c !important;
+
+  opacity:1 !important;
+
+  background:
+    #041019 !important;
+
+  border:
+    1px solid rgba(83,180,207,.14) !important;
+
+}
+
+
+.policy-levels span small{
+
+  color:#687880 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.policy-levels span.active{
+
+  color:#e1faff !important;
+
+  opacity:1 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(74,196,226,.24),
+      rgba(22,80,96,.18)
+    ) !important;
+
+  border-color:
+    rgba(91,218,246,.42) !important;
+
+  box-shadow:
+    inset 0 0 28px rgba(72,200,230,.08),
+    0 0 20px rgba(61,188,218,.07) !important;
+
+}
+
+
+.policy-equation{
+
+  color:#78888f !important;
+  opacity:1 !important;
+
+}
+
+
+.policy-equation b{
+
+  color:#70e1f8 !important;
+
+}
+
+
+/* ==========================================================
+   ACTIVE DEFENSE
+   ========================================================== */
+
+.defense-nodes,
+.defense-nodes span,
+.defense-nodes em{
+
+  opacity:1 !important;
+
+}
+
+
+.defense-nodes span{
+
+  color:#8a999f !important;
+
+}
+
+
+.defense-nodes span i{
+
+  opacity:1 !important;
+
+  background:#6ce8a7 !important;
+
+  box-shadow:
+    0 0 14px rgba(108,232,167,.4) !important;
+
+}
+
+
+.contain-bar{
+
+  opacity:1 !important;
+
+  background:
+    rgba(255,255,255,.065) !important;
+
+}
+
+
+.contain-bar i{
+
+  opacity:1 !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6be5a4,
+      #64dff5
+    ) !important;
+
+}
+
+
+/* ==========================================================
+   INTEGRITY
+   ========================================================== */
+
+.integrity-proof,
+.proof-grid,
+.proof-image,
+.proof-token,
+.proof-arrow{
+
+  opacity:1 !important;
+
+}
+
+
+.proof-image{
+
+  border-color:
+    rgba(91,204,233,.24) !important;
+
+}
+
+
+.proof-image span{
+
+  color:#758890 !important;
+
+}
+
+
+.proof-token{
+
+  color:#83edb2 !important;
+
+  background:
+    rgba(82,210,143,.065) !important;
+
+  border-color:
+    rgba(100,229,162,.25) !important;
+
+}
+
+
+.proof-token small{
+
+  color:#7e9b88 !important;
+
+}
+
+
+.proof-arrow{
+
+  color:#697b83 !important;
+
+}
+
+
+/* ==========================================================
+   BACKUP
+   ========================================================== */
+
+.backup-nodes,
+.backup-nodes span,
+.backup-nodes small,
+.backup-nodes em{
+
+  opacity:1 !important;
+
+}
+
+
+.backup-nodes span{
+
+  color:#84949b !important;
+
+}
+
+
+.backup-nodes small{
+
+  color:#718189 !important;
+
+}
+
+
+.backup-nodes .db{
+
+  border-color:
+    rgba(94,211,239,.26) !important;
+
+}
+
+
+.backup-nodes .cold{
+
+  color:#79e9ab !important;
+
+}
+
+
+/* ==========================================================
+   EVENT POOL
+   ========================================================== */
+
+.feedback-loop,
+.event-core,
+.orbit-ring,
+.orbit-node{
+
+  opacity:1 !important;
+
+}
+
+
+.event-core{
+
+  color:#85ebff !important;
+
+  border-color:
+    rgba(93,215,243,.34) !important;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(62,188,220,.20),
+      rgba(13,51,63,.08)
+    ) !important;
+
+  box-shadow:
+    0 0 32px rgba(58,193,224,.13) !important;
+
+}
+
+
+.orbit-ring{
+
+  border-color:
+    rgba(89,197,224,.17) !important;
+
+}
+
+
+.orbit-node{
+
+  color:#819198 !important;
+
+  background:#041017 !important;
+
+  border-color:
+    rgba(78,177,204,.15) !important;
+
+}
+
+
+/* ==========================================================
+   SECTION HEADER
+   ========================================================== */
+
+.capability-architecture-head{
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head .eyebrow{
+
+  color:#6ddcf4 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head h2{
+
+  color:#f0f6f7 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head h2 em{
+
+  color:#69def5 !important;
+
+  opacity:1 !important;
+
+}
+
+
+.capability-architecture-head > p{
+
+  color:#91a0a7 !important;
+
+  opacity:1 !important;
+
+}
+
+
+/* ==========================================================
+   Prevent parent fades from darkening this section
+   ========================================================== */
+
+.capability-architecture,
+.capability-architecture *{
+
+  visibility:visible !important;
+
+}
+
+
+/* do NOT globally force opacity for decorative elements */
+.capability-row .cap-copy,
+.capability-row .cap-copy *,
+.capability-row .cap-visual,
+.capability-row .mini-head,
+.capability-row .policy-levels,
+.capability-row .defense-nodes,
+.capability-row .proof-grid,
+.capability-row .backup-nodes,
+.capability-row .feedback-loop{
+
+  opacity:1 !important;
+
+}

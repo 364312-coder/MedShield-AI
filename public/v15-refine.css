@@ -1,0 +1,394 @@
+
+/* ==========================================================
+   MedShield-AI v1.5 — Narrative & Operate Refinement
+   ========================================================== */
+
+:root{
+  --v15-cyan:#61d9f2;
+  --v15-green:#6be5a4;
+  --v15-red:#ff6a65;
+  --v15-line:rgba(97,217,242,.12);
+  --v15-panel:#071119;
+}
+
+/* ----------------------------------------------------------
+   1. Hero -> Risk transition
+   ---------------------------------------------------------- */
+
+.v14-hero{
+  min-height:155vh !important;
+}
+
+.v14-hero .hero-content,
+.v14-float-card,
+.v14-runtime-strip{
+  will-change:transform,opacity;
+}
+
+.competition-marquee,
+.trust-marquee,
+.capability-marquee{
+  will-change:opacity,transform;
+}
+
+/* Risk story should arrive later and read as a new scene */
+.v14-risk-story{
+  position:relative;
+  isolation:isolate;
+}
+
+.v14-risk-story::before{
+  content:"";
+  position:absolute;
+  inset:-90px 0 auto;
+  height:200px;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.86) 62%,#020608);
+  z-index:0;
+}
+
+/* ----------------------------------------------------------
+   2. Recovery becomes a compact terminal bar
+   ---------------------------------------------------------- */
+
+.v14-recovery-story{
+  width:min(1440px,calc(100% - 56px)) !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:52px auto 82px !important;
+  padding:18px 22px !important;
+  display:block !important;
+  border:1px solid var(--v15-line);
+  border-radius:16px;
+  background:
+    linear-gradient(180deg,rgba(9,23,30,.94),rgba(4,11,15,.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 22px 70px rgba(0,0,0,.28);
+}
+
+.v14-recovery-story>.showcase-copy,
+.v14-recovery-story>.showcase-visual{
+  display:none !important;
+}
+
+.v14-recovery-rail{
+  position:static !important;
+  width:100% !important;
+  transform:none !important;
+  display:grid !important;
+  grid-template-columns:
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr) 36px
+    minmax(110px,1fr);
+  gap:7px !important;
+  align-items:center;
+}
+
+.v14-recovery-rail::before{
+  content:"SECURITY RECOVERY FLOW";
+  grid-column:1/-1;
+  margin-bottom:7px;
+  color:#4f9caf;
+  font-size:8px;
+  letter-spacing:.14em;
+}
+
+.v14-recovery-rail span{
+  min-height:46px;
+  display:grid !important;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:9px;
+  color:#69777e !important;
+  background:rgba(255,255,255,.018);
+  font-size:9px !important;
+  font-weight:600;
+}
+
+.v14-recovery-rail span.active{
+  color:#9af0ba !important;
+  border-color:rgba(107,229,164,.22);
+  background:rgba(107,229,164,.055);
+  box-shadow:inset 0 0 24px rgba(107,229,164,.03);
+}
+
+.v14-recovery-rail i{
+  width:100% !important;
+  height:1px !important;
+  background:linear-gradient(90deg,rgba(97,217,242,.08),rgba(97,217,242,.46),rgba(97,217,242,.08)) !important;
+}
+
+/* ----------------------------------------------------------
+   3. Incident console = Operate mode
+   ---------------------------------------------------------- */
+
+#console,
+.incident-console,
+.response-console{
+  scroll-margin-top:76px;
+}
+
+/* Shrink giant duplicated console hero */
+.console-hero,
+.incident-hero,
+.response-hero{
+  padding-top:90px !important;
+  padding-bottom:34px !important;
+  min-height:0 !important;
+}
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+  font-size:clamp(42px,5vw,78px) !important;
+  line-height:.98 !important;
+  letter-spacing:-.045em !important;
+}
+
+.console-hero h1:first-line,
+.incident-hero h1:first-line,
+.response-hero h1:first-line{
+  color:#eef5f7;
+}
+
+.console-hero p,
+.incident-hero p,
+.response-hero p{
+  max-width:820px !important;
+  margin-inline:auto !important;
+}
+
+/* status strip tighter */
+.console-stats,
+.console-summary,
+.response-summary{
+  gap:10px !important;
+  margin-top:26px !important;
+}
+
+.console-stats>div,
+.console-summary>div,
+.response-summary>div{
+  min-height:72px !important;
+  padding:15px 16px !important;
+}
+
+/* Operate columns */
+.console-grid,
+.response-grid,
+.incident-grid{
+  grid-template-columns:minmax(250px,.78fr) minmax(560px,1.6fr) minmax(300px,.92fr) !important;
+  gap:12px !important;
+}
+
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+  border-color:rgba(97,217,242,.10) !important;
+}
+
+.case-panel{
+  background:
+    linear-gradient(180deg,rgba(10,24,33,.97),rgba(7,17,24,.98)) !important;
+}
+
+/* Completed workflow rows: local status, not full-row neon */
+.case-panel .done,
+.case-panel [data-status="done"]{
+  background:rgba(107,229,164,.028) !important;
+  border-color:rgba(107,229,164,.15) !important;
+}
+
+/* Audit log: clearer hierarchy */
+.audit-log,
+.audit-panel{
+  font-variant-numeric:tabular-nums;
+}
+
+.audit-log .time,
+.audit-panel time{
+  color:#5a6a72 !important;
+}
+
+.audit-log .actor,
+.audit-panel strong{
+  color:#8bdff1 !important;
+}
+
+/* ----------------------------------------------------------
+   4. Medical Objects becomes asset view, not SaaS cards
+   ---------------------------------------------------------- */
+
+.medical-objects,
+.objects-section,
+.data-objects{
+  width:min(1440px,calc(100% - 56px)) !important;
+  margin-inline:auto !important;
+}
+
+.medical-objects-grid,
+.objects-grid,
+.data-object-grid{
+  display:grid !important;
+  grid-template-columns:1.25fr 1.25fr .95fr !important;
+  gap:12px !important;
+}
+
+.medical-objects-grid>*,
+.objects-grid>*,
+.data-object-grid>*{
+  min-height:260px !important;
+  border-color:rgba(97,217,242,.10) !important;
+  background:
+    linear-gradient(180deg,rgba(10,24,32,.93),rgba(6,14,20,.97)) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.02) !important;
+}
+
+.medical-objects-grid>*:nth-child(4),
+.objects-grid>*:nth-child(4),
+.data-object-grid>*:nth-child(4){
+  grid-column:1/-1 !important;
+  min-height:150px !important;
+}
+
+/* Trap should read as a policy asset */
+.medical-objects-grid>*:nth-child(3),
+.objects-grid>*:nth-child(3),
+.data-object-grid>*:nth-child(3){
+  background:
+    radial-gradient(circle at 50% 28%,rgba(255,97,91,.07),transparent 34%),
+    linear-gradient(180deg,rgba(19,18,27,.95),rgba(8,12,18,.97)) !important;
+}
+
+/* ----------------------------------------------------------
+   5. Formal Evidence: convert bars into evidence statements
+   ---------------------------------------------------------- */
+
+.formal-evidence,
+.evidence-section,
+.metrics-section{
+  width:min(1440px,calc(100% - 56px)) !important;
+  margin-inline:auto !important;
+}
+
+.formal-evidence-grid,
+.metrics-grid,
+.evidence-grid{
+  gap:12px !important;
+}
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+  border-color:rgba(97,217,242,.10) !important;
+  background:
+    linear-gradient(180deg,rgba(9,22,30,.94),rgba(6,15,21,.97)) !important;
+}
+
+/* Bars become understated evidence, not dashboard chrome */
+.metric-bar,
+.progress-track,
+.metrics-panel .bar{
+  height:3px !important;
+  border-radius:999px !important;
+  background:rgba(255,255,255,.055) !important;
+}
+
+.metric-bar>i,
+.progress-track>i,
+.metrics-panel .bar>i{
+  background:linear-gradient(90deg,#57d6f1,#77a7ff) !important;
+  box-shadow:none !important;
+}
+
+/* emphasize only the number */
+.metric-card strong,
+.evidence-card strong,
+.metrics-panel strong{
+  color:#ecf5f7 !important;
+  letter-spacing:-.025em;
+}
+
+/* ----------------------------------------------------------
+   Footer: competition work, not corporate sitemap
+   ---------------------------------------------------------- */
+
+.competition-footer{
+  padding-top:90px !important;
+}
+
+.competition-footer .footer-links,
+.competition-footer .footer-columns{
+  opacity:.58;
+}
+
+.competition-footer .footer-cta{
+  border-color:rgba(97,217,242,.10) !important;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(97,217,242,.05),transparent 34%),
+    rgba(4,10,14,.6) !important;
+}
+
+/* ----------------------------------------------------------
+   responsive
+   ---------------------------------------------------------- */
+
+@media(max-width:1100px){
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .medical-objects-grid,
+  .objects-grid,
+  .data-object-grid{
+    grid-template-columns:1fr 1fr !important;
+  }
+
+  .medical-objects-grid>*:nth-child(4),
+  .objects-grid>*:nth-child(4),
+  .data-object-grid>*:nth-child(4){
+    grid-column:auto !important;
+  }
+}
+
+@media(max-width:720px){
+  .v14-recovery-story,
+  .medical-objects,
+  .objects-section,
+  .data-objects,
+  .formal-evidence,
+  .evidence-section,
+  .metrics-section{
+    width:calc(100% - 28px) !important;
+  }
+
+  .v14-recovery-rail{
+    grid-template-columns:1fr !important;
+  }
+
+  .v14-recovery-rail i{
+    width:1px !important;
+    height:16px !important;
+    justify-self:center;
+  }
+
+  .medical-objects-grid,
+  .objects-grid,
+  .data-object-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* Operate mode nav */
+.operate-mode{
+  background:rgba(3,9,13,.86) !important;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(97,217,242,.09);
+}

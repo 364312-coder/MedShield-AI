@@ -1,0 +1,264 @@
+
+/* ==========================================================
+   MedShield-AI v1.6.9 — Root Risk Reset
+   Clean DOM section, no special transition behavior
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Entire former story wrapper becomes ordinary flow
+   ---------------------------------------------------------- */
+
+.showcase-shell:has(.v169-clean-risk){
+  position:relative !important;
+  width:100% !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:visible !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+
+  background:#010507 !important;
+}
+
+/* ----------------------------------------------------------
+   Risk section
+   ---------------------------------------------------------- */
+
+.v169-clean-risk{
+  position:relative !important;
+
+  width:min(1440px,calc(100% - 56px)) !important;
+  min-height:0 !important;
+  height:auto !important;
+
+  margin:0 auto !important;
+  padding:74px 0 58px !important;
+
+  display:grid !important;
+  grid-template-columns:minmax(360px,.9fr) minmax(560px,1.1fr) !important;
+  grid-template-rows:auto auto !important;
+  gap:24px 64px !important;
+
+  align-items:center !important;
+  overflow:visible !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+
+  background:#010507 !important;
+}
+
+/* Absolutely no transition masks */
+.v169-clean-risk::before,
+.v169-clean-risk::after{
+  display:none !important;
+  content:none !important;
+}
+
+/* ----------------------------------------------------------
+   Rail
+   ---------------------------------------------------------- */
+
+.v169-clean-risk .v14-story-rail{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+
+  grid-column:1 / -1 !important;
+  grid-row:1 !important;
+
+  width:min(820px,74%) !important;
+  margin:0 auto 8px !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+
+  background:#05131c !important;
+  border:1px solid rgba(87,190,219,.16) !important;
+}
+
+/* ----------------------------------------------------------
+   Copy
+   ---------------------------------------------------------- */
+
+.v169-clean-risk > .showcase-copy{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+
+  grid-column:1 !important;
+  grid-row:2 !important;
+
+  margin:0 !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+}
+
+.v169-clean-risk .showcase-copy h1,
+.v169-clean-risk .showcase-copy h2,
+.v169-clean-risk .showcase-copy h3{
+  color:#eef5f7 !important;
+  opacity:1 !important;
+}
+
+.v169-clean-risk .showcase-copy em{
+  color:#68dcf4 !important;
+}
+
+.v169-clean-risk .showcase-copy p{
+  color:#9aa9af !important;
+}
+
+.v169-clean-risk .showcase-copy li{
+  color:#9aa9af !important;
+}
+
+.v169-clean-risk .showcase-copy .eyebrow,
+.v169-clean-risk .showcase-copy [class*="kicker"]{
+  color:#69def6 !important;
+}
+
+/* ----------------------------------------------------------
+   Visual
+   ---------------------------------------------------------- */
+
+.v169-clean-risk > .showcase-visual{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+
+  grid-column:2 !important;
+  grid-row:2 !important;
+
+  width:100% !important;
+  margin:0 !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+}
+
+.v169-clean-risk .glass-window{
+  width:100% !important;
+  min-height:420px !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+
+  background:
+    linear-gradient(180deg,#06151e,#02090e) !important;
+
+  border:
+    1px solid rgba(88,193,221,.18) !important;
+}
+
+/* ----------------------------------------------------------
+   Recovery also becomes ordinary content
+   ---------------------------------------------------------- */
+
+.v169-clean-recovery{
+  position:relative !important;
+
+  width:min(1360px,calc(100% - 80px)) !important;
+  min-height:0 !important;
+  height:auto !important;
+
+  margin:0 auto 62px !important;
+  padding:16px 20px !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  transform:none !important;
+
+  background:
+    linear-gradient(180deg,#06151e,#02090e) !important;
+
+  border:
+    1px solid rgba(87,188,216,.16) !important;
+}
+
+/* ----------------------------------------------------------
+   Make brightness match Core Capabilities
+   ---------------------------------------------------------- */
+
+.v169-clean-risk *,
+.v169-clean-recovery *{
+  visibility:visible !important;
+}
+
+.v169-clean-risk .glass-window h1,
+.v169-clean-risk .glass-window h2,
+.v169-clean-risk .glass-window h3,
+.v169-clean-risk .glass-window h4,
+.v169-clean-risk .glass-window strong{
+  opacity:1 !important;
+}
+
+.v169-clean-recovery .v14-recovery-rail span{
+  opacity:1 !important;
+  color:#83949b !important;
+}
+
+.v169-clean-recovery .v14-recovery-rail span.active{
+  color:#8ee8ae !important;
+}
+
+/* ----------------------------------------------------------
+   Core Capabilities follows immediately
+   ---------------------------------------------------------- */
+
+.v169-clean-recovery + .capability-architecture,
+.showcase-shell:has(.v169-clean-risk) + .capability-architecture{
+  margin-top:0 !important;
+}
+
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
+
+@media(max-width:1100px){
+  .v169-clean-risk{
+    grid-template-columns:1fr !important;
+    padding:60px 0 50px !important;
+  }
+
+  .v169-clean-risk > .showcase-copy{
+    grid-column:1 !important;
+    grid-row:2 !important;
+  }
+
+  .v169-clean-risk > .showcase-visual{
+    grid-column:1 !important;
+    grid-row:3 !important;
+  }
+
+  .v169-clean-risk .v14-story-rail{
+    width:92% !important;
+  }
+}
+
+@media(max-width:720px){
+  .v169-clean-risk{
+    width:calc(100% - 28px) !important;
+  }
+
+  .v169-clean-recovery{
+    width:calc(100% - 28px) !important;
+  }
+}

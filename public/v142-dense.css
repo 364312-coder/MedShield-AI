@@ -1,0 +1,590 @@
+﻿/* ==========================================================
+   MedShield-AI v1.4.2 Dense System UI
+   ========================================================== */
+
+:root{
+  --v142-bg:#020608;
+  --v142-panel:#071016;
+  --v142-panel-2:#09141b;
+  --v142-line:rgba(94,201,230,.14);
+  --v142-line-soft:rgba(255,255,255,.07);
+  --v142-cyan:#55d8f5;
+  --v142-cyan-soft:#8be8fb;
+  --v142-green:#66e6a2;
+  --v142-red:#ff5f59;
+  --v142-text:#edf3f5;
+  --v142-muted:#7e8b92;
+}
+
+/* -------------------------
+   Global readability
+   ------------------------- */
+
+body{
+  background:
+    radial-gradient(circle at 50% 8%,rgba(53,160,188,.065),transparent 30%),
+    #020608 !important;
+}
+
+body::before{
+  opacity:.38 !important;
+}
+
+.competition-main,
+.capability-architecture,
+.showcase-shell{
+  color:var(--v142-text);
+}
+
+/* ==========================================================
+   HERO: brighter, denser, less empty
+   ========================================================== */
+
+.v14-hero{
+  min-height:145vh !important;
+}
+
+.v14-hero-stage{
+  background:
+    radial-gradient(circle at 50% 43%,rgba(51,173,205,.08),transparent 33%),
+    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.28));
+}
+
+.v14-hero .hero-content{
+  width:min(980px,calc(100% - 48px)) !important;
+}
+
+.v14-hero .hero-badge{
+  opacity:.95 !important;
+  color:#8fdff2 !important;
+  border-color:rgba(85,216,245,.22) !important;
+  background:rgba(5,16,21,.72) !important;
+}
+
+.v14-hero h1{
+  margin-top:20px !important;
+  color:#f7fbfc !important;
+  font-size:clamp(72px,8vw,132px) !important;
+  line-height:.92 !important;
+  letter-spacing:-.065em !important;
+  text-shadow:
+    0 0 42px rgba(79,208,240,.075),
+    0 14px 80px rgba(0,0,0,.55);
+}
+
+.v14-hero .hero-subtitle{
+  margin-top:22px !important;
+  color:#dce8eb !important;
+  font-size:clamp(18px,1.55vw,26px) !important;
+}
+
+.v14-hero .hero-copy{
+  max-width:820px !important;
+  color:#829097 !important;
+  opacity:1 !important;
+  font-size:13px !important;
+  line-height:1.9 !important;
+}
+
+.v14-runtime-strip{
+  margin-top:28px !important;
+  border-color:rgba(85,216,245,.13) !important;
+  background:rgba(5,14,19,.74) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 18px 50px rgba(0,0,0,.24);
+}
+
+.v14-runtime-strip span{
+  color:#728087 !important;
+}
+
+.v14-runtime-strip b{
+  color:#dff4f8 !important;
+}
+
+.v14-float-card{
+  border-color:rgba(85,216,245,.13) !important;
+  background:
+    linear-gradient(180deg,rgba(11,26,33,.91),rgba(4,10,14,.91)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    0 25px 80px rgba(0,0,0,.4),
+    0 0 45px rgba(42,177,210,.035) !important;
+}
+
+.threat-card strong{
+  color:var(--v142-red) !important;
+  text-shadow:0 0 18px rgba(255,95,89,.15);
+}
+
+.system-card b{
+  color:var(--v142-green) !important;
+}
+
+/* ==========================================================
+   CAPABILITY ARCHITECTURE
+   ========================================================== */
+
+.capability-architecture{
+  width:min(1440px,calc(100% - 56px)) !important;
+  padding:92px 0 96px !important;
+}
+
+.capability-architecture::before{
+  inset:20px 8% auto !important;
+  height:560px !important;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(69,200,231,.085),transparent 60%) !important;
+}
+
+.capability-architecture-head{
+  grid-template-columns:minmax(520px,1.1fr) minmax(360px,.78fr) !important;
+  gap:70px !important;
+  padding:0 18px 34px !important;
+  border-bottom:1px solid rgba(85,216,245,.13) !important;
+}
+
+.capability-architecture-head .eyebrow{
+  color:#55d8f5 !important;
+  font-size:10px !important;
+  letter-spacing:.14em !important;
+}
+
+.capability-architecture-head h2{
+  max-width:820px !important;
+  margin-top:14px !important;
+  color:#f1f5f6 !important;
+  font-size:clamp(38px,4.1vw,66px) !important;
+  line-height:1.04 !important;
+  letter-spacing:-.045em !important;
+}
+
+.capability-architecture-head h2 br{
+  display:none !important;
+}
+
+.capability-architecture-head h2 em{
+  display:block !important;
+  margin-top:3px !important;
+  color:#62def8 !important;
+}
+
+.capability-architecture-head > p{
+  color:#8a969c !important;
+  font-size:12px !important;
+  line-height:1.85 !important;
+}
+
+/* -------------------------
+   Six capability rows
+   ------------------------- */
+
+.capability-architecture-list{
+  margin-top:16px !important;
+  border:
+    1px solid rgba(85,216,245,.11);
+  border-radius:20px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(8,20,27,.86),rgba(4,10,14,.82));
+  box-shadow:
+    0 35px 110px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.capability-row{
+  min-height:128px !important;
+  grid-template-columns:80px minmax(360px,.95fr) minmax(460px,1.1fr) !important;
+  gap:30px !important;
+  padding:18px 24px 18px 18px !important;
+  opacity:1 !important;
+  transform:none !important;
+  background:
+    linear-gradient(90deg,rgba(7,18,24,.98),rgba(5,12,17,.90)) !important;
+  border-bottom:1px solid rgba(85,216,245,.09) !important;
+}
+
+.capability-row:last-child{
+  border-bottom:0 !important;
+}
+
+.capability-row:hover{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11,30,39,.98),
+      rgba(7,19,26,.95)
+    ) !important;
+}
+
+.cap-index{
+  width:62px !important;
+  height:62px !important;
+  display:grid !important;
+  place-items:center !important;
+  align-self:center !important;
+  padding:0 !important;
+  border:
+    1px solid rgba(85,216,245,.14);
+  border-radius:10px;
+  color:#5fe0fb !important;
+  background:
+    linear-gradient(135deg,rgba(85,216,245,.10),rgba(85,216,245,.025));
+  font-size:22px !important;
+  font-weight:650 !important;
+  letter-spacing:.06em !important;
+  box-shadow:
+    inset 0 0 30px rgba(85,216,245,.035),
+    0 12px 30px rgba(0,0,0,.22);
+}
+
+.cap-kicker{
+  color:#4ea6ba !important;
+  font-size:8px !important;
+  font-weight:600;
+}
+
+.cap-copy h3{
+  margin:5px 0 6px !important;
+  color:#edf4f6 !important;
+  font-size:22px !important;
+}
+
+.cap-copy p{
+  max-width:650px !important;
+  color:#7f8c92 !important;
+  font-size:11px !important;
+  line-height:1.65 !important;
+}
+
+.cap-tags{
+  margin-top:9px !important;
+}
+
+.cap-tags span{
+  padding:3px 7px !important;
+  border-color:rgba(85,216,245,.09) !important;
+  color:#72858d !important;
+  background:rgba(85,216,245,.025) !important;
+}
+
+/* -------------------------
+   right visual modules
+   ------------------------- */
+
+.cap-visual{
+  min-height:86px !important;
+  align-self:center !important;
+  padding:10px 13px !important;
+  border-color:rgba(85,216,245,.13) !important;
+  border-radius:10px !important;
+  background:
+    linear-gradient(180deg,rgba(10,26,34,.84),rgba(5,13,18,.92)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.02),
+    0 12px 34px rgba(0,0,0,.23) !important;
+}
+
+.mini-head{
+  color:#52656d !important;
+}
+
+.mini-head b{
+  color:#5eddf7 !important;
+}
+
+/* Risk */
+.risk-wave svg{
+  height:43px !important;
+}
+
+.risk-line{
+  stroke:#60ddf8 !important;
+  stroke-width:1.8 !important;
+  filter:drop-shadow(0 0 5px rgba(96,221,248,.26));
+}
+
+.risk-scale strong{
+  color:#ff716b !important;
+}
+
+/* Policy */
+.policy-levels{
+  gap:7px !important;
+}
+
+.policy-levels span{
+  padding:7px 5px !important;
+  background:rgba(0,0,0,.12);
+}
+
+.policy-levels .active{
+  color:#c6f7ff !important;
+  border-color:rgba(85,216,245,.34) !important;
+  background:
+    linear-gradient(180deg,rgba(67,207,238,.19),rgba(67,207,238,.07)) !important;
+  box-shadow:
+    inset 0 0 24px rgba(72,212,242,.08),
+    0 0 20px rgba(72,212,242,.06) !important;
+}
+
+.policy-equation b{
+  color:#62def8 !important;
+}
+
+/* Defense */
+.defense-nodes span i{
+  background:#61e3a0 !important;
+  box-shadow:
+    0 0 13px rgba(97,227,160,.32) !important;
+}
+
+.contain-bar i{
+  background:
+    linear-gradient(90deg,#5be39d,#59d8f5) !important;
+}
+
+/* Integrity */
+.proof-token{
+  border-color:rgba(92,226,157,.2) !important;
+  color:#72e7a9 !important;
+  background:rgba(73,219,145,.035);
+}
+
+/* Backup */
+.backup-nodes .cold{
+  color:#70e4a6 !important;
+}
+
+/* Event Pool */
+.event-core{
+  border-color:rgba(85,216,245,.27) !important;
+  color:#7be7ff !important;
+  background:
+    radial-gradient(circle,rgba(85,216,245,.16),rgba(85,216,245,.025)) !important;
+  box-shadow:
+    0 0 28px rgba(85,216,245,.11);
+}
+
+.orbit-ring{
+  border-color:rgba(85,216,245,.12) !important;
+}
+
+/* ==========================================================
+   RECOVERY STORY
+   Kill the huge empty 200vh scene
+   Turn it into a compact workflow console
+   ========================================================== */
+
+.v14-recovery-story{
+  width:min(1440px,calc(100% - 56px)) !important;
+  min-height:0 !important;
+  height:auto !important;
+  margin:74px auto 90px !important;
+  padding:26px 28px !important;
+
+  display:grid !important;
+  grid-template-columns:1fr !important;
+
+  border:
+    1px solid rgba(85,216,245,.12);
+  border-radius:18px;
+
+  background:
+    linear-gradient(180deg,rgba(8,21,28,.91),rgba(4,11,15,.93));
+
+  box-shadow:
+    0 32px 100px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.v14-recovery-story > .showcase-copy,
+.v14-recovery-story > .showcase-visual{
+  position:static !important;
+  top:auto !important;
+}
+
+/* hide old large recovery presentation,
+   keep only the process strip */
+.v14-recovery-story > .showcase-copy,
+.v14-recovery-story > .showcase-visual{
+  display:none !important;
+}
+
+.v14-recovery-rail{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  transform:none !important;
+
+  width:100% !important;
+  min-height:74px;
+
+  display:grid !important;
+  grid-template-columns:
+    minmax(110px,1fr)
+    44px
+    minmax(110px,1fr)
+    44px
+    minmax(110px,1fr)
+    44px
+    minmax(110px,1fr)
+    44px
+    minmax(110px,1fr);
+
+  gap:8px !important;
+  align-items:center !important;
+}
+
+.v14-recovery-rail span{
+  min-height:50px;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid rgba(255,255,255,.065);
+
+  border-radius:10px;
+
+  color:#69777e !important;
+  background:rgba(255,255,255,.018);
+
+  font-size:10px !important;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+.v14-recovery-rail span.active{
+  color:#9bf1ba !important;
+  border-color:rgba(99,229,160,.22);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(81,221,147,.09),
+      rgba(81,221,147,.025)
+    );
+  box-shadow:
+    inset 0 0 26px rgba(80,220,146,.035);
+}
+
+.v14-recovery-rail i{
+  width:100% !important;
+  height:1px !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(85,216,245,.13),
+      rgba(85,216,245,.55),
+      rgba(85,216,245,.13)
+    ) !important;
+}
+
+/* ==========================================================
+   Risk Story
+   Reduce over-long pinned space
+   ========================================================== */
+
+@media(min-width:981px){
+
+  .v14-risk-story{
+    min-height:185vh !important;
+  }
+
+  .v14-risk-story > .showcase-copy,
+  .v14-risk-story > .showcase-visual{
+    top:112px !important;
+  }
+
+}
+
+/* ==========================================================
+   General section rhythm
+   ========================================================== */
+
+.showcase-shell{
+  padding-top:82px !important;
+  padding-bottom:82px !important;
+}
+
+.capability-architecture + *{
+  margin-top:0 !important;
+}
+
+/* ==========================================================
+   responsive
+   ========================================================== */
+
+@media(max-width:1100px){
+
+  .capability-architecture-head{
+    grid-template-columns:1fr !important;
+    gap:20px !important;
+  }
+
+  .capability-row{
+    grid-template-columns:62px 1fr !important;
+  }
+
+  .cap-visual{
+    grid-column:2 !important;
+  }
+
+}
+
+@media(max-width:720px){
+
+  .capability-architecture{
+    width:calc(100% - 28px) !important;
+    padding:68px 0 !important;
+  }
+
+  .capability-architecture-head{
+    padding:0 4px 28px !important;
+  }
+
+  .capability-architecture-head h2{
+    font-size:34px !important;
+  }
+
+  .capability-row{
+    grid-template-columns:1fr !important;
+    gap:13px !important;
+    padding:20px 16px !important;
+  }
+
+  .cap-index{
+    width:48px !important;
+    height:48px !important;
+    font-size:17px !important;
+  }
+
+  .cap-visual{
+    grid-column:1 !important;
+  }
+
+  .v14-recovery-story{
+    width:calc(100% - 28px) !important;
+    padding:18px !important;
+  }
+
+  .v14-recovery-rail{
+    grid-template-columns:1fr !important;
+  }
+
+  .v14-recovery-rail i{
+    width:1px !important;
+    height:20px !important;
+    justify-self:center;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+  .capability-row,
+  .cap-visual{
+    opacity:1 !important;
+    transform:none !important;
+  }
+}

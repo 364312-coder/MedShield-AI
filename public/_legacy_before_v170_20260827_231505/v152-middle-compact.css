@@ -1,0 +1,165 @@
+
+/* ==========================================================
+   MedShield-AI v1.5.2 — Middle Compact
+   Only compress the Risk Story middle section.
+   ========================================================== */
+
+/* Kill the oversized scroll-stage behavior from earlier versions */
+.v14-risk-story{
+  min-height:0 !important;
+  height:auto !important;
+  margin:0 auto !important;
+  padding:42px 0 54px !important;
+
+  display:grid !important;
+  grid-template-columns:minmax(360px,.9fr) minmax(520px,1.1fr) !important;
+  grid-template-rows:auto auto !important;
+  column-gap:54px !important;
+  row-gap:22px !important;
+
+  align-items:center !important;
+  overflow:visible !important;
+}
+
+/* The 01–05 rail becomes part of normal document flow */
+.v14-story-rail{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  transform:none !important;
+
+  grid-column:1 / -1 !important;
+  grid-row:1 !important;
+
+  width:min(780px,76%) !important;
+  margin:0 auto 4px !important;
+
+  z-index:4 !important;
+}
+
+/* No sticky cards here anymore */
+.v14-risk-story > .showcase-copy,
+.v14-risk-story > .showcase-visual{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+
+  grid-row:2 !important;
+
+  margin:0 !important;
+
+  align-self:center !important;
+
+  opacity:1 !important;
+  transform:none !important;
+}
+
+/* Left copy gets denser */
+.v14-risk-story > .showcase-copy{
+  grid-column:1 !important;
+  padding-left:8px !important;
+}
+
+.v14-risk-story > .showcase-copy h2,
+.v14-risk-story > .showcase-copy h3{
+  margin-top:0 !important;
+  margin-bottom:12px !important;
+}
+
+.v14-risk-story > .showcase-copy p{
+  max-width:560px !important;
+  margin-bottom:14px !important;
+  line-height:1.7 !important;
+}
+
+/* Right mockup fills more of the available width */
+.v14-risk-story > .showcase-visual{
+  grid-column:2 !important;
+  width:100% !important;
+}
+
+.v14-risk-story .glass-window{
+  width:100% !important;
+  min-height:330px !important;
+  margin:0 !important;
+}
+
+/* Remove the oversized visual transition mask above the section */
+.v14-risk-story::before{
+  height:86px !important;
+  inset:-44px 0 auto !important;
+}
+
+/* Tighten the section immediately above and below */
+.v14-hero + .showcase-shell,
+.v14-risk-story + .v14-recovery-story{
+  margin-top:0 !important;
+}
+
+.v14-recovery-story{
+  margin-top:20px !important;
+}
+
+/* If the section is nested in showcase shell, reduce shell whitespace */
+.showcase-shell:has(.v14-risk-story){
+  padding-top:30px !important;
+  padding-bottom:28px !important;
+}
+
+/* Keep motion scene readable on wide displays */
+@media(min-width:1400px){
+  .v14-risk-story{
+    grid-template-columns:minmax(390px,.84fr) minmax(620px,1.16fr) !important;
+    column-gap:68px !important;
+    padding-top:46px !important;
+    padding-bottom:58px !important;
+  }
+
+  .v14-risk-story .glass-window{
+    min-height:350px !important;
+  }
+}
+
+/* Tablet */
+@media(max-width:1100px){
+  .v14-risk-story{
+    grid-template-columns:1fr !important;
+    row-gap:18px !important;
+    padding:34px 0 44px !important;
+  }
+
+  .v14-story-rail{
+    width:min(820px,92%) !important;
+  }
+
+  .v14-risk-story > .showcase-copy,
+  .v14-risk-story > .showcase-visual{
+    grid-column:1 !important;
+  }
+
+  .v14-risk-story > .showcase-copy{
+    max-width:780px;
+    margin:0 auto !important;
+  }
+
+  .v14-risk-story > .showcase-visual{
+    max-width:900px;
+    margin:0 auto !important;
+  }
+}
+
+/* Mobile */
+@media(max-width:720px){
+  .v14-risk-story{
+    padding:24px 14px 34px !important;
+  }
+
+  .v14-story-rail{
+    width:100% !important;
+    margin-bottom:0 !important;
+  }
+
+  .v14-risk-story .glass-window{
+    min-height:260px !important;
+  }
+}

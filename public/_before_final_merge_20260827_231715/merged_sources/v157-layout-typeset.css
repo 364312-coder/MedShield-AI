@@ -1,0 +1,1051 @@
+﻿/* ==========================================================
+   MedShield-AI v1.5.7
+   Layout + Typeset Refinement
+   ----------------------------------------------------------
+   No animation changes.
+   No backend changes.
+   ========================================================== */
+
+:root{
+  --layout-max:1440px;
+  --content-max:1220px;
+
+  --space-section:88px;
+  --space-section-tight:64px;
+
+  --text-primary:#eef4f6;
+  --text-secondary:#9aa8ae;
+  --text-muted:#6e7d84;
+
+  --line-soft:rgba(85,185,214,.10);
+}
+
+
+/* ==========================================================
+   GLOBAL WIDTH SYSTEM
+   ========================================================== */
+
+.competition-main,
+.showcase-shell,
+.capability-architecture,
+.medical-objects,
+.objects-section,
+.data-objects,
+.event-samples,
+.samples-section,
+.formal-evidence,
+.evidence-section,
+.metrics-section,
+.competition-faq{
+
+  width:min(
+    var(--layout-max),
+    calc(100% - 56px)
+  ) !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+}
+
+
+/* ==========================================================
+   GLOBAL SECTION RHYTHM
+   ========================================================== */
+
+section{
+
+  scroll-margin-top:80px;
+
+}
+
+
+.showcase-shell,
+.medical-objects,
+.objects-section,
+.data-objects,
+.event-samples,
+.samples-section,
+.formal-evidence,
+.evidence-section,
+.metrics-section,
+.competition-faq{
+
+  padding-top:
+    var(--space-section) !important;
+
+  padding-bottom:
+    var(--space-section) !important;
+
+}
+
+
+/* Tight transition between strongly related sections */
+
+.v14-risk-story{
+
+  padding-bottom:
+    42px !important;
+
+}
+
+
+.v14-recovery-story{
+
+  margin-bottom:
+    62px !important;
+
+}
+
+
+.capability-architecture{
+
+  padding-top:
+    68px !important;
+
+  padding-bottom:
+    78px !important;
+
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY SYSTEM
+   ========================================================== */
+
+/*
+   Level 1:
+   Hero only
+*/
+
+.v14-hero h1{
+
+  font-size:
+    clamp(
+      78px,
+      8vw,
+      132px
+    ) !important;
+
+  line-height:
+    .92 !important;
+
+  letter-spacing:
+    -.065em !important;
+
+}
+
+
+/*
+   Level 2:
+   major narrative section titles
+*/
+
+.capability-architecture-head h2,
+.medical-objects h2,
+.objects-section h2,
+.data-objects h2,
+.event-samples h2,
+.samples-section h2,
+.formal-evidence h2,
+.evidence-section h2,
+.metrics-section h2,
+.competition-faq h2{
+
+  font-size:
+    clamp(
+      42px,
+      4.4vw,
+      68px
+    ) !important;
+
+  line-height:
+    1.04 !important;
+
+  letter-spacing:
+    -.045em !important;
+
+  font-weight:
+    540 !important;
+
+}
+
+
+/*
+   Level 3:
+   Risk Story narrative
+*/
+
+.v14-risk-story
+.showcase-copy h2{
+
+  font-size:
+    clamp(
+      42px,
+      4.1vw,
+      64px
+    ) !important;
+
+  line-height:
+    1.03 !important;
+
+  letter-spacing:
+    -.045em !important;
+
+}
+
+
+/*
+   Level 4:
+   functional headings
+*/
+
+.cap-copy h3,
+.console-panel h2,
+.queue-panel h2,
+.case-panel h2,
+.evidence-panel h2,
+.audit-panel h2{
+
+  font-size:
+    clamp(
+      20px,
+      1.7vw,
+      26px
+    ) !important;
+
+  line-height:
+    1.2 !important;
+
+  letter-spacing:
+    -.02em !important;
+
+}
+
+
+/* ==========================================================
+   EYEBROW / KICKER SYSTEM
+   ========================================================== */
+
+.eyebrow,
+.cap-kicker,
+.section-kicker,
+[class*="eyebrow"]{
+
+  font-size:
+    9px !important;
+
+  line-height:
+    1.25 !important;
+
+  letter-spacing:
+    .15em !important;
+
+  font-weight:
+    650 !important;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+/* ==========================================================
+   PARAGRAPH SYSTEM
+   ========================================================== */
+
+p{
+
+  text-wrap:
+    pretty;
+
+}
+
+
+.hero-copy{
+
+  max-width:
+    780px !important;
+
+  font-size:
+    13px !important;
+
+  line-height:
+    1.85 !important;
+
+}
+
+
+.capability-architecture-head > p{
+
+  max-width:
+    520px !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.8 !important;
+
+}
+
+
+.cap-copy p{
+
+  max-width:
+    610px !important;
+
+  font-size:
+    11px !important;
+
+  line-height:
+    1.7 !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy p{
+
+  max-width:
+    570px !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.78 !important;
+
+}
+
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+
+.v14-hero .hero-subtitle{
+
+  margin-top:
+    20px !important;
+
+  font-size:
+    clamp(
+      18px,
+      1.5vw,
+      25px
+    ) !important;
+
+}
+
+
+.v14-hero .hero-copy{
+
+  margin-top:
+    18px !important;
+
+}
+
+
+.v14-hero .hero-actions{
+
+  margin-top:
+    26px !important;
+
+}
+
+
+.v14-runtime-strip{
+
+  margin-top:
+    26px !important;
+
+}
+
+
+/* ==========================================================
+   RISK STORY
+   ========================================================== */
+
+.v14-risk-story{
+
+  column-gap:
+    64px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy{
+
+  padding-left:
+    4px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy ul{
+
+  margin-top:
+    20px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-copy li{
+
+  margin-bottom:
+    9px !important;
+
+}
+
+
+.v14-risk-story
+.showcase-button{
+
+  margin-top:
+    22px !important;
+
+}
+
+
+/* ==========================================================
+   RECOVERY
+   ========================================================== */
+
+.v14-recovery-story{
+
+  padding:
+    15px 20px !important;
+
+}
+
+
+.v14-recovery-rail::before{
+
+  font-size:
+    8px !important;
+
+  letter-spacing:
+    .15em !important;
+
+}
+
+
+.v14-recovery-rail span{
+
+  min-height:
+    42px !important;
+
+  font-size:
+    9px !important;
+
+}
+
+
+/* ==========================================================
+   CORE CAPABILITIES
+   ========================================================== */
+
+.capability-architecture-head{
+
+  grid-template-columns:
+    minmax(0,1.18fr)
+    minmax(360px,.72fr)
+    !important;
+
+  gap:
+    76px !important;
+
+}
+
+
+.capability-row{
+
+  min-height:
+    112px !important;
+
+  grid-template-columns:
+    72px
+    minmax(360px,.96fr)
+    minmax(440px,1.04fr)
+    !important;
+
+  gap:
+    28px !important;
+
+  padding:
+    14px 22px
+    14px 16px
+    !important;
+
+}
+
+
+.cap-index{
+
+  width:
+    56px !important;
+
+  height:
+    56px !important;
+
+  font-size:
+    19px !important;
+
+}
+
+
+.cap-copy h3{
+
+  margin:
+    5px 0 7px
+    !important;
+
+}
+
+
+.cap-tags{
+
+  margin-top:
+    10px !important;
+
+}
+
+
+/* visual consistency */
+
+.cap-visual{
+
+  min-height:
+    82px !important;
+
+  padding:
+    11px 14px
+    !important;
+
+}
+
+
+/* ==========================================================
+   INCIDENT CONSOLE
+   Operate mode should be denser than marketing surfaces
+   ========================================================== */
+
+#console,
+.incident-console,
+.response-console{
+
+  --console-gap:10px;
+
+}
+
+
+.console-hero,
+.incident-hero,
+.response-hero{
+
+  padding-top:
+    72px !important;
+
+  padding-bottom:
+    26px !important;
+
+}
+
+
+.console-hero h1,
+.incident-hero h1,
+.response-hero h1{
+
+  font-size:
+    clamp(
+      40px,
+      4.5vw,
+      70px
+    ) !important;
+
+  margin-bottom:
+    12px !important;
+
+}
+
+
+.console-hero p,
+.incident-hero p,
+.response-hero p{
+
+  max-width:
+    780px !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.7 !important;
+
+}
+
+
+.console-stats,
+.console-summary,
+.response-summary{
+
+  margin-top:
+    20px !important;
+
+}
+
+
+.console-grid,
+.response-grid,
+.incident-grid{
+
+  grid-template-columns:
+    minmax(230px,.72fr)
+    minmax(620px,1.72fr)
+    minmax(300px,.88fr)
+    !important;
+
+  gap:
+    var(--console-gap)
+    !important;
+
+}
+
+
+.queue-panel,
+.case-panel,
+.evidence-panel{
+
+  padding:
+    16px !important;
+
+}
+
+
+.queue-panel h2,
+.case-panel h2,
+.evidence-panel h2{
+
+  margin-bottom:
+    14px !important;
+
+}
+
+
+/* Event queue */
+
+.queue-panel article,
+.queue-panel .incident-item{
+
+  padding:
+    13px !important;
+
+  margin-bottom:
+    8px !important;
+
+}
+
+
+/* Main work order */
+
+.case-panel
+[class*="step"]{
+
+  min-height:
+    52px !important;
+
+}
+
+
+/* Evidence chain */
+
+.evidence-panel
+> div{
+
+  margin-bottom:
+    10px !important;
+
+}
+
+
+/* ==========================================================
+   AUDIT LOG
+   ========================================================== */
+
+.audit-panel{
+
+  margin-top:
+    10px !important;
+
+}
+
+
+.audit-log{
+
+  line-height:
+    1.65 !important;
+
+  font-size:
+    11px !important;
+
+}
+
+
+/* ==========================================================
+   MEDICAL OBJECTS
+   ========================================================== */
+
+.medical-objects-grid,
+.objects-grid,
+.data-object-grid{
+
+  gap:
+    12px !important;
+
+}
+
+
+.medical-objects-grid > *,
+.objects-grid > *,
+.data-object-grid > *{
+
+  padding:
+    22px !important;
+
+}
+
+
+/* ==========================================================
+   EVENT SAMPLES
+   ========================================================== */
+
+.event-samples
+.section-header,
+.samples-section
+.section-header{
+
+  margin-bottom:
+    30px !important;
+
+}
+
+
+.event-samples table,
+.samples-section table{
+
+  font-size:
+    11px !important;
+
+}
+
+
+.event-samples th,
+.samples-section th{
+
+  height:
+    46px !important;
+
+}
+
+
+.event-samples td,
+.samples-section td{
+
+  height:
+    48px !important;
+
+}
+
+
+/* ==========================================================
+   FORMAL EVIDENCE
+   ========================================================== */
+
+.formal-evidence-grid,
+.metrics-grid,
+.evidence-grid{
+
+  gap:
+    12px !important;
+
+}
+
+
+.metric-card,
+.evidence-card,
+.metrics-panel{
+
+  padding:
+    18px !important;
+
+}
+
+
+.metric-card h3,
+.evidence-card h3,
+.metrics-panel h3{
+
+  margin-bottom:
+    14px !important;
+
+}
+
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+
+.competition-faq{
+
+  padding-top:
+    76px !important;
+
+  padding-bottom:
+    82px !important;
+
+}
+
+
+.competition-faq
+details{
+
+  padding:
+    17px 0 !important;
+
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.competition-footer{
+
+  padding-top:
+    60px !important;
+
+}
+
+
+.competition-footer
+.footer-cta{
+
+  max-width:
+    1260px !important;
+
+  margin-left:
+    auto !important;
+
+  margin-right:
+    auto !important;
+
+  padding:
+    72px 28px !important;
+
+}
+
+
+.competition-footer
+.footer-cta h2{
+
+  font-size:
+    clamp(
+      42px,
+      4.7vw,
+      72px
+    ) !important;
+
+  line-height:
+    1.02 !important;
+
+}
+
+
+.competition-footer
+.footer-links,
+.competition-footer
+.footer-columns{
+
+  margin-top:
+    52px !important;
+
+}
+
+
+/* ==========================================================
+   DESKTOP LARGE SCREEN
+   ========================================================== */
+
+@media(min-width:1600px){
+
+  :root{
+
+    --layout-max:
+      1480px;
+
+  }
+
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media(max-width:1100px){
+
+  :root{
+
+    --space-section:
+      70px;
+
+  }
+
+
+  .capability-architecture-head{
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      22px !important;
+
+  }
+
+
+  .console-grid,
+  .response-grid,
+  .incident-grid{
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+
+  .capability-row{
+
+    grid-template-columns:
+      62px 1fr
+      !important;
+
+  }
+
+
+  .cap-visual{
+
+    grid-column:
+      2 !important;
+
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:720px){
+
+  :root{
+
+    --space-section:
+      54px;
+
+  }
+
+
+  .competition-main,
+  .showcase-shell,
+  .capability-architecture,
+  .medical-objects,
+  .objects-section,
+  .data-objects,
+  .event-samples,
+  .samples-section,
+  .formal-evidence,
+  .evidence-section,
+  .metrics-section,
+  .competition-faq{
+
+    width:
+      calc(100% - 28px)
+      !important;
+
+  }
+
+
+  .v14-hero h1{
+
+    font-size:
+      clamp(
+        56px,
+        18vw,
+        82px
+      ) !important;
+
+  }
+
+
+  .capability-architecture-head h2,
+  .medical-objects h2,
+  .objects-section h2,
+  .data-objects h2,
+  .event-samples h2,
+  .samples-section h2,
+  .formal-evidence h2,
+  .evidence-section h2,
+  .metrics-section h2,
+  .competition-faq h2{
+
+    font-size:
+      36px !important;
+
+  }
+
+
+  .capability-row{
+
+    grid-template-columns:
+      1fr !important;
+
+    padding:
+      20px 16px
+      !important;
+
+  }
+
+
+  .cap-index{
+
+    width:
+      48px !important;
+
+    height:
+      48px !important;
+
+  }
+
+
+  .cap-visual{
+
+    grid-column:
+      1 !important;
+
+  }
+
+
+  .competition-footer
+  .footer-cta{
+
+    padding:
+      50px 20px
+      !important;
+
+  }
+
+}
