@@ -1,4 +1,4 @@
-# MedShield-AI V5.1 医疗安全事件处置控制台（干净修正版）
+# MedShield-AI V5.2 医疗安全事件处置控制台（Neural Float 动态背景版）
 
 V5 不再把首页设计成指标展示页，而是改成“医院安全事件处置系统 Demo”。
 
@@ -66,3 +66,8 @@ https://364312-coder.github.io/MedShield-AI/?v=v5
 ## 边界
 
 当前网页操作为前端演示，不是真实生产控制台。权限/网络动作为模拟执行，密钥强制执行是部分实现，DICOM 原生运行时和 EMR 内嵌水印运行时当前未提供。
+
+
+## V5.2 动态背景
+
+新增原生 Canvas Neural Float 风格动态背景：青蓝数据网络缓慢漂浮、少量发光节点、轻微鼠标视差，第一屏明显，后半页自动弱化；不依赖 React、Three.js、GSAP 或 CDN。

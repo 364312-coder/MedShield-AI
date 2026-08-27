@@ -1145,3 +1145,25 @@ tbody tr:hover {
 body.neural-dim .neural-background { opacity: .28; }
 @media (max-width: 900px) { .neural-background { opacity: .48; } }
 @media (prefers-reduced-motion: reduce) { .neural-background { opacity: .20; } }
+
+
+/* FULLSTACK API STATE */
+.action-btn.loading {
+  border-color: rgba(71, 220, 247, 0.42);
+  color: var(--cyan);
+  background: rgba(71, 220, 247, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.action-btn.loading::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: api-loading 1s linear infinite;
+}
+@keyframes api-loading {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}

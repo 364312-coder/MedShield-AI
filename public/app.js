@@ -1,4 +1,4 @@
-const dataRoot = "./public/data";
+const dataRoot = "./data";
 
 const scenarioNames = {
   NORMAL: "正常行为",
@@ -48,7 +48,9 @@ let state = {
   selectedIncidentId: "img-leak",
   stage: 0,
   logs: [],
-  selectedRow: null
+  selectedRow: null,
+  backendIncidents: {},
+  backendAvailable: false
 };
 
 function byId(id) {
@@ -66,6 +68,54 @@ function safeText(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+
+async function apiRequest(path, options = {}) {
+  const response = await fetch(path, {
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {})
+    },
+    ...options
+  });
+
+  const contentType = response.headers.get("content-type") || "";
+  const payload = contentType.includes("application/json")
+    ? await response.json()
+    : await response.text();
+
+  if (!response.ok) {
+    const message = typeof payload === "object" && payload && payload.error
+      ? payload.error
+      : `API 请求失败：${response.status}`;
+    throw new Error(message);
+  }
+
+  return payload;
+}
+
+async function syncBackendIncidents() {
+  const payload = await apiRequest("/api/incidents");
+  state.backendAvailable = true;
+  state.backendIncidents = Object.fromEntries(
+    (payload.incidents || []).map((item) => [item.id, item])
+  );
+
+  const current = state.backendIncidents[state.selectedIncidentId];
+  if (current && Number.isFinite(Number(current.stage))) {
+    state.stage = Number(current.stage);
+  }
+}
+
+async function syncAuditLog() {
+  if (!state.backendAvailable) return;
+  const payload = await apiRequest(`/api/audit?incident_id=${encodeURIComponent(state.selectedIncidentId)}`);
+  state.logs = (payload.logs || []).map((item) => {
+    const stamp = item.created_at ? item.created_at.replace("T", " ").replace("Z", "") : "--";
+    return `[${stamp}] ${item.message}`;
+  });
+  renderLog();
 }
 
 async function loadJson(name) {
@@ -231,7 +281,20 @@ const stageMeta = [
 ];
 
 function currentIncident() {
-  return getIncidents().find((item) => item.id === state.selectedIncidentId) || getIncidents()[0];
+  const baseIncident =
+    getIncidents().find((item) => item.id === state.selectedIncidentId) || getIncidents()[0];
+  const persisted = state.backendIncidents[state.selectedIncidentId];
+
+  if (!persisted) return baseIncident;
+
+  return {
+    ...baseIncident,
+    status: persisted.status || baseIncident.status,
+    risk: persisted.risk_score ?? baseIncident.risk,
+    anomaly: persisted.anomaly_type || baseIncident.anomaly,
+    policy: persisted.policy || baseIncident.policy,
+    result: persisted.result || baseIncident.result
+  };
 }
 
 function addLog(message) {
@@ -264,11 +327,16 @@ function renderQueue() {
   `).join("");
 
   document.querySelectorAll(".queue-card").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       state.selectedIncidentId = button.dataset.id;
-      state.stage = 0;
+      const persisted = state.backendIncidents[state.selectedIncidentId];
+      state.stage = persisted ? Number(persisted.stage || 0) : 0;
       renderConsole();
-      addLog(`事件已载入：${currentIncident().title}`);
+      try {
+        await syncAuditLog();
+      } catch (error) {
+        console.error(error);
+      }
     });
   });
 }
@@ -326,14 +394,49 @@ function renderActions(item) {
     `;
   }).join("");
 
+  const actionNames = {
+    1: "analyze",
+    2: "defend",
+    3: "integrity",
+    4: "recover",
+    5: "audit"
+  };
+
   document.querySelectorAll(".action-btn").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       const target = Number(button.dataset.targetStage);
       if (target !== state.stage + 1) return;
-      state.stage = target;
-      const meta = stageMeta[target];
-      renderConsole();
-      addStageLog(item, target, meta);
+
+      button.disabled = true;
+      button.classList.add("loading");
+      const originalText = button.querySelector("strong").textContent;
+      button.querySelector("strong").textContent = "正在执行…";
+
+      try {
+        const payload = await apiRequest(
+          `/api/incidents/${encodeURIComponent(state.selectedIncidentId)}/action`,
+          {
+            method: "POST",
+            body: JSON.stringify({ action: actionNames[target] })
+          }
+        );
+
+        if (payload.incident) {
+          state.backendIncidents[payload.incident.id] = payload.incident;
+          state.stage = Number(payload.incident.stage || target);
+        } else {
+          state.stage = target;
+        }
+
+        await syncAuditLog();
+        renderConsole();
+      } catch (error) {
+        console.error(error);
+        button.disabled = false;
+        button.classList.remove("loading");
+        button.querySelector("strong").textContent = originalText;
+        window.alert(`后端操作失败：${error.message}`);
+      }
     });
   });
 }
@@ -559,21 +662,32 @@ async function boot() {
   state.behavior = behavior;
   state.rows = rows;
 
+  try {
+    await syncBackendIncidents();
+  } catch (error) {
+    state.backendAvailable = false;
+    console.error("后端 API 不可用：", error);
+    throw new Error("后端 API 未连接。请使用 Wrangler 启动或部署全栈版本，而不是 python http.server。");
+  }
+
   renderConsole();
   renderFormalMetrics();
   fillFilters();
   renderEvents();
 
-  addLog("系统已进入演示控制台。");
-  addLog(`正式 run 已接入：schema=${summary.schema_version}, seed=${config.seed}`);
-  addLog(`当前选择事件：${currentIncident().title}`);
+  await syncAuditLog();
 
   byId("scenario-filter").addEventListener("change", renderEvents);
   byId("policy-filter").addEventListener("change", renderEvents);
-  byId("clear-log").addEventListener("click", () => {
-    state.logs = [];
-    renderLog();
-    addLog("审计日志已清空，系统保持保护中。");
+  byId("clear-log").addEventListener("click", async () => {
+    try {
+      await apiRequest(`/api/audit?incident_id=${encodeURIComponent(state.selectedIncidentId)}`, {
+        method: "DELETE"
+      });
+      await syncAuditLog();
+    } catch (error) {
+      window.alert(`清空审计日志失败：${error.message}`);
+    }
   });
 
   activateReveal();
