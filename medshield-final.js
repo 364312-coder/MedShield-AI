@@ -1043,5 +1043,3 @@ ready(function(){
 
 ;
 
-
-window.__MEDSHIELD_SOURCE_FIX_V3__ = "ACTIVE";

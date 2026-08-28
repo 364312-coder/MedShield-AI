@@ -1,0 +1,414 @@
+﻿/* ==========================================================
+   MedShield-AI
+   Plety Video Background — GLOBAL
+   ----------------------------------------------------------
+   全站使用同一动态视频背景
+   不修改任何页面布局
+   导航保持 fixed 在最顶部
+   ========================================================== */
+
+
+/* ==========================================================
+   1. GLOBAL VIDEO ROOT
+   ========================================================== */
+
+.plety-bg-root{
+
+  position:fixed;
+
+  inset:0;
+
+  width:100vw;
+  height:100vh;
+
+  z-index:0;
+
+  pointer-events:none;
+
+  overflow:hidden;
+
+  background:#000;
+
+}
+
+
+/* ==========================================================
+   2. VIDEO
+   ========================================================== */
+
+.plety-bg-video{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  opacity:.88;
+
+  transform:scale(1.015);
+
+}
+
+
+/* ==========================================================
+   3. PLETY DARK OVERLAY
+   ========================================================== */
+
+.plety-bg-overlay{
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,.08) 25%,
+      rgba(0,0,0,.18) 58%,
+      rgba(0,0,0,.46) 100%
+    );
+
+}
+
+
+.plety-bg-overlay::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    radial-gradient(
+      ellipse at 50% 35%,
+      transparent 0%,
+      rgba(0,0,0,.10) 48%,
+      rgba(0,0,0,.46) 100%
+    );
+
+}
+
+
+/* ==========================================================
+   4. IMPORTANT
+   不再使用：
+   body > * { position:relative }
+   因为它会破坏 fixed navbar
+   ========================================================== */
+
+html,
+body{
+
+  background:#000 !important;
+
+}
+
+
+/* ==========================================================
+   5. NAVBAR 必须保持最顶部 fixed
+   ========================================================== */
+
+.competition-nav{
+
+  position:fixed !important;
+
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+
+  z-index:1000 !important;
+
+}
+
+
+/* 初始状态仍然透明 */
+
+.competition-nav:not(.scrolled){
+
+  background:
+    rgba(0,0,0,.16) !important;
+
+  backdrop-filter:
+    blur(4px);
+
+}
+
+
+/* 滚动后保持原来的黑色玻璃效果 */
+
+.competition-nav.scrolled{
+
+  background:
+    rgba(0,0,0,.82) !important;
+
+  backdrop-filter:
+    blur(18px) !important;
+
+}
+
+
+/* ==========================================================
+   6. PAGE CONTENT ABOVE VIDEO
+   只提高真正的页面区域，不修改 position 模式
+   ========================================================== */
+
+.competition-hero,
+.capability-strip,
+.showcase-wrap,
+.showcase-shell,
+.capability-architecture,
+.competition-faq,
+.competition-footer,
+.evidence-section,
+.metrics-section,
+.console-section,
+.incident-section,
+.response-section,
+.console-hero,
+.incident-hero,
+.response-hero{
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+
+/* ==========================================================
+   7. PAGE-LEVEL BACKGROUNDS TRANSPARENT
+   让动态视频真正贯穿整站
+   ========================================================== */
+
+.competition-hero,
+.capability-strip,
+.showcase-wrap,
+.showcase-shell,
+.capability-architecture,
+.competition-faq,
+.competition-footer,
+.evidence-section,
+.metrics-section,
+.console-section,
+.incident-section,
+.response-section{
+
+  background-color:
+    transparent !important;
+
+}
+
+
+/* Hero 原来的大块纯黑背景去掉 */
+
+.competition-hero{
+
+  background:
+    transparent !important;
+
+}
+
+
+/* ==========================================================
+   8. 保留所有真正的 UI Panel
+   这些不能透明，否则控制台看不清
+   ========================================================== */
+
+.glass-window,
+.capability-panel,
+.queue-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel,
+.console-shell,
+.console-layout,
+.metric-card,
+.evidence-card,
+.v159-console,
+.v159-case,
+.v159-evidence,
+.v159-audit{
+
+  position:relative;
+
+}
+
+
+/* ==========================================================
+   9. SECTION READABILITY LAYER
+   不改变布局，只在内容后面压一层半透明黑
+   ========================================================== */
+
+.showcase-wrap::before,
+.capability-architecture::before,
+.console-section::before,
+.incident-section::before,
+.response-section::before,
+.evidence-section::before,
+.metrics-section::before,
+.competition-faq::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:-1;
+
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.40),
+      rgba(0,0,0,.57)
+    );
+
+}
+
+
+/* 不同区域稍微有不同深度 */
+
+.capability-architecture::before{
+
+  background:
+    rgba(0,0,0,.50);
+
+}
+
+
+.console-section::before,
+.incident-section::before,
+.response-section::before{
+
+  background:
+    rgba(0,0,0,.60);
+
+}
+
+
+.evidence-section::before,
+.metrics-section::before{
+
+  background:
+    rgba(0,0,0,.54);
+
+}
+
+
+/* ==========================================================
+   10. HERO 保留更多视频
+   ========================================================== */
+
+.competition-hero::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:-1;
+
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.12) 0%,
+      rgba(0,0,0,.12) 55%,
+      rgba(0,0,0,.55) 87%,
+      rgba(0,0,0,.72) 100%
+    );
+
+}
+
+
+/* ==========================================================
+   11. FOOTER
+   ========================================================== */
+
+.competition-footer::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:-1;
+
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.52),
+      rgba(0,0,0,.82),
+      rgba(0,0,0,.96)
+    );
+
+}
+
+
+/* ==========================================================
+   12. MOBILE
+   ========================================================== */
+
+@media(max-width:720px){
+
+  .plety-bg-video{
+
+    opacity:.70;
+
+  }
+
+
+  .plety-bg-overlay{
+
+    background:
+
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,.36),
+        rgba(0,0,0,.24),
+        rgba(0,0,0,.60)
+      );
+
+  }
+
+}
+
+
+/* ==========================================================
+   13. REDUCED MOTION
+   ========================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+  .plety-bg-video{
+
+    display:none;
+
+  }
+
+
+  .plety-bg-root{
+
+    background:#000;
+
+  }
+
+}

@@ -1,0 +1,39 @@
+MedShield-AI SOURCE FIX V2
+
+这版针对你最新截图重新从真实源码定位，不再继续猜样式。
+
+真正发现的问题：
+1. index.html 同时存在多套背景 DOM：
+   - #medshield-global-bg
+   - .medshield-global-bg
+   - .background-grid
+   - .ambient
+   同时 medshield-plety-bg.js 又会再注入 .plety-bg-root。
+   也就是页面实际叠了多套背景，这是截图中出现大片矩形、背景分块和视觉混乱的核心原因。
+
+2. Hero 旧代码里同时残留：
+   - v14 hero stage
+   - 旧 canvas/grid
+   - 多代 min-height / sticky / flex 覆盖
+   导致浮动卡片、标题与主内容的位置不再稳定。
+
+3. Risk / Recovery 仍存在旧 118vh / 210vh / 250vh 规则，导致中后段空白。
+
+4. Footer CTA 过去存在隐藏但占高度的历史规则。
+
+本版处理：
+- index.html：删除所有旧背景 DOM，只留下 Plety 视频 JS 注入的一套背景。
+- medshield-plety-bg.css：完全重写为“只负责背景”，不再修改页面布局。
+- medshield-final.css：
+  - Hero 强制恢复为单一 100vh 首屏
+  - 标题固定居中，MedShield-AI 桌面端不换行
+  - Threat 卡恢复左侧
+  - System Status 卡恢复右侧
+  - 禁用旧 canvas/grid/ambient 背景
+  - Risk / Recovery 高度恢复普通文档流
+  - 清理 pin-spacer 空白
+  - Footer CTA 可见且缩短
+  - Footer 加深医学蓝黑
+
+未修改：
+Worker、D1、API、app.js、正式实验数据、事件工作流。

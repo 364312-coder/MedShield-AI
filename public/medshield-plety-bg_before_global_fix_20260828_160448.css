@@ -1,0 +1,273 @@
+﻿/* ==========================================================
+   MedShield-AI
+   Plety Hero Background ONLY
+   ----------------------------------------------------------
+   视频只存在于首页 Hero。
+   后续页面恢复原有背景体系。
+   ========================================================== */
+
+
+/* 关闭之前的全站 fixed 逻辑 */
+
+.plety-bg-root{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:0;
+
+  pointer-events:none;
+
+  overflow:hidden;
+
+  background:#000;
+
+}
+
+
+/* ==========================================================
+   HERO 作为视频背景容器
+   ========================================================== */
+
+.competition-hero{
+
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  background:#000 !important;
+
+  isolation:isolate;
+
+}
+
+
+/* Hero 原有内容必须压在视频上方 */
+
+.competition-hero > *:not(.plety-bg-root){
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+
+/* ==========================================================
+   VIDEO
+   ========================================================== */
+
+.plety-bg-video{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+
+  height:100%;
+
+  min-width:100%;
+
+  min-height:100%;
+
+  object-fit:cover;
+
+  opacity:.90;
+
+  transform:scale(1.01);
+
+}
+
+
+/* ==========================================================
+   Plety Gradient
+   from-black/30 → transparent → black
+   ========================================================== */
+
+.plety-bg-overlay{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:1;
+
+  background:
+
+    linear-gradient(
+      180deg,
+
+      rgba(0,0,0,.30) 0%,
+
+      rgba(0,0,0,.04) 34%,
+
+      rgba(0,0,0,.10) 57%,
+
+      rgba(0,0,0,.76) 86%,
+
+      #000 100%
+    );
+
+}
+
+
+/* 左右再稍微压暗，避免标题看不清 */
+
+.plety-bg-overlay::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      90deg,
+
+      rgba(0,0,0,.20),
+
+      transparent 24%,
+
+      transparent 76%,
+
+      rgba(0,0,0,.20)
+    );
+
+}
+
+
+/* 原来的全站 dim 不再需要 */
+
+.plety-bg-dim{
+
+  display:none;
+
+}
+
+
+/* ==========================================================
+   Hero 底部自然过渡回黑色
+   ========================================================== */
+
+.competition-hero::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  height:240px;
+
+  z-index:1;
+
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(0,0,0,.72),
+      #000
+    );
+
+}
+
+
+/* ==========================================================
+   后面的页面恢复原本深色
+   ========================================================== */
+
+.capability-strip,
+.showcase-wrap,
+.showcase-shell,
+.capability-architecture,
+.competition-faq,
+.competition-footer,
+.evidence-section,
+.metrics-section,
+.console-section,
+.incident-section,
+.response-section{
+
+  background-color:#000;
+
+}
+
+
+/* 不影响各种 panel/card 自己的背景 */
+
+.glass-window,
+.capability-panel,
+.case-panel,
+.evidence-panel,
+.audit-panel{
+
+  position:relative;
+
+}
+
+
+/* ==========================================================
+   Mobile
+   ========================================================== */
+
+@media(max-width:720px){
+
+  .plety-bg-video{
+
+    opacity:.75;
+
+  }
+
+
+  .plety-bg-overlay{
+
+    background:
+
+      linear-gradient(
+        180deg,
+
+        rgba(0,0,0,.42) 0%,
+
+        rgba(0,0,0,.14) 35%,
+
+        rgba(0,0,0,.30) 65%,
+
+        #000 100%
+      );
+
+  }
+
+}
+
+
+/* ==========================================================
+   Reduced Motion
+   ========================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+  .plety-bg-video{
+
+    display:none;
+
+  }
+
+
+  .competition-hero{
+
+    background:#000 !important;
+
+  }
+
+}

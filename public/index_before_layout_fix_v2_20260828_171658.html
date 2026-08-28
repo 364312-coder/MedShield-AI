@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -9,8 +9,99 @@
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
       <link rel="stylesheet" href="./medshield-final.css?v=final1" />
       <link rel="stylesheet" href="./medshield-plety-bg.css?v=plety-bg-2" />
+    <link rel="stylesheet" href="./medshield-global-bg-fix.css">
 </head>
   <body>
+<div id="medshield-global-bg" aria-hidden="true">
+  <video class="medshield-global-bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://cdn.sceneai.art/Hero%20Section%20Video/50b4f304-cdca-4e12-8735-580d225834be.mp4" type="video/mp4">
+  </video>
+  <div class="medshield-global-bg-tint"></div>
+  <div class="medshield-global-bg-vignette"></div>
+</div>
+<div class="medshield-global-bg" aria-hidden="true">
+  <div class="medshield-bg-grid"></div>
+  <div class="medshield-bg-axis"></div>
+  <div class="medshield-bg-glow medshield-bg-glow-a"></div>
+  <div class="medshield-bg-glow medshield-bg-glow-b"></div>
+  <div class="medshield-bg-glow medshield-bg-glow-c"></div>
+  <div class="medshield-bg-scan"></div>
+  <div class="medshield-bg-data medshield-bg-data-a"></div>
+  <div class="medshield-bg-data medshield-bg-data-b"></div>
+  <div class="medshield-bg-vignette"></div>
+</div>
+<div class="background-grid" aria-hidden="true"></div>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+
+    <header class="competition-nav" id="competition-nav">
+  <div class="competition-nav-inner">
+    <a class="competition-brand" href="#about" aria-label="MedShield-AI 首页">
+      <svg viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <path d="M17 3.8 27.7 8v7.3c0 7-4.1 12-10.7 15-6.6-3-10.7-8-10.7-15V8L17 3.8Z" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M11.6 17h10.8M17 11.6v10.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <span>MedShield-AI</span>
+    </a>
+    <nav class="competition-nav-links" aria-label="主导航">
+      <a href="#about">首页</a>
+      <a href="#features">核心能力</a>
+      <a href="#console">处置系统</a>
+      <a href="#competition-faq">FAQ</a>
+    </nav>
+    <div class="competition-nav-right">
+      <div class="backend-live" id="backend-live-status"><i></i><span>连接检测中</span></div>
+      <a class="nav-enter" href="#console">进入系统 <span>↗</span></a>
+      <button class="mobile-toggle" id="mobile-menu-btn" type="button" aria-label="打开菜单"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-drawer" id="mobile-menu">
+    <a href="#about">首页</a>
+    <a href="#features">核心能力</a>
+    <a href="#console">处置系统</a>
+    <a href="#competition-faq">FAQ</a>
+  </div>
+</header>
+
+    <section class="competition-hero v14-hero" id="about">
+  <canvas id="competition-tech-canvas" aria-hidden="true"></canvas>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="v14-hero-stage">
+    <aside class="v14-float-card threat-card" aria-label="实时威胁">
+      <span class="float-label">LIVE THREAT</span>
+      <strong>R = 0.91</strong>
+      <b>IMAGE_LEAKAGE</b>
+      <small>P3 · HIGH</small>
+    </aside>
+
+    <aside class="v14-float-card system-card" aria-label="系统状态">
+      <span class="float-label">SYSTEM STATUS</span>
+      <div><span>Worker API</span><b id="v14-api-state">CHECKING</b></div>
+      <div><span>D1</span><b>CONNECTED</b></div>
+      <div><span>Backup</span><b>VERIFIED</b></div>
+    </aside>
+
+    <div class="hero-content">
+      <div class="hero-badge"><i></i>Secure · Explainable · Trustworthy</div>
+      <h1>MedShield-AI</h1>
+      <p class="hero-subtitle">AI 驱动的医疗数据安全与风险控制系统</p>
+      <p class="hero-copy">面向基层医疗场景，将 AI 风险感知、策略控制、完整性保护、主动防御、可信恢复与审计证据链统一为一个完整安全闭环。</p>
+
+      <div class="hero-actions">
+        <a class="hero-primary" href="#console">进入处置系统 <span>↗</span></a>
+        <a class="hero-secondary" href="#features">查看核心能力 <span>↓</span></a>
+      </div>
+
+      <div class="v14-runtime-strip">
+        <span><b>18,760</b> Assets</span><i></i>
+        <span><b>50,000</b> Events</span><i></i>
+        <span><b>300</b> Trap Assets</span><i></i>
+        <span><b>CPU</b> First</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="capability-strip">
@@ -494,7 +585,6 @@
       <strong>MedShield-AI V5</strong>
       <span>医疗安全事件处置控制台 · 前端演示模拟 · 正式结果来自 run_20260826_153334</span>
     </footer>
-    <script defer src="./competition.js?v=final-source-fix"></script>
     <script defer src="./app.js?v=competition-v12"></script>
   <section class="competition-faq" id="competition-faq">
   <div class="faq-heading reveal-up"><span class="eyebrow">FAQ</span><h2>评委可能关心的问题</h2></div>
@@ -522,7 +612,6 @@
       <script defer src="./medshield-plety-bg.js?v=plety-bg-2"></script>
   </body>
 </html>
-
 
 
 

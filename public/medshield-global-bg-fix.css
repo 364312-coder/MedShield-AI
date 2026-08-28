@@ -1,0 +1,164 @@
+﻿/* =========================================================
+   MedShield Global Dynamic Background Fix
+   目标：
+   1) 背景从页面开头贯穿全站
+   2) 所有页面都能看到同一套动态背景
+   3) 去掉中间把背景切断的局部底色
+   4) 整体偏深蓝，保留医学科技感
+   ========================================================= */
+
+html, body{
+  background:#000 !important;
+  scroll-behavior:smooth;
+}
+
+/* -------- 全站固定背景层 -------- */
+#medshield-global-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  background:#000;
+}
+
+#medshield-global-bg .medshield-global-bg-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.60;
+  filter:
+    hue-rotate(182deg)
+    saturate(.72)
+    brightness(.50)
+    contrast(1.10);
+  transform:scale(1.06);
+}
+
+/* 医学蓝主色调 */
+#medshield-global-bg .medshield-global-bg-tint{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 22% 30%, rgba(20,88,140,.22), transparent 38%),
+    radial-gradient(circle at 74% 45%, rgba(12,125,170,.18), transparent 34%),
+    radial-gradient(circle at 55% 82%, rgba(12,54,92,.18), transparent 42%),
+    linear-gradient(180deg, rgba(1,10,20,.40), rgba(0,10,22,.56) 45%, rgba(0,5,14,.78));
+  mix-blend-mode:screen;
+}
+
+/* 边缘压暗，保证正文清晰 */
+#medshield-global-bg .medshield-global-bg-vignette{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.12) 55%, rgba(0,0,0,.42) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.34), transparent 18%, transparent 82%, rgba(0,0,0,.34)),
+    linear-gradient(180deg, rgba(0,0,0,.30), transparent 16%, transparent 84%, rgba(0,0,0,.46));
+}
+
+/* -------- 所有正常内容压在背景上面 -------- */
+body > *:not(#medshield-global-bg){
+  position:relative;
+  z-index:1;
+}
+
+.competition-nav{
+  z-index:50 !important;
+}
+
+/* -------- 隐藏之前那些“局部背景层” -------- */
+.competition-hero .plety-bg-root,
+.capability-strip .plety-bg-root,
+.showcase-wrap .plety-bg-root,
+.showcase-shell .plety-bg-root,
+.competition-faq .plety-bg-root,
+.competition-footer .plety-bg-root{
+  display:none !important;
+}
+
+/* -------- 把会切断背景的大外层底色全部清掉 -------- */
+main,
+section,
+article,
+.pin-spacer,
+.showcase-wrap,
+.showcase-shell,
+.showcase-row,
+.showcase-row.reverse,
+.capability-strip,
+.capability-architecture,
+.competition-faq,
+.competition-footer,
+.footer-ambient{
+  background:transparent !important;
+}
+
+/* 如果有额外包裹层，也一起清掉 */
+[class*="section"],
+[class*="wrapper"],
+[class*="container"]{
+  background-color:transparent;
+}
+
+/* Hero / Footer 原本自己的大背景去掉 */
+.competition-hero{
+  background:transparent !important;
+}
+
+.competition-footer{
+  background:transparent !important;
+}
+
+/* 原来过重的遮罩保留但减弱，避免整段发灰发黑 */
+.hero-shade{
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.42), transparent 24%, transparent 76%, rgba(0,0,0,.42)),
+    linear-gradient(180deg, rgba(0,0,0,.10), transparent 46%, rgba(0,0,0,.28)) !important;
+}
+
+.hero-bottom-fade{
+  background:linear-gradient(transparent, rgba(0,0,0,.56)) !important;
+}
+
+/* 某些补丁可能给 section 加 before/after 遮罩，把它们软化 */
+.showcase-shell::before,
+.showcase-shell::after,
+.showcase-wrap::before,
+.showcase-wrap::after,
+.capability-strip::before,
+.capability-strip::after,
+.competition-faq::before,
+.competition-faq::after,
+.competition-footer::before,
+.competition-footer::after{
+  opacity:.18 !important;
+}
+
+/* 内容卡片继续保留玻璃感，但不再太灰 */
+.glass-window,
+.capability-panel,
+.faq-box{
+  background:
+    linear-gradient(180deg, rgba(8,14,20,.76), rgba(5,9,14,.72)) !important;
+  border-color:rgba(255,255,255,.10) !important;
+}
+
+/* footer 看起来不要断层 */
+.footer-ambient{
+  opacity:.55 !important;
+}
+
+/* 手机端略压暗，避免过亮 */
+@media (max-width: 768px){
+  #medshield-global-bg .medshield-global-bg-video{
+    opacity:.52;
+    filter:
+      hue-rotate(182deg)
+      saturate(.68)
+      brightness(.45)
+      contrast(1.08);
+  }
+}
