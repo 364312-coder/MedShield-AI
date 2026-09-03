@@ -161,7 +161,7 @@ function parseCsv(text) {
   return rows;
 }
 
-async function loadCsvSample(limit = 60000) {
+async function loadCsvSample(limit = 500) {
   const response = await fetch(`${dataRoot}/results.csv`);
   if (!response.ok) throw new Error("无法读取 results.csv");
   const text = await response.text();
@@ -600,11 +600,6 @@ function loadSampleEvent(rowIndex) {
   const row = state.rows[rowIndex];
   if (!row) return;
 
-  if (window.__MEDSHIELD_SIMLAB_V2__ && window.MedShieldSimulationLabV2) {
-    window.MedShieldSimulationLabV2.loadFormalRow(rowIndex);
-    return;
-  }
-
   const scenario = row.scenario;
   if (row.integrity_state && row.integrity_state !== "NORMAL") {
     state.selectedIncidentId = "img-tamper";
@@ -666,7 +661,6 @@ async function boot() {
   state.config = config;
   state.behavior = behavior;
   state.rows = rows;
-  window.dispatchEvent(new CustomEvent("medshield:formal-data-ready"));
 
   try {
     await syncBackendIncidents();
@@ -676,11 +670,7 @@ async function boot() {
     throw new Error("后端 API 未连接。请使用 Wrangler 启动或部署全栈版本，而不是 python http.server。");
   }
 
-  if (!window.__MEDSHIELD_SIMLAB_V2__) {
-    renderConsole();
-  } else if (window.MedShieldSimulationLabV2) {
-    window.MedShieldSimulationLabV2.render();
-  }
+  renderConsole();
   renderFormalMetrics();
   fillFilters();
   renderEvents();

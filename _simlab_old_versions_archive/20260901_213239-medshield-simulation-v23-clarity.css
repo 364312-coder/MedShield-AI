@@ -1,0 +1,214 @@
+/* MedShield-AI Simulation Lab V2.3 clarity layer
+   UI-only. Reads existing rendered formal fields; does not alter decision logic. */
+
+#sim-lab .simv23-storyboard{
+  margin:14px 18px 6px;
+  border:1px solid rgba(116,214,232,.16);
+  background:linear-gradient(180deg,rgba(4,31,42,.84),rgba(3,20,29,.72));
+  box-shadow:0 22px 60px rgba(0,0,0,.14);
+}
+#sim-lab .simv23-story-top{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 210px;
+  gap:24px;
+  align-items:center;
+  min-height:92px;
+  padding:16px 18px;
+  border-bottom:1px solid rgba(116,214,232,.10);
+}
+#sim-lab .simv23-story-top>div:first-child>span,
+#sim-lab .simv23-next>span{
+  display:block;
+  color:#6e8992;
+  font-size:10px;
+  letter-spacing:.08em;
+}
+#sim-lab .simv23-story-top strong{
+  display:block;
+  margin-top:5px;
+  color:#eefafb;
+  font-size:18px;
+  font-weight:680;
+  letter-spacing:-.01em;
+}
+#sim-lab .simv23-story-top p{
+  margin:7px 0 0;
+  color:#8fa7ae;
+  font-size:11px;
+  line-height:1.65;
+}
+#sim-lab .simv23-next{
+  min-height:58px;
+  padding:11px 13px;
+  border-left:3px solid #79ddec;
+  background:linear-gradient(90deg,rgba(14,74,91,.34),rgba(9,43,55,.14));
+}
+#sim-lab .simv23-next b{
+  display:block;
+  margin-top:7px;
+  color:#dff7fa;
+  font-size:12px;
+  font-weight:700;
+}
+
+#sim-lab .simv23-chain{
+  display:grid;
+  grid-template-columns:minmax(112px,1fr) 34px minmax(112px,1fr) 34px minmax(138px,1.18fr) 34px minmax(128px,1.08fr) 34px minmax(136px,1.12fr);
+  align-items:stretch;
+  padding:16px 18px 14px;
+}
+#sim-lab .simv23-node{
+  position:relative;
+  min-height:94px;
+  padding:13px 12px 12px;
+  border:1px solid rgba(111,198,216,.09);
+  background:rgba(2,18,26,.38);
+  opacity:.58;
+  transition:opacity .18s ease,border-color .18s ease,background .18s ease,transform .18s ease;
+}
+#sim-lab .simv23-node i{
+  display:block;
+  color:#536d76;
+  font-size:9px;
+  font-style:normal;
+  font-variant-numeric:tabular-nums;
+}
+#sim-lab .simv23-node span{
+  display:block;
+  margin-top:9px;
+  color:#708890;
+  font-size:10px;
+}
+#sim-lab .simv23-node b{
+  display:block;
+  margin-top:5px;
+  color:#9cb0b6;
+  font-size:11px;
+  font-weight:650;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+#sim-lab .simv23-node.active{
+  opacity:1;
+  border-color:rgba(116,220,239,.42);
+  background:linear-gradient(180deg,rgba(8,70,88,.52),rgba(4,38,51,.32));
+  box-shadow:inset 0 0 0 1px rgba(116,220,239,.05),0 10px 28px rgba(0,0,0,.16);
+  transform:translateY(-2px);
+}
+#sim-lab .simv23-node.active i{color:#7bdceb;}
+#sim-lab .simv23-node.active span{color:#9bc3cc;}
+#sim-lab .simv23-node.active b{color:#f0fbfc;}
+#sim-lab .simv23-node.done{
+  opacity:.84;
+  border-color:rgba(117,215,170,.18);
+  background:rgba(28,70,55,.15);
+}
+#sim-lab .simv23-node.done i{color:#78d5a8;}
+#sim-lab .simv23-node.done i::after{content:"  ✓";}
+#sim-lab .simv23-node.done b{color:#a5c9b8;}
+#sim-lab .simv23-node.future{opacity:.42;}
+#sim-lab .simv23-link{
+  position:relative;
+  align-self:center;
+  height:2px;
+  background:rgba(94,143,155,.13);
+  overflow:hidden;
+}
+#sim-lab .simv23-link::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:-3px;
+  width:0;
+  height:0;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left:6px solid rgba(94,143,155,.30);
+}
+#sim-lab .simv23-link em{
+  position:absolute;
+  inset:0;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:#70d8e8;
+  transition:transform .28s ease;
+}
+#sim-lab .simv23-link.done em,
+#sim-lab .simv23-link.active em{transform:scaleX(1);}
+#sim-lab .simv23-link.done em{background:#69c99b;}
+
+#sim-lab .simv23-evidence{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  border-top:1px solid rgba(116,214,232,.09);
+  background:rgba(1,13,20,.26);
+}
+#sim-lab .simv23-evidence>div{
+  min-height:62px;
+  padding:11px 13px;
+  border-right:1px solid rgba(116,214,232,.06);
+}
+#sim-lab .simv23-evidence>div:last-child{border-right:0;}
+#sim-lab .simv23-evidence span{display:block;color:#5f7982;font-size:9px;}
+#sim-lab .simv23-evidence b{display:block;margin-top:6px;color:#cfe0e3;font-size:11px;font-weight:650;overflow-wrap:anywhere;}
+
+/* Make the operator's next action visually obvious without changing core buttons. */
+#sim-lab #sim-action-zone{
+  position:sticky;
+  bottom:0;
+  z-index:4;
+  padding-top:12px;
+  background:linear-gradient(180deg,rgba(3,18,27,0),rgba(3,18,27,.96) 24%);
+}
+#sim-lab #sim-action-zone button:not(.secondary):not([disabled]){
+  min-height:46px;
+  font-size:12px;
+  font-weight:720;
+  box-shadow:0 12px 28px rgba(0,0,0,.18),inset 0 0 0 1px rgba(139,232,245,.08);
+}
+#sim-lab #sim-action-zone[data-v23-phase="DECISION REQUIRED"] button:not(.secondary):not([disabled]),
+#sim-lab #sim-action-zone[data-v23-phase="DEFENSE RECORDED"] button:not(.secondary):not([disabled]),
+#sim-lab #sim-action-zone[data-v23-phase="INTEGRITY RECORDED"] button:not(.secondary):not([disabled]),
+#sim-lab #sim-action-zone[data-v23-phase="RECOVERY RECORDED"] button:not(.secondary):not([disabled]){
+  border-color:rgba(121,221,237,.48);
+  background:linear-gradient(180deg,rgba(21,113,134,.92),rgba(13,78,96,.96));
+  color:#f4fdfe;
+}
+
+/* Event popup gets a one-glance summary before the enlarged chronology. */
+.simv23-dialog-summary{
+  display:grid;
+  grid-template-columns:1.5fr 1.2fr .7fr .7fr;
+  gap:0;
+  border-bottom:1px solid rgba(112,202,224,.09);
+  background:rgba(2,17,25,.48);
+}
+.simv23-dialog-summary>div{
+  min-height:64px;
+  padding:11px 18px;
+  border-right:1px solid rgba(112,202,224,.07);
+}
+.simv23-dialog-summary>div:last-child{border-right:0;}
+.simv23-dialog-summary span{display:block;color:#607a83;font-size:9px;letter-spacing:.05em;}
+.simv23-dialog-summary b{display:block;margin-top:6px;color:#d7e9ec;font-size:11px;font-weight:650;overflow-wrap:anywhere;}
+
+@media(max-width:1280px){
+  #sim-lab .simv23-chain{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;}
+  #sim-lab .simv23-link{display:none;}
+  #sim-lab .simv23-node{min-height:88px;}
+}
+@media(max-width:900px){
+  #sim-lab .simv23-story-top{grid-template-columns:1fr;gap:10px;}
+  #sim-lab .simv23-chain{grid-template-columns:repeat(2,minmax(0,1fr));}
+  #sim-lab .simv23-evidence{grid-template-columns:repeat(2,minmax(0,1fr));}
+  #sim-lab .simv23-evidence>div{border-bottom:1px solid rgba(116,214,232,.06);}
+  .simv23-dialog-summary{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:620px){
+  #sim-lab .simv23-chain{grid-template-columns:1fr;}
+  #sim-lab .simv23-evidence{grid-template-columns:1fr;}
+  .simv23-dialog-summary{grid-template-columns:1fr 1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  #sim-lab .simv23-node,#sim-lab .simv23-link em{transition:none!important;}
+}

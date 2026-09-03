@@ -1,0 +1,200 @@
+/* MedShield-AI Risk Assessment layout refinement — risk view only.
+   No typography, font family, color theme or dynamic background changes. */
+
+/* Keep the page heading compact and balanced without changing type. */
+.app-view-risk .app-page-head{
+  grid-template-columns:minmax(0,.92fr) minmax(420px,1.08fr);
+  gap:44px;
+  align-items:end;
+  padding:8px 0 18px;
+}
+.app-view-risk .app-page-head>div,
+.app-view-risk .app-page-head>p{min-width:0;}
+.app-view-risk .app-page-head>p{
+  max-width:680px;
+  justify-self:end;
+}
+
+/* One composed presentation stage: explanation left, console right. */
+.app-view-risk #features{
+  padding:0!important;
+  margin:0!important;
+  min-height:0!important;
+  height:auto!important;
+}
+.app-view-risk #features>.v14-risk-story{
+  display:grid!important;
+  grid-template-columns:minmax(360px,.70fr) minmax(700px,1.30fr)!important;
+  gap:38px!important;
+  align-items:start!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:22px 0 26px!important;
+  position:relative!important;
+  inset:auto!important;
+}
+.app-view-risk .v14-risk-story .v14-story-rail{display:none!important;}
+.app-view-risk #features .showcase-copy,
+.app-view-risk #features .showcase-visual{
+  position:static!important;
+  transform:none!important;
+  opacity:1!important;
+  min-width:0!important;
+}
+
+/* App Shell already owns the page title; remove the duplicate story title only. */
+.app-view-risk #features .showcase-copy>.eyebrow,
+.app-view-risk #features .showcase-copy>h2{display:none!important;}
+.app-view-risk #features .showcase-copy{
+  align-self:start!important;
+  max-width:none!important;
+  padding:14px 6px 0 2px!important;
+}
+.app-view-risk #features .showcase-copy>p{
+  margin:0 0 20px!important;
+  max-width:520px;
+}
+.app-view-risk #features .showcase-copy>ul{
+  margin:0!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  border-top:1px solid rgba(121,220,236,.12);
+}
+.app-view-risk #features .showcase-copy>ul>li{
+  margin:0!important;
+  padding:14px 2px!important;
+  border-bottom:1px solid rgba(121,220,236,.10);
+}
+.app-view-risk #features .showcase-button{margin-top:22px!important;}
+
+/* Console becomes the visual anchor. */
+.app-view-risk #features .showcase-visual{
+  width:100%!important;
+  align-self:start!important;
+}
+.app-view-risk #features .glass-window{
+  width:100%!important;
+  max-width:none!important;
+  min-height:0!important;
+  padding-bottom:14px!important;
+}
+
+/* Method strip: a single readable flow, with Trap visibly outside AI. */
+.app-view-risk #features .risk-method-strip{
+  display:grid;
+  grid-template-columns:minmax(105px,.85fr) 24px minmax(80px,.60fr) 24px minmax(145px,1.05fr) 24px minmax(125px,.95fr) minmax(170px,1.05fr);
+  gap:8px;
+  align-items:stretch;
+  margin:12px 14px 14px;
+  padding:10px 12px;
+  border-top:1px solid rgba(121,220,236,.12);
+  border-bottom:1px solid rgba(121,220,236,.12);
+}
+.app-view-risk #features .risk-method-node,
+.app-view-risk #features .risk-method-trap{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:6px 8px;
+}
+.app-view-risk #features .risk-method-node span,
+.app-view-risk #features .risk-method-trap span{white-space:nowrap;}
+.app-view-risk #features .risk-method-node small,
+.app-view-risk #features .risk-method-trap small{display:block;margin-top:2px;}
+.app-view-risk #features .risk-method-strip>i{
+  align-self:center;
+  justify-self:center;
+  font-style:normal;
+  opacity:.55;
+}
+.app-view-risk #features .risk-method-trap{
+  border-left:1px dashed rgba(121,220,236,.22);
+  padding-left:16px;
+}
+
+/* Main console: event is secondary, assessment gets more room. */
+.app-view-risk #features .risk-upper{
+  display:grid!important;
+  grid-template-columns:minmax(250px,.78fr) minmax(330px,1.22fr)!important;
+  gap:14px!important;
+  align-items:stretch!important;
+  margin:0 14px!important;
+}
+.app-view-risk #features .event-preview,
+.app-view-risk #features .risk-preview{
+  min-width:0!important;
+  height:100%!important;
+}
+.app-view-risk #features .risk-meta{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:18px!important;
+  align-items:start!important;
+}
+
+/* Behavior block: compact image cue + readable signal list. */
+.app-view-risk #features .explain-preview{
+  display:grid!important;
+  grid-template-columns:142px minmax(0,1fr)!important;
+  gap:20px!important;
+  align-items:stretch!important;
+  margin:14px 14px 0!important;
+}
+.app-view-risk #features .ct-preview{
+  width:100%!important;
+  min-width:0!important;
+  min-height:154px!important;
+  height:100%!important;
+}
+.app-view-risk #features .signal-list{
+  min-width:0!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  align-content:start!important;
+}
+.app-view-risk #features .signal-list>small{
+  display:block!important;
+  margin-bottom:5px!important;
+}
+.app-view-risk #features .signal-list>div{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 28px!important;
+  gap:16px!important;
+  align-items:center!important;
+  min-width:0!important;
+  padding:9px 0!important;
+  border-bottom:1px solid rgba(121,220,236,.08);
+}
+.app-view-risk #features .signal-list>div:last-child{border-bottom:0;}
+.app-view-risk #features .signal-list>div>span{min-width:0!important;}
+.app-view-risk #features .signal-list>div>b{
+  justify-self:end!important;
+  white-space:nowrap!important;
+}
+
+@media (max-width:1500px){
+  .app-view-risk .app-page-head{
+    grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr);
+    gap:34px;
+    padding-bottom:16px;
+  }
+  .app-view-risk #features>.v14-risk-story{
+    grid-template-columns:minmax(320px,.66fr) minmax(620px,1.34fr)!important;
+    gap:30px!important;
+    padding-top:18px!important;
+  }
+  .app-view-risk #features .risk-method-strip{
+    grid-template-columns:minmax(92px,.8fr) 18px minmax(66px,.55fr) 18px minmax(128px,1fr) 18px minmax(112px,.9fr) minmax(150px,1fr);
+    gap:6px;
+  }
+}
+
+@media (max-width:1180px){
+  .app-view-risk .app-page-head{grid-template-columns:1fr;gap:12px;}
+  .app-view-risk .app-page-head>p{justify-self:start;max-width:920px;}
+  .app-view-risk #features>.v14-risk-story{grid-template-columns:1fr!important;gap:22px!important;}
+  .app-view-risk #features .showcase-copy{padding-top:0!important;}
+}

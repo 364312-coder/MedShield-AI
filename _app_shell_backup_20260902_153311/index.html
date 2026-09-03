@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MedShield-AI V5 医疗安全事件处置控制台：面向电子病历与医学影像的安全事件识别、处置、验证与恢复闭环。" />
+    <title>MedShield-AI V5 医疗安全事件处置控制台</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+      <link rel="stylesheet" href="./medshield-final.css?v=sourcefix3-20260828" />
+      <link rel="stylesheet" href="./medshield-plety-bg.css?v=sourcefix3-20260828" />
+    <link rel="stylesheet" href="./medshield-simulation-v2.css?v=simlab-presentation-redesign-20260902" />
+    <meta name="medshield-source-fix" content="V3-ACTIVE" />
+    <meta name="medshield-simlab" content="V2-SINGLE-OWNER" />
+    <script>window.__MEDSHIELD_SIMLAB_V2__ = true;</script>
+</head>
+  <body>
+
+<nav class="competition-nav">
+  <div class="competition-nav-inner">
+
+    <a class="competition-brand" href="#about">
+      <svg viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <path
+          d="M17 3.8 27.7 8v7.3c0 7-4.1 12-10.7 15-6.6-3-10.7-8-10.7-15V8L17 3.8Z"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+        <path
+          d="M11.6 17h10.8M17 11.6v10.8"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>MedShield-AI</span>
+    </a>
+
+    <div class="competition-nav-links">
+      <a href="#about">系统概览</a>
+      <a href="#features">风险感知</a>
+      <a href="#capabilities">安全能力</a>
+      <a href="#console">事件处置</a>
+      <a href="#evidence">实验验证</a>
+    </div>
+
+    <div class="competition-nav-right">
+      <div class="backend-live" id="backend-live-status">
+        <i></i>
+        <span>API CHECK</span>
+      </div>
+
+      <a class="nav-enter" href="#console">
+        进入系统
+        <span>↗</span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<section
+  class="competition-hero v14-hero"
+  id="about"
+>
+
+  <div class="v14-hero-stage">
+
+    <div class="hero-content">
+
+      <h1>
+        MedShield-AI
+      </h1>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="capability-strip">
+  <p>MEDICAL DATA SECURITY CAPABILITIES</p>
+  <div class="marquee-mask">
+    <div class="marquee-track">
+      <div class="marquee-set">
+        <span>◈ AES-256-GCM</span><span>◉ AI Risk Detection</span><span>◇ Policy Engine</span><span>▣ Image Watermark</span><span>▤ EMR Integrity</span><span>⬡ Trap Assets</span><span>⌁ Cold Backup</span><span>◎ Audit Chain</span>
+      </div>
+      <div class="marquee-set" aria-hidden="true">
+        <span>◈ AES-256-GCM</span><span>◉ AI Risk Detection</span><span>◇ Policy Engine</span><span>▣ Image Watermark</span><span>▤ EMR Integrity</span><span>⬡ Trap Assets</span><span>⌁ Cold Backup</span><span>◎ Audit Chain</span>
+      </div>
+      <div class="marquee-set" aria-hidden="true">
+        <span>◈ AES-256-GCM</span><span>◉ AI Risk Detection</span><span>◇ Policy Engine</span><span>▣ Image Watermark</span><span>▤ EMR Integrity</span><span>⬡ Trap Assets</span><span>⌁ Cold Backup</span><span>◎ Audit Chain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="showcase-wrap" id="features">
+  <article class="showcase-row v14-risk-story">
+      <div class="v14-story-rail" aria-hidden="true">
+        <span class="active">01<b>Normal</b></span>
+        <span>02<b>Observe</b></span>
+        <span>03<b>Restrict</b></span>
+        <span>04<b>High Risk</b></span>
+        <span>05<b>Contained</b></span>
+      </div>
+    <div class="showcase-copy reveal-up">
+      <span class="eyebrow">01 · AI RISK DETECTION</span>
+      <h2>实时风险感知，<br><em>驱动策略决策。</em></h2>
+      <p>系统综合用户、文件、网络与上下文行为进行实时风险判断，输出风险 R 与异常类型 A，并将结果交给 Policy Engine，在不破坏医疗业务连续性的前提下动态收紧防护。</p>
+      <ul><li>多维行为风险评分</li><li>已见 / 未见攻击检测</li><li>分级 Policy 策略控制</li><li>完整审计证据记录</li></ul>
+      <a href="#console" class="showcase-button">查看实时处置 <span>→</span></a>
+    </div>
+    <div class="showcase-visual reveal-up">
+      <div class="glass-window">
+        <div class="window-top"><span>Risk Detection Console</span><b><i></i> LIVE</b></div>
+        <div class="risk-upper">
+          <div class="event-preview">
+            <small>CURRENT EVENT</small><strong>医学影像异常外传</strong>
+            <dl><div><dt>EVENT ID</dt><dd>EVT-2026-0827-001</dd></div><div><dt>OBJECT</dt><dd>CT Image Series</dd></div><div><dt>DATA LEVEL</dt><dd>D3 · Critical</dd></div></dl>
+          </div>
+          <div class="risk-preview">
+            <small>RISK ASSESSMENT</small>
+            <div class="risk-ring"><div class="risk-inner"><strong>R = 0.91</strong><span>HIGH RISK</span></div></div>
+            <div class="risk-meta"><span>ATTACK TYPE<b>IMAGE_LEAKAGE</b></span><span>POLICY<b>P3 · HIGH</b></span></div>
+          </div>
+        </div>
+        <div class="explain-preview">
+          <div class="ct-preview"><div class="ct-core"></div><div class="scan-sweep"></div></div>
+          <div class="signal-list"><small>TOP CONTRIBUTING SIGNALS</small><div><span>异常访问频率</span><i style="--bar:88%"></i><b>0.62</b></div><div><span>异常数据流量</span><i style="--bar:63%"></i><b>0.21</b></div><div><span>行为上下文</span><i style="--bar:37%"></i><b>0.09</b></div></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="showcase-row reverse v14-recovery-story">
+      <div class="v14-recovery-rail" aria-hidden="true">
+        <span class="active">Integrity</span><i></i><span>Anomaly</span><i></i><span>Backup</span><i></i><span>Restore</span><i></i><span>Verified</span>
+      </div>
+    <div class="showcase-visual reveal-up">
+      <div class="glass-window">
+        <div class="recovery-steps"><span class="active">01<b>Integrity</b></span><i></i><span>02<b>Analyze</b></span><i></i><span>03<b>Cold Backup</b></span><i></i><span>04<b>Verify</b></span></div>
+        <div class="recovery-main">
+          <div class="recovery-data"><small>ORIGINAL DATA</small><div class="ct-round original"></div></div><div class="flow-arrow">→</div>
+          <div class="recovery-data"><small>ANOMALY MAP</small><div class="ct-round anomaly"><span></span></div></div><div class="flow-arrow">→</div>
+          <div class="recovery-result"><span>✓</span><strong>Recovery Successful</strong><small>100% VERIFIED</small></div>
+        </div>
+        <div class="recovery-meta"><span>DIGITAL WATERMARK <b>Matched</b></span><span>BACKUP SOURCE <b>Cold Backup</b></span></div>
+      </div>
+    </div>
+    <div class="showcase-copy reveal-up">
+      <span class="eyebrow">02 · INTEGRITY & RECOVERY</span>
+      <h2>数据可信验证，<br><em>异常后可靠恢复。</em></h2>
+      <p>医疗数据不仅需要检测攻击，还必须能够验证真实性和完整性。MedShield-AI 将水印、完整性验证、可信备份与恢复证据统一进事件处置流程。</p>
+      <ul><li>医学影像派生副本水印</li><li>EMR 完整性证据</li><li>Local + Cold Backup</li><li>恢复后再次验证</li></ul>
+      <a href="#assets" class="showcase-button">查看医疗对象 <span>→</span></a>
+    </div>
+  </article>
+</section>
+
+<section class="capability-architecture" id="capabilities">
+  <header class="capability-architecture-head">
+    <div>
+      <span class="eyebrow">CORE CAPABILITIES · SYSTEM ARCHITECTURE</span>
+      <h2>从风险感知，到可信恢复的<br><em>六层医疗安全闭环。</em></h2>
+    </div>
+    <p>核心能力不是彼此孤立的功能模块，而是一条持续运行的安全链路：AI 先识别风险，Policy Engine 再根据数据等级、上下文与 Trap 状态选择处置策略，随后完成主动防御、完整性验证、可信恢复与审计反馈。</p>
+  </header>
+
+  <div class="capability-architecture-list">
+
+    <article class="capability-row capability-ai">
+      <div class="cap-index">01</div>
+      <div class="cap-copy">
+        <span class="cap-kicker">AI RISK PERCEPTION</span>
+        <h3>AI 风险感知</h3>
+        <p>综合用户、文件与网络行为特征形成风险判断，输出风险分数 R 与异常类型 A，为后续策略决策提供实时输入。</p>
+        <div class="cap-tags"><span>U / F / N</span><span>RISK R</span><span>ANOMALY A</span></div>
+      </div>
+      <div class="cap-visual risk-wave" aria-hidden="true">
+        <div class="mini-head"><span>RISK EVOLUTION</span><b>LIVE</b></div>
+        <svg viewBox="0 0 320 94" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="riskFill141" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(104,216,242,.25)"/>
+              <stop offset="100%" stop-color="rgba(104,216,242,0)"/>
+            </linearGradient>
+          </defs>
+          <path class="risk-area" d="M0 82 C48 79,57 73,88 72 S129 68,151 59 S187 61,211 44 S246 47,270 29 S300 22,320 12 L320 94 L0 94 Z"/>
+          <path class="risk-line" d="M0 82 C48 79,57 73,88 72 S129 68,151 59 S187 61,211 44 S246 47,270 29 S300 22,320 12"/>
+        </svg>
+        <div class="risk-scale"><span>R 0.18</span><i></i><strong>R 0.91</strong></div>
+      </div>
+    </article>
+
+    <article class="capability-row capability-policy">
+      <div class="cap-index">02</div>
+      <div class="cap-copy">
+        <span class="cap-kicker">POLICY ENGINE</span>
+        <h3>动态策略决策</h3>
+        <p>将数据等级 D、AI 风险 R、异常类型 A、上下文 C 与独立 Trap 状态编译为 P0–P3 策略。Trap 只参与 Policy，不进入 AI 特征。</p>
+        <div class="cap-tags"><span>D</span><span>R</span><span>A</span><span>C</span><span>TRAP</span></div>
+      </div>
+      <div class="cap-visual policy-stack" aria-hidden="true">
+        <div class="mini-head"><span>POLICY LEVEL</span><b>AUTO</b></div>
+        <div class="policy-levels">
+          <span class="p0">P0<small>BASE</small></span>
+          <span class="p1">P1<small>WATCH</small></span>
+          <span class="p2">P2<small>LIMIT</small></span>
+          <span class="p3 active">P3<small>CONTAIN</small></span>
+        </div>
+        <div class="policy-equation">D + R + A + C + Trap → <b>P3</b></div>
+      </div>
+    </article>
+
+    <article class="capability-row capability-defense">
+      <div class="cap-index">03</div>
+      <div class="cap-copy">
+        <span class="cap-kicker">ACTIVE DEFENSE</span>
+        <h3>主动防御</h3>
+        <p>风险升级后主动收紧访问能力，通过限制权限、冻结可疑会话、阻断异常操作等动作控制攻击影响范围，同时保留医疗业务连续性。</p>
+        <div class="cap-tags"><span>RESTRICT</span><span>FREEZE</span><span>CONTAIN</span></div>
+      </div>
+      <div class="cap-visual defense-flow" aria-hidden="true">
+        <div class="mini-head"><span>RESPONSE FLOW</span><b>CONTAINED</b></div>
+        <div class="defense-nodes">
+          <span class="done"><i></i>DETECT</span>
+          <em>→</em>
+          <span class="done"><i></i>RESTRICT</span>
+          <em>→</em>
+          <span class="done"><i></i>CONTAIN</span>
+        </div>
+        <div class="contain-bar"><i></i></div>
+      </div>
+    </article>
+
+    <article class="capability-row capability-integrity">
+      <div class="cap-index">04</div>
+      <div class="cap-copy">
+        <span class="cap-kicker">DATA INTEGRITY</span>
+        <h3>医疗数据完整性</h3>
+        <p>针对医学影像派生副本与电子病历建立完整性证据。影像源数据不修改，运行时水印用于派生副本验证；EMR 侧保留独立完整性证据链。</p>
+        <div class="cap-tags"><span>IMAGE WM</span><span>EMR PROOF</span><span>HASH</span></div>
+      </div>
+      <div class="cap-visual integrity-proof" aria-hidden="true">
+        <div class="mini-head"><span>INTEGRITY PROOF</span><b>VERIFIED</b></div>
+        <div class="proof-grid">
+          <div class="proof-image"><i></i><i></i><i></i><i></i><span>IMAGE</span></div>
+          <div class="proof-arrow">+</div>
+          <div class="proof-token">WM<small>Matched</small></div>
+          <div class="proof-arrow">+</div>
+          <div class="proof-token">H#<small>Verified</small></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="capability-row capability-backup">
+      <div class="cap-index">05</div>
+      <div class="cap-copy">
+        <span class="cap-kicker">CRYPTO & BACKUP</span>
+        <h3>密码保护与可信备份</h3>
+        <p>AES-256-GCM 作为常驻数据保护基础，并通过 Local + Cold Backup 保留恢复路径。高风险事件触发的是权限与访问策略收紧，而不是事后才开始加密。</p>
+        <div class="cap-tags"><span>AES-256-GCM</span><span>LOCAL</span><span>COLD</span></div>
+      </div>
+      <div class="cap-visual backup-pipeline" aria-hidden="true">
+        <div class="mini-head"><span>RECOVERY PATH</span><b>VERIFIED</b></div>
+        <div class="backup-nodes">
+          <span><i class="db"></i>PRIMARY<small>Protected</small></span>
+          <em>→</em>
+          <span><i class="db"></i>LOCAL<small>Verified</small></span>
+          <em>→</em>
+          <span class="cold"><i class="db"></i>COLD<small>Verified</small></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="capability-row capability-feedback">
+      <div class="cap-index">06</div>
+      <div class="cap-copy">
+        <span class="cap-kicker">SECURITY FEEDBACK</span>
+        <h3>安全评估与反馈</h3>
+        <p>每次事件处置结果进入 Security Event Pool 与审计链，沉淀高可信异常、典型误报、漏报与新型模式，为后续检测与策略迭代提供可追溯证据。</p>
+        <div class="cap-tags"><span>EVENT POOL</span><span>AUDIT</span><span>FEEDBACK</span></div>
+      </div>
+      <div class="cap-visual feedback-loop" aria-hidden="true">
+        <div class="mini-head"><span>SECURITY EVENT POOL</span><b>TRACEABLE</b></div>
+        <div class="event-core">EVENT<br>POOL</div>
+        <span class="orbit-node n1">HIGH</span>
+        <span class="orbit-node n2">FP</span>
+        <span class="orbit-node n3">FN</span>
+        <span class="orbit-node n4">NEW</span>
+        <div class="orbit-ring"></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<main>
+      <span id="console" class="sim-console-anchor" aria-hidden="true"></span>
+      <section class="simulation-lab-section" id="sim-lab" aria-labelledby="sim-lab-title">
+        <div class="sim-lab-shell">
+          <header class="sim-lab-header">
+            <div class="sim-lab-heading">
+              <span>动态攻防模拟实验</span>
+              <h2 id="sim-lab-title">医疗数据安全事件处置实验舱</h2>
+              <p>从最终正式 run 读取真实事件结果。攻击路径、策略动作与恢复过程仅做流程可视化；R / A / P、遏制、完整性与恢复结论均来自正式事件记录。</p>
+            </div>
+            <div class="sim-lab-source">
+              <b>正式事件回放</b>
+              <span>run_20260826_153334 · READ ONLY</span>
+            </div>
+          </header>
+
+          <div class="sim-mode-bar" aria-label="实验模式">
+            <div class="sim-mode-tabs" role="tablist">
+              <button class="sim-mode-tab active" type="button" data-sim-mode="single" role="tab" aria-selected="true">
+                <span>单事件模式</span><small>完整处置一个正式事件</small>
+              </button>
+              <button class="sim-mode-tab" type="button" data-sim-mode="parallel" role="tab" aria-selected="false">
+                <span>多事件并行</span><small>同时观察 2–4 个正式事件</small>
+              </button>
+            </div>
+            <div class="sim-system-state"><i></i><span id="sim-system-label">就绪</span></div>
+          </div>
+
+          <div class="sim-scenario-panel">
+            <div class="sim-scenario-head">
+              <div><span>选择攻击场景</span><strong id="sim-selection-hint">选择 1 个场景</strong></div>
+              <button id="sim-reset" class="sim-text-button" type="button">重置实验</button>
+            </div>
+            <div id="sim-scenario-list" class="sim-scenario-list"></div>
+          </div>
+
+          <div class="sim-command-bar">
+            <div class="sim-command-meta"><span>已选择</span><strong id="sim-selected-count">1 个事件</strong></div>
+            <button id="sim-start" class="sim-start-button" type="button"><span>启动模拟攻击</span><i>→</i></button>
+          </div>
+
+          <div class="sim-phase-rail" id="sim-phase-rail" aria-label="当前事件处置进度"></div>
+
+          <div id="sim-workspace" class="sim-workspace" data-phase="ready">
+            <aside class="sim-incident-column" aria-label="并行事件队列">
+              <header><span>事件队列</span><b id="simv2-pending-count">0</b></header>
+              <div id="sim-incident-queue" class="sim-incident-queue"></div>
+            </aside>
+
+            <section class="sim-flow-stage" aria-label="动态攻防主舞台">
+              <header class="sim-flow-head">
+                <div><span>动态攻防主舞台</span><h3 id="sim-stage-title">等待启动</h3></div>
+                <div class="sim-live-count"><small>活动事件</small><strong id="simv2-active-count">0</strong></div>
+              </header>
+
+              <div class="sim-situation-bar">
+                <div><span>当前攻击</span><strong id="sim-current-attack">尚未启动</strong></div>
+                <div><span>当前正在进行</span><strong id="sim-current-phase">等待选择场景</strong></div>
+                <div class="sim-next-cell"><span>下一步</span><strong id="sim-next-action">启动模拟攻击</strong></div>
+              </div>
+
+              <div class="sim-flow-canvas" id="sim-flow-canvas" data-scenario="" data-stage="ready">
+                <div class="sim-network-map sim-presentation-map">
+                  <section class="sim-stage-band sim-attack-band" aria-label="攻击链">
+                    <div class="sim-band-heading">
+                      <span>01</span>
+                      <div><strong>攻击链</strong><small>攻击如何作用于医疗数据资产</small></div>
+                    </div>
+                    <div class="sim-attack-row">
+                      <div class="sim-map-node actor" data-node="actor"><span>访问主体</span><strong>用户 / 业务系统</strong></div>
+                      <div class="sim-map-link actor-to-assets"><i></i><em></em></div>
+                      <div class="sim-assets-cluster">
+                        <div class="sim-map-node emr" data-node="emr"><span>电子病历</span><strong>EMR</strong></div>
+                        <div class="sim-map-node image" data-node="image"><span>医学影像</span><strong>CT / X-Ray</strong></div>
+                        <div class="sim-map-node network" data-node="network"><span>网络出口</span><strong>Outbound</strong></div>
+                      </div>
+                      <div class="sim-map-link assets-to-external"><i></i><em></em></div>
+                      <div class="sim-map-node external" data-node="external"><span>外部节点</span><strong>External</strong></div>
+                    </div>
+                  </section>
+
+                  <section class="sim-stage-band sim-ai-band" aria-label="AI 判断链">
+                    <div class="sim-band-heading">
+                      <span>02</span>
+                      <div><strong>AI 判断链</strong><small>风险信号汇聚后读取正式 R / A / P</small></div>
+                    </div>
+                    <div class="sim-ai-chain-row">
+                      <div class="sim-signal-stack">
+                        <span>风险感知信号</span>
+                        <div data-signal="u"><b>U</b><small>用户行为</small><strong>等待</strong></div>
+                        <div data-signal="f"><b>F</b><small>文件行为</small><strong>等待</strong></div>
+                        <div data-signal="n"><b>N</b><small>网络行为</small><strong>等待</strong></div>
+                      </div>
+                      <div class="sim-ai-arrow"><i></i></div>
+                      <div class="sim-risk-engine-node"><span>风险研判</span><strong>UFN-SAR</strong><small>↓</small><strong>LightGBM</strong></div>
+                      <div class="sim-ai-arrow"><i></i></div>
+                      <div class="sim-rap-block">
+                        <span>正式决策</span>
+                        <div><small>R</small><strong id="sim-flow-r">--</strong></div>
+                        <div><small>A</small><strong id="sim-flow-a">待解锁</strong></div>
+                        <div><small>P</small><strong id="sim-flow-p">--</strong></div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="sim-stage-band sim-response-band" aria-label="处置链">
+                    <div class="sim-band-heading">
+                      <span>03</span>
+                      <div><strong>处置链</strong><small>策略执行后继续验证数据可信状态</small></div>
+                    </div>
+                    <div class="sim-response-row">
+                      <div class="sim-defense-gate" id="sim-defense-gate"><span>主动防御</span><strong id="sim-defense-gate-label">等待策略</strong></div>
+                      <div class="sim-response-arrow">→</div>
+                      <div class="sim-trust-track">
+                        <div class="sim-trust-node"><span>完整性验证</span><strong id="sim-integrity-visual">等待</strong></div>
+                        <div class="sim-trust-arrow">→</div>
+                        <div class="sim-trust-node"><span>可信恢复 / 审计</span><strong id="sim-recovery-visual">等待</strong></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+
+                <div id="sim-parallel-lanes" class="sim-parallel-lanes" aria-label="并行事件状态"></div>
+                <div id="sim-flow-caption" class="sim-flow-caption">选择场景后启动模拟攻击</div>
+              </div>
+            </section>
+
+            <aside class="sim-decision-column" aria-label="正式决策与操作">
+              <header><span>正式决策</span><b id="sim-decision-state">待命</b></header>
+              <div id="sim-decision-panel" class="sim-decision-panel"></div>
+              <div id="sim-action-zone" class="sim-action-zone"></div>
+            </aside>
+
+            <section class="sim-event-stream" aria-label="实时事件流">
+              <header>
+                <div><span>实时事件流</span><small>作为证据层记录本轮回放</small></div>
+                <div class="sim-stream-actions"><button id="sim-open-stream" type="button">弹窗查看完整事件流</button><button id="sim-clear-stream" type="button">清空</button></div>
+              </header>
+              <div id="simv2-stream-body" class="sim-stream-body" tabindex="0" aria-label="点击打开完整事件流"></div>
+            </section>
+          </div>
+
+          <div class="sim-boundary-bar">
+            <span>能力边界</span>
+            <p>Permission / Network = SIMULATED · Key Enforcement = PARTIAL · DICOM Watermark Runtime = UNAVAILABLE · EMR Embedded Watermark = UNAVAILABLE · Real HIS/PACS = NOT IMPLEMENTED</p>
+          </div>
+
+          <dialog id="sim-stream-dialog" class="sim-stream-dialog" aria-labelledby="sim-stream-dialog-title">
+            <div class="sim-dialog-shell">
+              <header>
+                <div><span>事件证据视图</span><h3 id="sim-stream-dialog-title">完整事件生命周期</h3></div>
+                <button type="button" id="sim-close-stream" aria-label="关闭弹窗">×</button>
+              </header>
+              <div class="sim-dialog-summary" id="sim-dialog-summary"></div>
+              <div class="sim-dialog-phases" id="sim-dialog-phases"></div>
+              <div class="sim-dialog-grid">
+                <section><h4>实时事件流</h4><div id="sim-dialog-log" class="sim-dialog-log"></div></section>
+                <section><h4>正式事件字段</h4><div id="sim-dialog-fields" class="sim-dialog-fields"></div></section>
+              </div>
+            </div>
+          </dialog>
+
+          <div class="sim-compat" hidden aria-hidden="true">
+            <span id="pending-count">0</span><span id="high-risk-count">0</span><div id="incident-queue"></div>
+            <span id="case-label"></span><span id="case-state"></span><h2 id="case-title"></h2><div id="case-summary"></div>
+            <div id="case-asset"></div><div id="action-bar"></div><div id="stage-progress"></div><div id="evidence-content"></div>
+            <div id="audit-log"></div><button id="clear-log" type="button">legacy</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section assets-section" id="assets">
+        <div class="section-head reveal">
+          <span>MEDICAL DATA OBJECTS</span>
+          <h2>医疗数据资产视图</h2>
+          <p>从影像派生副本、电子病历，到 Trap 诱捕资产与 Local / Cold 备份，展示系统实际保护与验证的对象。</p>
+        </div>
+
+        <div class="object-grid reveal">
+          <article class="object-card image-object">
+            <div class="object-visual scan-card">
+              <div class="scan-line"></div>
+              <span>CT / X-Ray Derived Copy</span>
+              <strong>WATERMARK VERIFIED</strong>
+            </div>
+            <div class="object-copy">
+              <h3>医学影像派生副本</h3>
+              <p>源医学影像不被修改；派生副本记录 AssetID、CopyID 与水印验证状态。</p>
+              <ul>
+                <li>AssetID：AST-****</li>
+                <li>CopyID：CPY-****</li>
+                <li>水印状态：可验证</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="object-card emr-object">
+            <div class="emr-sheet">
+              <span>EMR RECORD</span>
+              <div></div><div></div><div></div><div></div>
+              <strong>AES-GCM / BACKUP OK</strong>
+            </div>
+            <div class="object-copy">
+              <h3>电子病历 EMR</h3>
+              <p>电子病历以加密、备份和完整性认证作为常驻基础保护。</p>
+              <ul>
+                <li>加密状态：AES-GCM</li>
+                <li>备份状态：Local + Cold</li>
+                <li>完整性：按事件触发验证</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="object-card trap-object">
+            <div class="trap-visual">
+              <span>DECOY</span>
+              <strong>TRAP</strong>
+            </div>
+            <div class="object-copy">
+              <h3>Trap 诱捕资产</h3>
+              <p>Trap 作为 Policy Engine 的独立上下文，帮助系统判断高风险访问。</p>
+              <ul>
+                <li>Trap EMR：150</li>
+                <li>Trap Image：150</li>
+                <li>不进入 AI 特征</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="object-card backup-object">
+            <div class="backup-visual">
+              <i></i><i></i><i></i>
+            </div>
+            <div class="object-copy">
+              <h3>可信备份</h3>
+              <p>Local 与 Cold 双备份用于完整性异常后的可信恢复。</p>
+              <ul>
+                <li>Local：常规恢复支撑</li>
+                <li>Cold：高可信恢复支撑</li>
+                <li>恢复后再次验证</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section samples-section" id="event-samples">
+        <div class="section-head reveal">
+          <span>EVENT SAMPLES</span>
+          <h2>从正式事件样本进入处置流程</h2>
+          <p>表格读取 results.csv。点击任意事件，可把它作为工单载入处置台。</p>
+        </div>
+
+        <div class="table-controls reveal">
+          <label>
+            <span>场景筛选</span>
+            <select id="scenario-filter"><option value="ALL">全部场景</option></select>
+          </label>
+          <label>
+            <span>策略筛选</span>
+            <select id="policy-filter"><option value="ALL">全部策略</option></select>
+          </label>
+          <p>当前展示 <strong id="visible-event-count">0</strong> 条样本</p>
+        </div>
+
+        <div class="event-table-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>事件 ID</th>
+                <th>场景</th>
+                <th>数据等级</th>
+                <th>风险 R</th>
+                <th>AI 判定 A</th>
+                <th>策略 P</th>
+                <th>完整性</th>
+                <th>事件池</th>
+              </tr>
+            </thead>
+            <tbody id="event-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section metrics-section" id="metrics">
+        <div class="section-head reveal">
+          <span>FORMAL RUN EVIDENCE</span>
+          <h2>正式运行证据</h2>
+          <p>以下结果来自正式 FULL run，用于证明检测、处置、恢复与性能能力；前端只读展示 JSON/CSV，不重新训练或重算策略。</p>
+        </div>
+
+        <div class="metrics-layout reveal">
+          <div class="metric-panel">
+            <h3>AI 检测表现</h3>
+            <div id="model-metrics" class="metric-list"></div>
+          </div>
+
+          <div class="metric-panel">
+            <h3>攻击场景检出率</h3>
+            <div id="scenario-metrics" class="bar-list"></div>
+            <p class="note">异常检出率表示是否识别为异常，不等同于异常类型分类 Recall。</p>
+          </div>
+
+          <div class="metric-panel">
+            <h3>策略等级分布</h3>
+            <div id="policy-metrics" class="policy-list"></div>
+          </div>
+
+          <div class="metric-panel">
+            <h3>恢复与性能</h3>
+            <div id="recovery-metrics" class="metric-cards"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section limits-section" id="limits">
+        <div class="section-head reveal">
+          <span>CAPABILITY BOUNDARY</span>
+          <h2>可演示，但不夸大</h2>
+          <p>系统 Demo 需要可操作，但能力边界必须讲清楚。</p>
+        </div>
+
+        <div class="capability-grid reveal">
+          <article class="capability-card ok">
+            <h3>已完成能力</h3>
+            <ul>
+              <li>正式实验结果接入</li>
+              <li>AES-GCM 基础保护</li>
+              <li>Local + Cold 双备份</li>
+              <li>UFN-SAR + LightGBM 检测</li>
+              <li>P0–P3 策略处置</li>
+              <li>PNG 派生副本影像水印</li>
+              <li>完整性验证与 Cold 恢复</li>
+              <li>Event Pool 反馈闭环</li>
+            </ul>
+          </article>
+
+          <article class="capability-card warn">
+            <h3>当前边界</h3>
+            <ul>
+              <li>当前网页操作为前端演示，不是真实生产控制台</li>
+              <li>权限 / 网络动作为模拟执行</li>
+              <li>密钥强制执行是部分实现</li>
+              <li>DICOM 原生运行时当前未提供</li>
+              <li>EMR 内嵌水印运行时当前未提供</li>
+              <li>TTD / TTC 以流水线延迟展示</li>
+              <li>数据为合成 / 公开实验数据</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>MedShield-AI V5</strong>
+      <span>医疗安全事件处置控制台 · 前端演示模拟 · 正式结果来自 run_20260826_153334</span>
+    </footer>
+    <script defer src="./competition.js?v=sourcefix3-20260828"></script>
+    <script defer src="./app.js?v=competition-v12"></script>
+  <section class="competition-faq" id="competition-faq">
+  <div class="faq-heading reveal-up"><span class="eyebrow">FAQ</span><h2>评委可能关心的问题</h2></div>
+  <div class="faq-box reveal-up">
+    <article class="faq-item"><button class="faq-trigger" type="button"><span>MedShield-AI 会修改医院原始医学影像吗？</span><i></i></button><div class="faq-answer"><div>不会。系统保持原始医学影像不变。当前影像水印运行时作用于 PNG / 数组派生副本，用于溯源和验证，不对源医学影像进行写入。</div></div></article>
+    <article class="faq-item"><button class="faq-trigger" type="button"><span>Trap 诱捕资产会不会污染 AI 判断？</span><i></i></button><div class="faq-answer"><div>不会。Trap 是 Policy Engine 的独立布尔上下文，不进入 AI 风险特征，因此不会成为模型捷径特征。</div></div></article>
+    <article class="faq-item"><button class="faq-trigger" type="button"><span>为什么不从一开始全部使用最高等级防御？</span><i></i></button><div class="faq-answer"><div>医疗系统需要兼顾安全与业务连续性。常驻基础保护始终开启，AI 检测用于在风险升高时进一步收紧权限和策略，避免最高强度措施长期造成性能和可用性成本。</div></div></article>
+    <article class="faq-item"><button class="faq-trigger" type="button"><span>系统是否能够识别训练中没有出现过的攻击？</span><i></i></button><div class="faq-answer"><div>正式实验包含未见攻击测试。当前正式 run 中包含 3,000 条未见攻击事件，对应检出率为 100%，用于验证行为风险方法对未知模式的泛化能力。</div></div></article>
+    <article class="faq-item"><button class="faq-trigger" type="button"><span>现在是真正的后端系统还是静态 Demo？</span><i></i></button><div class="faq-answer"><div>当前版本已接入 Cloudflare Worker API 与 D1 数据库，事件阶段、处置动作和审计日志能够真实持久化；但权限冻结、网络隔离等动作仍属于竞赛系统中的策略执行模拟，不直接控制真实医院生产基础设施。</div></div></article>
+  </div>
+</section>
+
+<footer class="competition-footer" id="contact">
+  <div class="footer-ambient" aria-hidden="true"></div>
+  <div class="footer-cta reveal-up"><span class="eyebrow">MEDSHIELD-AI</span><h2>让医疗数据安全，<br><em>真正进入智能时代。</em></h2><p>从风险感知，到主动防御、完整性验证、可信恢复与审计。</p><div class="hero-actions"><a class="hero-primary" href="#console">进入系统 <span>↗</span></a><a class="hero-secondary" href="#features">了解方案</a></div></div>
+  <div class="footer-links">
+    <div class="footer-brand"><a class="competition-brand" href="#about"><svg viewBox="0 0 34 34" fill="none"><path d="M17 3.8 27.7 8v7.3c0 7-4.1 12-10.7 15-6.6-3-10.7-8-10.7-15V8L17 3.8Z" stroke="currentColor" stroke-width="1.7"/><path d="M11.6 17h10.8M17 11.6v10.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>MedShield-AI</span></a><p>AI-Powered Medical Data Security<br>& Risk Control System.</p></div>
+    <div><strong>Product</strong><a href="#about">首页</a><a href="#features">核心能力</a><a href="#console">处置系统</a><a href="#competition-faq">FAQ</a></div>
+    <div><strong>System</strong><a href="#assets">医疗对象</a><a href="#event-samples">事件样本</a><a href="#metrics">实验结果</a><a href="#limits">能力边界</a></div>
+    <div><strong>Architecture</strong><span>Cloudflare Worker</span><span>D1 Database</span><span>CPU-first Runtime</span><span>Security Event Pool</span></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 MedShield-AI. All rights reserved.</span><span>Built for security. Designed for trust.</span></div>
+</footer>
+      <script defer src="./medshield-final.js?v=sourcefix3-20260828"></script>
+      <script defer src="./medshield-plety-bg.js?v=sourcefix3-20260828"></script>
+      <script defer src="./medshield-simulation-v2.js?v=simlab-central-stage-20260902"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1105 @@
+/* MedShield-AI Desktop App Shell V1
+   Scope: desktop presentation shell only.
+   FROZEN: Plety background files/video are not touched here. */
+
+:root{
+  --app-nav-h:72px;
+  --app-max:1560px;
+  --app-cyan:#7adbed;
+  --app-text:#edf6f8;
+  --app-text-2:#c1d1d6;
+  --app-muted:#8da3aa;
+  --app-muted-2:#667d85;
+  --app-line:rgba(119,210,229,.14);
+  --app-panel:rgba(4,20,29,.70);
+  --app-panel-strong:rgba(5,23,32,.86);
+  --app-green:#7fd9ae;
+  --app-amber:#d8b36f;
+  --app-risk:#eb8a82;
+}
+
+html{scroll-behavior:auto!important;}
+body.medshield-shell-ready{overflow-x:hidden;color:var(--app-text);}
+body.medshield-shell-ready .capability-strip,
+body.medshield-shell-ready main>section,
+body.medshield-shell-ready main>.sim-console-anchor,
+body.medshield-shell-ready main+.footer,
+body.medshield-shell-ready .competition-faq,
+body.medshield-shell-ready .competition-footer{
+  display:none!important;
+}
+body.medshield-shell-ready main{display:none!important;}
+
+/* Global nav: stable App Shell, never a pill bar. */
+body.medshield-shell-ready .competition-nav{
+  height:var(--app-nav-h);
+  background:linear-gradient(180deg,rgba(3,14,21,.88),rgba(3,14,21,.66));
+  border-bottom:1px solid var(--app-line);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+body.medshield-shell-ready .competition-nav-inner{
+  width:min(var(--app-max),calc(100% - 56px));
+  height:100%;
+  margin:0 auto;
+}
+body.medshield-shell-ready .competition-brand{font-size:14px;letter-spacing:.01em;}
+body.medshield-shell-ready .competition-nav-links{height:100%;align-items:stretch;gap:4px;}
+body.medshield-shell-ready .competition-nav-links a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  color:#859ba3;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+  transition:color .18s ease,background .18s ease;
+}
+body.medshield-shell-ready .competition-nav-links a::after{
+  content:"";
+  position:absolute;
+  left:16px;right:16px;bottom:0;
+  height:2px;
+  background:var(--app-cyan);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .2s ease;
+}
+body.medshield-shell-ready .competition-nav-links a:hover{color:#cfe3e7;background:rgba(90,186,208,.035);}
+body.medshield-shell-ready .competition-nav-links a.is-active{color:#f0f8fa;}
+body.medshield-shell-ready .competition-nav-links a.is-active::after{transform:scaleX(1);}
+body.medshield-shell-ready .backend-live{font-size:11px;}
+body.medshield-shell-ready .nav-enter{
+  border:1px solid rgba(121,220,236,.20);
+  background:rgba(16,64,78,.22);
+  font-size:12px;
+  border-radius:5px;
+}
+
+/* Home remains the brand moment. The blue moving background stays visible. */
+body.medshield-shell-ready .competition-hero{
+  display:none!important;
+}
+body.medshield-shell-ready.is-home .competition-hero{
+  display:grid!important;
+  min-height:100vh!important;
+  height:100vh!important;
+  padding-top:var(--app-nav-h)!important;
+  background:transparent!important;
+  overflow:hidden!important;
+}
+body.medshield-shell-ready.is-home .v14-hero-stage{
+  min-height:calc(100vh - var(--app-nav-h))!important;
+  height:auto!important;
+  display:grid!important;
+  place-items:center!important;
+}
+body.medshield-shell-ready.is-home .hero-content{
+  width:min(1120px,calc(100% - 80px));
+  margin:0 auto!important;
+  text-align:center;
+  transform:none!important;
+  opacity:1!important;
+}
+body.medshield-shell-ready .app-home-kicker{
+  display:block;
+  margin-bottom:18px;
+  color:#8fcbd8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+body.medshield-shell-ready.is-home .hero-content h1{
+  margin:0!important;
+  color:#f3fafb!important;
+  font-size:clamp(72px,9vw,154px)!important;
+  line-height:.9!important;
+  letter-spacing:-.065em!important;
+  font-weight:620!important;
+  text-shadow:0 12px 50px rgba(0,0,0,.20);
+}
+body.medshield-shell-ready .app-home-subtitle{
+  margin:28px auto 0;
+  color:#d2e2e6;
+  font-size:clamp(18px,1.55vw,26px);
+  line-height:1.5;
+  letter-spacing:.02em;
+}
+body.medshield-shell-ready .app-home-chain{
+  margin:12px auto 0;
+  color:#859ba3;
+  font-size:13px;
+  letter-spacing:.06em;
+}
+body.medshield-shell-ready .app-home-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  margin-top:38px;
+}
+body.medshield-shell-ready .app-home-primary,
+body.medshield-shell-ready .app-home-secondary{
+  display:inline-flex;
+  align-items:center;
+  gap:20px;
+  min-height:48px;
+  padding:0 20px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:650;
+}
+body.medshield-shell-ready .app-home-primary{
+  border:1px solid rgba(121,220,236,.30);
+  background:rgba(14,67,82,.34);
+  color:#eef8fa;
+}
+body.medshield-shell-ready .app-home-primary:hover{background:rgba(15,78,96,.46);}
+body.medshield-shell-ready .app-home-secondary{color:#a3b9bf;border-bottom:1px solid rgba(121,220,236,.18);padding-left:4px;padding-right:4px;}
+body.medshield-shell-ready .app-home-secondary:hover{color:#d4e8ec;}
+body.medshield-shell-ready.is-home .competition-nav-links{opacity:.64;}
+
+/* App stage */
+#medshield-app-shell{
+  display:none;
+  min-height:100vh;
+  padding-top:var(--app-nav-h);
+  position:relative;
+  z-index:2;
+}
+body.medshield-shell-ready.is-app #medshield-app-shell{display:block;}
+#medshield-app-shell::before{
+  content:"";
+  position:fixed;
+  inset:var(--app-nav-h) 0 0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,13,20,.24),rgba(2,13,20,.46));
+  z-index:-1;
+}
+.app-view{
+  display:none;
+  width:min(var(--app-max),calc(100% - 56px));
+  min-height:calc(100vh - var(--app-nav-h));
+  margin:0 auto;
+  padding:38px 0 54px;
+  opacity:1;
+  transform:none;
+}
+.app-view.is-active{display:block;}
+.app-view[hidden]{display:none!important;}
+.app-view .reveal,
+.app-view .reveal-up{
+  opacity:1!important;
+  transform:none!important;
+  visibility:visible!important;
+}
+
+/* Shared page heading */
+.app-page-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(320px,.55fr);
+  gap:48px;
+  align-items:end;
+  padding:10px 0 28px;
+  border-bottom:1px solid var(--app-line);
+}
+.app-page-head .eyebrow{display:block;color:#79cfe0;font-size:11px;font-weight:700;letter-spacing:.12em;}
+.app-page-head h1{margin:9px 0 0;font-size:clamp(40px,4vw,64px);line-height:1;letter-spacing:-.045em;font-weight:620;color:#f1f8fa;}
+.app-page-head p{margin:0;color:#91a7ae;font-size:14px;line-height:1.8;}
+
+/* Overview */
+.app-overview-stage{padding-top:34px;}
+.app-overview-flow{
+  display:grid;
+  grid-template-columns:1fr 56px 1fr 56px 1fr 56px 1fr 56px 1fr 56px 1fr;
+  align-items:center;
+  min-height:270px;
+  border-bottom:1px solid var(--app-line);
+}
+.app-overview-node{min-width:0;padding:18px 14px;border-top:1px solid rgba(121,220,236,.16);border-bottom:1px solid rgba(121,220,236,.08);background:rgba(5,24,33,.58);}
+.app-overview-node span{display:block;color:#718991;font-size:11px;}
+.app-overview-node strong{display:block;margin-top:8px;color:#dcebed;font-size:14px;line-height:1.4;}
+.app-overview-arrow{text-align:center;color:#6bbfd1;font-size:20px;}
+.app-overview-metrics{display:grid;grid-template-columns:repeat(4,1fr);margin-top:0;border-bottom:1px solid var(--app-line);}
+.app-overview-metric{padding:26px 28px 28px;border-right:1px solid var(--app-line);}
+.app-overview-metric:last-child{border-right:0;}
+.app-overview-metric strong{display:block;color:#eef7f9;font-size:clamp(30px,3vw,46px);font-weight:580;letter-spacing:-.04em;}
+.app-overview-metric span{display:block;margin-top:7px;color:#93a9af;font-size:13px;}
+.app-overview-foot{display:grid;grid-template-columns:1fr 1fr;gap:42px;padding-top:30px;}
+.app-overview-foot article{padding-top:14px;border-top:1px solid rgba(121,220,236,.11);}
+.app-overview-foot span{color:#6fc4d5;font-size:11px;font-weight:700;letter-spacing:.1em;}
+.app-overview-foot h3{margin:9px 0 8px;font-size:20px;font-weight:600;color:#e7f1f3;}
+.app-overview-foot p{margin:0;color:#879ea5;font-size:13px;line-height:1.75;}
+
+/* Risk: convert old scroll story into one presentation view. */
+.app-view-risk #features{
+  padding:0!important;
+  margin:0!important;
+  min-height:0!important;
+  height:auto!important;
+  background:transparent!important;
+}
+.app-view-risk #features>.showcase-row{
+  display:grid!important;
+  grid-template-columns:minmax(360px,.82fr) minmax(560px,1.18fr)!important;
+  gap:64px!important;
+  align-items:center!important;
+  min-height:calc(100vh - 160px)!important;
+  height:auto!important;
+  padding:30px 0 50px!important;
+  position:relative!important;
+  inset:auto!important;
+}
+.app-view-risk .v14-risk-story .v14-story-rail{display:none!important;}
+.app-view-risk #features .showcase-copy,
+.app-view-risk #features .showcase-visual{position:static!important;transform:none!important;opacity:1!important;}
+.app-view-risk #features .showcase-copy h2{font-size:clamp(38px,4vw,60px)!important;line-height:1.02!important;}
+.app-view-risk #features .showcase-copy p{font-size:14px!important;line-height:1.8!important;}
+.app-view-risk #features .showcase-copy li{font-size:13px!important;}
+.app-view-risk #features .glass-window{max-width:none!important;min-height:470px;background:rgba(5,21,30,.78)!important;border-color:rgba(121,220,236,.14)!important;}
+.app-view-risk #features .window-top{font-size:12px!important;}
+.app-view-risk #features small{font-size:11px!important;}
+.app-view-risk #features .event-preview strong{font-size:18px!important;}
+.app-view-risk #features .risk-inner strong{font-size:20px!important;}
+.app-view-risk #features .signal-list div{font-size:12px!important;}
+
+/* Capabilities: no sticky story, no enormous scroll heights. */
+.app-view-capabilities .v14-recovery-story{
+  display:grid!important;
+  grid-template-columns:minmax(560px,1.1fr) minmax(360px,.9fr)!important;
+  gap:60px!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:22px 0 44px!important;
+  position:static!important;
+}
+.app-view-capabilities .v14-recovery-rail{display:none!important;}
+.app-view-capabilities .v14-recovery-story .showcase-copy,
+.app-view-capabilities .v14-recovery-story .showcase-visual{position:static!important;transform:none!important;opacity:1!important;}
+.app-view-capabilities #capabilities{
+  padding:38px 0 0!important;
+  margin:0!important;
+  background:transparent!important;
+  min-height:0!important;
+}
+.app-view-capabilities #capabilities .capability-ai{display:none!important;}
+.app-view-capabilities .capability-architecture-head{display:grid!important;grid-template-columns:1fr 1fr!important;gap:48px!important;padding-bottom:26px!important;}
+.app-view-capabilities .capability-architecture-head h2{font-size:clamp(34px,3.4vw,52px)!important;}
+.app-view-capabilities .capability-architecture-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;border-top:1px solid var(--app-line)!important;}
+.app-view-capabilities .capability-row{
+  min-height:250px!important;
+  height:auto!important;
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:54px minmax(220px,.85fr) minmax(260px,1.15fr)!important;
+  align-items:center!important;
+  gap:20px!important;
+  padding:26px 24px!important;
+  border-bottom:1px solid var(--app-line)!important;
+  border-right:1px solid var(--app-line)!important;
+  background:rgba(4,20,28,.48)!important;
+}
+.app-view-capabilities .capability-row:nth-child(even){border-right:0!important;}
+.app-view-capabilities .cap-copy h3{font-size:19px!important;}
+.app-view-capabilities .cap-copy p{font-size:13px!important;line-height:1.7!important;}
+.app-view-capabilities .cap-tags span{font-size:10px!important;}
+.app-view-capabilities .cap-visual{position:relative!important;inset:auto!important;transform:none!important;min-height:150px!important;}
+
+/* Console: own view. Keep internal Simulation CSS as owner. */
+.app-view-console{width:100%;padding:0!important;}
+.app-view-console #console{display:block!important;height:0!important;}
+.app-view-console #sim-lab{display:block!important;padding-top:42px!important;margin:0!important;min-height:calc(100vh - var(--app-nav-h))!important;}
+.app-view-console #sim-lab .sim-lab-shell{width:min(1540px,calc(100% - 40px))!important;}
+
+/* Evidence uses internal tabs so it does not become another endless page. */
+.app-evidence-shell{padding-top:28px;}
+.app-evidence-tabs{
+  display:flex;
+  align-items:center;
+  gap:0;
+  border-bottom:1px solid var(--app-line);
+  margin-bottom:20px;
+}
+.app-evidence-tab{
+  appearance:none;border:0;background:transparent;color:#758b93;
+  padding:14px 18px 15px;font-size:12px;font-weight:650;cursor:pointer;
+  border-bottom:2px solid transparent;
+}
+.app-evidence-tab:hover{color:#c7dce0;}
+.app-evidence-tab.is-active{color:#eaf5f7;border-bottom-color:var(--app-cyan);}
+.app-evidence-panel{display:none;}
+.app-evidence-panel.is-active{display:block;}
+.app-view-evidence .section,
+.app-view-evidence .competition-faq{
+  display:block!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:28px 0 48px!important;
+  margin:0!important;
+  background:transparent!important;
+}
+.app-view-evidence .section-head{max-width:920px!important;margin-bottom:26px!important;}
+.app-view-evidence .section-head h2,
+.app-view-evidence .faq-heading h2{font-size:clamp(32px,3.2vw,48px)!important;}
+.app-view-evidence .section-head p{font-size:14px!important;line-height:1.75!important;}
+.app-view-evidence .metrics-layout{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:1px!important;background:var(--app-line)!important;border:1px solid var(--app-line)!important;}
+.app-view-evidence .metric-panel{background:rgba(5,22,30,.74)!important;border:0!important;border-radius:0!important;min-height:270px!important;padding:24px!important;}
+.app-view-evidence .metric-panel h3{font-size:16px!important;}
+.app-view-evidence .metric-list,
+.app-view-evidence .policy-list,
+.app-view-evidence .bar-list{font-size:12px!important;}
+.app-view-evidence .object-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:1px!important;background:var(--app-line)!important;border:1px solid var(--app-line)!important;}
+.app-view-evidence .object-card{border:0!important;border-radius:0!important;background:rgba(5,22,30,.72)!important;}
+.app-view-evidence .event-table-wrap{max-height:520px;overflow:auto;border:1px solid var(--app-line);background:rgba(4,18,26,.70);}
+.app-view-evidence table{font-size:12px!important;}
+.app-view-evidence th{position:sticky;top:0;background:#081e29!important;z-index:2;font-size:11px!important;}
+.app-view-evidence td{font-size:12px!important;}
+.app-view-evidence .capability-grid{grid-template-columns:1fr 1fr!important;gap:1px!important;background:var(--app-line)!important;border:1px solid var(--app-line)!important;}
+.app-view-evidence .capability-card{border:0!important;border-radius:0!important;background:rgba(5,22,30,.72)!important;}
+.app-view-evidence .capability-card h3{font-size:18px!important;}
+.app-view-evidence .capability-card li{font-size:13px!important;line-height:1.65!important;}
+.app-view-evidence .faq-box{max-width:none!important;}
+.app-view-evidence .faq-trigger{font-size:14px!important;}
+.app-view-evidence .faq-answer{font-size:13px!important;line-height:1.7!important;}
+
+/* Desktop-only targets. No mobile redesign in this phase. */
+@media (max-width:1500px){
+  :root{--app-nav-h:68px;}
+  body.medshield-shell-ready .competition-nav-inner,.app-view{width:calc(100% - 36px);}
+  body.medshield-shell-ready .competition-nav-links a{padding:0 12px;font-size:12px;}
+  .app-overview-flow{grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr;}
+  .app-view-capabilities .capability-row{grid-template-columns:44px minmax(190px,.9fr) minmax(220px,1.1fr)!important;padding:22px 18px!important;}
+}
+@media (max-width:1180px){
+  body.medshield-shell-ready .competition-nav-right .backend-live{display:none;}
+  body.medshield-shell-ready .competition-nav-links a{padding:0 10px;}
+  .app-page-head{grid-template-columns:1fr;gap:16px;}
+  .app-overview-flow{grid-template-columns:repeat(3,1fr);gap:1px;background:var(--app-line);min-height:0;}
+  .app-overview-arrow{display:none;}
+  .app-overview-node{background:rgba(5,24,33,.76);min-height:100px;}
+  .app-view-risk #features>.showcase-row{grid-template-columns:.8fr 1.2fr!important;gap:34px!important;}
+  .app-view-capabilities .capability-architecture-list{grid-template-columns:1fr!important;}
+  .app-view-capabilities .capability-row{border-right:0!important;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+}
+
+/* Guided V2 — harden Home against legacy GSAP/CSS residue. */
+body.medshield-shell-ready.is-home .competition-hero,
+body.medshield-shell-ready.is-home .v14-hero-stage,
+body.medshield-shell-ready.is-home .hero-content,
+body.medshield-shell-ready.is-home .hero-content>*{
+  visibility:visible!important;
+  opacity:1!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  filter:none!important;
+}
+body.medshield-shell-ready.is-home .competition-hero{position:relative!important;z-index:2!important;}
+body.medshield-shell-ready.is-home .v14-hero-stage{position:relative!important;z-index:4!important;}
+body.medshield-shell-ready.is-home .hero-content{
+  position:relative!important;
+  z-index:8!important;
+  display:block!important;
+  pointer-events:auto!important;
+}
+body.medshield-shell-ready.is-home .hero-content h1{
+  display:block!important;
+  position:relative!important;
+  z-index:2!important;
+  background:none!important;
+  -webkit-background-clip:border-box!important;
+  background-clip:border-box!important;
+  -webkit-text-fill-color:#f3fafb!important;
+  color:#f3fafb!important;
+  mix-blend-mode:normal!important;
+}
+body.medshield-shell-ready.is-home .app-home-kicker,
+body.medshield-shell-ready.is-home .app-home-subtitle,
+body.medshield-shell-ready.is-home .app-home-chain,
+body.medshield-shell-ready.is-home .app-home-actions{
+  transform:none!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+/* Desktop presentation fit — no horizontal clipping at 1366/1440/1920. */
+.app-view-console{overflow-x:hidden!important;}
+.app-view-console #sim-lab{overflow:hidden!important;}
+.app-view-console #sim-lab .sim-lab-shell{width:min(1540px,calc(100vw - 28px))!important;}
+.app-view-console #sim-lab .sim-workspace{min-width:0!important;}
+.app-view-console #sim-lab .sim-flow-stage,
+.app-view-console #sim-lab .sim-incident-column,
+.app-view-console #sim-lab .sim-decision-column{min-width:0!important;}
+@media (max-width:1500px){
+  .app-view-console #sim-lab .sim-workspace{grid-template-columns:190px minmax(0,1fr) 220px!important;}
+  .app-view-console #sim-lab .sim-flow-stage{padding-left:18px!important;padding-right:18px!important;}
+  .app-view-console #sim-lab .sim-phase-step{padding-left:9px!important;padding-right:9px!important;gap:6px!important;font-size:11px!important;}
+  .app-view-console #sim-lab .sim-phase-step i{width:22px!important;height:22px!important;flex:0 0 22px!important;}
+}
+@media (max-width:1380px){
+  .app-view-console #sim-lab .sim-workspace{grid-template-columns:172px minmax(0,1fr) 205px!important;}
+  .app-view-console #sim-lab .sim-lab-shell{width:calc(100vw - 16px)!important;}
+  .app-view-console #sim-lab .sim-phase-step span{font-size:10px!important;}
+}
+
+/* =========================================================
+   HOME / ROUTE FIX — 2026-09-02
+   Root cause: legacy v14 hero leaves left/top:50% on .hero-content.
+   App Shell had changed position back to relative without clearing inset,
+   pushing the whole Home title below the viewport.
+   ========================================================= */
+body.medshield-shell-ready.is-home .competition-hero.v14-hero{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  left:auto!important;
+  width:100%!important;
+  min-height:100vh!important;
+  height:100vh!important;
+  margin:0!important;
+  padding:var(--app-nav-h) 0 0!important;
+  overflow:hidden!important;
+}
+body.medshield-shell-ready.is-home .v14-hero-stage{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  left:auto!important;
+  width:100%!important;
+  max-width:none!important;
+  height:calc(100vh - var(--app-nav-h))!important;
+  min-height:calc(100vh - var(--app-nav-h))!important;
+  margin:0!important;
+  padding:0!important;
+  display:block!important;
+  overflow:hidden!important;
+}
+body.medshield-shell-ready.is-home .v14-hero .hero-content,
+body.medshield-shell-ready.is-home .hero-content{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  inset:auto!important;
+  width:min(1120px,calc(100% - 96px))!important;
+  max-width:1120px!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0!important;
+  padding:0!important;
+  transform:translate(-50%,-50%)!important;
+  display:block!important;
+  text-align:center!important;
+  opacity:1!important;
+  visibility:visible!important;
+  z-index:20!important;
+}
+body.medshield-shell-ready.is-home .hero-content h1{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  left:auto!important;
+  transform:none!important;
+  margin:0!important;
+  padding:0!important;
+  white-space:nowrap!important;
+}
+body.medshield-shell-ready.is-home .app-home-kicker,
+body.medshield-shell-ready.is-home .app-home-subtitle,
+body.medshield-shell-ready.is-home .app-home-chain,
+body.medshield-shell-ready.is-home .app-home-actions{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  left:auto!important;
+}
+@media (max-height:820px){
+  body.medshield-shell-ready.is-home .hero-content h1{font-size:clamp(62px,8vw,116px)!important;}
+  body.medshield-shell-ready.is-home .app-home-subtitle{margin-top:22px!important;font-size:clamp(17px,1.4vw,22px)!important;}
+  body.medshield-shell-ready.is-home .app-home-actions{margin-top:28px!important;}
+}
+
+
+/* =========================================================
+   CONVERGED HOME FIX — neutralize every legacy hero transform.
+   Plety background is untouched; only foreground Home content resets.
+   ========================================================= */
+body.medshield-shell-ready.is-home .competition-hero.v14-hero,
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .v14-hero-stage,
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .hero-content,
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .hero-content > *{
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  clip-path:none !important;
+  -webkit-clip-path:none !important;
+}
+body.medshield-shell-ready.is-home .competition-hero.v14-hero{
+  display:block !important;
+  position:relative !important;
+  inset:auto !important;
+  transform:none !important;
+  margin:0 !important;
+  padding:var(--app-nav-h) 0 0 !important;
+  width:100% !important;
+  height:100vh !important;
+  min-height:100vh !important;
+  overflow:hidden !important;
+}
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .v14-hero-stage{
+  display:grid !important;
+  place-items:center !important;
+  position:relative !important;
+  inset:auto !important;
+  transform:none !important;
+  width:100% !important;
+  height:calc(100vh - var(--app-nav-h)) !important;
+  min-height:calc(100vh - var(--app-nav-h)) !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .hero-content{
+  position:relative !important;
+  inset:auto !important;
+  left:auto !important;
+  top:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  translate:none !important;
+  scale:1 !important;
+  rotate:0deg !important;
+  width:min(1120px,calc(100vw - 120px)) !important;
+  max-width:1120px !important;
+  height:auto !important;
+  min-height:0 !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  text-align:center !important;
+  z-index:20 !important;
+}
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .hero-content > *{
+  position:relative !important;
+  inset:auto !important;
+  transform:none !important;
+  translate:none !important;
+  scale:1 !important;
+  rotate:0deg !important;
+}
+body.medshield-shell-ready.is-home .competition-hero.v14-hero .hero-content h1{
+  display:block !important;
+  margin:0 !important;
+  color:#f3fafb !important;
+  -webkit-text-fill-color:#f3fafb !important;
+  background:none !important;
+  white-space:nowrap !important;
+}
+
+
+/* =========================================================
+   Evidence presentation navigation — no drag-back workflow
+   ========================================================= */
+.app-view-evidence .app-evidence-shell{position:relative;padding-top:22px;}
+.app-view-evidence .app-evidence-nav{
+  position:sticky;top:var(--app-nav-h);z-index:30;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px;
+  margin:0 0 18px;padding:0 0 1px;
+  background:rgba(3,14,20,.96);border-bottom:1px solid var(--app-line);
+  backdrop-filter:blur(14px);
+}
+.app-view-evidence .app-evidence-tabs{margin:0;border:0;overflow-x:auto;scrollbar-width:none;}
+.app-view-evidence .app-evidence-tabs::-webkit-scrollbar{display:none;}
+.app-view-evidence .app-evidence-tab{font-size:13px;white-space:nowrap;padding:15px 15px 14px;}
+.app-view-evidence .app-evidence-tab:nth-child(-n+3){color:#9dbbc3;}
+.app-view-evidence .app-evidence-tab.is-active{color:#edf8fa;}
+.app-view-evidence .app-evidence-step{display:flex;align-items:center;gap:10px;padding-right:8px;}
+.app-view-evidence .app-evidence-step button{
+  border:1px solid rgba(121,220,236,.16);background:rgba(8,35,45,.42);color:#b7ccd1;
+  min-height:34px;padding:0 11px;font-size:11px;cursor:pointer;
+}
+.app-view-evidence .app-evidence-step button:hover:not(:disabled){border-color:rgba(121,220,236,.36);color:#e8f5f7;}
+.app-view-evidence .app-evidence-step button:disabled{opacity:.3;cursor:not-allowed;}
+.app-view-evidence .app-evidence-step span{min-width:48px;text-align:center;color:#6f8790;font-size:10px;letter-spacing:.08em;}
+.app-view-evidence .app-evidence-panel{min-height:calc(100vh - var(--app-nav-h) - 210px);}
+.app-view-evidence .app-evidence-derived{padding-top:20px!important;}
+.app-view-evidence .app-evidence-derived .metrics-layout{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+.app-view-evidence [data-evidence-panel="scenarios"] .metrics-layout{grid-template-columns:minmax(0,1fr)!important;}
+.app-view-evidence [data-evidence-panel="scenarios"] .metric-panel{min-height:420px!important;}
+
+
+/* =========================================================
+   Evidence FAQ visibility fix
+   Root cause: legacy shell rule hides .competition-faq globally.
+   Inside the Evidence view it must be restored explicitly.
+   ========================================================= */
+body.medshield-shell-ready .app-view-evidence .competition-faq{
+  display:block !important;
+  position:static !important;
+  width:100% !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:24px 0 42px !important;
+  background:transparent !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-heading,
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-box,
+body.medshield-shell-ready .app-view-evidence .competition-faq .reveal-up{
+  display:block !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  clip-path:none !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-heading{
+  margin:0 0 22px !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-heading h2{
+  margin:6px 0 0 !important;
+  font-size:clamp(30px,2.6vw,44px) !important;
+  line-height:1.08 !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-box{
+  max-width:none !important;
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:1px !important;
+  background:var(--app-line) !important;
+  border:1px solid var(--app-line) !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-item{
+  margin:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:rgba(5,22,30,.76) !important;
+  min-width:0 !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-trigger{
+  min-height:64px !important;
+  padding:15px 18px !important;
+  font-size:14px !important;
+  line-height:1.45 !important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-answer{
+  font-size:13px !important;
+  line-height:1.72 !important;
+}
+@media (max-width:1200px){
+  body.medshield-shell-ready .app-view-evidence .competition-faq .faq-box{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* =========================================================
+   Evidence stability + core-results refinement
+   Scope: Evidence view only. Plety/Home/Simulation untouched.
+   ========================================================= */
+.app-view-evidence .app-evidence-nav{
+  grid-template-columns:minmax(0,1fr)!important;
+  padding-right:0!important;
+}
+.app-view-evidence .app-evidence-step{display:none!important;}
+.app-view-evidence .app-evidence-panel{
+  scroll-margin-top:calc(var(--app-nav-h) + 62px);
+}
+.app-view-evidence [data-evidence-panel] .section,
+.app-view-evidence [data-evidence-panel] .competition-faq,
+.app-view-evidence [data-evidence-panel] .reveal,
+.app-view-evidence [data-evidence-panel] .reveal-up{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+}
+
+/* Core results: keep formal AI metrics left; use right side for security outcomes. */
+.app-view-evidence [data-evidence-panel="metrics"] .metrics-layout{
+  grid-template-columns:minmax(0,1.02fr) minmax(420px,.98fr)!important;
+  align-items:stretch!important;
+}
+.app-view-evidence [data-evidence-panel="metrics"] .metric-panel{
+  min-height:0!important;
+}
+.app-view-evidence [data-evidence-panel="metrics"] .metric-list{
+  display:grid!important;
+  gap:0!important;
+}
+.app-view-evidence [data-evidence-panel="metrics"] .metric-item,
+.app-view-evidence [data-evidence-panel="metrics"] .metric-row,
+.app-view-evidence [data-evidence-panel="metrics"] .score-row{
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.app-evidence-core-summary{
+  min-width:0;
+  padding:28px 30px 24px;
+  background:rgba(5,22,30,.78);
+  color:var(--app-text);
+  display:flex;
+  flex-direction:column;
+}
+.app-core-conclusion{padding-bottom:24px;border-bottom:1px solid var(--app-line);}
+.app-core-conclusion>span{display:block;color:#78d4e6;font-size:10px;font-weight:750;letter-spacing:.12em;}
+.app-core-conclusion>strong{display:block;margin-top:14px;font-size:clamp(48px,5vw,76px);line-height:.9;letter-spacing:-.055em;font-weight:650;color:#f3fafb;}
+.app-core-conclusion>b{display:block;margin-top:10px;font-size:15px;font-weight:650;color:#c8dce1;}
+.app-core-conclusion>p{max-width:560px;margin:10px 0 0;color:#8199a1;font-size:12px;line-height:1.7;}
+.app-core-outcomes{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--app-line);}
+.app-core-outcomes>div{padding:20px 18px 20px 0;}
+.app-core-outcomes>div+div{padding-left:22px;border-left:1px solid var(--app-line);}
+.app-core-outcomes strong{display:block;font-size:28px;line-height:1;color:#e9f6f8;letter-spacing:-.035em;}
+.app-core-outcomes span{display:block;margin-top:7px;color:#849ca4;font-size:12px;}
+.app-core-scale{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--app-line);}
+.app-core-scale>div{padding:16px 12px 16px 0;}
+.app-core-scale>div:nth-child(even){padding-left:20px;border-left:1px solid rgba(119,210,229,.08);}
+.app-core-scale strong{display:block;color:#dcebef;font-size:20px;font-weight:620;}
+.app-core-scale span{display:block;margin-top:4px;color:#708991;font-size:11px;}
+.app-core-evidence-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:16px 0;border-bottom:1px solid var(--app-line);}
+.app-core-evidence-strip>div{padding:0 12px;min-width:0;}
+.app-core-evidence-strip>div:first-child{padding-left:0;}
+.app-core-evidence-strip>div+div{border-left:1px solid rgba(119,210,229,.08);}
+.app-core-evidence-strip span{display:block;color:#6f8790;font-size:10px;}
+.app-core-evidence-strip strong{display:block;margin-top:5px;color:#a9dfc3;font-size:13px;font-weight:650;white-space:nowrap;}
+.app-core-provenance{display:flex;flex-wrap:wrap;gap:6px 13px;padding:15px 0 0;color:#617981;font-size:9px;letter-spacing:.04em;}
+.app-core-provenance b{color:#8ba3aa;font-weight:600;}
+.app-core-next{margin-top:auto;align-self:flex-start;border:0;border-bottom:1px solid rgba(121,220,236,.28);background:transparent;color:#a9dbe4;padding:18px 0 5px;font-size:12px;cursor:pointer;}
+.app-core-next:hover{color:#eaf8fa;border-bottom-color:var(--app-cyan);}
+
+/* FAQ: 2-column answer grid; the fifth item spans full width to avoid a dead cell. */
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-box{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+body.medshield-shell-ready .app-view-evidence .competition-faq .faq-item:last-child:nth-child(odd){
+  grid-column:1/-1!important;
+}
+
+@media (max-width:1400px){
+  .app-view-evidence [data-evidence-panel="metrics"] .metrics-layout{
+    grid-template-columns:minmax(0,1fr) minmax(360px,.9fr)!important;
+  }
+  .app-evidence-core-summary{padding:24px 24px 20px;}
+}
+
+
+/* Fine-tune only: typography restored for presentation distance; layout is unchanged. */
+.app-overview-node span{font-size:12px!important;}
+.app-overview-node strong{font-size:15px!important;}
+.app-overview-metric span{font-size:14px!important;}
+.app-overview-foot p{font-size:14px!important;}
+.app-view-risk #features .showcase-copy p{font-size:15px!important;}
+.app-view-risk #features .showcase-copy li{font-size:14px!important;}
+.app-view-risk #features small{font-size:12px!important;}
+.app-view-risk #features .signal-list div{font-size:13px!important;}
+.app-view-capabilities .cap-copy p{font-size:14px!important;}
+.app-view-capabilities .cap-tags span{font-size:11px!important;}
+.app-evidence-tab{font-size:13px!important;}
+.app-view-evidence .metric-list,.app-view-evidence .policy-list,.app-view-evidence .bar-list{font-size:13px!important;}
+.app-view-evidence table,.app-view-evidence td{font-size:13px!important;}
+.app-view-evidence .faq-trigger{font-size:15px!important;}
+.app-view-evidence .faq-answer{font-size:14px!important;}
+
+/* Round 4 fine tune — preserve the established layout; restore capability 01,
+   fit the six-layer capability view into a desktop viewport, and improve
+   presentation-distance typography across all views. */
+
+/* 01 capability was already present in the DOM; only restore its visibility. */
+.app-view-capabilities #capabilities .capability-ai{display:grid!important;}
+
+/* Keep the existing 2×3 six-layer architecture, but reduce empty vertical space
+   so the complete loop fits a 1080p presentation viewport without page scrolling. */
+.app-view-capabilities #capabilities{padding-top:22px!important;}
+.app-view-capabilities .capability-architecture-head{
+  gap:38px!important;
+  padding-bottom:18px!important;
+}
+.app-view-capabilities .capability-architecture-head h2{
+  font-size:clamp(38px,3.45vw,54px)!important;
+  line-height:1.08!important;
+}
+.app-view-capabilities .capability-architecture-head p{
+  font-size:15px!important;
+  line-height:1.72!important;
+}
+.app-view-capabilities .capability-row{
+  min-height:205px!important;
+  padding:18px 20px!important;
+  gap:18px!important;
+}
+.app-view-capabilities .cap-copy h3{font-size:22px!important;}
+.app-view-capabilities .cap-copy p{font-size:15px!important;line-height:1.62!important;}
+.app-view-capabilities .cap-kicker{font-size:12px!important;}
+.app-view-capabilities .cap-tags span{font-size:12px!important;}
+.app-view-capabilities .cap-index{font-size:24px!important;}
+.app-view-capabilities .cap-visual{min-height:118px!important;}
+.app-view-capabilities .mini-head{font-size:11px!important;}
+
+/* Global reading-distance typography. No layout, route or interaction changes. */
+.app-page-head .eyebrow{font-size:12px!important;}
+.app-page-head p{font-size:15px!important;}
+body.medshield-shell-ready .competition-brand{font-size:15px!important;}
+body.medshield-shell-ready .competition-nav-links a{font-size:14px!important;}
+body.medshield-shell-ready .backend-live{font-size:12px!important;}
+
+/* Overview */
+.app-overview-node span{font-size:13px!important;}
+.app-overview-node strong{font-size:17px!important;}
+.app-overview-metric span{font-size:15px!important;}
+.app-overview-foot span{font-size:12px!important;}
+.app-overview-foot h3{font-size:22px!important;}
+.app-overview-foot p{font-size:15px!important;line-height:1.68!important;}
+
+/* Risk */
+.app-view-risk #features .showcase-copy p{font-size:16px!important;line-height:1.72!important;}
+.app-view-risk #features .showcase-copy li{font-size:15px!important;}
+.app-view-risk #features .window-top{font-size:13px!important;}
+.app-view-risk #features small{font-size:13px!important;}
+.app-view-risk #features .signal-list div{font-size:14px!important;}
+.app-view-risk #features .event-preview strong{font-size:20px!important;}
+.app-view-risk #features .risk-inner strong{font-size:22px!important;}
+
+/* Evidence */
+.app-view-evidence .app-evidence-tab{font-size:14px!important;}
+.app-view-evidence .section-head p{font-size:15px!important;line-height:1.68!important;}
+.app-view-evidence .metric-panel h3{font-size:18px!important;}
+.app-view-evidence .metric-list,
+.app-view-evidence .policy-list,
+.app-view-evidence .bar-list{font-size:14px!important;}
+.app-view-evidence table,
+.app-view-evidence td{font-size:14px!important;}
+.app-view-evidence th{font-size:13px!important;}
+.app-view-evidence .capability-card h3{font-size:19px!important;}
+.app-view-evidence .capability-card li{font-size:14px!important;line-height:1.6!important;}
+.app-view-evidence .faq-trigger{font-size:16px!important;}
+.app-view-evidence .faq-answer{font-size:15px!important;line-height:1.65!important;}
+.app-core-conclusion>span{font-size:12px!important;}
+.app-core-conclusion>b{font-size:17px!important;}
+.app-core-conclusion>p{font-size:14px!important;}
+.app-core-outcomes span{font-size:14px!important;}
+.app-core-scale span{font-size:13px!important;}
+.app-core-evidence-strip span{font-size:12px!important;}
+.app-core-evidence-strip strong{font-size:14px!important;}
+.app-core-provenance{font-size:11px!important;}
+.app-core-next{font-size:14px!important;}
+
+/* Keep the desktop breakpoint in the same 2-column architecture for 1366–1500px. */
+@media (max-width:1500px) and (min-width:1181px){
+  .app-view-capabilities .capability-row{
+    min-height:198px!important;
+    grid-template-columns:44px minmax(210px,.92fr) minmax(230px,1.08fr)!important;
+    padding:16px 16px!important;
+    gap:14px!important;
+  }
+  .app-view-capabilities .cap-copy p{font-size:14px!important;}
+  .app-view-capabilities .cap-visual{min-height:108px!important;}
+}
+
+
+/* ========================================================================== */
+/* Risk Assessment — FINAL scoped layout refinement.                          */
+/* Layout only: no font-family/font-size/font-weight/background overrides.    */
+/* ========================================================================== */
+.app-view-risk{
+  padding-top:72px!important;
+  padding-bottom:16px!important;
+}
+.app-view-risk .app-page-head{
+  grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr)!important;
+  gap:32px!important;
+  align-items:start!important;
+  padding:0 0 12px!important;
+  position:relative;
+  z-index:2;
+}
+.app-view-risk #features>.showcase-row{
+  grid-template-columns:minmax(330px,.68fr) minmax(700px,1.32fr)!important;
+  gap:32px!important;
+  align-items:start!important;
+  min-height:0!important;
+  padding:12px 0 8px!important;
+}
+.app-view-risk #features .showcase-copy{
+  min-width:0;
+  padding:6px 0 0!important;
+  align-self:start;
+}
+.app-view-risk #features .showcase-copy>.eyebrow,
+.app-view-risk #features .showcase-copy>h2{
+  display:none!important;
+}
+.app-view-risk #features .showcase-copy p{
+  max-width:560px;
+  margin:0 0 12px!important;
+}
+.app-view-risk #features .showcase-copy ul{
+  list-style:none!important;
+  margin:0!important;
+  padding:0!important;
+  border-top:1px solid rgba(121,220,236,.12);
+  border-bottom:1px solid rgba(121,220,236,.08);
+}
+.app-view-risk #features .showcase-copy li{
+  margin:0!important;
+  padding:9px 0!important;
+  border-bottom:1px solid rgba(121,220,236,.08);
+}
+.app-view-risk #features .showcase-copy li:last-child{border-bottom:0;}
+.app-view-risk #features .risk-next-cue{
+  margin:12px 0 5px;
+  color:#79cfe0;
+  letter-spacing:.04em;
+}
+.app-view-risk #features .showcase-button{margin-top:5px!important;}
+.app-view-risk #features .showcase-visual{min-width:0;align-self:start;}
+.app-view-risk #features .glass-window{
+  min-height:0!important;
+  height:auto!important;
+  display:grid!important;
+  grid-template-rows:auto auto auto auto;
+  gap:9px!important;
+  padding:12px!important;
+}
+.app-view-risk #features .window-top{
+  margin:0!important;
+  padding:0 2px 2px!important;
+}
+.app-view-risk #features .risk-method-strip{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(190px,.28fr);
+  gap:14px;
+  align-items:stretch;
+  padding:8px 10px;
+  border-top:1px solid rgba(121,220,236,.10);
+  border-bottom:1px solid rgba(121,220,236,.10);
+}
+.app-view-risk #features .risk-ai-chain{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-width:0;
+}
+.app-view-risk #features .risk-ai-chain>i{
+  opacity:.55;
+  font-style:normal;
+  flex:0 0 auto;
+}
+.app-view-risk #features .risk-method-node{
+  min-width:0;
+  display:grid;
+  gap:2px;
+}
+.app-view-risk #features .risk-method-node small,
+.app-view-risk #features .risk-method-trap small{
+  opacity:.62;
+}
+.app-view-risk #features .risk-method-trap{
+  min-width:0;
+  display:grid;
+  align-content:center;
+  gap:2px;
+  padding-left:14px;
+  border-left:1px dashed rgba(121,220,236,.26);
+  color:#b8c9cf;
+}
+.app-view-risk #features .risk-upper{
+  display:grid!important;
+  grid-template-columns:minmax(250px,.78fr) minmax(360px,1.22fr)!important;
+  gap:10px!important;
+  align-items:stretch!important;
+  margin:0!important;
+}
+.app-view-risk #features .event-preview,
+.app-view-risk #features .risk-preview{
+  min-width:0!important;
+  min-height:214px!important;
+  height:auto!important;
+  margin:0!important;
+}
+.app-view-risk #features .risk-preview{
+  display:grid!important;
+  grid-template-rows:auto 1fr auto;
+  align-items:center;
+}
+.app-view-risk #features .risk-ring{
+  align-self:center;
+  justify-self:center;
+  margin:0 auto!important;
+}
+.app-view-risk #features .risk-meta{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:100%;
+  margin:0!important;
+}
+.app-view-risk #features .risk-meta span{min-width:0;}
+.app-view-risk #features .risk-meta b{display:block;white-space:normal;}
+.app-view-risk #features .explain-preview{
+  display:grid!important;
+  grid-template-columns:132px minmax(0,1fr)!important;
+  gap:0!important;
+  align-items:stretch!important;
+  min-height:130px!important;
+  margin:0!important;
+}
+.app-view-risk #features .ct-preview{
+  width:auto!important;
+  min-width:0!important;
+  min-height:130px!important;
+  height:auto!important;
+  margin:0!important;
+  border-right:1px solid rgba(121,220,236,.12);
+}
+.app-view-risk #features .signal-list{
+  min-width:0!important;
+  padding:8px 16px!important;
+  margin:0!important;
+}
+.app-view-risk #features .signal-list>small{display:block;margin-bottom:3px;}
+.app-view-risk #features .signal-list>div{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 28px;
+  gap:14px;
+  align-items:center;
+  min-width:0;
+  padding:7px 0!important;
+  margin:0!important;
+}
+.app-view-risk #features .signal-list>div span{min-width:0;white-space:normal!important;}
+.app-view-risk #features .signal-list>div b{justify-self:end;}
+
+@media (max-width:1500px) and (min-width:1181px){
+  .app-view-risk{padding-top:68px!important;}
+  .app-view-risk .app-page-head{
+    grid-template-columns:minmax(0,1fr) minmax(320px,.78fr)!important;
+    gap:26px!important;
+    padding-bottom:10px!important;
+  }
+  .app-view-risk #features>.showcase-row{
+    grid-template-columns:minmax(300px,.64fr) minmax(620px,1.36fr)!important;
+    gap:26px!important;
+    padding-top:10px!important;
+  }
+  .app-view-risk #features .risk-method-strip{
+    grid-template-columns:minmax(0,1fr) minmax(170px,.26fr);
+    gap:10px;
+  }
+  .app-view-risk #features .risk-upper{
+    grid-template-columns:minmax(225px,.74fr) minmax(330px,1.26fr)!important;
+  }
+}

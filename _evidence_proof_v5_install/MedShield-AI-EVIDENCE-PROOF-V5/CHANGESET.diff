@@ -1,0 +1,526 @@
+=== medshield-app-shell.js ===
+--- /mnt/data/evidence_proof_v5_build/unzip/MedShield-AI-EVIDENCE-FINAL-STRICT-PATCH/MedShield-AI-EVIDENCE-FINAL-STRICT/public/medshield-app-shell.js	2026-09-03 11:11:37.000000000 +0000
++++ /mnt/data/evidence_proof_v5_build/package/MedShield-AI-EVIDENCE-PROOF-V5/verified-source/public/medshield-app-shell.js	2026-09-03 15:43:56.974281333 +0000
+@@ -152,110 +152,180 @@
+   function moveEvidence(view){
+     view.appendChild(pageHead(
+       "05 · EXPERIMENT VERIFICATION",
+-      "实验验证 · 正式实验结果与证据",
+-      "基于正式实验输出验证风险感知、策略处置、完整性与条件恢复效果；过程动画与正式实验结论严格区分，并明确当前能力边界。"
++      "正式实验验证",
++      "验证风险感知、策略处置、主动防御、联合完整性与条件恢复是否形成完整闭环；正式实验结论与前端过程可视化严格区分。"
+     ));
+ 
+     const shell=document.createElement("div");
+-    shell.className="evidence-final-dashboard";
+-    shell.setAttribute("aria-label","MedShield-AI 正式实验验证总览");
++    shell.className="evidence-proof-dashboard evidence-proof-v5";
++    shell.dataset.evidenceVersion="EVIDENCE_PROOF_V5";
++    shell.setAttribute("aria-label","MedShield-AI 正式实验闭环证据");
+     shell.innerHTML=`
+-      <div class="evidence-final-legend">
+-        <div><span>SIMULATION</span><strong>过程可视化</strong><small>Process Visualization</small></div>
+-        <div><span>FORMAL</span><strong>正式实验输出</strong><small>Experiment Output</small></div>
+-        <p>动画用于解释处理流程；正式结论读取自实验结果，不在浏览器重新训练模型。</p>
+-      </div>
++      <section class="evidence-proof-run" aria-label="正式实验运行口径">
++        <div class="evidence-proof-run__identity">
++          <span>FORMAL RUN</span>
++          <strong>50,000 Events · 15,000 Attack Events</strong>
++          <small>Synthetic / Public Experimental Data</small>
++        </div>
++        <p>这一页验证的不是单个指标，而是 MedShield-AI 从行为风险感知到策略处置、主动防御、联合完整性验证与条件恢复的完整证据链。</p>
++      </section>
+ 
+-      <section class="evidence-final-block evidence-final-core">
+-        <div class="evidence-final-block-head"><span>01</span><strong>核心指标 · AI 检测性能与处置效果</strong><b>FORMAL · EXPERIMENT OUTPUT</b></div>
+-        <div class="evidence-final-metric-row">
+-          <div><span>Accuracy</span><strong>98.44%</strong><small>准确率</small></div>
+-          <div><span>Precision</span><strong>98.66%</strong><small>精确率</small></div>
+-          <div><span>Recall</span><strong>96.10%</strong><small>召回率</small></div>
+-          <div><span>F1 Score</span><strong>97.36%</strong><small>F1 得分</small></div>
+-          <div><span>AUC</span><strong>98.61%</strong><small>ROC AUC</small></div>
+-          <div class="is-alert"><span>Attack Containment</span><strong>96.10%</strong><small>攻击遏制成功率</small></div>
++      <section class="evidence-proof-flow" aria-label="正式实验安全闭环">
++        <div class="evidence-proof-flow__node">
++          <span>BEHAVIOR</span>
++          <strong>U / F / N</strong>
++          <small>行为输入</small>
++        </div>
++        <i aria-hidden="true">→</i>
++        <div class="evidence-proof-flow__node evidence-proof-flow__node--ai">
++          <span>AI RISK</span>
++          <strong>AE + LightGBM</strong>
++          <small>R / A</small>
++        </div>
++        <i aria-hidden="true">→</i>
++        <div class="evidence-proof-flow__node">
++          <span>POLICY</span>
++          <strong>P0–P3</strong>
++          <small>R + D + A + C + Trap</small>
++        </div>
++        <i aria-hidden="true">→</i>
++        <div class="evidence-proof-flow__node evidence-proof-flow__node--good">
++          <span>DEFENSE</span>
++          <strong>14,415</strong>
++          <small>Contained · 96.10%</small>
++        </div>
++        <i aria-hidden="true">→</i>
++        <div class="evidence-proof-flow__node">
++          <span>INTEGRITY</span>
++          <strong>49,998 NORMAL</strong>
++          <small>2 High-confidence Anomalies</small>
++        </div>
++        <i aria-hidden="true">→</i>
++        <div class="evidence-proof-flow__node evidence-proof-flow__node--conditional">
++          <span>CONDITIONAL RECOVERY</span>
++          <strong>2 / 2</strong>
++          <small>Cold Backup → Reverify</small>
+         </div>
+       </section>
+ 
+-      <div class="evidence-final-grid evidence-final-grid--upper">
+-        <section class="evidence-final-block evidence-final-scenarios">
+-          <div class="evidence-final-block-head"><span>02</span><strong>场景表现 · 六类攻击场景检出率</strong><b>FORMAL</b></div>
+-          <div class="evidence-final-scenario-grid">
+-            <div><span>Image Leakage</span><strong>≈99.96%</strong><small>医学影像外传</small></div>
+-            <div><span>EMR Leakage</span><strong>99.50%</strong><small>EMR 数据泄露</small></div>
+-            <div><span>Data Exfiltration</span><strong>≈99.79%</strong><small>数据外传</small></div>
+-            <div><span>Multi-source Attack</span><strong>≈99.92%</strong><small>多源协同攻击</small></div>
+-            <div><span>Slow Data Exfiltration</span><strong>100%</strong><small>慢速数据外传</small></div>
+-            <div class="is-weak"><span>Account Abuse</span><strong>76.46%</strong><small>当前弱场景</small></div>
++      <div class="evidence-proof-primary">
++        <section class="evidence-proof-primary__side evidence-proof-primary__side--detection">
++          <div class="evidence-proof-section-label"><span>AI RISK DETECTION</span><small>FORMAL EXPERIMENT OUTPUT</small></div>
++          <div class="evidence-proof-hero-metric">
++            <strong>98.44%</strong>
++            <span>Accuracy</span>
+           </div>
+-          <p class="evidence-final-note">Account Abuse 为当前弱场景，后续重点优化行为建模与对抗样本覆盖；场景检出率不等同于异常类型分类 Recall。</p>
++          <dl class="evidence-proof-stat-list">
++            <div><dt>Precision</dt><dd>98.66%</dd></div>
++            <div><dt>Recall</dt><dd>96.10%</dd></div>
++            <div><dt>F1 Score</dt><dd>97.36%</dd></div>
++            <div><dt>AUC</dt><dd>98.61%</dd></div>
++          </dl>
++          <div class="evidence-proof-output-note"><span>AI OUTPUT</span><strong>R + A</strong><small>AI 到 R/A 为止，不直接输出处置策略。</small></div>
+         </section>
+ 
+-        <section class="evidence-final-block evidence-final-containment">
+-          <div class="evidence-final-block-head"><span>03</span><strong>正式处置结果 · Detection → Policy → Containment</strong><b>FORMAL</b></div>
+-          <div class="evidence-final-containment-body">
+-            <div class="evidence-final-outcome-list">
+-              <div><span>攻击事件总数</span><strong>15,000</strong></div>
+-              <div><span>成功遏制</span><strong>14,415</strong><small>96.10%</small></div>
+-              <div class="is-alert"><span>未成功遏制</span><strong>585</strong><small>3.90%</small></div>
+-              <div><span>误阻断率</span><strong>1.28%</strong></div>
+-            </div>
+-            <div class="evidence-final-policy">
+-              <div class="evidence-final-policy-bar" aria-label="P0 67.71%, P1 1.40%, P2 0.81%, P3 30.08%">
+-                <i style="--share:67.708%"></i><i style="--share:1.396%"></i><i style="--share:.814%"></i><i style="--share:30.082%"></i>
+-              </div>
+-              <div class="evidence-final-policy-list">
+-                <div><span>P0</span><strong>33,854</strong><small>67.71%</small></div>
+-                <div><span>P1</span><strong>698</strong><small>1.40%</small></div>
+-                <div><span>P2</span><strong>407</strong><small>0.81%</small></div>
+-                <div><span>P3</span><strong>15,041</strong><small>30.08%</small></div>
+-              </div>
+-              <p>Policy 由 R / D / A / C / Trap 综合决策，AI 不直接执行防御策略。</p>
+-            </div>
++        <section class="evidence-proof-primary__side evidence-proof-primary__side--defense">
++          <div class="evidence-proof-section-label"><span>DEFENSE EFFECTIVENESS</span><small>Detection → Policy → Containment</small></div>
++          <div class="evidence-proof-hero-metric evidence-proof-hero-metric--defense">
++            <strong>14,415</strong>
++            <span>Contained</span>
+           </div>
++          <dl class="evidence-proof-stat-list">
++            <div><dt>Attack Events</dt><dd>15,000</dd></div>
++            <div class="is-alert"><dt>Failed</dt><dd>585</dd></div>
++            <div><dt>Containment</dt><dd>96.10%</dd></div>
++            <div><dt>False Blocking</dt><dd>1.28%</dd></div>
++          </dl>
++          <div class="evidence-proof-output-note"><span>POLICY OUTPUT</span><strong>P0 / P1 / P2 / P3</strong><small>Policy Engine 综合 R、D、A、C、Trap 决策。</small></div>
+         </section>
+       </div>
+ 
+-      <div class="evidence-final-grid evidence-final-grid--lower">
+-        <section class="evidence-final-block evidence-final-integrity">
+-          <div class="evidence-final-block-head"><span>04</span><strong>完整性验证与条件恢复 · 数据完整性生命周期</strong><b>FORMAL</b></div>
+-          <div class="evidence-final-integrity-stats">
+-            <div><span>Integrity NORMAL</span><strong>49,998</strong></div>
+-            <div class="is-alert"><span>High-confidence anomaly</span><strong>2</strong></div>
+-            <div><span>Expected anomaly</span><strong>2</strong></div>
+-            <div class="is-alert"><span>Detected anomaly</span><strong>2</strong></div>
+-            <div><span>Recovery requested</span><strong>2</strong></div>
+-            <div><span>Attempted</span><strong>2</strong></div>
+-            <div><span>Success</span><strong>2</strong></div>
+-            <div><span>Cold backup</span><strong>2</strong></div>
+-          </div>
+-          <div class="evidence-final-recovery-flow">
+-            <div><strong>Integrity = NORMAL</strong><span>Recovery Not Required</span></div>
+-            <div class="is-alert"><strong>Integrity Anomaly Detected</strong><span>Affected Data → Cold Backup → Recovery → Reverify</span></div>
+-            <div><strong>Mean Recovery Pipeline Latency</strong><span>≈ 9.05 ms</span></div>
++      <section class="evidence-proof-coverage" aria-label="攻击场景覆盖">
++        <div class="evidence-proof-section-label"><span>ATTACK SCENARIO COVERAGE</span><small>正式场景检出表现</small></div>
++        <div class="evidence-proof-coverage__rows">
++          <div class="evidence-proof-coverage__row" style="--rate:99.96%"><span>Medical Image Leakage</span><i><b></b></i><strong>≈99.96%</strong></div>
++          <div class="evidence-proof-coverage__row" style="--rate:99.50%"><span>EMR Leakage</span><i><b></b></i><strong>99.50%</strong></div>
++          <div class="evidence-proof-coverage__row" style="--rate:99.79%"><span>Data Exfiltration</span><i><b></b></i><strong>≈99.79%</strong></div>
++          <div class="evidence-proof-coverage__row" style="--rate:99.92%"><span>Multi-source Attack</span><i><b></b></i><strong>≈99.92%</strong></div>
++          <div class="evidence-proof-coverage__row" style="--rate:100%"><span>Slow Data Exfiltration</span><i><b></b></i><strong>100.00%</strong></div>
++          <div class="evidence-proof-coverage__row is-weak" style="--rate:76.46%"><span>Account Abuse <em>CURRENT LIMITATION</em></span><i><b></b></i><strong>76.46%</strong></div>
++        </div>
++        <p>Account Abuse 是当前薄弱场景，作为后续行为建模与场景覆盖优化重点；不隐藏弱项，也不将场景检出率解释为异常类型分类 Recall。</p>
++      </section>
++
++      <div class="evidence-proof-secondary">
++        <section class="evidence-proof-lifecycle">
++          <div class="evidence-proof-section-label"><span>INTEGRITY & RECOVERY</span><small>联合完整性 → 条件恢复 → 复验</small></div>
++          <div class="evidence-proof-lifecycle__branches">
++            <div class="evidence-proof-lifecycle__branch evidence-proof-lifecycle__branch--normal">
++              <span>NORMAL DATA</span>
++              <strong>49,998</strong>
++              <i aria-hidden="true">→</i>
++              <b>Recovery Not Required</b>
++            </div>
++            <div class="evidence-proof-lifecycle__branch evidence-proof-lifecycle__branch--anomaly">
++              <span>HIGH-CONFIDENCE ANOMALY</span>
++              <strong>2</strong>
++              <small>Expected 2 · Detected 2</small>
++              <div class="evidence-proof-lifecycle__steps">
++                <b>Cold Backup</b><i>→</i><b>Recovery</b><i>→</i><b>Reverify</b>
++              </div>
++              <div class="evidence-proof-lifecycle__result"><strong>2 / 2 SUCCESS</strong><span>Mean Recovery Pipeline Latency ≈ 9.05 ms</span></div>
++            </div>
+           </div>
+-          <p class="evidence-final-note">正式结果仅确认 2 个高可信完整性异常并完成 2/2 恢复验证；不将其额外解释为“医学影像篡改”。</p>
++          <p>正式结果只确认 2 个高可信完整性异常并完成 2/2 恢复验证，不额外解释为“医学影像篡改”。</p>
+         </section>
+ 
+-        <section class="evidence-final-block evidence-final-boundary">
+-          <div class="evidence-final-block-head"><span>05</span><strong>能力边界 · Capability Boundary</strong><b>FORMAL</b></div>
+-          <div class="evidence-final-boundary-grid">
+-            <div class="is-ok"><strong>IMPLEMENTED</strong><span>AI 风险检测 R / A</span><span>Policy 决策 P0–P3</span><span>完整性验证流水线</span><span>冷备份恢复流程</span></div>
+-            <div class="is-partial"><strong>PARTIAL / SIMULATED</strong><span>Key Enforcement · PARTIAL</span><span>Permission Actions · SIMULATED</span><span>Network Actions · SIMULATED</span></div>
+-            <div class="is-unavailable"><strong>UNAVAILABLE / NOT IMPLEMENTED</strong><span>DICOM embedded watermark runtime</span><span>EMR embedded watermark runtime</span><span>Unknown leaked-image blind attribution</span><span>Real HIS / PACS control</span></div>
++        <section class="evidence-proof-policy">
++          <div class="evidence-proof-section-label"><span>POLICY DISTRIBUTION</span><small>50,000 events</small></div>
++          <div class="evidence-proof-policy__rows">
++            <div style="--share:67.71%"><span>P0</span><i><b></b></i><strong>33,854</strong><small>67.71%</small></div>
++            <div style="--share:1.40%"><span>P1</span><i><b></b></i><strong>698</strong><small>1.40%</small></div>
++            <div style="--share:.81%"><span>P2</span><i><b></b></i><strong>407</strong><small>0.81%</small></div>
++            <div class="is-alert" style="--share:30.08%"><span>P3</span><i><b></b></i><strong>15,041</strong><small>30.08%</small></div>
+           </div>
++          <div class="evidence-proof-policy__equation"><span>POLICY ENGINE</span><strong>R + D + A + C + Trap → P0–P3</strong><small>AI does not directly execute policy.</small></div>
+         </section>
+       </div>
+ 
+-      <section class="evidence-final-block evidence-final-eventpool">
+-        <div class="evidence-final-block-head"><span>06</span><strong>事件确认与事件池 · Event Pool</strong><b>CONFIRMED FEEDBACK ONLY</b></div>
+-        <div class="evidence-final-eventpool-body">
+-          <div class="evidence-final-event-flow"><span>Security Event</span><i>→</i><span>Event Confirmation</span><i>→</i><span>Security Event Pool</span></div>
+-          <div><strong>真实部署</strong><span>管理员 + 审计确认</span><strong>Demo</strong><span>Ground Truth 确认</span></div>
+-          <div class="is-principle"><strong>AI Prediction ≠ Training Label</strong><span>仅确认后的代表性事件进入 Event Pool，并用于周期性离线优化。</span></div>
+-          <div><strong>3,000 个未见攻击事件</strong><span>本次正式实验中检出率 100%</span></div>
+-          <div><strong>Synthetic / Public Experimental Data</strong><span>Frontend visualization ≠ Production Control</span></div>
++      <section class="evidence-proof-boundary">
++        <div class="evidence-proof-section-label"><span>EVIDENCE BOUNDARY</span><small>可验证，但不夸大</small></div>
++        <div class="evidence-proof-boundary__columns">
++          <div class="is-implemented">
++            <strong>✓ IMPLEMENTED</strong>
++            <span>AI Risk Detection · R/A</span>
++            <span>Policy Decision · P0–P3</span>
++            <span>Integrity Verification Pipeline</span>
++            <span>Cold-backup Recovery Workflow</span>
++          </div>
++          <div class="is-partial">
++            <strong>△ PARTIAL / SIMULATED</strong>
++            <span>Key Enforcement · PARTIAL</span>
++            <span>Permission Actions · SIMULATED</span>
++            <span>Network Actions · SIMULATED</span>
++          </div>
++          <div class="is-unavailable">
++            <strong>× UNAVAILABLE / NOT IMPLEMENTED</strong>
++            <span>DICOM Embedded Watermark Runtime</span>
++            <span>EMR Embedded Watermark Runtime</span>
++            <span>Unknown Leaked-image Blind Attribution</span>
++            <span>Real HIS / PACS Production Control</span>
++          </div>
++        </div>
++      </section>
++
++      <section class="evidence-proof-feedback">
++        <div class="evidence-proof-feedback__main">
++          <div class="evidence-proof-section-label"><span>CONFIRMED SECURITY FEEDBACK</span><small>Only confirmed representative events enter the pool</small></div>
++          <div class="evidence-proof-feedback__flow">
++            <strong>Security Event</strong><i>→</i><strong>Event Confirmation</strong><i>→</i><strong>Security Event Pool</strong><i>→</i><strong>Offline Optimization</strong>
++          </div>
++          <div class="evidence-proof-feedback__modes"><span>Real Deployment · Admin + Audit</span><span>Demo · Ground Truth</span></div>
++        </div>
++        <div class="evidence-proof-feedback__facts">
++          <div><strong>AI Prediction ≠ Training Label</strong><span>仅确认后的代表性事件进入 Event Pool。</span></div>
++          <div><strong>3,000 Unseen Attack Events</strong><span>本次正式实验中检出率 100%</span></div>
++          <div><strong>Experimental Boundary</strong><span>Synthetic / Public Experimental Data · Frontend visualization ≠ Production Control</span></div>
+         </div>
+       </section>
+     `;
+
+=== medshield-app-shell.css ===
+--- /mnt/data/evidence_proof_v5_build/unzip/MedShield-AI-EVIDENCE-FINAL-STRICT-PATCH/MedShield-AI-EVIDENCE-FINAL-STRICT/public/medshield-app-shell.css	2026-09-03 11:11:37.000000000 +0000
++++ /mnt/data/evidence_proof_v5_build/package/MedShield-AI-EVIDENCE-PROOF-V5/verified-source/public/medshield-app-shell.css	2026-09-03 15:43:56.973348840 +0000
+@@ -1292,3 +1292,235 @@
+   .app-view-evidence .evidence-final-boundary-grid{padding:14px 16px 16px;}
+ }
+ /* === EVIDENCE FINAL STRICT DASHBOARD END === */
++
++/* EVIDENCE_PROOF_V5_START
++   MedShield-AI · Formal Experiment Evidence
++   Scope: Evidence view only. No font family/size/weight overrides.
++*/
++.app-view-evidence{padding-top:48px;}
++.app-view-evidence .evidence-proof-dashboard{
++  width:100%;
++  padding-top:24px;
++  display:grid;
++  gap:22px;
++}
++.app-view-evidence .evidence-proof-dashboard *{box-sizing:border-box;}
++.app-view-evidence .evidence-proof-run{
++  display:grid;
++  grid-template-columns:minmax(0,.78fr) minmax(420px,1.22fr);
++  gap:42px;
++  align-items:end;
++  padding:0 0 18px;
++  border-bottom:1px solid rgba(110,205,229,.16);
++}
++.app-view-evidence .evidence-proof-run__identity{display:grid;gap:5px;}
++.app-view-evidence .evidence-proof-run__identity>span{color:#65d8f1;letter-spacing:.12em;}
++.app-view-evidence .evidence-proof-run__identity>strong{color:#edf8fa;}
++.app-view-evidence .evidence-proof-run__identity>small{color:#70878f;letter-spacing:.04em;}
++.app-view-evidence .evidence-proof-run>p{margin:0;color:#8da4ab;line-height:1.7;max-width:760px;justify-self:end;}
++
++.app-view-evidence .evidence-proof-flow{
++  display:grid;
++  grid-template-columns:minmax(116px,.8fr) 34px minmax(150px,1.05fr) 34px minmax(150px,1fr) 34px minmax(146px,.9fr) 34px minmax(176px,1.1fr) 34px minmax(166px,1.05fr);
++  align-items:stretch;
++  gap:0;
++  padding:18px 20px;
++  border-top:1px solid rgba(105,210,236,.18);
++  border-bottom:1px solid rgba(105,210,236,.18);
++  background:linear-gradient(90deg,rgba(4,26,36,.72),rgba(5,19,28,.44));
++}
++.app-view-evidence .evidence-proof-flow>i{
++  display:grid;
++  place-items:center;
++  color:#4ccbe9;
++  opacity:.72;
++  font-style:normal;
++}
++.app-view-evidence .evidence-proof-flow__node{
++  min-width:0;
++  display:grid;
++  align-content:center;
++  gap:6px;
++  padding:10px 12px;
++  border-left:1px solid rgba(96,198,224,.10);
++}
++.app-view-evidence .evidence-proof-flow__node:first-child{border-left:0;}
++.app-view-evidence .evidence-proof-flow__node>span{color:#6e8d96;letter-spacing:.09em;}
++.app-view-evidence .evidence-proof-flow__node>strong{color:#e8f5f7;}
++.app-view-evidence .evidence-proof-flow__node>small{color:#78939b;line-height:1.35;}
++.app-view-evidence .evidence-proof-flow__node--ai>span,
++.app-view-evidence .evidence-proof-flow__node--ai>small{color:#67d9ef;}
++.app-view-evidence .evidence-proof-flow__node--good>strong,
++.app-view-evidence .evidence-proof-flow__node--good>small{color:#75dda2;}
++.app-view-evidence .evidence-proof-flow__node--conditional{
++  border-left-color:rgba(228,182,82,.26);
++  background:linear-gradient(90deg,rgba(101,74,18,.10),transparent);
++}
++.app-view-evidence .evidence-proof-flow__node--conditional>span{color:#deb85d;}
++.app-view-evidence .evidence-proof-flow__node--conditional>strong{color:#f1d68b;}
++
++.app-view-evidence .evidence-proof-primary{
++  display:grid;
++  grid-template-columns:1fr 1fr;
++  border-top:1px solid rgba(103,203,228,.16);
++  border-bottom:1px solid rgba(103,203,228,.16);
++  background:rgba(3,17,25,.44);
++}
++.app-view-evidence .evidence-proof-primary__side{
++  min-width:0;
++  display:grid;
++  grid-template-columns:minmax(170px,.72fr) minmax(260px,1.28fr);
++  grid-template-areas:"label label" "hero stats" "note note";
++  gap:14px 26px;
++  padding:22px 26px 20px;
++}
++.app-view-evidence .evidence-proof-primary__side+ .evidence-proof-primary__side{border-left:1px solid rgba(103,203,228,.16);}
++.app-view-evidence .evidence-proof-section-label{
++  grid-area:label;
++  display:flex;
++  justify-content:space-between;
++  gap:18px;
++  align-items:baseline;
++  padding-bottom:10px;
++  border-bottom:1px solid rgba(96,195,219,.10);
++}
++.app-view-evidence .evidence-proof-section-label>span{color:#5fd5ef;letter-spacing:.10em;}
++.app-view-evidence .evidence-proof-section-label>small{color:#6f8790;}
++.app-view-evidence .evidence-proof-hero-metric{grid-area:hero;display:grid;align-content:center;gap:5px;min-height:132px;}
++.app-view-evidence .evidence-proof-hero-metric>strong{color:#79e0a4;letter-spacing:-.04em;}
++.app-view-evidence .evidence-proof-hero-metric>span{color:#809ba3;}
++.app-view-evidence .evidence-proof-stat-list{grid-area:stats;margin:0;display:grid;align-content:center;}
++.app-view-evidence .evidence-proof-stat-list>div{display:grid;grid-template-columns:1fr auto;gap:18px;padding:8px 0;border-bottom:1px solid rgba(99,194,218,.08);}
++.app-view-evidence .evidence-proof-stat-list>div:last-child{border-bottom:0;}
++.app-view-evidence .evidence-proof-stat-list dt{color:#7f969e;}
++.app-view-evidence .evidence-proof-stat-list dd{margin:0;color:#dcecef;}
++.app-view-evidence .evidence-proof-stat-list .is-alert dd{color:#ff786e;}
++.app-view-evidence .evidence-proof-output-note{
++  grid-area:note;
++  display:grid;
++  grid-template-columns:auto auto 1fr;
++  align-items:baseline;
++  gap:14px;
++  padding-top:12px;
++  border-top:1px solid rgba(99,194,218,.10);
++}
++.app-view-evidence .evidence-proof-output-note>span{color:#6f8b94;letter-spacing:.08em;}
++.app-view-evidence .evidence-proof-output-note>strong{color:#85dff0;}
++.app-view-evidence .evidence-proof-output-note>small{color:#71878f;justify-self:end;text-align:right;}
++.app-view-evidence .evidence-proof-primary__side--defense .evidence-proof-hero-metric>strong{color:#79dfa5;}
++
++.app-view-evidence .evidence-proof-coverage{
++  padding:22px 26px 20px;
++  border-top:1px solid rgba(103,203,228,.14);
++  border-bottom:1px solid rgba(103,203,228,.14);
++  background:rgba(3,16,24,.40);
++}
++.app-view-evidence .evidence-proof-coverage .evidence-proof-section-label{margin-bottom:12px;}
++.app-view-evidence .evidence-proof-coverage__rows{display:grid;gap:2px;}
++.app-view-evidence .evidence-proof-coverage__row{
++  display:grid;
++  grid-template-columns:minmax(210px,.9fr) minmax(420px,2.5fr) 92px;
++  gap:20px;
++  align-items:center;
++  min-height:36px;
++}
++.app-view-evidence .evidence-proof-coverage__row>span{color:#c8dade;display:flex;align-items:center;gap:10px;}
++.app-view-evidence .evidence-proof-coverage__row>span>em{color:#e0b354;font-style:normal;letter-spacing:.06em;}
++.app-view-evidence .evidence-proof-coverage__row>i{height:6px;background:rgba(111,198,219,.07);overflow:hidden;position:relative;}
++.app-view-evidence .evidence-proof-coverage__row>i>b{display:block;width:var(--rate);height:100%;background:linear-gradient(90deg,rgba(65,182,208,.62),rgba(103,226,176,.86));}
++.app-view-evidence .evidence-proof-coverage__row>strong{color:#74dda2;text-align:right;}
++.app-view-evidence .evidence-proof-coverage__row.is-weak>i>b{background:linear-gradient(90deg,rgba(174,90,61,.58),rgba(240,119,100,.90));}
++.app-view-evidence .evidence-proof-coverage__row.is-weak>strong{color:#ff786d;}
++.app-view-evidence .evidence-proof-coverage>p{margin:12px 0 0;color:#718991;line-height:1.55;}
++
++.app-view-evidence .evidence-proof-secondary{
++  display:grid;
++  grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);
++  border-top:1px solid rgba(103,203,228,.14);
++  border-bottom:1px solid rgba(103,203,228,.14);
++  background:rgba(3,16,24,.40);
++}
++.app-view-evidence .evidence-proof-lifecycle,
++.app-view-evidence .evidence-proof-policy{padding:22px 26px;min-width:0;}
++.app-view-evidence .evidence-proof-policy{border-left:1px solid rgba(103,203,228,.14);}
++.app-view-evidence .evidence-proof-lifecycle__branches{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:22px;margin-top:16px;}
++.app-view-evidence .evidence-proof-lifecycle__branch{min-width:0;display:grid;align-content:start;gap:8px;padding:16px 0;}
++.app-view-evidence .evidence-proof-lifecycle__branch+ .evidence-proof-lifecycle__branch{border-left:1px solid rgba(98,193,217,.10);padding-left:22px;}
++.app-view-evidence .evidence-proof-lifecycle__branch>span{color:#779099;letter-spacing:.06em;}
++.app-view-evidence .evidence-proof-lifecycle__branch>strong{color:#dbecef;}
++.app-view-evidence .evidence-proof-lifecycle__branch--normal>b{color:#71d99f;}
++.app-view-evidence .evidence-proof-lifecycle__branch--normal>i{color:#64cfe6;font-style:normal;}
++.app-view-evidence .evidence-proof-lifecycle__branch--anomaly>strong{color:#ff7a6f;}
++.app-view-evidence .evidence-proof-lifecycle__branch--anomaly>small{color:#8fa2a8;}
++.app-view-evidence .evidence-proof-lifecycle__steps{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;color:#c9d9dc;}
++.app-view-evidence .evidence-proof-lifecycle__steps>i{font-style:normal;color:#64cfe6;}
++.app-view-evidence .evidence-proof-lifecycle__result{display:grid;gap:4px;margin-top:6px;padding-top:10px;border-top:1px solid rgba(98,193,217,.10);}
++.app-view-evidence .evidence-proof-lifecycle__result>strong{color:#73dfa4;}
++.app-view-evidence .evidence-proof-lifecycle__result>span{color:#788f97;}
++.app-view-evidence .evidence-proof-lifecycle>p{margin:14px 0 0;color:#718991;line-height:1.55;}
++
++.app-view-evidence .evidence-proof-policy__rows{display:grid;gap:10px;margin-top:16px;}
++.app-view-evidence .evidence-proof-policy__rows>div{display:grid;grid-template-columns:32px minmax(120px,1fr) 72px 58px;gap:10px;align-items:center;}
++.app-view-evidence .evidence-proof-policy__rows>div>span{color:#b9cdd2;}
++.app-view-evidence .evidence-proof-policy__rows>div>i{height:6px;background:rgba(104,194,216,.07);overflow:hidden;}
++.app-view-evidence .evidence-proof-policy__rows>div>i>b{display:block;width:var(--share);min-width:3px;height:100%;background:#67d5ed;}
++.app-view-evidence .evidence-proof-policy__rows>div.is-alert>i>b{background:#ef756a;}
++.app-view-evidence .evidence-proof-policy__rows>div>strong{color:#dcecef;text-align:right;}
++.app-view-evidence .evidence-proof-policy__rows>div>small{color:#718991;text-align:right;}
++.app-view-evidence .evidence-proof-policy__equation{display:grid;gap:6px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(98,193,217,.10);}
++.app-view-evidence .evidence-proof-policy__equation>span{color:#68d4eb;letter-spacing:.07em;}
++.app-view-evidence .evidence-proof-policy__equation>strong{color:#dcebee;}
++.app-view-evidence .evidence-proof-policy__equation>small{color:#718991;}
++
++.app-view-evidence .evidence-proof-boundary{
++  padding:22px 26px;
++  border-top:1px solid rgba(103,203,228,.14);
++  border-bottom:1px solid rgba(103,203,228,.14);
++  background:rgba(3,16,24,.38);
++}
++.app-view-evidence .evidence-proof-boundary__columns{display:grid;grid-template-columns:1fr 1fr 1.15fr;margin-top:16px;}
++.app-view-evidence .evidence-proof-boundary__columns>div{display:grid;align-content:start;gap:8px;padding:6px 22px 4px 0;}
++.app-view-evidence .evidence-proof-boundary__columns>div+div{border-left:1px solid rgba(98,193,217,.10);padding-left:22px;}
++.app-view-evidence .evidence-proof-boundary__columns>div>span{color:#879ba2;line-height:1.45;}
++.app-view-evidence .evidence-proof-boundary__columns .is-implemented>strong{color:#71dfa2;}
++.app-view-evidence .evidence-proof-boundary__columns .is-partial>strong{color:#dfb356;}
++.app-view-evidence .evidence-proof-boundary__columns .is-unavailable>strong{color:#f07369;}
++
++.app-view-evidence .evidence-proof-feedback{
++  display:grid;
++  grid-template-columns:minmax(0,1.2fr) minmax(380px,.8fr);
++  border-top:1px solid rgba(103,203,228,.14);
++  border-bottom:1px solid rgba(103,203,228,.14);
++  background:rgba(3,16,24,.40);
++}
++.app-view-evidence .evidence-proof-feedback__main,
++.app-view-evidence .evidence-proof-feedback__facts{padding:22px 26px;}
++.app-view-evidence .evidence-proof-feedback__facts{border-left:1px solid rgba(103,203,228,.14);display:grid;gap:0;}
++.app-view-evidence .evidence-proof-feedback__flow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;color:#dcecef;}
++.app-view-evidence .evidence-proof-feedback__flow>i{color:#5ed0e9;font-style:normal;}
++.app-view-evidence .evidence-proof-feedback__modes{display:flex;gap:24px;flex-wrap:wrap;margin-top:14px;color:#789099;}
++.app-view-evidence .evidence-proof-feedback__facts>div{display:grid;gap:4px;padding:11px 0;border-bottom:1px solid rgba(98,193,217,.09);}
++.app-view-evidence .evidence-proof-feedback__facts>div:last-child{border-bottom:0;}
++.app-view-evidence .evidence-proof-feedback__facts strong{color:#dcecef;}
++.app-view-evidence .evidence-proof-feedback__facts span{color:#789099;line-height:1.45;}
++
++@media (max-width:1500px){
++  .app-view-evidence .evidence-proof-dashboard{gap:18px;}
++  .app-view-evidence .evidence-proof-flow{grid-template-columns:minmax(90px,.72fr) 24px minmax(125px,1fr) 24px minmax(125px,.9fr) 24px minmax(118px,.85fr) 24px minmax(142px,1fr) 24px minmax(138px,1fr);padding-left:14px;padding-right:14px;}
++  .app-view-evidence .evidence-proof-primary__side{padding-left:20px;padding-right:20px;grid-template-columns:minmax(140px,.68fr) minmax(220px,1.32fr);}
++  .app-view-evidence .evidence-proof-coverage{padding-left:20px;padding-right:20px;}
++  .app-view-evidence .evidence-proof-coverage__row{grid-template-columns:minmax(190px,.85fr) minmax(300px,2.4fr) 82px;gap:16px;}
++  .app-view-evidence .evidence-proof-lifecycle,.app-view-evidence .evidence-proof-policy,.app-view-evidence .evidence-proof-boundary,.app-view-evidence .evidence-proof-feedback__main,.app-view-evidence .evidence-proof-feedback__facts{padding-left:20px;padding-right:20px;}
++}
++
++@media (max-width:1180px){
++  .app-view-evidence .evidence-proof-run{grid-template-columns:1fr;gap:12px;}
++  .app-view-evidence .evidence-proof-run>p{justify-self:start;}
++  .app-view-evidence .evidence-proof-flow{grid-template-columns:1fr 18px 1fr 18px 1fr;row-gap:10px;}
++  .app-view-evidence .evidence-proof-flow__node:nth-of-type(n+4){margin-top:4px;}
++  .app-view-evidence .evidence-proof-primary,.app-view-evidence .evidence-proof-secondary,.app-view-evidence .evidence-proof-feedback{grid-template-columns:1fr;}
++  .app-view-evidence .evidence-proof-primary__side+ .evidence-proof-primary__side,.app-view-evidence .evidence-proof-policy,.app-view-evidence .evidence-proof-feedback__facts{border-left:0;border-top:1px solid rgba(103,203,228,.14);}
++  .app-view-evidence .evidence-proof-boundary__columns{grid-template-columns:1fr;}
++  .app-view-evidence .evidence-proof-boundary__columns>div+div{border-left:0;border-top:1px solid rgba(98,193,217,.10);padding-left:0;padding-top:14px;margin-top:10px;}
++}
++/* EVIDENCE_PROOF_V5_END */
+
+=== index.html ===
+--- /mnt/data/evidence_proof_v5_build/unzip/MedShield-AI-EVIDENCE-FINAL-STRICT-PATCH/MedShield-AI-EVIDENCE-FINAL-STRICT/public/index.html	2026-09-03 11:11:37.000000000 +0000
++++ /mnt/data/evidence_proof_v5_build/package/MedShield-AI-EVIDENCE-PROOF-V5/verified-source/public/index.html	2026-09-03 15:43:56.972363437 +0000
+@@ -10,7 +10,7 @@
+ <script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+ <link href="./medshield-final.css?v=sourcefix3-20260828" rel="stylesheet"/>
+ <link href="./medshield-plety-bg.css?v=sourcefix3-20260828" rel="stylesheet"/>
+-<link href="./medshield-simulation-v2.css?v=sim-formal-flow-20260903" rel="stylesheet"/><link href="./medshield-app-shell.css?v=evidence-final-strict-20260903" rel="stylesheet"/>
++<link href="./medshield-simulation-v2.css?v=sim-formal-flow-20260903" rel="stylesheet"/><link href="./medshield-app-shell.css?v=evidence-proof-v5-20260903" rel="stylesheet"/>
+ <meta content="V3-ACTIVE" name="medshield-source-fix"/>
+ <meta content="V2-SINGLE-OWNER" name="medshield-simlab"/>
+ <script>window.__MEDSHIELD_SIMLAB_V2__ = true;</script>
+@@ -649,5 +649,5 @@
+ <script defer="" src="./medshield-final.js?v=sourcefix3-20260828"></script>
+ <script defer="" src="./medshield-plety-bg.js?v=sourcefix3-20260828"></script>
+ <script defer="" src="./medshield-simulation-v2.js?v=sim-formal-flow-20260903"></script>
+-<script defer="True" src="./medshield-app-shell.js?v=evidence-final-strict-20260903"></script></body>
++<script defer="True" src="./medshield-app-shell.js?v=evidence-proof-v5-20260903"></script></body>
+ </html>

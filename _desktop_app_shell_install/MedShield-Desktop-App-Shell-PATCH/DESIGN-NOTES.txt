@@ -1,0 +1,26 @@
+MedShield-AI Desktop App Shell V1
+
+Scope
+- Desktop only: 1366x768, 1920x1080, 2560x1440.
+- Converts the long-scroll presentation into a click-switched App Shell.
+- Routes: #home, #overview, #risk, #capabilities, #console, #evidence.
+- Evidence has internal tabs: core results, formal events, medical objects, boundaries, FAQ.
+
+Frozen / untouched
+- medshield-plety-bg.css
+- medshield-plety-bg.js
+- existing Plety video source / blue dynamic background
+- Worker / D1 / Wrangler
+- app.js / competition.js / medshield-final.js
+- medshield-simulation-v2.css / medshield-simulation-v2.js
+- formal experiment data and backend decisions
+
+Design ownership
+- medshield-app-shell.css: App Shell/view layout and presentation typography only.
+- medshield-app-shell.js: routing, view migration, evidence tabs, state-preserving view switching.
+
+Important behavior
+- Simulation DOM is moved once, not rebuilt on route changes.
+- Switching away from #console and back does not reset Simulation state.
+- Legacy anchors map to the new views.
+- Existing long-scroll ScrollTriggers inside migrated app views are killed after migration so hidden views do not keep running old scroll stories.

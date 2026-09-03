@@ -1,0 +1,11 @@
+Evidence Proof V5.2 CN changes
+
+Scope: Experiment Verification view only.
+
+- Chinese-first page copy.
+- Preserves technical names: AutoEncoder, LightGBM, Policy Engine, Security Event Pool, R/A, P0-P3, Trap, AUC, EMR, DICOM, HIS/PACS.
+- Attack scenarios use Chinese primary labels with English secondary labels.
+- No formal experiment figures changed.
+- No global font declarations changed.
+- No Plety background, Risk, Defense, Simulation, Worker/D1/Wrangler/backend changes.
+- Installer still patches the real public/medshield-app-shell.js moveEvidence(view), isolated Evidence CSS, and App Shell cache version only.

@@ -1,0 +1,182 @@
+  function moveEvidence(view){
+    view.appendChild(pageHead(
+      "05 · EXPERIMENT VERIFICATION",
+      "正式实验验证",
+      "验证风险感知、策略处置、主动防御、联合完整性与条件恢复是否形成完整闭环；正式实验结论与前端过程可视化严格区分。"
+    ));
+
+    const shell=document.createElement("div");
+    shell.className="evidence-proof-dashboard evidence-proof-v5";
+    shell.dataset.evidenceVersion="EVIDENCE_PROOF_V5";
+    shell.setAttribute("aria-label","MedShield-AI 正式实验闭环证据");
+    shell.innerHTML=`
+      <section class="evidence-proof-run" aria-label="正式实验运行口径">
+        <div class="evidence-proof-run__identity">
+          <span>FORMAL RUN</span>
+          <strong>50,000 Events · 15,000 Attack Events</strong>
+          <small>Synthetic / Public Experimental Data</small>
+        </div>
+        <p>这一页验证的不是单个指标，而是 MedShield-AI 从行为风险感知到策略处置、主动防御、联合完整性验证与条件恢复的完整证据链。</p>
+      </section>
+
+      <section class="evidence-proof-flow" aria-label="正式实验安全闭环">
+        <div class="evidence-proof-flow__node">
+          <span>BEHAVIOR</span>
+          <strong>U / F / N</strong>
+          <small>行为输入</small>
+        </div>
+        <i aria-hidden="true">→</i>
+        <div class="evidence-proof-flow__node evidence-proof-flow__node--ai">
+          <span>AI RISK</span>
+          <strong>AE + LightGBM</strong>
+          <small>R / A</small>
+        </div>
+        <i aria-hidden="true">→</i>
+        <div class="evidence-proof-flow__node">
+          <span>POLICY</span>
+          <strong>P0–P3</strong>
+          <small>R + D + A + C + Trap</small>
+        </div>
+        <i aria-hidden="true">→</i>
+        <div class="evidence-proof-flow__node evidence-proof-flow__node--good">
+          <span>DEFENSE</span>
+          <strong>14,415</strong>
+          <small>Contained · 96.10%</small>
+        </div>
+        <i aria-hidden="true">→</i>
+        <div class="evidence-proof-flow__node">
+          <span>INTEGRITY</span>
+          <strong>49,998 NORMAL</strong>
+          <small>2 High-confidence Anomalies</small>
+        </div>
+        <i aria-hidden="true">→</i>
+        <div class="evidence-proof-flow__node evidence-proof-flow__node--conditional">
+          <span>CONDITIONAL RECOVERY</span>
+          <strong>2 / 2</strong>
+          <small>Cold Backup → Reverify</small>
+        </div>
+      </section>
+
+      <div class="evidence-proof-primary">
+        <section class="evidence-proof-primary__side evidence-proof-primary__side--detection">
+          <div class="evidence-proof-section-label"><span>AI RISK DETECTION</span><small>FORMAL EXPERIMENT OUTPUT</small></div>
+          <div class="evidence-proof-hero-metric">
+            <strong>98.44%</strong>
+            <span>Accuracy</span>
+          </div>
+          <dl class="evidence-proof-stat-list">
+            <div><dt>Precision</dt><dd>98.66%</dd></div>
+            <div><dt>Recall</dt><dd>96.10%</dd></div>
+            <div><dt>F1 Score</dt><dd>97.36%</dd></div>
+            <div><dt>AUC</dt><dd>98.61%</dd></div>
+          </dl>
+          <div class="evidence-proof-output-note"><span>AI OUTPUT</span><strong>R + A</strong><small>AI 到 R/A 为止，不直接输出处置策略。</small></div>
+        </section>
+
+        <section class="evidence-proof-primary__side evidence-proof-primary__side--defense">
+          <div class="evidence-proof-section-label"><span>DEFENSE EFFECTIVENESS</span><small>Detection → Policy → Containment</small></div>
+          <div class="evidence-proof-hero-metric evidence-proof-hero-metric--defense">
+            <strong>14,415</strong>
+            <span>Contained</span>
+          </div>
+          <dl class="evidence-proof-stat-list">
+            <div><dt>Attack Events</dt><dd>15,000</dd></div>
+            <div class="is-alert"><dt>Failed</dt><dd>585</dd></div>
+            <div><dt>Containment</dt><dd>96.10%</dd></div>
+            <div><dt>False Blocking</dt><dd>1.28%</dd></div>
+          </dl>
+          <div class="evidence-proof-output-note"><span>POLICY OUTPUT</span><strong>P0 / P1 / P2 / P3</strong><small>Policy Engine 综合 R、D、A、C、Trap 决策。</small></div>
+        </section>
+      </div>
+
+      <section class="evidence-proof-coverage" aria-label="攻击场景覆盖">
+        <div class="evidence-proof-section-label"><span>ATTACK SCENARIO COVERAGE</span><small>正式场景检出表现</small></div>
+        <div class="evidence-proof-coverage__rows">
+          <div class="evidence-proof-coverage__row" style="--rate:99.96%"><span>Medical Image Leakage</span><i><b></b></i><strong>≈99.96%</strong></div>
+          <div class="evidence-proof-coverage__row" style="--rate:99.50%"><span>EMR Leakage</span><i><b></b></i><strong>99.50%</strong></div>
+          <div class="evidence-proof-coverage__row" style="--rate:99.79%"><span>Data Exfiltration</span><i><b></b></i><strong>≈99.79%</strong></div>
+          <div class="evidence-proof-coverage__row" style="--rate:99.92%"><span>Multi-source Attack</span><i><b></b></i><strong>≈99.92%</strong></div>
+          <div class="evidence-proof-coverage__row" style="--rate:100%"><span>Slow Data Exfiltration</span><i><b></b></i><strong>100.00%</strong></div>
+          <div class="evidence-proof-coverage__row is-weak" style="--rate:76.46%"><span>Account Abuse <em>CURRENT LIMITATION</em></span><i><b></b></i><strong>76.46%</strong></div>
+        </div>
+        <p>Account Abuse 是当前薄弱场景，作为后续行为建模与场景覆盖优化重点；不隐藏弱项，也不将场景检出率解释为异常类型分类 Recall。</p>
+      </section>
+
+      <div class="evidence-proof-secondary">
+        <section class="evidence-proof-lifecycle">
+          <div class="evidence-proof-section-label"><span>INTEGRITY & RECOVERY</span><small>联合完整性 → 条件恢复 → 复验</small></div>
+          <div class="evidence-proof-lifecycle__branches">
+            <div class="evidence-proof-lifecycle__branch evidence-proof-lifecycle__branch--normal">
+              <span>NORMAL DATA</span>
+              <strong>49,998</strong>
+              <i aria-hidden="true">→</i>
+              <b>Recovery Not Required</b>
+            </div>
+            <div class="evidence-proof-lifecycle__branch evidence-proof-lifecycle__branch--anomaly">
+              <span>HIGH-CONFIDENCE ANOMALY</span>
+              <strong>2</strong>
+              <small>Expected 2 · Detected 2</small>
+              <div class="evidence-proof-lifecycle__steps">
+                <b>Cold Backup</b><i>→</i><b>Recovery</b><i>→</i><b>Reverify</b>
+              </div>
+              <div class="evidence-proof-lifecycle__result"><strong>2 / 2 SUCCESS</strong><span>Mean Recovery Pipeline Latency ≈ 9.05 ms</span></div>
+            </div>
+          </div>
+          <p>正式结果只确认 2 个高可信完整性异常并完成 2/2 恢复验证，不额外解释为“医学影像篡改”。</p>
+        </section>
+
+        <section class="evidence-proof-policy">
+          <div class="evidence-proof-section-label"><span>POLICY DISTRIBUTION</span><small>50,000 events</small></div>
+          <div class="evidence-proof-policy__rows">
+            <div style="--share:67.71%"><span>P0</span><i><b></b></i><strong>33,854</strong><small>67.71%</small></div>
+            <div style="--share:1.40%"><span>P1</span><i><b></b></i><strong>698</strong><small>1.40%</small></div>
+            <div style="--share:.81%"><span>P2</span><i><b></b></i><strong>407</strong><small>0.81%</small></div>
+            <div class="is-alert" style="--share:30.08%"><span>P3</span><i><b></b></i><strong>15,041</strong><small>30.08%</small></div>
+          </div>
+          <div class="evidence-proof-policy__equation"><span>POLICY ENGINE</span><strong>R + D + A + C + Trap → P0–P3</strong><small>AI does not directly execute policy.</small></div>
+        </section>
+      </div>
+
+      <section class="evidence-proof-boundary">
+        <div class="evidence-proof-section-label"><span>EVIDENCE BOUNDARY</span><small>可验证，但不夸大</small></div>
+        <div class="evidence-proof-boundary__columns">
+          <div class="is-implemented">
+            <strong>✓ IMPLEMENTED</strong>
+            <span>AI Risk Detection · R/A</span>
+            <span>Policy Decision · P0–P3</span>
+            <span>Integrity Verification Pipeline</span>
+            <span>Cold-backup Recovery Workflow</span>
+          </div>
+          <div class="is-partial">
+            <strong>△ PARTIAL / SIMULATED</strong>
+            <span>Key Enforcement · PARTIAL</span>
+            <span>Permission Actions · SIMULATED</span>
+            <span>Network Actions · SIMULATED</span>
+          </div>
+          <div class="is-unavailable">
+            <strong>× UNAVAILABLE / NOT IMPLEMENTED</strong>
+            <span>DICOM Embedded Watermark Runtime</span>
+            <span>EMR Embedded Watermark Runtime</span>
+            <span>Unknown Leaked-image Blind Attribution</span>
+            <span>Real HIS / PACS Production Control</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence-proof-feedback">
+        <div class="evidence-proof-feedback__main">
+          <div class="evidence-proof-section-label"><span>CONFIRMED SECURITY FEEDBACK</span><small>Only confirmed representative events enter the pool</small></div>
+          <div class="evidence-proof-feedback__flow">
+            <strong>Security Event</strong><i>→</i><strong>Event Confirmation</strong><i>→</i><strong>Security Event Pool</strong><i>→</i><strong>Offline Optimization</strong>
+          </div>
+          <div class="evidence-proof-feedback__modes"><span>Real Deployment · Admin + Audit</span><span>Demo · Ground Truth</span></div>
+        </div>
+        <div class="evidence-proof-feedback__facts">
+          <div><strong>AI Prediction ≠ Training Label</strong><span>仅确认后的代表性事件进入 Event Pool。</span></div>
+          <div><strong>3,000 Unseen Attack Events</strong><span>本次正式实验中检出率 100%</span></div>
+          <div><strong>Experimental Boundary</strong><span>Synthetic / Public Experimental Data · Frontend visualization ≠ Production Control</span></div>
+        </div>
+      </section>
+    `;
+    view.appendChild(shell);
+  }

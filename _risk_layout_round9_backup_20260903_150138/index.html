@@ -10,7 +10,7 @@
 <script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <link href="./medshield-final.css?v=sourcefix3-20260828" rel="stylesheet"/>
 <link href="./medshield-plety-bg.css?v=sourcefix3-20260828" rel="stylesheet"/>
-<link href="./medshield-simulation-v2.css?v=sim-formal-flow-20260903" rel="stylesheet"/><link href="./medshield-app-shell.css?v=evidence-proof-v5-3-cn-20260903" rel="stylesheet"/>
+<link href="./medshield-simulation-v2.css?v=simlab-converged-20260902" rel="stylesheet"/><link href="./medshield-app-shell.css?v=app-shell-converged-20260902" rel="stylesheet"/><link href="./medshield-risk-layout.css?v=risk-layout-20260903" rel="stylesheet"/>
 <meta content="V3-ACTIVE" name="medshield-source-fix"/>
 <meta content="V2-SINGLE-OWNER" name="medshield-simlab"/>
 <script>window.__MEDSHIELD_SIMLAB_V2__ = true;</script>
@@ -67,98 +67,51 @@
 </div>
 </section>
 <section class="showcase-wrap" id="features">
-<article class="risk-final-layout" data-risk-final="1">
-  <aside class="showcase-copy risk-final-explain" aria-label="风险研判说明">
-    <div class="risk-final-explain-head">
-      <span class="eyebrow">AI RISK ASSESSMENT</span>
-      <h3>为什么这样判断？</h3>
-      <p>系统持续观察医院业务中的用户、文件和网络三类行为，先识别是否偏离正常模式，再形成正式风险判断。</p>
-    </div>
-
-    <div class="risk-final-factor-list" aria-label="AI 行为输入">
-      <div class="risk-final-factor"><b>U</b><span><strong>用户行为</strong><small>谁在访问？行为是否偏离正常业务？</small></span></div>
-      <div class="risk-final-factor"><b>F</b><span><strong>文件行为</strong><small>医疗数据正在被怎样读取、修改或批量操作？</small></span></div>
-      <div class="risk-final-factor"><b>N</b><span><strong>网络行为</strong><small>数据是否正在发生异常通信或外传？</small></span></div>
-    </div>
-
-    <div class="risk-final-trap" aria-label="Trap 独立安全上下文">
-      <div><span>POLICY CONTEXT</span><strong>Trap · 独立安全诱饵</strong></div>
-      <ul>
-        <li>不属于 D 数据等级</li>
-        <li>不进入 U / F / N</li>
-        <li>不进入 AI 特征</li>
-        <li>只进入 Policy Engine</li>
-      </ul>
-    </div>
-
-    <div class="risk-final-ai-output">
-      <span>AI OUTPUT</span>
-      <strong>R + A</strong>
-      <p>AI 只负责风险感知；最终处置由 Policy Engine 结合 D、C、Trap 等上下文另行决策。</p>
-    </div>
-
-    <div class="risk-final-next-cue">R / A → Policy Engine</div>
-    <a class="showcase-button risk-final-action" href="#console">查看实时处置 <span>→</span></a>
-  </aside>
-
-  <section class="showcase-visual risk-final-console" aria-label="Risk Detection Console">
-    <div class="glass-window risk-final-console-window">
-      <div class="window-top"><span>Risk Detection Console</span><b><i></i> LIVE</b></div>
-
-      <div class="risk-final-pipeline-wrap" aria-label="AI 风险研判方法链">
-        <div class="risk-final-pipeline">
-          <div class="risk-final-pipeline-node"><strong>U / F / N</strong><small>行为输入</small></div><i>→</i>
-          <div class="risk-final-pipeline-node"><strong>X</strong><small>统一特征</small></div><i>→</i>
-          <div class="risk-final-pipeline-node"><strong>AutoEncoder</strong><small>正常模式建模</small></div><i>→</i>
-          <div class="risk-final-pipeline-node"><strong>E_AE</strong><small>异常偏离</small></div><i>→</i>
-          <div class="risk-final-pipeline-node"><strong>LightGBM</strong><small>风险融合</small></div><i>→</i>
-          <div class="risk-final-pipeline-node risk-final-pipeline-output"><strong>R / A</strong><small>正式输出</small></div>
-        </div>
-        <div class="risk-final-policy-context">
-          <small>POLICY CONTEXT</small>
-          <strong>Trap</strong>
-          <span>独立诱饵属性</span>
-          <i>↓</i>
-          <strong>Policy Engine</strong>
-        </div>
-      </div>
-
-      <div class="risk-final-middle">
-        <div class="event-preview risk-final-event">
-          <small>CURRENT EVENT</small>
-          <strong>医学影像异常外传</strong>
-          <dl>
-            <div><dt>EVENT ID</dt><dd>EVT-2026-0827-001</dd></div>
-            <div><dt>OBJECT</dt><dd>CT Image Series</dd></div>
-            <div><dt>DATA LEVEL</dt><dd>D3 · Critical</dd></div>
-          </dl>
-        </div>
-
-        <div class="risk-preview risk-final-output-panel">
-          <small>FORMAL R / A · EVENT OUTPUT</small>
-          <div class="risk-final-output-body">
-            <div class="risk-ring"><div class="risk-inner"><strong>FORMAL R / A</strong><span>EVENT OUTPUT</span></div></div>
-            <div class="risk-final-output-defs">
-              <div><b>R</b><span><strong>Risk Score</strong><small>正式风险评分</small></span></div>
-              <div><b>A</b><span><strong>Anomaly Type</strong><small>正式异常类型</small></span></div>
-            </div>
-          </div>
-          <div class="risk-meta"><span>AUTOENCODER<b>Normal Pattern → E_AE</b></span><span>LIGHTGBM<b>X + E_AE → R + A</b></span></div>
-        </div>
-      </div>
-
-      <div class="explain-preview risk-final-current-inputs">
-        <div class="ct-preview"><div class="ct-core"></div><div class="scan-sweep"></div></div>
-        <div class="signal-list">
-          <small>CURRENT BEHAVIOR INPUTS · AI FEATURES ONLY</small>
-          <div><span><strong>用户行为</strong> · 异常访问行为</span><b>U</b></div>
-          <div><span><strong>文件行为</strong> · 批量读取 / 修改</span><b>F</b></div>
-          <div><span><strong>网络行为</strong> · 异常外传行为</span><b>N</b></div>
-          <p>Trap 不属于 U / F / N，不进入 AI 特征。</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<article class="showcase-row v14-risk-story">
+<div aria-hidden="true" class="v14-story-rail">
+<span class="active">01<b>Normal</b></span>
+<span>02<b>Observe</b></span>
+<span>03<b>Restrict</b></span>
+<span>04<b>High Risk</b></span>
+<span>05<b>Contained</b></span>
+</div>
+<div class="showcase-copy reveal-up">
+<span class="eyebrow">01 · AI RISK DETECTION</span>
+<h2>实时风险感知，<br/><em>驱动策略决策。</em></h2>
+<p>系统先把用户行为 U、文件行为 F 和网络行为 N 统一为 X。AutoEncoder 学习正常业务模式并输出异常偏离 E_AE；LightGBM 再融合 X 与 E_AE，形成风险评分 R 和异常类型 A。AI 只负责风险感知，最终处置由 Policy Engine 另行决策。</p>
+<ul><li>U：谁在访问，以及行为是否偏离正常业务</li><li>F：医疗数据正在被怎样读取、修改或批量操作</li><li>N：医疗数据是否正在发生异常通信或外传</li><li>Trap 不进入 AI 特征，只作为 Policy Engine 的独立安全上下文</li></ul>
+<a class="showcase-button" href="#console">查看实时处置 <span>→</span></a>
+</div>
+<div class="showcase-visual reveal-up">
+<div class="glass-window">
+<div class="window-top"><span>Risk Detection Console</span><b><i></i> LIVE</b></div>
+<div class="risk-method-strip" aria-label="AI risk assessment flow">
+  <div class="risk-method-node"><span>U / F / N</span><small>行为输入</small></div>
+  <i>→</i>
+  <div class="risk-method-node"><span>X</span><small>联合特征</small></div>
+  <i>→</i>
+  <div class="risk-method-node"><span>AutoEncoder</span><small>产生 E_AE</small></div>
+  <i>→</i>
+  <div class="risk-method-node"><span>LightGBM</span><small>输出 R / A</small></div>
+  <div class="risk-method-trap"><span>Trap</span><small>不进入 AI · 仅供 Policy</small></div>
+</div>
+<div class="risk-upper">
+<div class="event-preview">
+<small>CURRENT EVENT</small><strong>医学影像异常外传</strong>
+<dl><div><dt>EVENT ID</dt><dd>EVT-2026-0827-001</dd></div><div><dt>OBJECT</dt><dd>CT Image Series</dd></div><div><dt>DATA LEVEL</dt><dd>D3 · Critical</dd></div></dl>
+</div>
+<div class="risk-preview">
+<small>RISK ASSESSMENT</small>
+<div class="risk-ring"><div class="risk-inner"><strong>R = FORMAL</strong><span>EVENT OUTPUT</span></div></div>
+<div class="risk-meta"><span>AUTOENCODER<b>Normal Pattern → E_AE</b></span><span>LIGHTGBM<b>X + E_AE → R + A</b></span></div>
+</div>
+</div>
+<div class="explain-preview">
+<div class="ct-preview"><div class="ct-core"></div><div class="scan-sweep"></div></div>
+<div class="signal-list"><small>BEHAVIOR INPUTS · Trap excluded from AI</small><div><span>用户行为 · 谁在访问 / 是否偏离正常</span><b>U</b></div><div><span>文件行为 · 如何读取 / 修改 / 批量操作</span><b>F</b></div><div><span>网络行为 · 是否异常通信 / 外传</span><b>N</b></div></div>
+</div>
+</div>
+</div>
 </article>
 <article class="showcase-row reverse v14-recovery-story">
 <div aria-hidden="true" class="v14-recovery-rail">
@@ -326,7 +279,6 @@
 <div class="sim-lab-source">
 <b>正式事件回放</b>
 <span>run_20260826_153334 · READ ONLY</span>
-<div class="sim-evidence-legend" aria-label="演示与正式结果说明"><span class="is-simulation">SIMULATION · PROCESS</span><span class="is-formal">FORMAL · EXPERIMENT OUTPUT</span></div>
 </div>
 </header>
 <div aria-label="实验模式" class="sim-mode-bar">
@@ -392,17 +344,17 @@
 <div class="sim-ai-engine"><span>风险研判</span><strong>AutoEncoder</strong><small>E_AE ↓</small><strong>LightGBM</strong></div>
 <div class="sim-ai-arrow"><i></i></div>
 <div class="sim-rap-block">
-<span>FORMAL AI OUTPUT / POLICY</span>
-<div><small>R · AI</small><strong id="sim-flow-r">--</strong></div>
-<div><small>A · AI</small><strong id="sim-flow-a">待解锁</strong></div>
-<div><small>P · POLICY</small><strong id="sim-flow-p">--</strong></div>
+<span>正式决策</span>
+<div><small>R</small><strong id="sim-flow-r">--</strong></div>
+<div><small>A</small><strong id="sim-flow-a">待解锁</strong></div>
+<div><small>P</small><strong id="sim-flow-p">--</strong></div>
 </div>
 </div>
 <div class="sim-defense-gate" id="sim-defense-gate"><span>主动防御</span><strong id="sim-defense-gate-label">等待策略</strong></div>
 <div class="sim-trust-track">
 <div class="sim-trust-node"><span>联合完整性验证</span><strong id="sim-integrity-visual">等待</strong></div>
 <div class="sim-trust-arrow">→</div>
-<div class="sim-trust-node"><span>条件恢复 / 安全评估</span><strong id="sim-recovery-visual">等待</strong></div>
+<div class="sim-trust-node"><span>条件恢复 / 审计</span><strong id="sim-recovery-visual">等待</strong></div>
 </div>
 </div>
 <div aria-label="并行事件状态" class="sim-parallel-lanes" id="sim-parallel-lanes"></div>
@@ -416,7 +368,7 @@
 </aside>
 <section aria-label="实时事件流" class="sim-event-stream">
 <header>
-<div><span>实时事件流</span><small>SIMULATION 记录过程 · FORMAL 字段来自正式事件</small></div>
+<div><span>实时事件流</span><small>作为证据层记录本轮回放</small></div>
 <div class="sim-stream-actions"><button id="sim-open-stream" type="button" disabled>查看完整证据</button><button id="sim-clear-stream" type="button">清空</button></div>
 </header>
 <div aria-label="实时事件流记录" class="sim-stream-body" id="simv2-stream-body"></div>
@@ -429,8 +381,8 @@
 <dialog aria-labelledby="sim-stream-dialog-title" class="sim-stream-dialog" id="sim-stream-dialog">
 <div class="sim-dialog-shell">
 <header>
-<div><span id="sim-stream-dialog-kicker">事件证据视图</span><h3 id="sim-stream-dialog-title">完整事件生命周期</h3></div>
-<div class="sim-dialog-header-actions"><button class="sim-dialog-close-all" id="sim-close-all-stream" type="button" hidden>一键关闭全部</button><button aria-label="关闭弹窗" id="sim-close-stream" type="button">×</button></div>
+<div><span>事件证据视图</span><h3 id="sim-stream-dialog-title">完整事件生命周期</h3></div>
+<button aria-label="关闭弹窗" id="sim-close-stream" type="button">×</button>
 </header>
 <div class="sim-dialog-summary" id="sim-dialog-summary"></div>
 <div class="sim-dialog-phases" id="sim-dialog-phases"></div>
@@ -438,7 +390,6 @@
 <section><h4>实时事件流</h4><div class="sim-dialog-log" id="sim-dialog-log"></div></section>
 <section><h4>正式事件字段</h4><div class="sim-dialog-fields" id="sim-dialog-fields"></div></section>
 </div>
-<div class="sim-dialog-batch" id="sim-dialog-batch" hidden></div>
 </div>
 </dialog>
 <div aria-hidden="true" class="sim-compat" hidden="">
@@ -648,6 +599,6 @@
 </footer>
 <script defer="" src="./medshield-final.js?v=sourcefix3-20260828"></script>
 <script defer="" src="./medshield-plety-bg.js?v=sourcefix3-20260828"></script>
-<script defer="" src="./medshield-simulation-v2.js?v=sim-formal-flow-20260903"></script>
-<script defer="True" src="./medshield-app-shell.js?v=evidence-proof-v5-3-cn-20260903"></script></body>
+<script defer="" src="./medshield-simulation-v2.js?v=simlab-converged-20260902"></script>
+<script defer="True" src="./medshield-app-shell.js?v=app-shell-converged-20260902"></script></body>
 </html>

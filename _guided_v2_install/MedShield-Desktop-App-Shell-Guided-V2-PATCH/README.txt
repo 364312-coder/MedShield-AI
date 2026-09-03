@@ -1,0 +1,1 @@
+Desktop App Shell Guided V2. Run install_guided_v2.ps1 with -Target <project root>. Plety background files are not included and are not modified.
